@@ -1,0 +1,89 @@
+<div class="product product--product-form" {{ block.shopify_attributes }}>
+	{%- if product != blank -%}
+	{%- liquid
+      assign gift_card_recipient_feature_active = false
+      if block.settings.show_gift_card_recipient and product.gift_card?
+        assign gift_card_recipient_feature_active = true
+      endif
+
+      assign show_dynamic_checkout = false
+      if block.settings.show_dynamic_checkout and gift_card_recipient_feature_active == false
+        assign show_dynamic_checkout = true
+      endif
+
+			assign product_template = product.template_suffix
+
+			if product.metafields.theme.preorder and product.available
+				assign product_template = 'pre-order'
+			endif
+    -%}
+  <product-form class="product-form" data-section="{{ section.id }}" data-hide-errors="{{ gift_card_recipient_feature_active }}" template="{{ product_template | escape }}">
+		<div class="product-form__error-message-wrapper form-notification error" role="alert" hidden>
+      {% render 'svg-icons' with 'thb-error' %}
+      <span class="product-form__error-message"></span>
+    </div>
+		{%- form 'product', product, id: product_form_id, class: 'form', novalidate: 'novalidate', data-type: 'add-to-cart-form' -%}
+			<input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}" disabled>
+			{%- if gift_card_recipient_feature_active -%}
+				{%- render 'gift-card-recipient-form', product: product, form: form, section: section -%}
+			{%- endif -%}
+			<div class="product-add-to-cart-container">
+				<div class="form-notification error" style="display:none;"></div>
+				<div class="add_to_cart_holder{% if show_dynamic_checkout %} add_to_cart_holder--multi{%- endif -%}">
+					<button type="submit" name="add" id="AddToCart" class="single-add-to-cart-button button accent {% unless product.selected_or_first_available_variant.available %}sold-out{% endunless %}" {% if product.selected_or_first_available_variant.available == false %}disabled{% endif %}>
+						<span class="single-add-to-cart-button--text">
+							{%- liquid
+								if product.selected_or_first_available_variant.available == false
+									assign button_content = 'products.product.sold_out' | t
+								else
+									if product_template == 'pre-order'
+										assign button_content = 'products.product.pre_order' | t
+									else
+										assign button_content = 'products.product.add_to_cart' | t
+									endif
+								endif
+							-%}
+							{{- button_content -}}
+						</span>
+						<span class="loading-overlay">
+							{% render 'svg-icons' with 'thb-loading' %}
+						</span>
+					</button>
+					{%- if show_dynamic_checkout -%}
+						{{ form | payment_button }}
+					{%- endif -%}
+				</div>
+			</div>
+		{%- endform -%}
+	</product-form>
+	{%- else -%}
+    <div class="product-form">
+      <div class="product-form__buttons form">
+        <button
+          type="submit"
+          name="add"
+          class="single_add_to_cart_button button sold-out"
+          disabled
+        >
+          <span class="single-add-to-cart-button--text">{{ 'products.product.sold_out' | t }}</span>
+        </button>
+      </div>
+    </div>
+  {%- endif -%}
+</div>
+{%- if pickup -%}
+{%- assign pick_up_availabilities = product.selected_or_first_available_variant.store_availabilities | where: 'pick_up_enabled', true -%}
+<pickup-availability
+	class="pickup-availability-wrapper"
+	{% if product.selected_or_first_available_variant.available and pick_up_availabilities.size > 0 %}available{% endif %}
+  data-root-url="{{ routes.root_url }}"
+  data-variant-id="{{ product.selected_or_first_available_variant.id }}"
+  data-has-only-default-variant="{{ product.has_only_default_variant }}"
+>
+	{%- assign pick_up_availabilities = product.selected_or_first_available_variant.store_availabilities | where: 'pick_up_enabled', true -%}
+	{%- if pick_up_availabilities.size > 0 -%}
+		{% render 'product-pickup-availability', pick_up_availabilities: pick_up_availabilities %}
+	{% endif %}
+</pickup-availability>
+<script src="{{ 'pickup-availability.js' | asset_url }}" defer="defer"></script>
+{%- endif -%}

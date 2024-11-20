@@ -1,0 +1,39 @@
+{%- if paginate.pages > 1 -%}
+<pagination-theme class="pagination pagination-type--{{ pagination_type }}" data-section="{{ id }}">
+	<div class="row">
+		<div class="small-12 columns">
+			{%- if pagination_type == 'paginated' -%}
+			<div class="page-numbers nav-links">
+				<span class="prev"><a href="{{ paginate.previous.url }}" title="" {% unless paginate.previous %}disabled{% endunless %}>{% render 'svg-icons' with 'thb-pagination-prev' %}<span class="visually-hidden">{{ 'pagination.previous' | t }}</span></a></span>
+		    {% for part in paginate.parts %}
+					<span class="page {% if paginate.current_page == part.title %}current{% endif %}">
+						{% if part.is_link %}
+							{{ part.title | link_to: part.url }}
+						{% else %}
+							{{ part.title }}
+						{% endif %}
+					</span>
+		    {% endfor %}
+				<span class="next"><a href="{{ paginate.next.url }}" title="" {% unless paginate.next %}disabled{% endunless %}>{% render 'svg-icons' with 'thb-pagination-next' %}<span class="visually-hidden">{{ 'pagination.next' | t }}</span></a></span>
+		  </div>
+			{%- else -%}
+			<button class="load-more button">
+				<span>{{ 'sections.collection_template.load_more' | t }}</span>
+				<span class="loading-overlay">
+					{% render 'svg-icons' with 'thb-loading' %}
+				</span>
+			</button>
+			{%- endif -%}
+		</div>
+	</div>
+	{%- if pagination_type != 'paginated' -%}
+		{%- if pagination_type == 'infinite' -%}
+			<span class="loading-overlay">
+				{% render 'svg-icons' with 'thb-loading' %}
+			</span>
+		{%- endif -%}
+	<script src="{{ 'pagination.js' | asset_url }}" defer></script>
+	{%- endif -%}
+</pagination-theme>
+{{ 'pagination.css' | asset_url | stylesheet_tag }}
+{%- endif -%}

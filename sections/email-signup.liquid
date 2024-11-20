@@ -1,0 +1,270 @@
+{%- liquid
+	assign full_width = section.settings.full_width
+	assign background_image = section.settings.background_image
+
+	assign disable_top_spacing = section.settings.disable_top_spacing
+	assign disable_bottom_spacing = section.settings.disable_bottom_spacing
+	assign color_bg = section.settings.color_bg
+	assign color_text = section.settings.color_text
+	assign color_heading = section.settings.color_heading
+	assign color_border = section.settings.color_border
+	assign overlay_color = section.settings.overlay_color
+	assign overlay_opacity = section.settings.overlay_opacity
+-%}
+<div class="row {% if full_width %} full-width-row-full{% endif %}">
+	<div class="small-12 columns">
+		<div class="email-signup email-signup--full-width-{{ full_width }} section-spacing-padding{% if disable_top_spacing %} section-spacing--disable-top{% endif %}{% if disable_bottom_spacing %} section-spacing--disable-bottom{% endif %}" style="--bg-body: {{ color_bg }}; --color-bg: {{ color_bg }}; --color-body:{{ color_text }}; --color-body-rgb:{{ color_text.rgb | replace: ' ' , ',' }}; --color-heading:{{ color_heading }}; --color-form-border:{{ color_border }};{% if background_image %}background-image: url({{ background_image | image_url: width: background_image.width }});{% endif %} --overlay-opacity: {{ overlay_opacity | divided_by: 100.0 }}; --color-overlay-rgb: {{ overlay_color.rgb | replace: ' ' , ',' }};"">
+			<div class="email-signup--inner">
+				{%- for block in section.blocks -%}
+					{%- case block.type -%}
+						{%- when 'image' -%}
+							{%- if block.settings.image != blank -%}
+								{%- liquid
+									assign image = block.settings.image
+									assign master_width = image.src.width | append: 'x' | append: image.src.height
+									render 'responsive-image', image: image, sizes: master_width, retina: true
+								-%}
+							{%- else -%}
+								<div class="thb-placeholder">
+									{{ 'image' | placeholder_svg_tag: 'placeholder_svg_tag' }}
+								</div>
+							{%- endif -%}
+						{%- when 'subheading' -%}
+							<p class="subheading" {{ block.shopify_attributes }}>{{ block.settings.text }}</p>
+						{%- when 'heading' -%}
+							<h3 class="{{ block.settings.heading_size }}" {{ block.shopify_attributes }}>{{ block.settings.text | newline_to_br }}</h3>
+						{%- when 'text' -%}
+							<div class="description-size--{{ block.settings.description_size }}" {{ block.shopify_attributes }}><p>{{ block.settings.text }}</p></div>
+						{%- when 'form' -%}
+							{%- render 'email-signup-form' -%}
+						{%- when 'space' -%}
+							<div style="height: {{ block.settings.height | append: 'px' }}" {{ block.shopify_attributes }}></div>
+					{%- endcase -%}
+				{%- endfor -%}
+			</div>
+		</div>
+	</div>
+</div>
+{{- 'email-signup.css' | asset_url | stylesheet_tag -}}
+{% schema %}
+  {
+    "name": "Newsletter",
+  "class": "section-newsletter",
+    "settings": [
+			{
+				"type": "paragraph",
+				"content": "Each email subscription creates a customer account. [Learn more](https://help.shopify.com/en/manual/customers)"
+			},
+			{
+				"type": "checkbox",
+				"id": "full_width",
+				"label": "Make section full width",
+				"default": false
+			},
+			{
+	      "type": "header",
+	      "content": "Background"
+	    },
+			{
+				"type": "image_picker",
+				"id": "background_image",
+				"label": "Image"
+			},
+			{
+	      "type": "header",
+	      "content": "Colors"
+	    },
+			{
+        "type": "color",
+        "id": "color_bg",
+        "label": "Background",
+        "default": "#f5f5f5"
+      },
+			{
+        "type": "color",
+        "id": "color_text",
+        "label": "Text",
+        "default": "#2c2d2e"
+      },
+			{
+        "type": "color",
+        "id": "color_heading",
+        "label": "Heading",
+        "default": "#1a1c1d"
+      },
+			{
+        "type": "color",
+        "id": "color_border",
+        "label": "Borders",
+        "default": "#d3d3d3"
+      },
+			{
+				"type": "color",
+				"id": "overlay_color",
+				"label": "Overlay",
+				"default": "#000000"
+			},
+			{
+				"type": "range",
+				"id": "overlay_opacity",
+				"min": 0,
+				"max": 100,
+				"step": 1,
+				"unit": "%",
+				"label": "Overlay opacity",
+				"default": 0
+			},
+			{
+        "type": "header",
+        "content": "Spacing"
+      },
+			{
+				"type": "checkbox",
+				"id": "disable_top_spacing",
+				"default": false,
+				"label": "Remove top spacing"
+			},
+			{
+				"type": "checkbox",
+				"id": "disable_bottom_spacing",
+				"default": false,
+				"label": "Remove bottom spacing"
+			}
+    ],
+		"blocks": [
+			{
+				"type": "image",
+				"name": "Image",
+				"settings": [
+					{
+						"type": "image_picker",
+						"id": "image",
+						"label": "Image"
+					}
+				]
+			},
+			{
+				"type": "subheading",
+				"name": "Subheading",
+				"limit": 1,
+				"settings": [
+					{
+						"type": "text",
+						"id": "text",
+						"label": "Text",
+						"default": "Add a tagline"
+					}
+				]
+			},
+			{
+				"type": "heading",
+				"name": "Heading",
+				"limit": 1,
+				"settings": [
+					{
+						"type": "text",
+						"id": "text",
+						"label": "Text",
+						"default": "Newsletter"
+					},
+					{
+						"type": "select",
+						"id": "heading_size",
+						"label": "Heading size",
+						"options": [
+							{
+								"value": "h1",
+								"label": "Large"
+							},
+							{
+								"value": "h2",
+								"label": "Medium"
+							},
+							{
+								"value": "h3",
+								"label": "Small"
+							}
+						],
+						"default": "h3"
+					}
+				]
+			},
+			{
+        "type": "text",
+        "name": "Text",
+				"limit": 1,
+        "settings": [
+          {
+            "type": "textarea",
+            "id": "text",
+            "label": "Content",
+            "default": "Add a text to attract users to signup."
+          },
+					{
+						"type": "select",
+						"id": "description_size",
+						"label": "Size",
+						"options": [
+							{
+								"value": "small",
+								"label": "Small"
+							},
+							{
+								"value": "medium",
+								"label": "Medium"
+							},
+							{
+								"value": "large",
+								"label": "Large"
+							}
+						],
+						"default": "medium"
+					}
+        ]
+      },
+			{
+        "type": "form",
+        "name": "Newsletter form",
+				"limit": 1
+      },
+      {
+        "type": "space",
+        "name": "Empty space",
+        "settings": [
+          {
+            "type": "range",
+            "id": "height",
+            "min": 0,
+            "max": 100,
+            "step": 1,
+            "unit": "px",
+            "label": "Height",
+            "default": 50
+          }
+        ]
+      }
+    ],
+    "presets": [
+      {
+        "name": "Newsletter",
+				"blocks": [
+					{
+						"type": "heading"
+					},
+					{
+						"type": "text"
+					},
+					{
+						"type": "form"
+					}
+				]
+      }
+    ],
+		"enabled_on": {
+			"templates": ["*"],
+			"groups": [
+				"header", "footer"
+			]
+		}
+  }
+{% endschema %}

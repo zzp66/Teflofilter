@@ -1,0 +1,853 @@
+{%- liquid
+  assign popup_delay = section.settings.popup_delay
+  assign disable_for_accounts = section.settings.disable_for_accounts
+  assign show_on_specific_page = section.settings.show_on_specific_page
+  assign specific_page = section.settings.specific_page
+  assign popup_image = section.settings.popup_image
+  assign popup_position = section.settings.popup_position
+  assign text_alignment = section.settings.text_alignment
+  assign show_popup = true
+  
+  if show_on_specific_page
+    assign show_popup = false
+  endif
+
+  if show_on_specific_page and specific_page != blank and specific_page == request.path
+    assign show_popup = true  
+  else
+    if request.design_mode
+      assign show_popup = true
+      assign popup_delay = 999
+    endif
+  endif
+
+  if disable_for_accounts and customer
+    assign show_popup = false
+  endif
+
+  if request.design_mode
+    assign show_popup = true
+  endif
+-%}
+{%- if show_popup -%}
+{{ 'overlay-group.css' | asset_url | stylesheet_tag }}
+<modal-dialog id="Popup-{{ section.id }}" data-section-id="{{ section.id }}" data-popup="1" class="product-popup-modal product-popup-modal--{{ popup_position }} popup-modal" data-delay="{{ popup_delay }}">
+  <div role="dialog" aria-modal="true" class="product-popup-modal__content{% if show_popup %} product-popup-modal__content--has-image{% endif %}" tabindex="-1">
+    {%- if popup_image -%}
+    <div class="product-popup-modal__content-image">
+      {% render 'responsive-image', image: popup_image %}
+    </div>
+    {%- endif -%}
+    <button id="ModalClose-{{ section.id }}" type="button" class="product-popup-modal__toggle" aria-label="{{ 'accessibility.close' | t }}">{% render 'svg-icons' with 'close' %}</button>
+    <div class="product-popup-modal__content-info text-{{ text_alignment }}">
+      {%- for block in section.blocks -%}
+        {%- case block.type -%}
+          {%- when 'heading' -%}
+            <div class="product-popup-modal--heading {{ block.settings.heading_size }}" {{ block.shopify_attributes }}>{{ block.settings.text | newline_to_br }}</div>
+          {%- when 'text' -%}
+            <div class="product-popup-modal--text rte description-size--{{ block.settings.description_size }}" {{ block.shopify_attributes }}>{{ block.settings.text }}</div>
+          {%- when 'button' -%}
+            {% if block.settings.button_text != blank %}
+              <div class="product-popup-modal--button">
+                <a class="button full{% if block.settings.button_outline %} outline{% endif %}" href="{{ block.settings.button_link }}" role="button" title="{{ block.settings.button_text | escape }}" {{ block.shopify_attributes }}><span>{{ block.settings.button_text }}</span></a>
+              </div>
+            {% endif %}
+          {%- when 'countdown' -%}
+            {%- liquid
+              assign timer_year = block.settings.timer_year
+              assign timer_month = block.settings.timer_month
+              assign timer_day = block.settings.timer_day
+              assign timer_hour = block.settings.timer_hour
+              assign timer_minute = block.settings.timer_minute
+
+              assign timezone = 1 | date: '%z'
+
+              capture date
+                echo timer_day | append: '-' | append: timer_month | append: '-' | append: timer_year
+              endcapture
+
+              capture time
+                echo timer_hour | append: ':' | append: timer_minute
+              endcapture
+            -%}
+            <countdown-timer class="countdown-timer" data-date="{{ date }}" data-time="{{ time }}" data-timezone="{{ timezone }}">
+              <div class="countdown-timer--column days">
+                <span class="countdown-timer--column--number">0</span>
+                <span class="countdown-timer--column--text">{{ 'sections.countdown_banner.days' | t }}</span>
+              </div>
+              <div class="countdown-timer--column hours">
+                <span class="countdown-timer--column--number">0</span>
+                <span class="countdown-timer--column--text">{{ 'sections.countdown_banner.hours' | t }}</span>
+              </div>
+              <div class="countdown-timer--column minutes">
+                <span class="countdown-timer--column--number">0</span>
+                <span class="countdown-timer--column--text">{{ 'sections.countdown_banner.minutes' | t }}</span>
+              </div>
+              <div class="countdown-timer--column seconds">
+                <span class="countdown-timer--column--number">0</span>
+                <span class="countdown-timer--column--text">{{ 'sections.countdown_banner.seconds' | t }}</span>
+              </div>
+            </countdown-timer>
+            <script src="{{ 'countdown-banner.js' | asset_url }}" defer="defer"></script>
+          {%- when 'email-signup' -%}
+            {% render 'email-signup-form' %}
+        {%- endcase -%}
+      {%- endfor -%}
+    </div>
+  </div>
+</modal-dialog>
+<script src="{{ 'modal-dialog.js' | asset_url }}" defer="defer"></script>
+{%- endif -%}
+{% schema %}
+  {
+    "name": "Pop-up",
+		"class": "section-overlay-popup",
+    "settings": [
+			{
+        "type": "range",
+        "id": "popup_delay",
+        "min": 0,
+        "max": 30,
+        "step": 1,
+        "unit": "s",
+        "label": "Pop-up delay",
+        "default": 5
+      },
+      {
+        "type": "checkbox",
+        "id": "disable_for_accounts",
+        "label": "Disable for account holders",
+        "default": false,
+        "info": "The popup will not appear for customers who have already created an account on your store."
+      },
+      {
+        "type": "checkbox",
+        "id": "show_on_specific_page",
+        "label": "Show on specific page",
+        "default": false
+      },
+      {
+        "id": "specific_page",
+        "type": "url",
+        "label": "Target page"
+      },
+      {
+        "type": "header",
+        "content": "Design"
+      },
+      {
+				"type": "image_picker",
+				"id": "popup_image",
+				"label": "Image",
+				"info": "300 x 400 .jpg recommended."
+			},
+      {
+				"type": "select",
+				"id": "popup_position",
+				"label": "Position",
+				"options": [
+					{
+						"value": "bottom-left",
+						"label": "Bottom left"
+					},
+					{
+						"value": "center",
+						"label": "Center"
+					},
+					{
+						"value": "bottom-right",
+						"label": "Bottom right"
+					}
+				],
+				"default": "center"
+      },
+      {
+				"type": "select",
+				"id": "text_alignment",
+				"label": "Content alignment",
+				"options": [
+					{
+						"value": "left",
+						"label": "Left"
+					},
+					{
+						"value": "center",
+						"label": "Center"
+					},
+					{
+						"value": "right",
+						"label": "Right"
+					}
+				],
+				"default": "center"
+      }
+    ],
+    "blocks": [
+			{
+				"type": "heading",
+				"name": "Heading",
+				"limit": 1,
+				"settings": [
+					{
+						"type": "text",
+						"id": "text",
+						"label": "Text",
+						"default": "Sign up and save"
+					},
+					{
+						"type": "select",
+						"id": "heading_size",
+						"label": "Size",
+						"options": [
+              {
+								"value": "h2",
+								"label": "Large"
+							},
+              {
+								"value": "h3",
+								"label": "Medium"
+							},
+							{
+								"value": "h4",
+								"label": "Small"
+							}
+						],
+						"default": "h2"
+					}
+				]
+			},
+			{
+        "type": "text",
+        "name": "Text",
+				"limit": 1,
+        "settings": [
+          {
+            "type": "richtext",
+            "id": "text",
+            "label": "Content",
+            "default": "<p>Pair text with an image to focus on your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.</p>"
+          },
+					{
+						"type": "select",
+						"id": "description_size",
+						"label": "Size",
+						"options": [
+							{
+								"value": "small",
+								"label": "Small"
+							},
+							{
+								"value": "medium",
+								"label": "Medium"
+							},
+							{
+								"value": "large",
+								"label": "Large"
+							}
+						],
+						"default": "medium"
+					}
+        ]
+      },
+			{
+        "type": "button",
+        "name": "Button",
+				"limit": 2,
+        "settings": [
+					{
+						"id": "button_text",
+						"type": "text",
+						"label": "Button label",
+						"default": "Shop Now",
+						"info": "Leave the label blank to hide the button."
+					},
+					{
+						"id": "button_link",
+						"type": "url",
+						"label": "Button link"
+					},
+					{
+						"type": "checkbox",
+						"id": "button_outline",
+						"label": "Use outline button style",
+						"default": false
+					}
+        ]
+      },
+			{
+        "type": "email-signup",
+        "name": "E-mail signup",
+				"limit": 1
+      },
+      {
+        "type": "countdown",
+        "name": "Countdown",
+				"limit": 1,
+        "settings": [
+					{
+            "type": "number",
+            "id": "timer_year",
+            "label": "Year",
+            "default": 2025
+          },
+          {
+            "type": "select",
+            "id": "timer_month",
+            "label": "Month",
+            "options": [
+              {
+                "value": "01",
+                "label": "January"
+              },
+              {
+                "value": "02",
+                "label": "February"
+              },
+              {
+                "value": "03",
+                "label": "March"
+              },
+              {
+                "value": "04",
+                "label": "April"
+              },
+              {
+                "value": "05",
+                "label": "May"
+              },
+              {
+                "value": "06",
+                "label": "June"
+              },
+              {
+                "value": "07",
+                "label": "July"
+              },
+              {
+                "value": "08",
+                "label": "August"
+              },
+              {
+                "value": "09",
+                "label": "September"
+              },
+              {
+                "value": "10",
+                "label": "October"
+              },
+              {
+                "value": "11",
+                "label": "November"
+              },
+              {
+                "value": "12",
+                "label": "December"
+              }
+            ],
+            "default": "01"
+          },
+          {
+            "type": "select",
+            "id": "timer_day",
+            "label": "Day",
+            "options": [
+              {
+                "value": "01",
+                "label": "01"
+              },
+              {
+                "value": "02",
+                "label": "02"
+              },
+              {
+                "value": "03",
+                "label": "03"
+              },
+              {
+                "value": "04",
+                "label": "04"
+              },
+              {
+                "value": "05",
+                "label": "05"
+              },
+              {
+                "value": "06",
+                "label": "06"
+              },
+              {
+                "value": "07",
+                "label": "07"
+              },
+              {
+                "value": "08",
+                "label": "08"
+              },
+              {
+                "value": "09",
+                "label": "09"
+              },
+              {
+                "value": "10",
+                "label": "10"
+              },
+              {
+                "value": "11",
+                "label": "11"
+              },
+              {
+                "value": "12",
+                "label": "12"
+              },
+              {
+                "value": "13",
+                "label": "13"
+              },
+              {
+                "value": "14",
+                "label": "14"
+              },
+              {
+                "value": "15",
+                "label": "15"
+              },
+              {
+                "value": "16",
+                "label": "16"
+              },
+              {
+                "value": "17",
+                "label": "17"
+              },
+              {
+                "value": "18",
+                "label": "18"
+              },
+              {
+                "value": "19",
+                "label": "19"
+              },
+              {
+                "value": "20",
+                "label": "20"
+              },
+              {
+                "value": "21",
+                "label": "21"
+              },
+              {
+                "value": "22",
+                "label": "22"
+              },
+              {
+                "value": "23",
+                "label": "23"
+              },
+              {
+                "value": "24",
+                "label": "24"
+              },
+              {
+                "value": "25",
+                "label": "25"
+              },
+              {
+                "value": "26",
+                "label": "26"
+              },
+              {
+                "value": "27",
+                "label": "27"
+              },
+              {
+                "value": "28",
+                "label": "28"
+              },
+              {
+                "value": "29",
+                "label": "29"
+              },
+              {
+                "value": "30",
+                "label": "30"
+              },
+              {
+                "value": "31",
+                "label": "31"
+              }
+            ],
+            "default": "01"
+          },
+          {
+            "type": "select",
+            "id": "timer_hour",
+            "label": "Hour",
+            "options": [
+              {
+                "value": "00",
+                "label": "12 AM (Midnight)"
+              },
+              {
+                "value": "01",
+                "label": "01 AM"
+              },
+              {
+                "value": "02",
+                "label": "02 AM"
+              },
+              {
+                "value": "03",
+                "label": "03 AM"
+              },
+              {
+                "value": "04",
+                "label": "04 AM"
+              },
+              {
+                "value": "05",
+                "label": "05 AM"
+              },
+              {
+                "value": "06",
+                "label": "06 AM"
+              },
+              {
+                "value": "07",
+                "label": "07 AM"
+              },
+              {
+                "value": "08",
+                "label": "08 AM"
+              },
+              {
+                "value": "09",
+                "label": "09 AM"
+              },
+              {
+                "value": "10",
+                "label": "10 AM"
+              },
+              {
+                "value": "11",
+                "label": "11 AM"
+              },
+              {
+                "value": "12",
+                "label": "12 PM (Noon)"
+              },
+              {
+                "value": "13",
+                "label": "01 PM"
+              },
+              {
+                "value": "14",
+                "label": "02 PM"
+              },
+              {
+                "value": "15",
+                "label": "03 PM"
+              },
+              {
+                "value": "16",
+                "label": "04 PM"
+              },
+              {
+                "value": "17",
+                "label": "05 PM"
+              },
+              {
+                "value": "18",
+                "label": "06 PM"
+              },
+              {
+                "value": "19",
+                "label": "07 PM"
+              },
+              {
+                "value": "20",
+                "label": "08 PM"
+              },
+              {
+                "value": "21",
+                "label": "09 PM"
+              },
+              {
+                "value": "22",
+                "label": "10 PM"
+              },
+              {
+                "value": "23",
+                "label": "11 PM"
+              }
+            ],
+            "default": "00"
+          },
+          {
+            "type": "select",
+            "id": "timer_minute",
+            "label": "Minute",
+            "options": [
+              {
+                "value": "00",
+                "label": "00"
+              },
+              {
+                "value": "01",
+                "label": "01"
+              },
+              {
+                "value": "02",
+                "label": "02"
+              },
+              {
+                "value": "03",
+                "label": "03"
+              },
+              {
+                "value": "04"
+              },
+              {
+                "value": "05",
+                "label": "05"
+              },
+              {
+                "value": "06",
+                "label": "06"
+              },
+              {
+                "value": "07",
+                "label": "07"
+              },
+              {
+                "value": "08",
+                "label": "08"
+              },
+              {
+                "value": "09",
+                "label": "09"
+              },
+              {
+                "value": "10",
+                "label": "10"
+              },
+              {
+                "value": "11",
+                "label": "11"
+              },
+              {
+                "value": "12",
+                "label": "12"
+              },
+              {
+                "value": "13",
+                "label": "13"
+              },
+              {
+                "value": "14",
+                "label": "14"
+              },
+              {
+                "value": "15",
+                "label": "15"
+              },
+              {
+                "value": "16",
+                "label": "16"
+              },
+              {
+                "value": "17",
+                "label": "17"
+              },
+              {
+                "value": "18",
+                "label": "18"
+              },
+              {
+                "value": "19",
+                "label": "19"
+              },
+              {
+                "value": "20",
+                "label": "20"
+              },
+              {
+                "value": "21",
+                "label": "21"
+              },
+              {
+                "value": "22",
+                "label": "23"
+              },
+              {
+                "value": "24",
+                "label": "24"
+              },
+              {
+                "value": "25",
+                "label": "25"
+              },
+              {
+                "value": "26",
+                "label": "26"
+              },
+              {
+                "value": "27",
+                "label": "27"
+              },
+              {
+                "value": "28",
+                "label": "28"
+              },
+              {
+                "value": "29",
+                "label": "29"
+              },
+              {
+                "value": "30",
+                "label": "30"
+              },
+              {
+                "value": "31",
+                "label": "31"
+              },
+              {
+                "value": "32",
+                "label": "32"
+              },
+              {
+                "value": "33",
+                "label": "33"
+              },
+              {
+                "value": "34",
+                "label": "34"
+              },
+              {
+                "value": "35",
+                "label": "35"
+              },
+              {
+                "value": "36",
+                "label": "36"
+              },
+              {
+                "value": "37",
+                "label": "37"
+              },
+              {
+                "value": "38",
+                "label": "38"
+              },
+              {
+                "value": "39",
+                "label": "39"
+              },
+              {
+                "value": "40",
+                "label": "40"
+              },
+              {
+                "value": "41",
+                "label": "41"
+              },
+              {
+                "value": "42",
+                "label": "42"
+              },
+              {
+                "value": "43",
+                "label": "43"
+              },
+              {
+                "value": "44",
+                "label": "44"
+              },
+              {
+                "value": "45",
+                "label": "45"
+              },
+              {
+                "value": "46",
+                "label": "46"
+              },
+              {
+                "value": "47",
+                "label": "47"
+              },
+              {
+                "value": "48",
+                "label": "48"
+              },
+              {
+                "value": "49",
+                "label": "49"
+              },
+              {
+                "value": "50",
+                "label": "50"
+              },
+              {
+                "value": "51",
+                "label": "51"
+              },
+              {
+                "value": "52",
+                "label": "52"
+              },
+              {
+                "value": "53",
+                "label": "53"
+              },
+              {
+                "value": "54",
+                "label": "54"
+              },
+              {
+                "value": "55",
+                "label": "55"
+              },
+              {
+                "value": "56",
+                "label": "56"
+              },
+              {
+                "value": "57",
+                "label": "57"
+              },
+              {
+                "value": "58",
+                "label": "58"
+              },
+              {
+                "value": "59",
+                "label": "59"
+              }
+            ],
+            "default": "00"
+          }
+        ]
+      }
+    ],
+    "presets": [
+      {
+        "name": "Pop-up",
+				"blocks": [
+					{
+						"type": "heading"
+					},
+					{
+						"type": "text"
+					},
+					{
+						"type": "button"
+					}
+				]
+      }
+    ],
+		"enabled_on": {
+			"groups": [
+				"custom.overlay"
+			]
+		}
+  }
+{% endschema %}

@@ -1,0 +1,538 @@
+
+{%- liquid
+    assign footer_lt_title = section.settings.footer_lt_title
+    assign footer_lt_desc = section.settings.footer_lt_desc
+    assign footer_lt_btn_text = section.settings.footer_lt_btn_text
+    assign footer_lt_btn_link = section.settings.footer_lt_btn_link
+    assign footer_btm_lt_title_img = section.settings.footer_btm_lt_title_img
+    assign footer_btm_lt_desc_p = section.settings.footer_btm_lt_desc_p
+    assign footer_btm_rt_icons = section.blocks
+    assign footer_btm_rt_copyright = section.settings.footer_btm_rt_copyright
+    assign footer_btm_lt_title_img_alt = section.settings.footer_btm_lt_title_img_alt
+    assign blocks = section.blocks
+
+    assign footer_btm_rt_contact_title = section.settings.footer_btm_rt_contact_title
+    assign footer_btm_rt_contact_email = section.settings.footer_btm_rt_contact_email
+    assign footer_btm_rt_contact_phone = section.settings.footer_btm_rt_contact_phone
+    assign footer_btm_rt_contact_address = section.settings.footer_btm_rt_contact_address
+
+
+    assign button_text = section.settings.button_text
+    assign button_link = section.settings.button_link
+    assign button_text_color = section.settings.button_text_color
+    assign button_bg_color = section.settings.button_bg_color
+    assign button_hover_text_color = section.settings.button_hover_text_color
+    assign button_hover_bg_color = section.settings.button_hover_bg_color
+    assign button_border_color = section.settings.button_border_color
+    assign button_border = section.settings.button_border
+    assign button_hover_border_color = section.settings.button_hover_border_color
+-%}
+{% assign footer_menu = linklists['footer'] %}
+<div class="teflo-footerbox">
+    <div class="teflo-footer">
+        <div class="teflo-footer-lt">
+            <p class="teflo-footer-lt-title">{{ footer_lt_title }}</p>
+            <div class="teflo-footer-lt-desc">{{ footer_lt_desc }}</div>
+            <div class="teflo-footer-button">
+                {% render 'teflo-button',
+                    button_link:button_link,
+                     button_text:button_text,
+                      button_text_color:button_text_color,
+                     button_bg_color:button_bg_color,
+                     button_hover_text_color:button_hover_text_color,
+                     button_hover_bg_color:button_hover_bg_color,
+                     button_border_color:button_border_color, 
+                     button_border:button_border,
+                         button_hover_border_color:button_hover_border_color
+                     
+                %}
+            </div>
+        </div>
+        <div class="teflo-footer-rt">
+            <div class="teflo-footer-rt-item">
+                <p class="teflo-footer-rt-item-title">{{ footer_btm_rt_contact_title }}</p>
+                <div class="teflo-footer-rt-item-list">
+                    <a class="teflo-footer-rt-item-list-a" href="{{ footer_btm_rt_contact_email }}" target="_blank">{{ footer_btm_rt_contact_email }}</a>
+                    <a class="teflo-footer-rt-item-list-a" href="{{ footer_btm_rt_contact_phone }}"  target="_blank">{{ footer_btm_rt_contact_phone }}</a>
+                    <a class="teflo-footer-rt-item-list-a" href="">{{ footer_btm_rt_contact_address }}</a>
+                </div>
+            
+            </div>
+            {% for link in footer_menu.links %}
+
+                <div class="teflo-footer-rt-item">
+                    <p class="teflo-footer-rt-item-title">{{ link.title }}</p>
+                    {% if link.links.size > 0  %}
+                        <div class="teflo-footer-rt-item-list">
+                            {% for item in link.links %}
+                                <a class="teflo-footer-rt-item-list-a" href="{{ item.url }}">{{ item.title }}</a>
+                            {% endfor %}
+                        </div>
+                    {% endif %}
+                </div>
+            {% endfor %}
+        </div>
+        
+    </div>
+    <div class="teflo-footer-btmbox">
+        <div class="teflo-footer-btm">
+            <div class="teflo-footer-btm-lt">
+                <div class="teflo-footer-btm-lt-title">
+                    <img src="{{ footer_btm_lt_title_img  | image_url:  width:'780' }}" class="teflo-footer-btm-lt-title-img" alt="{{ footer_btm_lt_title_img_alt }}">
+                </div>
+                
+            </div>
+            <div class="teflo-footer-btm-rt">
+                <div class="teflo-footer-btm-rt-icons">
+                    
+                    {% for block in blocks %}
+                        {% if block.type == 'right_icons' %}
+                            <a href="{{ block.settings.button_link }}" title="{{ block.settings.button_text }}" class="teflo-footer-btm-rt-icons-a">
+                                {{ block.settings.button_icon }}
+                                {% comment %} <img src="{{ block.settings.button_icon | image_url:  width:'70' }}" class="teflo-footer-btm-rt-icons-icon" alt="{{ block.settings.button_text }}"> {% endcomment %}
+                            </a>
+                        {% endif %}
+                        
+                    {% endfor %}
+                    
+                </div>
+               
+            </div>
+        </div>
+        <div class="teflo-footer-btmbox-bottom">
+            <div class="teflo-footer-btm-lt-desc ">
+                {% for block in blocks %}
+                    {% if block.type == 'btm_lists' %}
+                        <a class="teflo-footer-btm-lt-desc-p" href="{{ block.settings.list_link }}">{{ block.settings.list_title }}</a>
+                    {% endif %}
+                    
+                {% endfor %}
+            </div>
+            <div class="teflo-footer-btm-rt-copyright">{{ footer_btm_rt_copyright }}</div>
+        </div>
+    </div>
+</div>
+
+
+{% schema %}
+{
+    "name": "Teflo Footer",
+    "settings": [
+        {
+            "type": "color",
+            "id": "footer_bg_color",
+            "label": "Footer Background Color",
+            "default": "#0D0D0D"
+        },
+        {
+            "type": "color",
+            "id": "footer_font_color",
+            "label": "Footer Font Color",
+            "default": "#FFF"
+        },
+        {
+            "type": "color",
+            "id": "button_border_color",
+            "label": "Button border color",
+        },
+        {
+            "type": "color",
+            "id": "button_hover_border_color",
+            "label": "Button hover border color",
+        },
+        {
+            "type": "checkbox",
+            "id": "button_border",
+            "label": "Button border",
+            "default": true
+        },
+        {
+            "type": "text",
+            "id": "button_text",
+            "label": "Button text"
+        },
+        {
+            "type": "text",
+            "id": "button_link",
+            "label": "Button link, enter a URL or popup"
+        },
+        {
+            "type": "text",
+            "id": "button_text_color",
+            "label": "Button text color",
+            "default": "#000000"
+        },
+        {
+            "type": "text",
+            "id": "button_bg_color",
+            "label": "Button background color",
+            "default": "#FFFFFF"
+        },
+        {
+            "type": "text",
+            "id": "button_hover_text_color",
+            "label": "Button hover text color",
+            "default": "#FFFFFF"
+        },
+        {
+            "type": "text",
+            "id": "button_hover_bg_color",
+            "label": "Button hover background color",
+            "default": "#000000"
+        },
+        //字体hover 颜色
+        {
+            "type": "color",
+            "id": "footer_font_hover_color",
+            "label": "Footer Font Hover Color",
+            "default": "#FFF"
+        },
+        {
+            "type": "text",
+            "id": "footer_lt_title",
+            "label": "Footer Left Title"
+        },
+        {
+            "type": "richtext",
+            "id": "footer_lt_desc",
+            "label": "Footer Left Description"
+        },       
+        {
+            "type": "image_picker",
+            "id": "footer_btm_lt_title_img",
+            "label": "Footer Bottom Left Title Image"
+        },
+        {
+            "type": "text",
+            "id": "footer_btm_lt_title_img_alt",
+            "label": "Footer Bottom Left Title Image alt"
+        },
+        {
+            "type": "richtext",
+            "id": "footer_btm_rt_copyright",
+            "label": "Footer Bottom Right Copyright"
+        },
+        {
+            "type": "text",
+            "id": "footer_btm_rt_contact_title",
+            "label": "Footer Bottom Right Contact Title"
+        },
+        {
+            "type": "text",
+            "id": "footer_btm_rt_contact_email",
+            "label": "Footer Bottom Right Contact Email"
+        },
+        {
+            "type": "text",
+            "id": "footer_btm_rt_contact_phone",
+            "label": "Footer Bottom Right Contact Phone"
+        },
+        {
+            "type": "text",
+            "id": "footer_btm_rt_contact_address",
+            "label": "Footer Bottom Right Contact Address"
+        },
+
+
+
+    ],
+    "blocks": [
+        {
+            "type": "right_icons",
+            "name": "Icons",
+            "settings": [
+                {
+                    "type": "textarea",
+                    "id": "button_icon",
+                    "label": "icon svg html"
+                },
+                {
+                    "type": "text",
+                    "id": "button_text",
+                    "label": "icon Text"
+                },
+                {
+                    "type": "url",
+                    "id": "button_link",
+                    "label": "icon Link"
+                }
+
+            ]
+        },
+        {
+            "type": "btm_lists",
+            "name": "Lists",
+            "settings": [
+                {
+                    "type": "text",
+                    "id": "list_title",
+                    "label": "List Title"
+                },
+                {
+                    "type": "url",
+                    "id": "list_link",
+                    "label": "List Link"
+                }
+            ]
+        }
+    ],
+    "presets": [
+        {
+            "category": "Footer",
+            "name": "Teflo Footer"
+        }
+    ]
+}
+{% endschema %}
+
+<style>
+    .teflo-footerbox{
+        padding:0 calc(100vw * 20 / var(--base-width));
+        border-top: 1px solid rgba(255,255,255,0.3);
+        background: {{ section.settings.footer_bg_color }};
+        padding-bottom: calc(100vw * 20 / var(--base-width));
+    }
+    .teflo-footer{
+        display: flex;
+        justify-content: space-between;
+        padding-top:calc(100vw * 74 / var(--base-width));
+    }
+    .teflo-footer-lt-title{
+        color: {{ section.settings.footer_font_color }};
+        opacity: 0.5;
+        font-size: calc(100vw * 16 / var(--base-width));
+        font-style: normal;
+        font-weight: 400;
+        line-height: calc(100vw * 20 / var(--base-width));
+        margin-bottom: calc(100vw * 22 / var(--base-width));
+        max-width: calc(100vw * 306 / var(--base-width));
+    }
+    .teflo-footer-lt-desc{
+        color: {{ section.settings.footer_font_color }};
+        font-size: calc(100vw * 14 / var(--base-width));
+        font-style: normal;
+        font-weight: 400;
+        line-height: calc(100vw * 20 / var(--base-width));
+        margin-bottom: calc(100vw * 34 / var(--base-width));
+        max-width: calc(100vw * 306 / var(--base-width));
+    }
+    .teflo-footer-lt{
+        width:calc(100vw * 600 / var(--base-width));
+        flex-shrink: 0;
+    }
+    @media (max-width: 1300px){
+        .teflo-footer-lt{
+            width:calc(100vw * 400 / var(--base-width));
+        }
+        .teflo-footer-lt-desc{
+            max-width: calc(100vw * 206 / var(--base-width));
+        }
+    }
+
+    @media (max-width: 1200px){
+        .teflo-footer-lt{
+            width:calc(100vw * 300 / var(--base-width));
+        }
+    }
+
+    .teflo-footer-rt{
+        flex: 1;
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        column-gap: calc(100vw * 40 / var(--base-width));
+        row-gap: calc(100vw * 20 / var(--base-width));
+    }
+    @media (max-width: 1300px){
+        .teflo-footer-rt{
+            column-gap: calc(100vw * 20 / var(--base-width));
+        }
+    }
+    {% comment %} @media (max-width: 1100px){
+        grid-template-columns: repeat(, 1fr);
+    } {% endcomment %}
+    .teflo-footer-rt-item{
+        
+    }
+    .teflo-footer-rt-item-title{
+        color:{{ section.settings.footer_font_color }};
+        opacity: 0.5;
+        font-size: calc(100vw * 16 / var(--base-width));
+        font-style: normal;
+        font-weight: 400;
+        line-height: calc(100vw * 20 / var(--base-width));
+        margin-bottom: calc(100vw * 22 / var(--base-width));
+    }
+    .teflo-footer-rt-item-list-a{
+        color: {{ section.settings.footer_font_color }};
+        font-size: calc(100vw * 14 / var(--base-width));
+        font-style: normal;
+        font-weight: 300;
+        line-height: calc(100vw * 20 / var(--base-width));
+        margin-bottom: calc(100vw * 15 / var(--base-width));
+        display: block;
+    }
+    .teflo-footer-rt-item-list-a:hover{
+        color:{{ section.settings.footer_font_hover_color }};
+    }
+    .teflo-footer-btm{
+        display: flex;
+        justify-content: space-between;
+        align-items: end;
+        margin-top: calc(100vw * 140 / var(--base-width));
+    }
+    .teflo-footer-btm-lt-title-img{
+        width: calc(100vw * 780 / var(--base-width));
+        flex-shrink: 0;
+  
+    }
+    @media (max-width: 1300px){
+        .teflo-footer-btm-lt-title-img{
+            width: calc(100vw * 580 / var(--base-width));
+        }
+    }
+    .teflo-footer-btm-lt-desc{
+        display: flex;
+
+    }
+    .teflo-footer-btm-lt-desc-p{
+        color:{{ section.settings.footer_font_color }};
+        opacity: 0.5;
+        font-size: calc(100vw * 14 / var(--base-width));
+        font-style: normal;
+        font-weight: 300;
+        line-height: calc(100vw * 16 / var(--base-width));
+        margin-right: calc(100vw * 60 / var(--base-width));
+
+    }
+    .teflo-footer-btm-lt-desc-p:hover{
+        color: {{ section.settings.footer_font_hover_color }};
+    }
+    .teflo-footer-btm-rt-icons{
+        display: flex;
+        
+    }
+    .teflo-footer-btm-rt-copyright{
+        color:{{ section.settings.footer_font_color }};
+        font-size: calc(100vw * 14 / var(--base-width));
+        font-style: normal;
+        font-weight: 300;
+        line-height: calc(100vw * 16 / var(--base-width));
+        opacity: 0.5;
+    }
+    .teflo-footer-btm-rt-copyright p{
+        margin-bottom: 0;
+    }
+    .teflo-footer-btm-rt-icons-icon{
+        width: calc(100vw * 33 / var(--base-width));
+    }
+    .teflo-footer-btm-rt-icons-a{
+        margin-right: calc(100vw * 13 / var(--base-width));
+    }
+    .teflo-footer-btm-rt-icons-a svg{
+        width: calc(100vw * 33 / var(--base-width));
+        height: calc(100vw * 33 / var(--base-width));
+    }
+    .teflo-footer-btm-rt-icons-a svg:hover rect{
+        fill: #0522CB
+    }
+    .teflo-footer-btm-rt-icons-a svg:hover path{
+        fill: #EDF1F3
+    }
+    .teflo-footer-btmbox-bottom{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-top: calc(100vw * 24 / var(--base-width));
+    }
+
+
+
+    @media (max-width:1000px){
+        .teflo-footer{
+            display: block;
+        }
+        .teflo-footer-lt{
+            width:100%;
+        }
+        .teflo-footer-lt-title{
+            max-width:100%;
+            font-size: calc(100vw * 26 / var(--base-width));
+            margin-bottom: calc(100vw * 40 / var(--base-width));
+
+        }
+        .teflo-footer-lt-desc{
+            max-width:100%;
+            
+            margin-bottom: calc(100vw * 40 / var(--base-width));
+        }
+        .teflo-footer-lt-desc p{
+            font-size: calc(100vw * 30 / var(--base-width));
+            line-height: calc(100vw * 36 / var(--base-width));
+        }
+        .teflo-footer-button{
+            display: flex;
+            justify-content:end;
+            margin-bottom: calc(100vw * 100 / var(--base-width));
+        }
+        .teflo-footer-rt{
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            column-gap: calc(100vw * 20 / var(--base-width));
+            row-gap: calc(100vw * 100 / var(--base-width));
+        }
+        .teflo-footer-rt-item:first-child {
+            grid-column: 1 / -1; /* 第一个子元素占据 100% 宽度 */
+        }
+        .teflo-footer-rt-item-title{
+            font-size: calc(100vw * 26 / var(--base-width));
+            margin-bottom: calc(100vw * 40 / var(--base-width));
+        }
+        .teflo-footer-rt-item-list-a{
+            font-size: calc(100vw * 30 / var(--base-width));
+            line-height: calc(100vw * 36 / var(--base-width));
+            margin-bottom: calc(100vw * 30 / var(--base-width));
+        }
+        .teflo-footer-btm{
+            position: relative;
+            margin-top: calc(100vw * 70 / var(--base-width));
+        }
+        .teflo-footer-btm-rt{
+            position: absolute;
+            top:  calc(100vw * -150 / var(--base-width));;
+            right: 0;
+        }
+        .teflo-footer-btm-lt-desc-p{
+            font-size: calc(100vw * 20 / var(--base-width));
+            line-height: calc(100vw * 26 / var(--base-width));
+            margin-right: calc(100vw * 26 / var(--base-width));
+        }
+        .teflo-footer-btm-rt-copyright{
+            font-size: calc(100vw * 20 / var(--base-width));
+            line-height: calc(100vw * 26 / var(--base-width));
+        }
+        .teflo-footer-btm-rt-icons-icon{
+            width: calc(100vw * 67 / var(--base-width));
+        }
+        .teflo-footer-btm-lt-title-img{
+            width: 100%;
+        }
+        .teflo-footerbox{
+            padding:0 calc(100vw * 25 / var(--base-width));
+            border-top: 1px solid rgba(255,255,255,0.3);
+
+            padding-bottom: calc(100vw * 20 / var(--base-width));
+        }
+        .teflo-footer-btmbox-bottom{
+            margin-top: calc(100vw * 40 / var(--base-width));
+        }
+        .teflo-footer-rt-item-list .teflo-footer-rt-item-list-a:last-child{
+            margin-bottom: 0;
+        }
+        .teflo-footer-btm-rt-icons-a svg{
+            width: calc(100vw * 69 / var(--base-width));
+            height: calc(100vw * 69 / var(--base-width));
+        }
+    }
+
+</style>
+

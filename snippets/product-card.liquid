@@ -1,0 +1,164 @@
+{%- liquid
+	assign products_hover_images = settings.products_hover_images
+	assign product_aspect_ratio = settings.product_aspect_ratio
+	assign product_content_alignment = settings.product_content_alignment
+	assign featured_media = product_card_product.featured_media
+	assign product_price_position = settings.product_price_position
+	assign ratio = 1
+	assign sizes = '298x298,596x596'
+	assign info_spacing = true
+	assign product_card_border = settings.product_card_border
+	assign product_card_shadow = settings.product_card_shadow
+	assign product_card_shadow_class = 'has-shadow--' | append: product_card_shadow
+
+	if featured_media.media_type != 'image'
+		assign featured_media = featured_media.preview_image
+	endif
+
+	if product_aspect_ratio == 'adapt'
+		assign ratio = featured_media.aspect_ratio
+		assign sizes = '298x0,596x0'
+	elsif product_aspect_ratio == 'portrait'
+		assign ratio = 1 | divided_by: 1.25
+		assign sizes = '298x350,596x700'
+	elsif product_aspect_ratio == 'landscape'
+		assign ratio = 1 | divided_by: 0.75
+		assign sizes = '298x250,596x500'
+	endif
+
+	assign color_body_bg = settings.color_body_bg | downcase
+	assign color_product_card_bg = settings.color_product_card_bg | downcase
+
+	if color_body_bg == color_product_card_bg or color_product_card_bg == 'transparent' or color_product_card_bg == 'rgba(0,0,0,0)'
+		unless product_card_border
+			assign info_spacing = false
+		endunless
+		if product_card_shadow
+			assign info_spacing = true
+		endif
+	endif
+
+	assign is_purchasable = false
+	if product_card_product.available and product_card_product.variants.size == 1
+		assign is_purchasable = true
+	endif
+-%}
+{%- if product_card_product and product_card_product != empty -%}
+<product-card class="product-card text-{{ product_content_alignment }} product-card--content-spacing-{{ info_spacing }} product-card--border-{{ product_card_border }} {{ product_card_shadow_class }}">
+  <figure class="product-featured-image {% if products_hover_images and product_card_product.images.size > 1 %}thb-hover{% endif %}">
+    {% render 'product-card-badge', product_card_product: product_card_product %}
+		{% render 'product-card-compare', product_card_product: product_card_product %}
+    <a href="{{ product_card_product.url | within: collection }}" title="{{ product_card_product.title | escape }}" class="product-featured-image-link aspect-ratio aspect-ratio--{{ settings.product_aspect_ratio }}" style="--padding-bottom: {{ 1 | divided_by: ratio | times: 100 }}%;">
+      {%- if products_hover_images and product_card_product.images.size > 1 -%}
+        {%- render 'responsive-image', class: 'product-secondary-image', image: product_card_product.images[1], sizes: sizes -%}
+      {%- endif -%}
+			{%- if featured_media -%}
+      	{%- render 'responsive-image', class: 'product-primary-image', image: featured_media, sizes: sizes -%}
+			{%- else -%}
+				<div class="thb-placeholder">
+					{{ 'product-apparel-1' | placeholder_svg_tag }}
+				</div>
+			{%- endif -%}
+
+			{%- if settings.enable_quick_view -%}
+			<quick-view class="product-card-quickview" data-product-handle="{{ product_card_product.handle }}" tabindex="-1">
+				<div class="loading-overlay">{% render 'svg-icons' with 'thb-loading' %}</div>
+				<span>{{ 'products.product.quick_view' | t }}</span>
+			</quick-view>
+			{%- endif -%}
+    </a>
+  </figure>
+	<div class="product-card-info">
+		{%- if settings.show_products_vendor -%}
+		<div class="product-card-vendor"><a href="{{ product_card_product.vendor | url_for_vendor }}" title="{{ product_card_product.vendor | escape }}">{{ product_card_product.vendor }}</a></div>
+		{%- endif -%}
+		{%- liquid
+			if product_price_position == 'before-product-title'
+				render 'product-price', product: product_card_product
+			endif
+		-%}
+  	<a href="{{ product_card_product.url | within: collection }}" title="{{ product_card_product.title | escape }}" class="product-card-title">{{ product_card_product.title }}</a>
+		{%- liquid
+			if product_price_position == 'after-product-title'
+				render 'product-price', product: product_card_product
+			endif
+		-%}
+		{%- unless compare_table -%}
+		{% render 'product-card-swatch', product: product_card_product, sizes: sizes %}
+		{%- endunless -%}
+		{%- if settings.show_products_rating and product_card_product.metafields.reviews.rating.value != blank -%}
+		<div class="star-rating" style="--star-rating: {{ product_card_product.metafields.reviews.rating.value.rating }};">{%- if settings.show_products_rating_average %}<span class="body-font">{{ product_card_product.metafields.reviews.rating.value.rating | round: 2 }}</span>{%- endif -%}</div>
+		{%- endif -%}
+		{%- render 'product-card-inventory-notice', product: product_card_product -%}
+		{%- unless compare_table -%}
+		{%- render 'product-card-labels', product: product_card_product -%}
+		{%- endunless -%}
+		{%- if settings.show_products_subtitle and product_card_product.metafields.descriptors.subtitle != blank -%}
+			<p class="product-card-subtitle">{{ product_card_product.metafields.descriptors.subtitle }}</p>
+		{%- endif -%}
+		{%- if settings.enable_quick_add -%}
+			{%- liquid
+				assign button_tag = 'button'
+				if product_card_product.selected_or_first_available_variant.available == false
+					assign button_content = 'products.product.sold_out' | t
+				else
+					if is_purchasable
+							assign button_content = 'products.product.add_to_cart' | t
+					else
+						assign button_tag = 'quick-view'
+						assign button_content = 'products.product.choose_options' | t
+					endif
+					if product_card_product.metafields.theme.preorder and product_card_product.available
+						assign button_content = 'products.product.pre_order' | t
+					endif
+				endif
+			-%}
+			<div class="product-card--add-to-cart-button-wrapper">
+				<{{ button_tag }} class="product-card--add-to-cart-button{% if is_purchasable %} product-card--add-to-cart-button-simple{% endif %} button accent" data-product-id="{{ product_card_product.selected_or_first_available_variant.id }}" data-product-handle="{{ product_card_product.handle }}" tabindex="-1" {% if product_card_product.selected_or_first_available_variant.available == false %}disabled{% endif %}>
+					{% render 'svg-icons' with 'thb-loading' %}
+					<span class="product-card--add-to-cart-text">{{ button_content }}</span>
+				</{{ button_tag }}>
+			</div>
+		{%- endif -%}
+  </div>
+</product-card>
+{%- else -%}
+<product-card class="product-card text-{{ product_content_alignment }} product-card--content-spacing-{{ info_spacing }} product-card--border-{{ product_card_border }} {{ product_card_shadow_class }}">
+	<figure class="product-featured-image {% if settings.products_hover_images %}thb-hover{% endif %}">
+		<a href="{{ product_card_product.url | within: collection }}" title="{{ product_card_product.title | escape }}" class="product-featured-image-link aspect-ratio aspect-ratio--{{ settings.product_aspect_ratio }}" style="--padding-bottom: {{ 1 | divided_by: 1 | times: 100 }}%;">
+			<div class="thb-placeholder">
+				{{ 'product-apparel-1' | placeholder_svg_tag }}
+			</div>
+			<quick-view class="product-card-quickview" data-product-handle="{{ product_card_product.handle }}" tabindex="-1">
+				<div class="loading-overlay">{% render 'svg-icons' with 'thb-loading' %}</div>
+				<span>{{ 'products.product.quick_view' | t }}</span>
+			</quick-view>
+		</a>
+	</figure>
+	<div class="product-card-info">
+		<div class="product-card-vendor"><a href="#" title="{{ 'onboarding.product_vendor' | t }}">{{ 'onboarding.product_vendor' | t }}</a></div>
+		{%- liquid
+			if product_price_position == 'before-product-title'
+				render 'product-price', product: product_card_product
+			endif
+		-%}
+		<a href="#" title="{{ product_card_product.title | escape }}" class="product-card-title">{{ 'onboarding.product_title' | t }}</a>
+		{%- liquid
+			if product_price_position == 'after-product-title'
+				render 'product-price', product: product_card_product
+			endif
+		-%}
+		{%- if settings.show_products_rating and product_card_product.metafields.reviews.rating.value != blank -%}
+		<div class="star-rating" style="--star-rating: 5;"><span class="body-font">5</span></div>
+		{%- endif -%}
+		{%- if settings.enable_quick_add -%}
+		<div class="product-card--add-to-cart-button-wrapper">
+			<quick-view class="product-card--add-to-cart-button button accent" data-product-handle="" tabindex="-1">
+				{% render 'svg-icons' with 'thb-loading' %}
+				<span class="product-card--add-to-cart-text">{{ 'products.product.choose_options' | t }}</span>
+			</quick-view>
+		</div>
+		{%- endif -%}
+	</div>
+</product-card>
+{%- endif -%}

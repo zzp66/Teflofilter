@@ -1,0 +1,99 @@
+{%- assign product_form_id = 'product-form-' | append: section.id -%}
+<product-add-to-cart-sticky class="product-add-to-cart-sticky no-js-hidden" data-section="{{ section.id }}">
+	<button class="product-add-to-cart-sticky--inner">
+		<div class="product-add-to-cart-sticky--image" id="product-image-{{ section.id }}--sticky">
+			{%- if media -%}
+				{%- render 'responsive-image', image: media, sizes: '160x0' -%}
+			{%- endif -%}
+		</div>
+		<div class="product-add-to-cart-sticky--info">
+			<div class="product-add-to-cart-sticky--title">{{ product.title }}</div>
+			<div id="price-{{ section.id }}--sticky">
+				{% render 'product-price', product: product, use_variant: true, show_badges: false %}
+			</div>
+		</div>
+		<span class="plus">{%- render 'svg-icons' with 'thb-collapsible-arrow' -%}</span>
+	</button>
+	<div class="product-add-to-cart-sticky--content">
+		{%- unless product.has_only_default_variant -%}
+		<variant-selects id="variant-selects-{{ section.id }}--sticky" class="no-js-hidden variant-selects--sticky" data-section="{{ section.id }}" data-url="{{ product.url }}" data-sticky="1" data-is-disabled="{{ is_disabled }}">
+			<div class="variations">
+				{%- for option in product.options_with_values -%}
+					{%- liquid
+						assign option_name = option.name | downcase | escape
+						assign option_type = picker_type
+						
+						if color_picker
+              if option_name contains 'color' or option_name contains 'colour' or option_name contains 'couleur' or option_name contains 'farbe'
+								assign option_type = 'color'
+							endif
+							# Additional swatch variant options set inside theme settings
+							assign color_swatches_variant_option = settings.color_swatches_variant_option | downcase | split: ', '
+
+							if color_swatches_variant_option contains option_name
+								assign option_type = 'color'
+							endif
+						endif
+					-%}
+					{% render 'product-option', color_picker_size: color_picker_size, color_picker_use_variants: color_picker_use_variants, option_type: option_type, product: product, option: option, forloop: forloop, product_form_id: product_form_id, sticky: true %}
+				{%- endfor -%}
+			</div>
+			<script type="application/json">
+				{{ product.variants | json }}
+			</script>
+		</variant-selects>
+		{%- endunless -%}
+		{%- if product != blank -%}
+			{%- liquid
+				assign product_template = product.template_suffix | escape 
+
+				if product.metafields.theme.preorder and product.available
+					assign product_template = 'pre-order'
+				endif
+			-%}
+		  <product-form class="product-form" data-sticky="1" data-section="{{ section.id }}" template="{{ product_template | escape }}">
+				<div class="product-form__error-message-wrapper form-notification error" role="alert" hidden>
+		      {% render 'svg-icons' with 'thb-error' %}
+		      <span class="product-form__error-message"></span>
+		    </div>
+				<div class="product-add-to-cart-container">
+					<div class="form-notification error" style="display:none;"></div>
+				  <div class="add_to_cart_holder">
+				    <button type="submit" name="add" id="AddToCartSticky" class="single-add-to-cart-button button accent {% unless product.selected_or_first_available_variant.available %}sold-out{% endunless %}" {% if product.selected_or_first_available_variant.available == false %}disabled{% endif %} form="{{ product_form_id }}">
+							<span class="single-add-to-cart-button--text">
+								{%- liquid
+									if product.selected_or_first_available_variant.available == false
+										assign button_content = 'products.product.sold_out' | t
+									else
+										if product_template == 'pre-order'
+											assign button_content = 'products.product.pre_order' | t
+										else
+											assign button_content = 'products.product.add_to_cart' | t
+										endif
+									endif
+								-%}
+								{{- button_content -}}
+							</span>
+							<span class="loading-overlay">
+								{% render 'svg-icons' with 'thb-loading' %}
+							</span>
+						</button>
+				  </div>
+				</div>
+			</product-form>
+		{%- else -%}
+	    <div class="product-form">
+	      <div class="product-form__buttons form">
+	        <button
+	          type="submit"
+	          name="add"
+	          class="single_add_to_cart_button button sold-out"
+	          disabled
+	        >
+	          <span class="single-add-to-cart-button--text">{{ 'products.product.sold_out' | t }}</span>
+	        </button>
+	      </div>
+	    </div>
+	  {%- endif -%}
+	</div>
+</product-add-to-cart-sticky>

@@ -1,0 +1,277 @@
+{%- liquid
+	assign show_subcollections = false
+	assign show_collection_image = section.settings.show_collection_image
+	assign show_collection_description = section.settings.show_collection_description
+
+	if template contains 'collection'
+		assign show_subcollections = section.settings.show_subcollections
+		assign heading = collection.title
+		if show_collection_description
+			assign description = collection.description
+		endif
+		assign collection_image_ratio = section.settings.collection_image_ratio
+		assign collection_image_width = section.settings.collection_image_width
+
+		assign seo_text_max_height = section.settings.seo_text_max_height
+		assign seo_text_read_more = section.settings.seo_text_read_more
+		assign seo_text_read_less = section.settings.seo_text_read_less
+		assign collection_handle = collection.handle
+		assign color_subcollection_bg = section.settings.color_subcollection_bg
+		assign color_subcollection_text = section.settings.color_subcollection_text
+	elsif template == 'search'
+		assign heading = 'search.heading' | t
+		capture description
+			assign search_phrase = search.terms | replace: '*', ''
+			if '' != search_phrase
+				echo 'search.results_found' | t: count: search.results_count, key: search_phrase
+			endif
+		endcapture
+	elsif template contains 'page'
+		assign heading = page.title
+		if section.settings.display_description
+			assign description = page_description
+		endif
+	elsif template contains 'cart'
+		assign heading = 'sections.cart.title' | t
+	elsif template contains 'customers/account'
+		assign heading = 'customer.account.title' | t
+	elsif template contains 'customers/addresses'
+		assign heading = 'customer.addresses.title' | t
+	elsif template contains 'customers/order'
+		assign heading = 'customer.order.title' | t: name: order.name
+	endif
+-%}
+{{ 'template-header.css' | asset_url | stylesheet_tag }}
+<div class="template-header">
+	<div class="row">
+		<div class="small-12 columns">
+			<div class="template-header--content template-header--content-width-{{ collection_image_width }}">
+				<div>
+					<h1 class="template-header--title h2">{{ heading }}</h1>
+					{%- if template == 'search' -%}
+						<form role="search" method="get" class="searchform" action="{{ routes.search_url }}">
+							<fieldset>
+								<input type="search" class="search-field" placeholder="{{ 'sections.header.search_for' | t | escape }}" value="{{ search.terms | replace: '*', '' }}" name="q" autocomplete="off">
+								<button type="submit" class="thb-search-submit">{% render 'svg-icons' with 'search' %}</button>
+							</fieldset>
+						</form>
+					{%- endif -%}
+					{%- if description != blank and description != '' -%}
+						{% if template contains 'collection' %}
+							<max-height class="max-height max-height--no-background collection-banner--description" data-max="{{ seo_text_max_height }}" style="--max-height: {{ seo_text_max_height | append: 'px'}};">
+								<div class="max-height--inner">
+									<div class="max-height--inner-content rte">
+										{{ description }}
+									</div>
+								</div>
+								<button class="max-height--toggle"><span class="text-button text-button--read-more">{{ seo_text_read_more }}</span><span class="text-button text-button--read-less">{{ seo_text_read_less }}</span></button>
+							</max-height>
+							<link rel="stylesheet" href="{{ 'max-height.css' | asset_url }}" media="print" onload="this.media='all'">
+							<script src="{{ 'max-height.js' | asset_url }}" defer="defer"></script>
+						{% else %}
+							<div class="template-header--description">
+								{{ description }}
+							</div>
+						{%- endif -%}
+					{%- endif -%}
+					{%- if template contains 'customers/account' -%}
+					<a href="{{ routes.account_logout_url }}" title="{{ 'customer.account.log_out' | t | escape }}" class="myaccount--link">
+						{% render 'svg-icons' with 'thb-log-out' %}
+						<span class="text-button">{{ 'customer.account.log_out' | t }}</span>
+					</a>
+					{%- elsif template contains 'customers' -%}
+					<a href="{{ routes.account_url }}" class="myaccount--link">
+						{% render 'svg-icons' with 'thb-account-back' %}
+						<span class="text-button">{{ 'customer.account.return_to_account_details' | t }}</span>
+					</a>
+					{%- endif -%}
+					
+				</div>
+				{%- liquid
+					assign image = collection.featured_image
+					assign ratio = 1
+					case collection_image_ratio
+						when 'adapt'
+							assign image_sizes = '345x0,600x0'
+							if image
+								assign ratio = image.aspect_ratio
+							endif
+						when 'square'
+							assign image_sizes = '345x345,600x600'
+							assign ratio = 1
+						when 'landscape'
+							assign image_sizes = '345x215,600x375'
+							assign ratio = 1.6
+						when 'portrait'
+							assign image_sizes = '345x430,600x750'
+							assign ratio = 0.8
+					endcase
+				-%}
+				{%- if template contains 'collection' and show_collection_image and image -%}
+				<div class="template-header--image">
+					{%- render 'responsive-image', image: image, sizes: image_sizes, priority: 'high' -%}
+				</div>
+				{%- endif -%}
+			</div>
+			{%- if show_subcollections and linklists[collection_handle] != empty -%}
+				{%- liquid
+					assign color_body_bg = settings.color_body_bg | downcase
+					assign color_drawer_bg = settings.color_drawer_bg | downcase
+
+					if color_body_bg == color_drawer_bg or color_drawer_bg == 'transparent' or color_drawer_bg == 'rgba(0,0,0,0)'
+						assign class = ' template-header--subcollection-transparent'
+					endif
+				-%}
+				<div class="template-header--subcollections-container">
+					<scroll-shadow>
+						<div class="template-header--subcollections" style="--subcollection-bg: {{ color_subcollection_bg }}; --color-body: {{ color_subcollection_text }}">
+							{%- for link in linklists[collection_handle].links -%}
+								{%- assign link_collection = collections[link.handle] -%}
+								{%- if link_collection != blank -%}
+									<a href="{{ link_collection.url }}" title="{{ link_collection.title | escape }}" class="template-header--subcollection {{ class }}">
+										{%- if link_collection.featured_image -%}
+											{%- render 'responsive-image', image: link_collection.featured_image | image_url, sizes: '42x42,84x84' -%}
+										{%- endif -%}
+										<span>{{ link_collection.title }}</span>
+									</a>
+								{%- endif -%}
+							{%- endfor -%}
+						</div>
+					</scroll-shadow>
+				</div>
+				{%- endif -%}
+		</div>
+	</div>
+</div>
+{% schema %}
+  {
+    "name": "Template header",
+		"class": "section-template-header",
+    "settings": [
+			{
+				"type": "header",
+				"content": "Collection page",
+				"info": "These settings are only used on collection pages."
+			},
+			{
+	      "type": "checkbox",
+	      "id": "show_collection_image",
+	      "default": false,
+	      "label": "Show collection image"
+	    },
+			{
+				"type": "select",
+				"id": "collection_image_ratio",
+				"options": [
+					{
+						"value": "adapt",
+						"label": "Adapt to image"
+					},
+					{
+						"value": "square",
+						"label": "Square"
+					},
+					{
+						"value": "portrait",
+						"label": "Portrait"
+					},
+					{
+						"value": "landscape",
+						"label": "Landscape"
+					}
+				],
+				"default": "adapt",
+				"label": "Collection image ratio"
+			},
+			{
+        "type": "select",
+        "id": "collection_image_width",
+        "label": "Collection image width",
+        "options": [
+					{
+            "value": "small",
+            "label": "Small"
+          },
+          {
+            "value": "standard",
+            "label": "Standard"
+          },
+          {
+            "value": "wide",
+            "label": "Wide"
+          }
+        ],
+        "default": "standard"
+      },
+			{
+				"type": "header",
+				"content": "Description"
+			},
+			{
+	      "type": "checkbox",
+	      "id": "show_collection_description",
+	      "default": true,
+	      "label": "Show collection description"
+	    },
+			{
+				"type": "text",
+				"id": "seo_text_read_more",
+				"default": "Read more",
+				"label": "Read more label",
+				"info": "Button will be shown when the content exceeds the max height"
+			},
+			{
+				"type": "text",
+				"id": "seo_text_read_less",
+				"default": "Read less",
+				"label": "Read less label",
+				"info": "Button will be shown when the content exceeds the max height"
+			},
+			{
+				"type": "range",
+				"id": "seo_text_max_height",
+				"min": 100,
+				"max": 1000,
+				"step": 50,
+				"label": "Max height",
+				"default": 150,
+				"info": "Displays a read more button after the text height exceeds a certain height."
+			},
+			{
+				"type": "header",
+				"content": "Subcollections",
+				"info": "These settings are only used on collection pages."
+			},
+			{
+	      "type": "checkbox",
+	      "id": "show_subcollections",
+	      "default": true,
+	      "label": "Show subcollections",
+				"info": "Links to subcollections from your menu will appear here. [Learn more.](https://documentation.fuelthemes.net/kb/how-do-i-add-sub-category-links-inside-template-header/)"
+	    },
+			{
+        "type": "color",
+        "id": "color_subcollection_bg",
+        "label": "Subcollection background",
+        "default": "#ffffff"
+      },
+      {
+        "type": "color",
+        "id": "color_subcollection_text",
+        "label": "Text",
+        "default": "#2C2D2E"
+      },
+			{
+        "type": "header",
+        "content": "Pages"
+      },
+			{
+	      "type": "checkbox",
+	      "id": "display_description",
+	      "label": "Show description text",
+	      "default": true,
+				"info": "Displays the page SEO description text under page title. [Learn more](https://help.shopify.com/en/manual/online-store/themes/theme-structure/pages#edit-the-search-engine-listing-for-a-webpage)"
+	    }
+    ]
+  }
+{% endschema %}

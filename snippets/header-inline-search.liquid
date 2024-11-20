@@ -1,0 +1,27 @@
+<search-form class="searchform">
+  <form role="search" method="get" action="{{ routes.search_url }}">
+    <fieldset class="searchform--form">
+      <label for="header-search-input" class="visually-hidden">{{ 'sections.header.search_for' | t }}</label>
+      
+      <input
+        id="header-search-input"
+        type="search"
+        class="search-field"
+        placeholder="{{ 'sections.header.search_for' | t | escape }}"
+        value="{{ search.terms | replace: '*', '' }}"
+        name="q"
+        autocorrect="off"
+        autocomplete="off"
+        autocapitalize="off"
+        spellcheck="false"
+      >
+      <button type="submit" class="thb-search-submit" aria-label="{{ 'sections.header.search' | t }}">{%- render 'svg-icons' with 'search' -%}</button>
+    <div class="thb-predictive-search" inert>
+      <span class="loading-overlay">
+        {%- render 'svg-icons' with 'thb-loading' -%}
+      </span>
+    </div>
+    </fieldset>
+    <div class="searchform--click-capture"></div>
+  </form>
+</search-form>

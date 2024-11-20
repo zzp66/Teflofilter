@@ -1,0 +1,353 @@
+<style>
+    .teflo-case-studie{
+        padding: 0 calc(100vw * 20 / var(--base-width));
+        padding-top: calc(100vw * 140 / var(--base-width));
+        background: #fff;
+        position: relative;
+        z-index:0;
+    }
+    .teflo-case-studie-h2{
+        color: #191919;
+        font-size: calc(100vw * 60 / var(--base-width));
+        font-style: normal;
+        font-weight: 400;
+        line-height: calc(100vw * 66 / var(--base-width));
+        letter-spacing: calc(100vw * -1.8 / var(--base-width));
+        margin-bottom: calc(100vw * 60 / var(--base-width));
+    }
+    .teflo-case-studie-list{
+        padding-top: calc(100vw * 20 / var(--base-width));
+        border-top: 0.4px dashed rgba(26, 26, 26, 0.30);
+        position: relative;
+    }
+    .teflo-case-studie-list-item{
+        display: flex;
+        background:#fff;
+      
+    }
+    .teflo-case-studie-list-item-img{
+        width: calc(100vw * 656 / var(--base-width));
+        flex-shrink: 0;
+        top: calc(100vw * 0 / var(--base-width));
+    }
+    .teflo-case-studie-list-item-img img{
+        width: 100%;
+    }
+    .teflo-case-studie-list-item-rt{
+        position: relative;
+        display: flex;
+        padding-bottom: calc(100vw * 40 / var(--base-width));
+        padding-right: calc(100vw * 50 / var(--base-width));
+        padding-left: calc(100vw * 30 / var(--base-width));
+        justify-content: space-between;   
+        padding-top: calc(100vw * 40 / var(--base-width));
+        border-bottom: 0.4px dashed rgba(26, 26, 26, 0.30);
+        flex:1;
+    }
+    .teflo-case-studie-list-item-rt-box1{
+        width: calc(100vw * 295 / var(--base-width));
+        margin-right: calc(100vw * 75 / var(--base-width));
+        padding-top: calc(100vw * 30 / var(--base-width));
+    }
+    .teflo-case-studie-list-item-rt-box1-time{
+        color: #191919;
+        font-size: calc(100vw * 16 / var(--base-width));
+        font-style: normal;
+        font-weight: 400;
+        line-height: calc(100vw * 16 / var(--base-width));
+        opacity: 0.4;
+        margin-bottom: calc(100vw * 17 / var(--base-width));
+    }
+    .teflo-case-studie-list-item-rt-box1-title{
+        color: #191919;
+        font-size: calc(100vw * 34 / var(--base-width));
+        font-style: normal;
+        font-weight: 300;
+        line-height: calc(100vw * 38 / var(--base-width));
+        letter-spacing: calc(100vw * -1.02 / var(--base-width));
+    }
+    .teflo-case-studie-list-item-rt-box2{
+        flex: 1;
+        padding-top: calc(100vw * 30 / var(--base-width));
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        max-width: calc(100vw * 330 / var(--base-width));
+    }
+    .teflo-case-studie-list-item-rt-box2-desc  *{
+        color: #191919;
+        font-size: calc(100vw * 16 / var(--base-width));
+        font-style: normal;
+        font-weight: 400;
+        line-height: calc(100vw * 20 / var(--base-width));
+        display: inline-block;
+        margin-bottom: 0;
+        opacity: 0.8;
+    }
+    .teflo-case-studie-list-item-rt-box2-desc strong{
+        opacity: 1;
+    }
+
+    .teflo-case-studie-list-item-rt-box2-info-username{
+        color: #191919;
+        font-size: calc(100vw * 16 / var(--base-width));
+        font-style: normal;
+        font-weight: 400;
+        line-height: calc(100vw * 20 / var(--base-width));
+        opacity: 0.8;
+        margin-bottom:2px;
+    }
+    .teflo-case-studie-list-item-rt-box2-info-introduction{
+        color: #191919;
+        font-size: calc(100vw * 16 / var(--base-width));
+        font-style: normal;
+        font-weight: 400;
+        line-height: calc(100vw * 20 / var(--base-width));
+        opacity: 0.5;
+        margin-bottom: calc(100vw * 10 / var(--base-width));
+    }
+    .teflo-case-studie-list-item-rt-box2-info-img{
+        width: calc(100vw * 290 / var(--base-width));
+    }
+    .teflo-case-studie-list-item:last-child .teflo-case-studie-list-item-rt{
+        border-bottom: 0px;
+    }
+    .teflo-case-studie-list-item:last-child{
+        padding-bottom: calc(100vw * 20 / var(--base-width));
+        border-bottom: 0.4px dashed rgba(26, 26, 26, 0.30);
+    }
+    @media(max-width:1400px){
+        .teflo-case-studie-list-item-rt{
+            padding-right: calc(100vw * 20 / var(--base-width));
+            padding-top: 0;
+            padding-bottom: calc(100vw * 15 / var(--base-width));   
+        }
+        .teflo-case-studie-list-item-rt-box1{
+            margin-right: calc(100vw * 30 / var(--base-width));
+        }
+        .teflo-case-studie-list-item-img{
+            width: calc(100vw * 550 / var(--base-width));
+        }
+        
+    }
+
+
+    @media(max-width:1024px){
+        .teflo-case-studie-h2{
+            font-size: calc(100vw * 70 / var(--base-width));
+            line-height: calc(100vw * 76 / var(--base-width));
+            letter-spacing: calc(100vw * -2.1 / var(--base-width));
+            margin-bottom: calc(100vw * 70 / var(--base-width));
+        }
+        .teflo-case-studie-list-item{
+            display: block;
+            padding-bottom: calc(100vw * 70 / var(--base-width));
+        }
+        .teflo-case-studie-list-item-img{
+            width: 100%;
+        }
+        .teflo-case-studie-list-item-rt{
+            display: block;
+            padding: 0;
+        }
+        .teflo-case-studie-list-item-rt-box1{
+            width: 100%;
+            margin-right: 0;
+        }
+        .teflo-case-studie-list-item-rt-box1-time{
+            display: none;
+        }
+        .teflo-case-studie-list-item-rt-box1-title{
+            color: #191919;
+            font-size: calc(100vw * 40 / var(--base-width));
+            line-height: calc(100vw * 38 / var(--base-width));
+            letter-spacing: calc(100vw * -1.2 / var(--base-width));
+            max-width:90%;
+            margin-top: calc(100vw * 50 / var(--base-width));
+            margin-bottom: calc(100vw * 20 / var(--base-width));
+        }
+        .teflo-case-studie-list-item-rt-box2{
+            display: block;
+            margin-top: 0;
+            padding-top: 0;
+            max-width: 100%; 
+        }
+        .teflo-case-studie-list-item-rt-box2-desc{
+            margin-bottom: calc(100vw * 40 / var(--base-width));
+        }
+        .teflo-case-studie-list-item-rt-box2-desc *{
+            font-size: calc(100vw * 26 / var(--base-width));
+            line-height: calc(100vw * 32 / var(--base-width));
+        }
+        .teflo-case-studie-list-item-rt-box2-info-username{
+            font-size: calc(100vw * 26 / var(--base-width));
+            line-height: calc(100vw * 32 / var(--base-width));
+        }
+        .teflo-case-studie-list-item-rt-box2-info-introduction{
+            font-size: calc(100vw * 26 / var(--base-width));
+            line-height: calc(100vw * 32 / var(--base-width));
+        }
+        .teflo-case-studie-list-item-rt-box2-info-img{
+            display: none;
+        }
+        .teflo-case-studie-list-item-rt{
+            border-bottom:0px;
+        }
+    }
+</style>
+<div class="teflo-case-studie">
+    <h2 class="teflo-case-studie-h2">{{ section.settings.title }}</h2>
+    <div class="teflo-case-studie-list">
+        {% for block in section.blocks %}
+            <div class="teflo-case-studie-list-item teflo-case-studie-list-item-animate">
+                <div class="teflo-case-studie-list-item-img" style="z-index:{{ forloop.index }}">
+                    <picture>
+                        <source media="(max-width: 1024px)" srcset="{{ block.settings.image_h5 | image_url: width: '750' }}">
+                        <img   src="{{ block.settings.image_pc | image_url: width: '650' }}" alt="{{ block.settings.image_alt }}">
+                    </picture>
+                </div>
+                <div class="teflo-case-studie-list-item-rt">
+                    <div class="teflo-case-studie-list-item-rt-box1">
+                        <p class="teflo-case-studie-list-item-rt-box1-time">{{ block.settings.time }}</p>
+                        <h3 class="teflo-case-studie-list-item-rt-box1-title">{{ block.settings.title }}</h3>
+                    </div>
+                    <div class="teflo-case-studie-list-item-rt-box2">
+                        <div class="teflo-case-studie-list-item-rt-box2-desc">{{ block.settings.desc }}</div>
+                        <div class="teflo-case-studie-list-item-rt-box2-info">
+                            <p class="teflo-case-studie-list-item-rt-box2-info-username">{{ block.settings.username }}</p>
+                            <p class="teflo-case-studie-list-item-rt-box2-info-introduction">{{ block.settings.introduction }}</p>
+                            <img class="teflo-case-studie-list-item-rt-box2-info-img" src="{{ block.settings.info_img | image_url: width: '306' }}" alt="{{ block.settings.info_img_alt }}" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+</div>
+
+{% schema %}
+{
+  "name": "Case Studie",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title",
+      "default": "Case Studie"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "case_studie",
+      "name": "Case Studie",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image_pc",
+          "label": "pc Image"
+        },
+        {
+            "type": "image_picker",
+            "id": "image_h5",
+            "label": "h5 Image"
+        },
+        {
+          "type": "text",
+          "id": "image_alt",
+          "label": "Image Alt",
+          "default": "Image Alt"
+        },
+        {
+          "type": "text",
+          "id": "time",
+          "label": "Time",
+          "default": "Time"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title",
+          "default": "Title"
+        },
+        {
+          "type": "richtext",
+          "id": "desc",
+          "label": "Description"
+        },
+        {
+          "type": "text",
+          "id": "username",
+          "label": "Username",
+          "default": "Username"
+        },
+        {
+          "type": "text",
+          "id": "introduction",
+          "label": "Introduction",
+          "default": "Introduction"
+        },
+        {
+          "type": "image_picker",
+          "id": "info_img",
+          "label": "Info Image"
+        },
+        {
+          "type": "text",
+          "id": "info_img_alt",
+          "label": "Info Image Alt",
+          "default": "Info Image Alt"
+        }
+      ]
+    }
+  ],
+    "presets": [
+        {
+        "name": "Teflo Case Studie"
+        }
+    ]
+}
+{% endschema %}
+<script>
+ 
+   {% comment %} window.onload = function () {
+   
+    if(window.innerWidth > 1024){
+        try {
+            const items = document.querySelectorAll(".teflo-case-studie-list-item-animate");
+            items.forEach((item,index) => {
+            const lt = item.querySelector(".teflo-case-studie-list-item-img");
+            var  tefloCaseStudyAnimateEle =  ScrollTrigger.create({
+                    trigger: item,
+                    start: "top top",
+                    end: () => "+=" + item.offsetHeight,
+                    pin: lt,
+                    pinSpacing: false,
+                    onEnter: () => lt.style.zIndex = items.length - index,
+                    onLeaveBack: () => lt.style.zIndex = index,
+                });
+                tefloCaseStudyAnimateArr.push(tefloCaseStudyAnimateEle);
+            });
+
+            pageCaseIndex = 1
+        
+        } catch (error) {
+        
+    }
+    
+}
+   } {% endcomment %}
+</script>
+{% javascript %}
+ 
+
+   if(window.innerWidth > 1024){
+            var timer=  setTimeout(() => {
+                tefloCaseStudyAnimate();
+                pageCaseIndex = 1
+                clearTimeout(timer);
+            }, 6000);
+
+
+    }
+{% endjavascript %}
+

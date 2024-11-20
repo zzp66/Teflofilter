@@ -1,0 +1,64 @@
+<div id="notification-container"></div>
+
+<style>
+  #notification-container {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 1000;
+  }
+
+  .notification {
+    padding: 10px 20px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    color: #fff;
+    font-size: 16px;
+    opacity: 0;
+  }
+
+  .notification.success { background-color: #4caf50; } 
+  .notification.error { background-color: #f44336; } 
+  .notification.warning { background-color: #ff9800; } 
+</style>
+
+<script>
+  function showNotification(message, type = "success", duration = 3000) {
+    const notification = document.createElement("div");
+    notification.classList.add("notification", type);
+    notification.textContent = message;
+
+    const container = document.getElementById("notification-container");
+    container.appendChild(notification);
+
+    gsap.to(notification, { opacity: 1, duration: 0.5, ease: "power1.out" });
+
+    setTimeout(() => {
+      gsap.to(notification, {
+        opacity: 0,
+        duration: 0.5,
+        ease: "power1.in",
+        onComplete: () => notification.remove()
+      });
+    }, duration);
+  }
+
+  function showSuccess(message, duration) {
+    showNotification(message, "success", duration);
+  }
+
+  function showError(message, duration) {
+    showNotification(message, "error", duration);
+  }
+
+  function showWarning(message, duration) {
+    showNotification(message, "warning", duration);
+  }
+</script>
+
+
+{% comment %} <script>
+  showSuccess("操作成功", 3000);
+  showError("操作失败，请重试", 3000);
+  showWarning("请注意相关信息", 3000);
+</script> {% endcomment %}

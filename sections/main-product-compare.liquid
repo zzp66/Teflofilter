@@ -1,0 +1,181 @@
+{{- 'compare-lightbox.css' | asset_url | stylesheet_tag -}}
+{{- 'product-grid.css' | asset_url | stylesheet_tag -}}
+{%- liquid
+  assign empty_field_label = section.settings.empty_field_label
+-%}
+<div class="row">
+  <div class="small-12 columns">
+    <product-compare-table class="compare-lightbox" data-max="{{ settings.compare_products_max }}">
+      <div class="compare-lightbox--data">
+        <div id="compare-table--{{ section.id }}-{{ product.id }}" class="compare-lightbox--table">
+          <div class="compare-lightbox--row">
+            {%- render 'product-card', product_card_product: product, compare_table: true -%}
+          </div>
+          <div class="compare-lightbox--fields">
+          {%- for block in section.blocks -%}
+            <div class="compare-lightbox--row">
+              <div class="compare-lightbox--header">{{ block.settings.heading }}</div>
+              {%- case block.type -%}
+                {%- when 'vendor' -%}
+                  {% if product.vendor != blank %}
+                    <span class="product-vendor" {{ block.shopify_attributes }}>
+                    {%- if block.settings.show_vendor_link -%}
+                      {{ product.vendor | link_to_vendor }}
+                    {%- else -%}
+                      {{ product.vendor }}
+                    {%- endif -%}
+                    </span>
+                  {%- else -%}
+                    {{ empty_field_label }}
+                  {%- endif -%}
+                  
+                {%- when 'description' -%}
+
+                  <div class="product--short-description rte" {{ block.shopify_attributes }}>
+                  {%- if product.description != blank -%}
+                    {% if block.settings.truncate_description %}
+                      {{ product.description | strip_html | truncatewords: block.settings.truncate_description_count }}
+                    {%- else -%}
+                      {{ product.description }}
+                    {%- endif -%}
+                    
+                  {%- else -%}
+                    {{ empty_field_label }}
+                  {%- endif -%}
+                  </div>
+                {%- when 'metafield' -%}
+                  {%- liquid 
+                    assign metafield_key = block.settings.content
+                    assign metafield_key_parts = metafield_key | split: "."
+                    assign metafield_namespace_index = metafield_key_parts | size | minus: 2
+                    assign metafield_key = metafield_key_parts | last
+                    assign metafield_namespace = metafield_key_parts[metafield_namespace_index]
+                    assign metafield = product.metafields[metafield_namespace][metafield_key]
+
+                    capture metafield_value_output
+                      if metafield.type contains "list."
+                        for sub_metafield in metafield.value
+                          assign metafield_type = metafield.type | replace: "list.", ""
+                          unless forloop.last
+                          assign comma =  ', '
+                          endunless
+                          render 'product-specification-metafield', metafield: metafield, metafield_type: metafield_type, metafield_value: sub_metafield, comma: comma
+                          
+                        endfor
+                      elsif metafield.value
+                        render 'product-specification-metafield', metafield: metafield, metafield_type: metafield.type, metafield_value: metafield.value
+                      endif
+                    endcapture
+                  -%}
+                  {% if metafield_value_output != empty %}
+                    {{ metafield_value_output }}
+                  {%- else -%}
+                    {{ empty_field_label }}
+                  {%- endif -%}
+              {%- endcase -%}
+            </div>
+          {%- endfor -%}
+          </div>
+        </div>
+      </div>
+    </product-compare-table>
+  </div>
+</div>
+{{ 'product-compare-table.js' | asset_url | script_tag }}
+
+{% schema %}
+{
+  "name": "Product compare",
+  "class": "product-compare-section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "empty_field_label",
+      "default": "N/A",
+      "label": "Empty field text",
+      "info": "Text to use for empty fields"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "vendor",
+      "name": "Vendor",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "text",
+          "id": "heading",
+          "default": "Vendor",
+          "label": "Heading"
+        },
+        {
+          "type": "checkbox",
+          "id": "show_vendor_link",
+          "label": "Add vendor link",
+          "default": true
+        }
+      ]
+    },
+    {
+      "type": "sku",
+      "name": "SKU",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "text",
+          "id": "heading",
+          "default": "SKU",
+          "label": "Heading"
+        }
+      ]
+    },
+    {
+      "type": "description",
+      "name": "Description",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "text",
+          "id": "heading",
+          "default": "Description",
+          "label": "Heading"
+        },
+        {
+          "type": "checkbox",
+          "id": "truncate_description",
+          "label": "Truncate description",
+          "default": true,
+          "info": "This will remove HTML from the description."
+        },
+        {
+          "type": "range",
+          "id": "truncate_description_count",
+          "min": 1,
+          "max": 100,
+          "step": 1,
+          "default": 20,
+          "label": "Words to show"
+        }
+      ]
+    },
+    {
+      "type": "metafield",
+      "name": "Metafield",
+      "settings": [
+        {
+          "type": "text",
+          "id": "heading",
+          "default": "Metafield",
+          "label": "Heading"
+        },
+        {
+          "type": "text",
+          "id": "content",
+          "label": "Metafield",
+          "info": "Example: custom.product_label_1"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

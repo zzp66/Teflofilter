@@ -1,0 +1,106 @@
+{%- liquid
+  assign secondary_nav = blocks | where: "type", "secondary_nav"
+  assign secondary_menu = secondary_nav[0].settings.menu
+
+	assign menu_has_mega_menu = false
+-%}
+<full-menu class="full-menu">
+	<ul class="thb-full-menu" role="menubar">
+	  {%- for link in menu.links -%}
+		  {%- liquid
+				assign parent_index = forloop.index
+				assign has_sub_menu = false
+				assign has_mega_menu = false
+				assign has_menu_badge = false
+				assign mega_menu_block_index = false
+				assign mega_menu_block_index_sidebar = false
+
+				assign mega_menu_blocks = blocks | where: "type", "megamenu"
+				assign mega_menu_blocks_sidebar = blocks | where: "type", "megamenu_sidebar"
+				
+				assign menu_badge_index = false
+				assign menu_badge_blocks = blocks | where: "type", "menu_badge"
+
+				if link.links.size > 0
+					assign has_sub_menu = true
+				endif
+				for block in mega_menu_blocks
+					assign position = block.settings.position | plus: 0
+		    	if position == parent_index
+						assign has_mega_menu = true
+						assign mega_menu_block_index = forloop.index0
+					endif
+				endfor
+				for block in menu_badge_blocks
+					assign badge_position = block.settings.badge_position | plus: 0
+		    	if badge_position == parent_index
+						assign has_menu_badge = true
+						assign menu_badge_index = forloop.index0
+					endif
+				endfor
+
+				for block in mega_menu_blocks_sidebar
+					assign position_sidebar = block.settings.position | plus: 0
+		    	if position_sidebar == parent_index
+						assign has_mega_menu = true
+						assign mega_menu_block_index_sidebar = forloop.index0
+					endif
+				endfor
+
+				if has_mega_menu
+					assign menu_has_mega_menu = true
+				endif
+			-%}
+		  <li role="none" class="{% if has_sub_menu or has_mega_menu %}menu-item-has-children{% endif %}{% if has_mega_menu %} menu-item-has-megamenu{% endif %}{% if link.active %} active{% endif %}" {% if has_sub_menu %}data-item-title="{{ link.title | escape }}"{% endif %}>
+		    <a role="menuitem" class="thb-full-menu--link" href="{{ link.url }}"{%- if link.active %} aria-current="page"{% endif -%}>
+					{{- link.title -}}
+					{%- if has_sub_menu or has_mega_menu -%}{%- render 'svg-icons' with 'thb-dropdown-bottom' -%}{%- endif -%}
+				</a>
+				{%- if has_menu_badge -%}
+					{%- assign menu_badge_block = menu_badge_blocks[menu_badge_index] -%}
+					<span class="menu-item-badge" style="--menu-badge-bg: {{ menu_badge_block.settings.color_bg }};--menu-badge-text: {{ menu_badge_block.settings.color_text }};">{{ menu_badge_block.settings.text }}</span>
+				{%- endif -%}
+		    {%- if has_sub_menu == true and has_mega_menu == false -%}
+			    <ul class="sub-menu" tabindex="-1">
+		        {%- for l in link.links -%}
+							{%- liquid
+								assign has_sub_menu = false
+								assign has_mega_menu = false
+								if l.links.size > 0
+									assign has_sub_menu = true
+								endif
+
+							-%}
+			        <li class="{%- if l.active %}active{% endif %}{% if has_sub_menu %} menu-item-has-children{%- endif -%}" role="none" {% if has_sub_menu %}data-item-title="{{ l.title | escape }}"{% endif %}>
+			          <a href="{{ l.url }}" role="menuitem" class="thb-full-menu--link">
+									{{- l.title -}}
+									{%- if has_sub_menu -%}{%- render 'svg-icons' with 'thb-dropdown-right' -%}{%- endif -%}
+								</a>
+								{%- if has_sub_menu -%}
+									<ul class="sub-menu" role="menu">
+										{%- for sub_link in l.links -%}
+											<li class="{%- if sub_link.active %} active{% endif %}" role="none">
+												<a href="{{ sub_link.url }}" class="thb-full-menu--link" role="menuitem">{{- sub_link.title -}}</a>
+											</li>
+										{%- endfor -%}
+									</ul>
+								{%- endif -%}
+			        </li>
+						{%- endfor -%}
+			    </ul>
+		    {%- elsif has_sub_menu == true or has_mega_menu == true -%}
+					{%- liquid
+						assign mega_menu_block = mega_menu_blocks[mega_menu_block_index]
+						assign mega_menu_block_sidebar = mega_menu_blocks_sidebar[mega_menu_block_index_sidebar]
+					-%}
+					{% if mega_menu_block %}
+						{% render 'header-mega-menu-promotions', mega_menu_block: mega_menu_block, link: link %}
+					{% elsif mega_menu_block_sidebar %}
+						{% render 'header-mega-menu-sidebar', mega_menu_block: mega_menu_block_sidebar, link: link %}
+					{% endif %}
+		    {%- endif -%}
+		  </li>
+	  {%- endfor -%}
+	</ul>
+	{% render 'header-secondary-menu', secondary_menu: secondary_menu, blocks: blocks %}
+</full-menu>

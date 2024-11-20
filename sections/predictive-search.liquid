@@ -1,0 +1,90 @@
+{%- if predictive_search.performed -%}
+{%- liquid
+	assign predictive_search_products = predictive_search.resources.products
+	assign predictive_search_articles = predictive_search.resources.articles
+	assign predictive_search_queries = predictive_search.resources.queries
+	assign predictive_search_pages = predictive_search.resources.pages
+	-%}
+	<side-panel-content-tabs class="side-panel-content--tabs">
+		{%- if predictive_search_products.size > 0 -%}
+		<button class="tab-active" type="button">{{ 'sections.header.search_products' | t }}</button>
+		{%- endif -%}
+		{%- if predictive_search_queries.size > 0 -%}
+		<button class="{% if predictive_search_products.size == 0 -%}tab-active{%- endif -%}" type="button">{{ 'sections.header.suggestions' | t }}</button>
+		{%- endif -%}
+		{%- if predictive_search_articles.size > 0 -%}
+		<button type="button">{{ 'sections.header.articles' | t }}</button>
+		{%- endif -%}
+		{%- if predictive_search_pages.size > 0 -%}
+		<button type="button">{{ 'sections.header.pages' | t }}</button>
+		{%- endif -%}
+	</side-panel-content-tabs>
+	<scroll-shadow>
+		<div class="side-panel-content--inner">
+			{%- if predictive_search_products.size != 0 -%}
+			<div class="side-panel-content--tab-panel tab-active">
+				{%- for predictive_product in predictive_search_products -%}
+					{% render 'product-card-small', product_small: predictive_product, predictive_search: predictive_search %}
+	      {%- endfor -%}
+			</div>
+			{%- endif -%}
+			{%- if predictive_search_queries.size != 0 -%}
+			<div class="side-panel-content--tab-panel {% if predictive_search_products.size == 0 -%} tab-active{%- endif -%}">
+				<div class="thb-predictive-search--popular">
+					<ul>
+						{%- for query in predictive_search_queries -%}
+						<li><a href="{{ query.url }}" class="predictive-search__item link link--text" tabindex="-1">{{ query.styled_text }}</a></li>
+						{%- endfor -%}
+					</ul>
+				</div>
+			</div>
+			{%- endif -%}
+			{%- if predictive_search_articles.size != 0 -%}
+			<div class="side-panel-content--tab-panel{% if predictive_search_products.size == 0 -%} tab-active{%- endif -%}">
+				{%- for predictive_article in predictive_search_articles -%}
+					<div class="product-cart-item">
+						<div class="product-cart-item-image">
+							<a href="{{ predictive_article.url }}" title="{{ predictive_article.title | escape }}" class="product-cart-item-image-link">
+								{% if predictive_article.image %}
+									{%- render 'responsive-image', image: predictive_article.image, sizes: '96x96' -%}
+								{% else %}
+									<div class="thb-placeholder">
+										{{ 'image' | placeholder_svg_tag }}
+									</div>
+								{% endif %}
+							</a>
+						</div>
+						<div>
+							<a href="{{ predictive_article.url }}" title="{{ predictive_article.title | escape }}" class="cart-product-link">{{ predictive_article.title | highlight: predictive_search.terms }}</a>
+						</div>
+					</div>
+	      {%- endfor -%}
+			</div>
+			{%- endif -%}
+			{%- if predictive_search_pages.size != 0 -%}
+			<div class="side-panel-content--tab-panel{% if predictive_search_products.size == 0 -%} tab-active{%- endif -%}">
+				{%- for predictive_page in predictive_search_pages -%}
+					<div class="product-cart-item">
+						{% if predictive_page.image %}
+						<div class="product-cart-item-image">
+							<a href="{{ predictive_page.url }}" title="{{ predictive_page.title | escape }}" class="product-cart-item-image-link">
+								{%- render 'responsive-image', image: predictive_page.image, sizes: '96x96' -%}
+							</a>
+						</div>
+						{% endif %}
+						<div>
+							<a href="{{ predictive_page.url }}" title="{{ predictive_page.title | escape }}" class="cart-product-link">{{ predictive_page.title | highlight: predictive_search.terms }}</a>
+						</div>
+					</div>
+	      {%- endfor -%}
+			</div>
+			{%- endif -%}
+		</div>
+	</scroll-shadow>
+	<div class="side-panel-content--search-footer">
+		<button class="button full search-results-submit" id="search-results-submit"><span>{{ 'sections.header.view_all_results' | t }}</span></button>
+	</div>
+	<span class="loading-overlay">
+		{%- render 'svg-icons' with 'thb-loading' -%}
+	</span>
+{%- endif -%}

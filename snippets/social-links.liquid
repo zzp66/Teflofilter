@@ -1,0 +1,29 @@
+<ul class="social-links{% if show_label %} social-links--has-label{% endif %}">
+	{% if settings.social_facebook_link != blank %}
+	<li><a href="{{ settings.social_facebook_link }}" class="social facebook" target="_blank" rel="noreferrer" title="Facebook">{% render 'svg-icons' with 'facebook' %}{% if show_label %} <span>{{ 'social.links.facebook' | t }}</span>{% endif %}</a></li>
+	{% endif %}
+	{% if settings.social_twitter_link != blank %}
+	<li><a href="{{ settings.social_twitter_link }}" class="social twitter" target="_blank" rel="noreferrer" title="X">{% render 'svg-icons' with 'twitter' %}{% if show_label %} <span>{{ 'social.links.twitter' | t }}</span>{% endif %}</a></li>
+	{% endif %}
+	{% if settings.social_instagram_link != blank %}
+	<li><a href="{{ settings.social_instagram_link }}" class="social instagram" target="_blank" rel="noreferrer" title="Instagram">{% render 'svg-icons' with 'instagram' %}{% if show_label %} <span>{{ 'social.links.instagram' | t }}</span>{% endif %}</a></li>
+	{% endif %}
+	{% if settings.social_youtube_link != blank %}
+	<li><a href="{{ settings.social_youtube_link }}" class="social youtube" target="_blank" rel="noreferrer" title="YouTube">{% render 'svg-icons' with 'youtube' %}{% if show_label %} <span>{{ 'social.links.youtube' | t }}</span>{% endif %}</a></li>
+	{% endif %}
+	{% if settings.social_pinterest_link != blank %}
+	<li><a href="{{ settings.social_pinterest_link }}" class="social pinterest" target="_blank" rel="noreferrer" title="Pinterest">{% render 'svg-icons' with 'pinterest' %}{% if show_label %} <span>{{ 'social.links.pinterest' | t }}</span>{% endif %}</a></li>
+	{% endif %}
+	{% if settings.social_vimeo_link != blank %}
+	<li><a href="{{ settings.social_vimeo_link }}" class="social vimeo" target="_blank" rel="noreferrer" title="Vimeo">{% render 'svg-icons' with 'vimeo' %}{% if show_label %} <span>{{ 'social.links.vimeo' | t }}</span>{% endif %}</a></li>
+	{% endif %}
+	{% if settings.social_tiktok_link != blank %}
+	<li><a href="{{ settings.social_tiktok_link }}" class="social tiktok" target="_blank" rel="noreferrer" title="TikTok">{% render 'svg-icons' with 'tiktok' %}{% if show_label %} <span>{{ 'social.links.tiktok' | t }}</span>{% endif %}</a></li>
+	{% endif %}
+	{% if settings.social_linkedin_link != blank %}
+	<li><a href="{{ settings.social_linkedin_link }}" class="social linkedin" target="_blank" rel="noreferrer" title="Linkedin">{% render 'svg-icons' with 'linkedin' %}{% if show_label %} <span>{{ 'social.links.linkedin' | t }}</span>{% endif %}</a></li>
+	{% endif %}
+	{% if settings.social_wechat_link != blank %}
+	<li><a href="{{ settings.social_wechat_link }}" class="social wechat" target="_blank" rel="noreferrer" title="WeChat">{% render 'svg-icons' with 'wechat' %}{% if show_label %} <span>{{ 'social.links.wechat' | t }}</span>{% endif %}</a></li>
+	{% endif %}
+</ul>

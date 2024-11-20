@@ -1,0 +1,73 @@
+
+
+.scrolling-images--image {
+  isolation: isolate;
+  border-radius: var(--block-border-radius, 16px); }
+
+
+
+.scrolling-images {
+  position: relative;
+  background-size: cover;
+  display: flex;
+  align-items: center;
+  overflow: hidden; }
+  .scrolling-images--inner {
+    display: flex;
+    align-items: center;
+    white-space: nowrap;
+    overflow: hidden;
+    position: relative;
+    z-index: 10; }
+    .scrolling-images--inner.direction-left > div {
+      animation: marquee-left var(--marquee-speed) linear infinite; }
+    .scrolling-images--inner.direction-right > div {
+      animation: marquee-right var(--marquee-speed) linear infinite; }
+    .scrolling-images--inner > div {
+      display: flex;
+      align-items: center;
+      flex-shrink: 0; }
+  .scrolling-images--spacing-small .scrolling-images--item {
+    margin: 0 5px; }
+  .scrolling-images--spacing-medium .scrolling-images--item {
+    margin: 0 5px; }
+    @media only screen and (min-width: 768px) {
+      .scrolling-images--spacing-medium .scrolling-images--item {
+        margin: 0 10px; } }
+  .scrolling-images--spacing-large .scrolling-images--item {
+    margin: 0 5px; }
+    @media only screen and (min-width: 768px) {
+      .scrolling-images--spacing-large .scrolling-images--item {
+        margin: 0 15px; } }
+  .scrolling-images--top > div {
+    align-items: flex-start; }
+  .scrolling-images--bottom > div {
+    align-items: flex-end; }
+  .scrolling-images--item {
+    display: inline-flex;
+    justify-content: center;
+    flex-direction: column; }
+  .scrolling-images--image {
+    position: relative;
+    max-width: 70vw; }
+    @media only screen and (min-width: 768px) {
+      .scrolling-images--image {
+        max-width: 100%; } }
+  .scrolling-images--content {
+    margin-top: 30px; }
+    .scrolling-images--content h6 {
+      margin-bottom: 10px; }
+  .scrolling-images--link {
+    display: inline-flex; }
+
+@keyframes marquee-left {
+  0% {
+    transform: translateX(0%); }
+  100% {
+    transform: translateX(-100%); } }
+
+@keyframes marquee-right {
+  0% {
+    transform: translateX(-100%); }
+  100% {
+    transform: translateX(0%); } }

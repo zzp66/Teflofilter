@@ -1,0 +1,127 @@
+
+
+.media-with-tabs--tab:after, .media-with-tabs--text {
+  transition: all 0.25s ease; }
+
+.media-with-tabs, .media-with-tabs--transparent-true .media-with-tabs--media {
+  isolation: isolate;
+  border-radius: var(--block-border-radius, 16px); }
+
+.media-with-tabs {
+  box-shadow: var(--block-shadows); }
+
+
+
+.media-with-tabs {
+  display: grid;
+  grid-auto-flow: dense;
+  background: var(--color-bg);
+  color: var(--color-text);
+  overflow: hidden; }
+  @media only screen and (min-width: 768px) {
+    .media-with-tabs {
+      grid-template-areas: "media content";
+      grid-template-columns: 1fr 1fr; } }
+  @media only screen and (min-width: 768px) {
+    .media-with-tabs.text_first {
+      grid-template-areas: "content media"; } }
+  .media-with-tabs--transparent-true {
+    box-shadow: none;
+    border-radius: 0; }
+    .media-with-tabs--transparent-true .media-with-tabs--media {
+      overflow: hidden; }
+    .media-with-tabs--transparent-true.image_first .media-with-tabs--content {
+      padding-right: 0; }
+    .media-with-tabs--transparent-true.text_first .media-with-tabs--content {
+      padding-left: 0; }
+  .media-with-tabs--content {
+    padding: 25px; }
+    @media only screen and (min-width: 768px) {
+      .media-with-tabs--content {
+        padding: 45px;
+        grid-area: content; } }
+  @media only screen and (min-width: 768px) {
+    .media-with-tabs--media {
+      grid-area: media; } }
+  .media-with-tabs--media .carousel__slide {
+    width: 100%; }
+    .media-with-tabs--media .carousel__slide .thb-placeholder {
+      background: var(--color-text); }
+      .media-with-tabs--media .carousel__slide .thb-placeholder svg {
+        fill: var(--color-bg); }
+  .media-with-tabs--media--container {
+    width: 100%;
+    position: relative; }
+    .media-with-tabs--media--container .media-with-tabs--media--video,
+    .media-with-tabs--media--container img {
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      top: 0;
+      left: 0; }
+    .media-with-tabs--media--container video,
+    .media-with-tabs--media--container img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover; }
+  .media-with-tabs h3 {
+    color: var(--color-text); }
+  .media-with-tabs--tab {
+    border-bottom: 1px solid var(--color-border, #dadce0);
+    padding: 20px 0;
+    position: relative; }
+    .media-with-tabs--tab:after {
+      content: "";
+      display: block;
+      height: 1px;
+      width: 100%;
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      background: var(--color-text);
+      transform-origin: left center;
+      transform: scale(0, 1); }
+    .media-with-tabs--tab.active .media-with-tabs--button {
+      opacity: 1; }
+    .media-with-tabs--tab.active .media-with-tabs--text {
+      max-height: 200px;
+      padding-top: 5px; }
+    .media-with-tabs--tab.active:after {
+      transform: scale(1, 1); }
+  .media-with-tabs--button {
+    position: relative;
+    font-size: 1.25rem;
+    font-weight: var(--font-body-medium-weight, 500);
+    color: var(--color-text);
+    opacity: 0.4;
+    width: 100%;
+    text-align: left; }
+    [dir="rtl"] .media-with-tabs--button {
+      text-align: right; }
+    .media-with-tabs--button.has-icon {
+      padding-left: 35px; }
+      [dir="rtl"] .media-with-tabs--button.has-icon {
+        padding-left: 0;
+        padding-right: 35px; }
+    .media-with-tabs--button svg {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 15px;
+      height: 15px;
+      fill: var(--color-text); }
+      [dir="rtl"] .media-with-tabs--button svg {
+        left: auto;
+        right: 0; }
+  .media-with-tabs--text {
+    font-size: 0.9375rem;
+    max-height: 0;
+    overflow: hidden; }
+    .media-with-tabs--text.has-icon {
+      padding-left: 35px; }
+  @media only screen and (min-width: 768px) {
+    .media-with-tabs.desktop-height-auto .media-with-tabs--media--container video,
+    .media-with-tabs.desktop-height-auto .media-with-tabs--media--container img {
+      height: auto; } }
+  .media-with-tabs.desktop-height-auto .flickity-viewport {
+    min-height: 100%; }

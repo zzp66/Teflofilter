@@ -1,0 +1,91 @@
+{%- liquid
+	assign products_hover_images = settings.products_hover_images
+	assign product_aspect_ratio = settings.product_aspect_ratio
+	assign product_content_alignment = settings.product_content_alignment
+	assign featured_media = product_card_product.featured_media
+	assign product_price_position = settings.product_price_position
+	assign ratio = 1
+	assign sizes = '298x298,596x596'
+
+	if featured_media.media_type != 'image'
+		assign featured_media = featured_media.preview_image
+	endif
+
+	if product_aspect_ratio == 'adapt'
+		assign ratio = featured_media.aspect_ratio
+		assign sizes = '298x0,596x0'
+	elsif product_aspect_ratio == 'portrait'
+		assign ratio = 1 | divided_by: 1.25
+		assign sizes = '298x350,596x700'
+	elsif product_aspect_ratio == 'landscape'
+		assign ratio = 1 | divided_by: 0.75
+		assign sizes = '298x250,596x500'
+	endif
+
+-%}
+{%- if product_card_product and product_card_product != empty -%}
+<product-card class="product-card text-{{ product_content_alignment }} product-card--content-spacing-false">
+  <figure class="product-featured-image {% if products_hover_images and product_card_product.images.size > 1 %}thb-hover{% endif %}">
+    {% render 'product-card-badge', product_card_product: product_card_product %}
+    <a href="{{ product_card_product.url | within: collection }}" title="{{ product_card_product.title | escape }}" class="product-featured-image-link aspect-ratio aspect-ratio--{{ settings.product_aspect_ratio }}" style="--padding-bottom: {{ 1 | divided_by: ratio | times: 100 }}%;">
+      {%- if products_hover_images and product_card_product.images.size > 1 -%}
+        {%- render 'responsive-image', class: 'product-secondary-image', image: product_card_product.images[1], sizes: sizes -%}
+      {%- endif -%}
+			{%- if featured_media -%}
+      	{%- render 'responsive-image', class: 'product-primary-image', image: featured_media, sizes: sizes -%}
+			{%- else -%}
+				<div class="thb-placeholder">
+					{{ 'product-apparel-1' | placeholder_svg_tag }}
+				</div>
+			{%- endif -%}
+
+			{%- if settings.enable_quick_view -%}
+			<quick-view class="product-card-quickview" data-product-handle="{{ product_card_product.handle }}" tabindex="-1">
+				<div class="loading-overlay">{% render 'svg-icons' with 'thb-loading' %}</div>
+				<span>{{ 'products.product.quick_view' | t }}</span>
+			</quick-view>
+			{%- endif -%}
+    </a>
+  </figure>
+	<div class="product-card-info">
+		{%- liquid
+			if product_price_position == 'before-product-title'
+				render 'product-price', product: product_card_product
+			endif
+		-%}
+  	<a href="{{ product_card_product.url | within: collection }}" title="{{ product_card_product.title | escape }}" class="product-card-title">{{ product_card_product.title }}</a>
+		{%- liquid
+			if product_price_position == 'after-product-title'
+				render 'product-price', product: product_card_product
+			endif
+		-%}
+  </div>
+</product-card>
+{%- else -%}
+<product-card class="product-card text-{{ product_content_alignment }} product-card--content-spacing-{{ info_spacing }} product-card--border-{{ product_card_border }} {{ product_card_shadow_class }}">
+	<figure class="product-featured-image {% if settings.products_hover_images %}thb-hover{% endif %}">
+		<a href="{{ product_card_product.url | within: collection }}" title="{{ product_card_product.title | escape }}" class="product-featured-image-link aspect-ratio aspect-ratio--{{ settings.product_aspect_ratio }}" style="--padding-bottom: {{ 1 | divided_by: 1 | times: 100 }}%;">
+			<div class="thb-placeholder">
+				{{ 'product-apparel-1' | placeholder_svg_tag }}
+			</div>
+			<quick-view class="product-card-quickview" data-product-handle="{{ product_card_product.handle }}" tabindex="-1">
+				<div class="loading-overlay">{% render 'svg-icons' with 'thb-loading' %}</div>
+				<span>{{ 'products.product.quick_view' | t }}</span>
+			</quick-view>
+		</a>
+	</figure>
+	<div class="product-card-info">
+		{%- liquid
+			if product_price_position == 'before-product-title'
+				render 'product-price', product: product_card_product
+			endif
+		-%}
+		<a href="#" title="{{ product_card_product.title | escape }}" class="product-card-title">{{ 'onboarding.product_title' | t }}</a>
+		{%- liquid
+			if product_price_position == 'after-product-title'
+				render 'product-price', product: product_card_product
+			endif
+		-%}
+	</div>
+</product-card>
+{%- endif -%}

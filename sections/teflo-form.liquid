@@ -1,0 +1,720 @@
+<style>
+    .teflo-form{
+        display: flex;
+        justify-content: space-between;
+        position: relative;
+        z-index: 10;
+        background:#fff;
+        padding:0 calc(100vw * 20 / var(--base-width));
+        padding-top: calc(100vw * 140 / var(--base-width));
+       padding-bottom: calc(100vw * 140 / var(--base-width));
+    }
+    .teflo-form-lt{
+        width: calc(100vw * 586 / var(--base-width));
+        margin-right: calc(100vw * 115 / var(--base-width));
+        flex-shrink: 0;
+    }
+    .teflo-form-rt{
+        flex: 1;
+    }
+    .teflo-form-lt-h2{
+        color: #0D0D0D;
+        font-size: calc(100vw * 60 / var(--base-width));
+        font-style: normal;
+        font-weight: 400;
+        line-height: calc(100vw * 66 / var(--base-width));
+        letter-spacing: calc(100vw * -1.8 / var(--base-width));
+        margin-bottom: calc(100vw * 40 / var(--base-width));
+    }
+    .teflo-form-lt-desc1{
+        
+        margin-bottom: calc(100vw * 40 / var(--base-width));
+    }
+    .teflo-form-lt-desc1 * {
+        color: #0D0D0D;
+        font-size: calc(100vw * 20 / var(--base-width));
+        font-style: normal;
+        font-weight: 400;
+        line-height: calc(100vw * 26 / var(--base-width));
+        margin-bottom: 0;
+    }
+    .teflo-form-lt-desc2{
+        
+    }
+    .teflo-form-lt-desc2 *{
+        color: #0D0D0D;
+        font-size: calc(100vw * 16 / var(--base-width));
+        font-style: normal;
+        font-weight: 400;
+        line-height: calc(100vw * 26 / var(--base-width));
+        margin-bottom: 0;
+    }
+    .messagebox-label,.teflo-form-contact-item-label{
+        color: #0D0D0D;
+        font-size: calc(100vw * 14 / var(--base-width));
+        font-style: normal;
+        font-weight: 400;
+        line-height: calc(100vw * 20 / var(--base-width));
+        margin-bottom: calc(100vw * 10 / var(--base-width));
+    }
+    .teflo-form-contactbox{
+        display:grid;
+        grid-template-columns:repeat(2,1fr);
+        column-gap: calc(100vw * 6 / var(--base-width));
+        row-gap: calc(100vw * 27 / var(--base-width));
+    }
+.teflo-form-select{
+    position: relative;
+}
+
+
+.teflo-form-select-input{
+    height: calc(100vw * 50 / var(--base-width));
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: calc(100vw * 3 / var(--base-width));
+    border: 0.3px solid rgba(13, 13, 13, 0.4);
+}
+.teflo-form-select-input-value{
+
+}
+.teflo-form-select-input-svg {
+    flex-shrink:0;
+}
+.teflo-form-select-input-svg svg{
+    width: calc(100vw * 12 / var(--base-width));
+    height: calc(100vw * 8 / var(--base-width));
+    margin-right: calc(100vw * 16 / var(--base-width));
+}
+.teflo-form-select-input-value{
+    height:100%;
+    color: #0D0D0D;
+    font-size: calc(100vw * 16 / var(--base-width));
+    font-style: normal;
+    font-weight: 400;
+    line-height: calc(100vw * 16 / var(--base-width));
+    padding-left: calc(100vw * 17 / var(--base-width));
+    flex:1;
+    display: flex;
+    align-items: center;
+    margin-bottom:0;
+    cursor: pointer;
+    opacity: 0.3;
+}
+.teflo-form-contact-item-input input{
+    height: calc(100vw * 50 / var(--base-width));
+    border-radius: calc(100vw * 3 / var(--base-width));
+    border: 0.3px solid rgba(13, 13, 13, 0.4);
+    padding:0px;
+    padding-left: calc(100vw * 17 / var(--base-width));
+    font-size: calc(100vw * 16 / var(--base-width));
+    font-style: normal;
+    font-weight: 400;
+    line-height: calc(100vw * 20 / var(--base-width));
+    color: #0D0D0D;
+}
+.teflo-form-contact-item-input input::placeholder{
+    color: #0D0D0D;
+    font-size: calc(100vw * 16 / var(--base-width));
+    font-style: normal;
+    font-weight: 400;
+    line-height: calc(100vw * 16 / var(--base-width));
+    opacity: 0.3;
+}
+.messagebox-inputbox textarea{
+    border-radius: calc(100vw * 3 / var(--base-width));
+    border: 0.3px solid rgba(13, 13, 13, 0.4);
+    font-size: calc(100vw * 16 / var(--base-width));
+    font-style: normal;
+    font-weight: 400;
+    color: #0D0D0D;
+}
+.teflo-form-select-optionbox{
+    position: absolute;
+    top: calc(100vw * 50 / var(--base-width));
+    left: 0;
+    width: 100%;
+    height: 0;
+    overflow: hidden;
+   z-index:2
+}
+.teflo-form-select-optionbox-content{
+    padding:0 calc(100vw * 5 / var(--base-width));
+    border-radius: 3px;
+    border: 0.3px solid rgba(25, 25, 25, 0.40);
+    background: #FFF;
+    height: auto;
+    margin-top:1px;
+}
+.teflo-form-select-option{
+    height: calc(100vw * 39 / var(--base-width));
+    line-height: calc(100vw * 39 / var(--base-width));
+    cursor: pointer;
+    padding-left: calc(100vw * 17 / var(--base-width));
+    margin-bottom: 0;
+    color: #0D0D0D;
+    font-size: calc(100vw * 14 / var(--base-width));
+    font-style: normal;
+    font-weight: 400;
+    line-height: calc(100vw * 39 / var(--base-width));
+
+}
+.teflo-form-select-option:hover{
+    background: #EDF0F3;
+    border-radius: 3px;
+}
+.agreenbox{
+    display: flex;
+}
+.messagebox{
+    margin-top: calc(100vw * 20 / var(--base-width));
+}
+.messagebox-inputbox{
+    width: 100%;
+}
+.teflo-form-agreenbox{
+    margin-bottom: calc(100vw * 20 / var(--base-width));
+    cursor: pointer;
+}
+.teflo-form-agreenbox-label{
+    color: #0D0D0D;
+    font-size: calc(100vw * 14 / var(--base-width));
+    font-style: normal;
+    font-weight: 400;
+    line-height: calc(100vw * 18 / var(--base-width));
+    letter-spacing: calc(100vw * -0.42 / var(--base-width));
+    cursor: pointer;
+}
+
+
+@media(max-width:1024px){
+    .teflo-form-select-optionbox{
+        top: calc(100vw * 100 / var(--base-width));
+    }
+    .teflo-form{
+        display: block;
+        padding-top: calc(100vw * 120 / var(--base-width));
+    }
+    .teflo-form-lt{
+        margin-bottom: calc(100vw * 80 / var(--base-width));
+        margin-right: 0;
+        width: 100%;
+    }
+    .teflo-form-lt-h2{
+        font-size: calc(100vw * 70 / var(--base-width));
+        line-height: calc(100vw * 76 / var(--base-width));
+        margin-bottom: calc(100vw * 40 / var(--base-width));
+    }
+    .teflo-form-lt-desc1{
+        margin-bottom: calc(100vw * 40 / var(--base-width));
+    }
+    .teflo-form-lt-desc2 *,.teflo-form-lt-desc1 *{
+        font-size: calc(100vw * 30 / var(--base-width));
+        line-height: calc(100vw * 36 / var(--base-width));
+    }
+    .messagebox-label, .teflo-form-contact-item-label{
+        font-size: calc(100vw * 26 / var(--base-width));
+        line-height: calc(100vw * 32 / var(--base-width));
+        margin-bottom: calc(100vw * 15 / var(--base-width));
+    }
+    .teflo-form-contact-item-input input,.teflo-form-select-input{
+        height: calc(100vw * 100 / var(--base-width));
+    }
+    .teflo-form-select-input-svg svg{
+        width: calc(100vw * 23 / var(--base-width));
+        height: calc(100vw * 15 / var(--base-width));
+        margin-right: calc(100vw * 25 / var(--base-width));
+    }
+    .teflo-form-select-input-value{
+        
+        font-size: calc(100vw * 24 / var(--base-width));
+        line-height: calc(100vw * 36 / var(--base-width));
+    }
+    .teflo-form-agreenbox-label{
+        font-size: calc(100vw * 24 / var(--base-width));
+        line-height: calc(100vw * 26 / var(--base-width));
+        letter-spacing: calc(100vw * -0.6 / var(--base-width));
+    }
+    .teflo-form-contact-item-input input::placeholder{
+        font-size: calc(100vw * 24 / var(--base-width));
+        line-height: calc(100vw * 36 / var(--base-width));
+    }
+    .teflo-form-select-option{
+        font-size: calc(100vw * 24 / var(--base-width));
+        line-height: calc(100vw* 60 / var(--base-width));
+        height: calc(100vw* 60 / var(--base-width));
+    }
+    .teflo-form-select-input-svg{
+        display:flex;
+        align-items:center;
+    }
+}
+</style>
+{%- liquid
+    assign button_text = section.settings.button_text
+    assign button_link = section.settings.button_link
+    assign button_text_color = section.settings.button_text_color
+    assign button_bg_color = section.settings.button_bg_color
+    assign button_hover_text_color = section.settings.button_hover_text_color
+    assign button_hover_bg_color = section.settings.button_hover_bg_color
+    assign button_border_color = section.settings.button_border_color
+    assign button_border = section.settings.button_border
+    assign button_hover_border_color = section.settings.button_hover_border_color
+-%}
+
+<div class="teflo-form">
+    <div class="teflo-form-lt">
+        <h2 class="teflo-form-lt-h2">{{ section.settings.title }}</h2>
+        <div class="teflo-form-lt-desc1">
+            {{ section.settings.desc1 }}
+        </div>
+        <div class="teflo-form-lt-desc2">
+            {{ section.settings.desc2 }}
+        </div>
+    </div>
+    <div class="teflo-form-rt">
+           <div class="teflo-form-contact">
+                <div class="teflo-form-contactbox">
+                    {% for block in section.blocks %}
+                        {% assign parent_index = forloop.index0 %} 
+                        {% if block.type != 'type_options' and block.type != 'industry_options' %}
+                            <div class="teflo-form-contact-item">
+                                
+                                    <div class="teflo-form-contact-item-label">{{ block.settings.label }}</div>
+                            
+                                <div class="teflo-form-contact-item-input">
+                                    {% if block.type == 'text' %}
+                                        <input type="text" clas name="contact[{{ block.settings.name }}]" class="full" value="" placeholder="{{ block.settings.placeholder }}" />
+                                    {% elsif block.type == 'email' %}
+                                        <input type="email" name="contact[{{ block.settings.name }}]" class="full" value="" placeholder="{{ block.settings.placeholder }}" />
+                                    {% elsif block.type == 'phone' %}
+                                        <input type="tel" name="contact[{{ block.settings.name }}]" class="full" value="" placeholder="{{ block.settings.placeholder }}" />
+                                    {% elsif block.type == 'industry_select' %}
+                                        <input type="hidden" class="teflo-form-select-hidden-input teflo-form-select-hidden-input{{ parent_index }}"  name="contact[{{ block.settings.name }}]" value="">
+                                        <div class="teflo-form-select">
+                                            <div class="full teflo-form-select-input">
+                                                <p class="teflo-form-select-input-value teflo-form-select-input-value{{ parent_index }}">{{ block.settings.placeholder }}</p>
+                                                <div class="teflo-form-select-input-svg">
+                                                    <svg xmlns="http://www.w3.org/2000/svg"  viewBox="0 0 18 10" fill="none">
+                                                        <path d="M1 1L9 9L17 1" stroke="#0D0D0D" stroke-linecap="round"/>
+                                                    </svg>
+                                                </div>
+                                            </div>
+                                            
+                                            <div class="teflo-form-select-optionbox teflo-form-select-optionbox{{ parent_index }}">
+                                                <div class="teflo-form-select-optionbox-content">
+                                                    <div style="height:10px"></div>
+                                                    {% for option in section.blocks %}
+                                                        {% if option.type == 'industry_options' %}
+                                                            <p class="teflo-form-select-option" data-parent-ele="teflo-form-select-optionbox{{ parent_index }}"  data-value-hidden-input="teflo-form-select-hidden-input{{ parent_index }}" data-value-placeholder="teflo-form-select-input-value{{ parent_index }}" data-value="{{ option.settings.value }}">{{ option.settings.label }}</p>
+                                                        {% endif %}
+                                                    {% endfor %}
+                                                    <div style="height:10px"></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    {% elsif block.type == 'type_select' %}
+                                        <input type="hidden" class="teflo-form-select-hidden-input teflo-form-select-hidden-input{{ parent_index }}"  name="contact[{{ block.settings.name }}]" value="">
+                                        <div class="teflo-form-select">
+                                            <div class="full teflo-form-select-input">
+                                                <p class="teflo-form-select-input-value teflo-form-select-input-value{{ parent_index }}">{{ block.settings.placeholder }}</p>
+                                                <div class="teflo-form-select-input-svg">
+                                                    <svg xmlns="http://www.w3.org/2000/svg"  viewBox="0 0 18 10" fill="none">
+                                                        <path d="M1 1L9 9L17 1" stroke="#0D0D0D" stroke-linecap="round"/>
+                                                    </svg>
+                                                </div>
+                                            </div>
+                                            
+                                            <div class="teflo-form-select-optionbox teflo-form-select-optionbox{{ parent_index }}">
+                                                <div class="teflo-form-select-optionbox-content">
+                                                    <div style="height:10px"></div>
+                                                    {% for option in section.blocks %}
+                                                        {% if option.type == 'type_options' %}
+                                                            <p class="teflo-form-select-option" data-parent-ele="teflo-form-select-optionbox{{ parent_index }}"  data-value-hidden-input="teflo-form-select-hidden-input{{ parent_index }}" data-value-placeholder="teflo-form-select-input-value{{ parent_index }}" data-value="{{ option.settings.value }}">{{ option.settings.label }}</p>
+                                                        {% endif %}
+                                                    {% endfor %}
+                                                    <div style="height:10px"></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    {% endif %}
+                                </div>
+                            </div>
+                        {% endif %}
+                    {% endfor %}
+                </div>
+                <div class="messagebox">
+                    <div class="messagebox-label">{{ section.settings.message_label }}</div>
+                    <div class="messagebox-inputbox">
+                        <textarea name="contact[{{ section.settings.message_name }}]" class="full" value="" placeholder="{{ section.settings.message_placeholder }}"></textarea>
+                    </div>
+                </div>
+                <div class="teflo-form-agreenbox">
+                    <input class="teflo-form-agreenbox-input" type="checkbox" id="agree_name" name="{{ section.settings.agree_name }}" value="">
+                    <label class="teflo-form-agreenbox-label"  for="agree_name">{{ section.settings.agree_placeholder }}</label>
+                </div>
+                <div  class="teflo-form-submit">
+                    <button type="submit">
+                        
+                        {% render 'teflo-button',
+                            button_link:button_link,
+                            button_text:button_text,
+                            button_text_color:button_text_color,
+                            button_bg_color:button_bg_color,
+                            button_hover_text_color:button_hover_text_color,
+                            button_hover_bg_color:button_hover_bg_color,
+                            button_border_color:button_border_color, 
+                            button_border:button_border,
+                            button_hover_border_color:button_hover_border_color
+                            
+                        %}
+                    </button>
+                </div>
+            </div> 
+         
+            
+
+
+            
+    </div>
+</div>
+
+
+{% schema %}
+
+{
+    "name": "Teflo Form",
+    "settings": [
+        {
+            "type": "text",
+            "id": "title",
+            "label": "Title"
+        },
+        {
+            "type": "richtext",
+            "id": "desc1",
+            "label": "description title"
+        },
+        {
+            "type": "richtext",
+            "id": "desc2",
+            "label": "Description content"
+        },
+        {
+            "type": "text",
+            "id": "message_placeholder",
+            "label": "Message placeholder"
+        },
+        {
+            "type": "text",
+            "id": "message_label",
+            "label": "Message label"
+        },
+        {
+            "type": "text",
+            "id": "message_name",
+            "label": "Message submit name"
+        },
+        {
+            "type": "text",
+            "id": "agree_label",
+            "label": "Agree label"
+        },
+        {
+            "type": "text",
+            "id": "agree_name",
+            "label": "Agree submit name"
+        },
+        {
+            "type": "text",
+            "id": "agree_placeholder",
+            "label": "Agree placeholder"
+        },
+          {
+            "type": "color",
+            "id": "button_border_color",
+            "label": "Button border color"
+        },
+        {
+            "type": "color",
+            "id": "button_hover_border_color",
+            "label": "Button hover border color"
+        },
+        {
+            "type": "checkbox",
+            "id": "button_border",
+            "label": "Button border",
+            "default": true
+        },
+        {
+            "type": "text",
+            "id": "button_text",
+            "label": "Button text"
+        },
+        {
+            "type": "text",
+            "id": "button_link",
+            "label": "Button link, enter a URL or popup"
+        },
+        {
+            "type": "text",
+            "id": "button_text_color",
+            "label": "Button text color",
+            "default": "#000000"
+        },
+        {
+            "type": "text",
+            "id": "button_bg_color",
+            "label": "Button background color",
+            "default": "#FFFFFF"
+        },
+        {
+            "type": "text",
+            "id": "button_hover_text_color",
+            "label": "Button hover text color",
+            "default": "#FFFFFF"
+        },
+        {
+            "type": "text",
+            "id": "button_hover_bg_color",
+            "label": "Button hover background color",
+            "default": "#000000"
+        }
+    ],
+    "blocks": [
+        {
+            "type": "text",
+            "name": "text",
+            "settings": [
+                {
+                    "type": "text",
+                    "id": "placeholder",
+                    "label": "placeholder"
+                },
+                {
+                    "type": "text",
+                    "id": "label",
+                    "label": "label"
+                },
+                {
+                    "type": "text",
+                    "id": "name",
+                    "label": "submit name"
+                }
+            ]
+        },
+        {
+            "type": "email",
+            "name": "Email",
+            "settings": [
+                {
+                    "type": "text",
+                    "id": "placeholder",
+                    "label": "placeholder"
+                },
+                {
+                    "type": "text",
+                    "id": "label",
+                    "label": "label"
+                },
+                {
+                    "type": "text",
+                    "id": "name",
+                    "label": "submit name"
+                }
+            ]
+        },
+        {
+            "type": "phone",
+            "name": "Phone",
+            "settings": [
+                {
+                    "type": "text",
+                    "id": "placeholder",
+                    "label": "placeholder"
+                },
+                {
+                    "type": "text",
+                    "id": "label",
+                    "label": "label"
+                },
+                {
+                    "type": "text",
+                    "id": "name",
+                    "label": "submit name"
+                }
+            ]
+        },
+      
+        {
+            "type": "industry_select",
+            "name": "Industry Select",
+            "settings": [
+                {
+                    "type": "text",
+                    "id": "placeholder",
+                    "label": "placeholder"
+                },
+                {
+                    "type": "text",
+                    "id": "label",
+                    "label": "label"
+                },{
+                    "type": "text",
+                    "id": "name",
+                    "label": "submit name"
+                }
+            ]
+        },
+        {
+            "type": "industry_options",
+            "name": "industry options",
+            "settings": [
+                {
+                    "type": "text",
+                    "id": "label",
+                    "label": "label"
+                },
+                {
+                    "type": "text",
+                    "id": "value",
+                    "label": "value"
+                }
+            ]
+        },
+        {
+            "type": "type_select",
+            "name": "Type Select",
+            "settings": [
+                {
+                    "type": "text",
+                    "id": "placeholder",
+                    "label": "placeholder"
+                },
+                {
+                    "type": "text",
+                    "id": "label",
+                    "label": "label"
+                },{
+                    "type": "text",
+                    "id": "name",
+                    "label": "submit name"
+                }
+            ]
+        },{
+            "type": "type_options",
+            "name": "type options",
+            "settings": [
+                {
+                    "type": "text",
+                    "id": "label",
+                    "label": "label"
+                },
+                {
+                    "type": "text",
+                    "id": "value",
+                    "label": "value"
+                }
+            ]
+        }
+    ],
+    "presets": [
+        {
+            "category": "Contact",
+            "name": "Teflo Form",
+            "settings": {
+            }
+        }
+    ]
+}
+
+{% endschema %}
+
+{% javascript %}
+
+
+
+
+    var tefloFormSelectInput = document.querySelectorAll('.teflo-form-select .teflo-form-select-input');
+    tefloFormSelectInput.forEach(function(item){
+        item.addEventListener('click',function(){
+            var optionbox = item.nextElementSibling;
+            if(optionbox.style.height == '0px' || optionbox.style.height == ''){
+                gsap.to(optionbox, {height: 'auto', duration: 0.3, ease: 'power4.out'});
+            }else{
+                gsap.to(optionbox, {height: '0px', duration: 0.3, ease: 'power4.out'});
+            }
+        })
+
+    })
+    let tefloFormSelectOption = document.querySelectorAll('.teflo-form-select-option');
+    tefloFormSelectOption.forEach(function(item){
+        item.addEventListener('click',function(){
+            var hiddenInput = document.querySelector('.'+item.getAttribute('data-value-hidden-input'));
+            var valuePlaceholder = document.querySelector('.'+item.getAttribute('data-value-placeholder'));
+            hiddenInput.value = item.getAttribute('data-value');
+            hiddenInput.dispatchEvent(new Event('change'));
+            valuePlaceholder.innerHTML = item.innerHTML;
+            valuePlaceholder.style.opacity = 1;
+            var parentEle = document.querySelector('.'+item.getAttribute('data-parent-ele'));
+            gsap.to(parentEle, {height: '0px', duration: 0.3, ease: 'power4.out'});
+        })
+    })
+
+
+    var tefloFormSubmit = document.querySelector('.teflo-form-submit button');
+    tefloFormSubmit.addEventListener('click',function(){
+        var agreeInput = document.querySelector('.teflo-form-agreenbox-input');
+        if(!agreeInput.checked){
+            alert('Please agree to the terms and conditions');
+            return false;
+        }
+
+        var form = document.querySelector('.teflo-form-contact');
+        var inputs = form.querySelectorAll('input,textarea,select');
+        var formData = new FormData();
+        inputs.forEach(function(item){
+            if (item.name) {
+                formData.append(item.name,item.value);
+            }
+        })
+        
+        fetch('/contact',{
+            method:'POST',
+            body: formData,
+            headers: {
+				'X-Requested-With': 'XMLHttpRequest'
+			}
+        }).then(function(response) {
+            if (!response.ok) {
+                return response.text().then(errorText => {
+                    throw new Error(`Error: ${response.status} ${errorText}`);
+                });
+            }
+            return response.json();
+        })
+        .then(function(data) {
+            console.log(data);
+ 
+        })
+        .catch(function(error) {
+            console.error('Error during fetch:', error);
+ 
+        });
+
+    })
+ 
+
+
+{% endjavascript %}
+
+<style>
+    option{
+        height: 39px;
+        flex-shrink: 0;
+    }
+    option:hover{
+        background: #EDF0F3;
+    }
+</style>

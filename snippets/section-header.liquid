@@ -1,0 +1,40 @@
+{%- if section_heading != blank or section_description != blank -%}
+<div class="section-header">
+	<div class="section-header--content">
+		{%- if section_heading -%}
+			<h3 class="section-header--title">
+				{% render 'animated-marker-heading', heading: section_heading, style: marker_style, color: marker_color %}
+			</h3>
+		{%- endif -%}
+		{%- if section_description != blank -%}
+			<div class="section-header--description rte">
+				{{ section_description }}
+			</div>
+		{%- endif -%}
+	</div>
+	{%- if section_heading_button -%}
+	<div class="section-header--button">
+		{% assign text_button_title = 'sections.featured_collection.shop_collection' | t: collection: section_heading_button.title %}
+		{% render 'text-button', url: section_heading_button.url, title: text_button_title %}
+	</div>
+	{%- elsif section_heading_button_blog -%}
+	<div class="section-header--button">
+		{% assign text_button_title = 'sections.featured_blog.view_all' | t %}
+		{% render 'text-button', url: section_heading_button_blog.url, title: text_button_title %}
+	</div>
+	{%- endif -%}
+	{%- if blocks -%}
+	<scroll-shadow>
+		<collection-tabs class="collection-tabs__list" data-target="product-grid-{{ section_id }}">
+			{%- for block in blocks -%}
+				{%- if block.settings.collection != blank -%}
+					<button type="button" data-collection="{{ block.settings.collection.handle }}" class="collection-tabs__list-link{% if forloop.first == true %} active{% endif %}" {{ block.shopify_attributes }}>{{ block.settings.collection.title }}</button>
+				{%- else -%}
+					<button type="button" data-collection="collection-{{ block.id }}" class="collection-tabs__list-link{% if forloop.first == true %} active{% endif %}" {{ block.shopify_attributes }}>Collection {{ forloop.index }}</button>
+				{%- endif -%}
+			{%- endfor -%}
+		</collection-tabs>
+	</scroll-shadow>
+	{%- endif -%}
+</div>
+{%- endif -%}

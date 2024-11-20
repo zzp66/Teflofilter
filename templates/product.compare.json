@@ -1,0 +1,59 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main-product-compare": {
+      "type": "main-product-compare",
+      "blocks": {
+        "vendor_LLcGRi": {
+          "type": "vendor",
+          "settings": {
+            "heading": "Vendor",
+            "show_vendor_link": true
+          }
+        },
+        "description_BAGarH": {
+          "type": "description",
+          "settings": {
+            "heading": "Description",
+            "truncate_description": true,
+            "truncate_description_count": 20
+          }
+        },
+        "metafield_LchQ8z": {
+          "type": "metafield",
+          "settings": {
+            "heading": "Weight",
+            "content": "custom.weight"
+          }
+        },
+        "metafield_BFjF8i": {
+          "type": "metafield",
+          "settings": {
+            "heading": "Color",
+            "content": "custom.color"
+          }
+        }
+      },
+      "block_order": [
+        "vendor_LLcGRi",
+        "description_BAGarH",
+        "metafield_LchQ8z",
+        "metafield_BFjF8i"
+      ],
+      "settings": {
+        "empty_field_label": "N\/A"
+      }
+    }
+  },
+  "order": [
+    "main-product-compare"
+  ]
+}

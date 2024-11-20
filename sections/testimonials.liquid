@@ -1,0 +1,235 @@
+{{- 'testimonials.css' | asset_url | stylesheet_tag -}}
+{%- liquid
+	assign section_heading = section.settings.heading
+	assign full_width = section.settings.full_width
+	assign font_family = section.settings.font_family
+	assign text_size = section.settings.text_size
+	assign pagination = section.settings.pagination
+	assign autoplay = section.settings.autoplay
+	assign color_bg = section.settings.color_bg
+	assign color_text = section.settings.color_text
+	assign disable_top_spacing = section.settings.disable_top_spacing
+	assign disable_bottom_spacing = section.settings.disable_bottom_spacing
+
+	if autoplay
+		assign autoplay = section.settings.autoplay_length | times: 1000
+	endif
+-%}
+<div class="row{% if full_width %} full-width-row-full{% endif %}">
+	<div class="small-12 columns">
+		<div class="testimonials testimonials--full-width-{{ full_width }} section-spacing-padding{% if disable_top_spacing %} section-spacing--disable-top{% endif %}{% if disable_bottom_spacing %} section-spacing--disable-bottom{% endif %}" style="--color-bg:{{ color_bg }}; --color-body: {{ color_text }}; --color-text:{{ color_text }}; --bg-body-rgb: {{ color_bg.rgb | replace: ' ' , ',' }}">
+			{%- if section_heading -%}
+			<div class="testimonials--heading">
+				<h6>{{ section_heading }}</h6>
+			</div>
+			{%- endif -%}
+			<div class="testimonials--inner text-{{ text_size }}">
+				<slide-show class="testimonials--carousel carousel static-dots pagination--{{ pagination }}" data-autoplay="{{ autoplay }}" data-dots="true" data-align="center">
+					{%- for block in section.blocks -%}
+						<div class="testimonials--testimonial carousel__slide" {{ block.shopify_attributes }}>
+							<div class="testimonials--testimonial-inner">
+								{%- if block.settings.stars and block.settings.stars != '' -%}
+									<div class="star-rating" style="--star-rating: {{ block.settings.stars }};"></div>
+								{%- endif -%}
+								<div class="testimonials--testimonial-content {{ font_family }}-font">
+									<p>{{ block.settings.text | newline_to_br }}</p>
+								</div>
+								{%- if block.settings.author != empty -%}
+								<div class="testimonials--author">
+									{{- block.settings.author -}}
+								</div>
+								{%- endif -%}
+							</div>
+						</div>
+					{%- endfor -%}
+					{%- if section.blocks.size > 1 -%}
+						{%- if pagination == 'logos' -%}
+							<scroll-shadow>
+								<ol class="flickity-custom-dots dot-style--{{ pagination }}">
+									{%- for block in section.blocks -%}
+										<li class="dot" aria-label="{{ forloop.index }}">
+											{%- liquid
+												if block.settings.image != blank
+													assign image = block.settings.image
+													assign master_width = image.src.width | append: 'x' | append: image.src.height
+													assign width = '345x' | append: ',' | append: master_width
+													render 'responsive-image', image: image, sizes: width, retina: true
+												endif
+											-%}
+										</li>
+									{%- endfor -%}
+								</ol>
+							</scroll-shadow>
+						{%- endif -%}
+					{%- endif -%}
+				</slide-show>
+			</div>
+		</div>
+	</div>
+</div>
+{% schema %}
+  {
+    "name": "Testimonials",
+		"class": "section-testimonials",
+    "settings": [
+			{
+				"type": "text",
+				"id": "heading",
+				"label": "Heading",
+				"default": "Testimonials"
+			},
+			{
+        "type": "checkbox",
+        "id": "full_width",
+        "label": "Make section full width",
+        "default": true
+      },
+      {
+        "type": "select",
+        "id": "text_size",
+        "label": "Text size",
+        "default": "medium",
+        "options": [
+          { "value": "small", "label": "Small" },
+          { "value": "medium", "label": "Medium" },
+          { "value": "large", "label": "Large" }
+        ]
+      },
+			{
+				"type": "select",
+				"id": "font_family",
+				"options": [
+					{
+						"value": "body",
+						"label": "Body"
+					},
+					{
+						"value": "heading",
+						"label": "Heading"
+					}
+				],
+				"default": "heading",
+				"label": "Font family"
+			},
+			{
+        "type": "select",
+        "id": "pagination",
+        "label": "Pagination",
+        "default": "dots",
+        "options": [
+          { "value": "dots", "label": "Dots" },
+          { "value": "logos", "label": "Logos" }
+        ]
+      },
+			{
+        "type": "checkbox",
+        "id": "autoplay",
+        "label": "Auto-rotate slides",
+        "default": true
+      },
+			{
+				"type": "range",
+				"id": "autoplay_length",
+				"min": 3,
+				"max": 10,
+				"step": 1,
+				"unit": "s",
+				"label": "Change slides every",
+				"default": 5
+			},
+			{
+	      "type": "header",
+	      "content": "Colors"
+	    },
+			{
+        "type": "color",
+        "id": "color_bg",
+        "label": "Background",
+        "default": "#F5F5F5"
+      },
+			{
+        "type": "color",
+        "id": "color_text",
+        "label": "Text",
+        "default": "#2c2d2e"
+      },
+			{
+	      "type": "header",
+	      "content": "Spacing"
+	    },
+			{
+				"type": "checkbox",
+				"id": "disable_top_spacing",
+				"default": false,
+				"label": "Remove top spacing"
+			},
+			{
+				"type": "checkbox",
+				"id": "disable_bottom_spacing",
+				"default": false,
+				"label": "Remove bottom spacing"
+			}
+    ],
+    "blocks": [
+      {
+        "type": "quote",
+        "name": "Testimonial",
+        "settings": [
+					{
+						"type": "image_picker",
+						"id": "image",
+						"label": "Logo"
+					},
+					{
+						"type": "select",
+						"id": "stars",
+						"options": [
+							{ "value": "", "label": "None" },
+							{ "value": "3", "label": "3 out of 5" },
+							{ "value": "3.5", "label": "3.5 out of 5" },
+							{ "value": "4", "label": "4 out of 5" },
+							{ "value": "4.5", "label": "4.5 out of 5" },
+							{ "value": "5", "label": "5 out of 5" }
+						],
+						"default": "",
+						"label": "Star rating"
+					},
+          {
+            "type": "textarea",
+            "id": "text",
+            "label": "Text",
+            "default": "Add your customer or client quote here to showcase them."
+          },
+          {
+            "id": "author",
+            "type": "text",
+            "label": "Author",
+						"default": "Testimonial author"
+          }
+        ]
+      }
+    ],
+    "presets": [
+      {
+        "name": "Testimonials",
+				"blocks": [
+	        {
+	          "type": "quote"
+	        },
+	        {
+	          "type": "quote"
+	        },
+	        {
+	          "type": "quote"
+	        }
+	      ]
+      }
+    ],
+		"enabled_on": {
+			"templates": ["*"],
+			"groups": [
+				"header", "footer"
+			]
+		}
+  }
+{% endschema %}

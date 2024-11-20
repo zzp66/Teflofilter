@@ -1,0 +1,53 @@
+{%- liquid
+	assign menu = section.settings.mobile_nav
+	assign color_links = section.settings.color_links
+	assign color_bg = section.settings.color_bg
+-%}
+{{- 'header-mobile-navigation.css' | asset_url | stylesheet_tag -}}
+<div class="header-mobile-navigation" style="--color-bg: {{ color_bg }}; --color-bg-rgb: {{ color_bg.rgb | replace: ' ' , ',' }};  --color-links: {{ color_links }}">
+	<scroll-shadow>
+		<ul>
+			{%- for menu_link in menu.links -%}
+				<li>
+					<a href="{{ menu_link.url }}" class="header-mobile-navigation--link" title="{{ menu_link.title | escape }}"{%- if menu_link.active %} aria-current="page"{% endif -%}>
+						{{- menu_link.title -}}
+					</a>
+				</li>
+			{%- endfor -%}
+		</ul>
+	</scroll-shadow>
+</div>
+{% schema %}
+{
+	"name": "Mobile navigation",
+	"class": "section-header-mobile-navigation",
+	"settings": [
+		{
+			"type": "paragraph",
+			"content": "This section is only visible on mobile screens. The navigation will only display first level items and will not display dropdowns."
+		},
+		{
+			"type": "link_list",
+			"id": "mobile_nav",
+			"label": "Menu",
+			"default": "main-menu"
+		},
+		{
+			"type": "header",
+			"content": "Colors"
+		},
+		{
+			"type": "color",
+			"id": "color_links",
+			"label": "Links",
+			"default": "#D6D8D9"
+		},
+		{
+			"type": "color",
+			"id": "color_bg",
+			"label": "Background",
+			"default": "#787C80"
+		}
+	]
+}
+{% endschema %}

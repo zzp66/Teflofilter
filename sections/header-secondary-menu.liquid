@@ -1,0 +1,131 @@
+{%- liquid
+	assign menu = section.settings.secondary_menu
+  assign full_width = section.settings.full_width
+	assign show_language_switcher = section.settings.show_language_switcher
+	assign show_currency_switcher = section.settings.show_currency_switcher
+	assign show_social_media = section.settings.show_social_media
+
+	assign color_secondary_menu_bg = settings.color_secondary_menu_bg | downcase
+	assign color_header_bg = settings.color_header_bg | downcase
+
+	assign has_border = false
+	if color_header_bg == color_secondary_menu_bg
+		assign has_border = true
+	endif
+-%}
+{{- 'subheader.css' | asset_url | stylesheet_tag -}}
+<aside class="subheader subheader-border--{{ has_border }}{% if full_width %} subheader--full-width{%- endif %}">
+	<div class="subheader--inner">
+		<div class="subheader--left">
+			<ul class="thb-full-menu" role="menubar">
+				{%- for link in menu.links -%}
+					{%- liquid
+						assign has_sub_menu = false
+						assign has_mega_menu = false
+
+						if link.links.size > 0
+							assign has_sub_menu = true
+						endif
+					-%}
+					<li role="menuitem" class="{% if has_sub_menu %}menu-item-has-children{% endif %}{% if has_mega_menu %} menu-item-has-megamenu{% endif %}{% if link.active %} active{% endif %}" {% if has_sub_menu %}data-item-title="{{ link.title | escape }}"{% endif %}>
+						<a href="{{ link.url }}" title="{{ link.title | escape }}"{%- if link.active %} aria-current="page"{% endif -%}>
+							{{- link.title -}}
+							{%- if has_sub_menu -%}{%- render 'svg-icons' with 'thb-dropdown-bottom' -%}{%- endif -%}
+						</a>
+						{%- if has_sub_menu == true -%}
+							<ul class="sub-menu" tabindex="-1">
+								{%- for l in link.links -%}
+									{%- liquid
+										assign has_sub_menu = false
+										assign has_mega_menu = false
+										if l.links.size > 0
+											assign has_sub_menu = true
+										endif
+
+									-%}
+									<li class="{%- if l.active %}active{% endif %}{% if has_sub_menu %} menu-item-has-children{%- endif -%}" role="none" {% if has_sub_menu %}data-item-title="{{ l.title | escape }}"{% endif %}>
+										<a href="{{ l.url }}" title="{{ l.title | escape }}" role="menuitem">
+											{{- l.title -}}
+											{%- if has_sub_menu -%}{%- render 'svg-icons' with 'thb-dropdown-right' -%}{%- endif -%}
+										</a>
+										{%- if has_sub_menu -%}
+											<ul class="sub-menu" role="menu">
+												{%- for sub_link in l.links -%}
+													<li class="{%- if sub_link.active %} active{% endif %}" role="none">
+														<a href="{{ sub_link.url }}" title="{{ sub_link.title | escape }}" role="menuitem">{{- sub_link.title -}}</a>
+													</li>
+												{%- endfor -%}
+											</ul>
+										{%- endif -%}
+									</li>
+								{%- endfor -%}
+							</ul>
+						{%- endif -%}
+					</li>
+				{%- endfor -%}
+			</ul>
+		</div>
+		<div class="subheader--right">
+			{%- liquid
+				if show_social_media
+					render 'social-links', show_label: false
+				endif
+			-%}
+			<div class="no-js-hidden">
+				{%- render 'localization', id: 'HeaderLocalization', show_language_switcher: show_language_switcher, show_currency_switcher: show_currency_switcher -%}
+			</div>
+		</div>
+	</div>
+</aside>
+
+{% schema %}
+{
+	"name": "Secondary Menu",
+	"class": "header-secondary-menu-section",
+	"settings": [
+		{
+      "type": "checkbox",
+      "id": "full_width",
+      "label": "Make section full width",
+      "default": false
+    },
+		{
+			"type": "link_list",
+			"id": "secondary_menu",
+			"label": "Secondary menu"
+		},
+		{
+			"type": "header",
+			"content": "Language switcher"
+		},
+		{
+			"type": "checkbox",
+			"id": "show_language_switcher",
+			"label": "Enable language switcher",
+			"default": false,
+			"info": "To add a language, go to your [language settings](/admin/settings/languages)."
+		},
+		{
+			"type": "header",
+			"content": "Currency switcher"
+		},
+		{
+			"type": "checkbox",
+			"id": "show_currency_switcher",
+			"label": "Enable currency switcher",
+			"default": true,
+			"info": "To add a country/region, go to your [payment settings](/admin/settings/payments)."
+		},
+		{
+			"type": "header",
+			"content": "Social media"
+		},
+		{
+			"type": "checkbox",
+			"id": "show_social_media",
+			"label": "Show social media",
+			"default": true
+		}
+	]
+}
+{% endschema %}

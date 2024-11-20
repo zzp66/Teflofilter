@@ -1,0 +1,85 @@
+
+
+.page-numbers .page a:after,
+.page-numbers .next a:after,
+.page-numbers .prev a:after,
+.page-numbers .current:after {
+  transition: all 0.25s cubic-bezier(0.104, 0.204, 0.492, 1); }
+
+
+
+.pagination {
+  display: block;
+  text-align: center;
+  min-height: 42px;
+  position: relative; }
+  .pagination.pagination-type--infinite .button {
+    display: none; }
+  .pagination.pagination-type--infinite[loading="true"] .loading-overlay {
+    display: block; }
+
+.page-numbers {
+  display: inline-flex;
+  text-align: center;
+  border: 1px solid var(--color-form-border);
+  padding: 0 41px;
+  position: relative;
+  border-radius: var(--input-border-radius, 6px); }
+  .page-numbers span {
+    display: inline-flex;
+    vertical-align: middle;
+    color: var(--color-accent); }
+    .page-numbers span.prev, .page-numbers span.next {
+      position: absolute;
+      top: 0;
+      left: 0;
+      bottom: 0;
+      width: 36px;
+      align-items: center;
+      justify-content: center;
+      text-align: center; }
+    .page-numbers span.next {
+      left: auto;
+      right: 0; }
+  .page-numbers .page a,
+  .page-numbers .next a,
+  .page-numbers .prev a,
+  .page-numbers .current {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 20px;
+    height: 40px;
+    padding: 0 2px;
+    position: relative;
+    margin: 0 3px;
+    font-size: 0.8125rem;
+    line-height: 0; }
+    .page-numbers .page a:after,
+    .page-numbers .next a:after,
+    .page-numbers .prev a:after,
+    .page-numbers .current:after {
+      content: "";
+      display: block;
+      width: 100%;
+      position: absolute;
+      bottom: -1px;
+      left: 0;
+      background: transparent;
+      height: 2px; }
+  .page-numbers .page a:hover:after,
+  .page-numbers .next a:hover:after,
+  .page-numbers .prev a:hover:after {
+    background: var(--color-accent); }
+  .page-numbers .page a[disabled],
+  .page-numbers .next a[disabled],
+  .page-numbers .prev a[disabled] {
+    opacity: 0.3;
+    cursor: not-allowed;
+    box-shadow: none; }
+    .page-numbers .page a[disabled]:after,
+    .page-numbers .next a[disabled]:after,
+    .page-numbers .prev a[disabled]:after {
+      content: none; }
+  .page-numbers .current:after {
+    background: var(--color-accent); }

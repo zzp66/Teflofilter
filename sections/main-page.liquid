@@ -1,0 +1,22 @@
+<div class="section-spacing">
+	<div class="row">
+		<div class="small-12 columns">
+			<div class="blog-post-detail">
+				<div class="post-title">
+					<h1>{{ page.title }}</h1>
+				</div>
+				<div class="page-content-width rte">
+					{{ page.content }}
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+{{ 'page.css' | asset_url | stylesheet_tag }}
+{% schema %}
+{
+  "name": "Page",
+  "tag": "section",
+  "class": "section"
+}
+{% endschema %}

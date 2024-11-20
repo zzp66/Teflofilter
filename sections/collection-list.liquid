@@ -1,0 +1,330 @@
+{%- liquid
+	assign section_heading = section.settings.heading
+	assign marker_style = section.settings.marker_style
+	assign section_description = section.settings.description
+	assign heading_size = section.settings.heading_size
+	assign columns_desktop = section.settings.columns_desktop
+	assign columns_mobile = section.settings.columns_mobile
+	assign show_progress_bar = section.settings.show_progress_bar
+	assign mobile_swipe = section.settings.mobile_swipe
+	assign collections = section.settings.collection_list
+	assign style = section.settings.style
+	assign text_alignment = section.settings.text_alignment
+	assign heading_position = section.settings.heading_position
+	assign collection_layout = section.settings.collection_layout
+
+	assign marker_color = section.settings.marker_color
+	assign text_color = section.settings.text_color
+	assign overlay_color = section.settings.overlay_color
+	assign overlay_opacity = section.settings.overlay_opacity
+
+	assign disable_top_spacing = section.settings.disable_top_spacing
+	assign disable_bottom_spacing = section.settings.disable_bottom_spacing
+	assign is_carousel = false
+
+	assign tag = 'div'
+	if collection_layout == 'carousel'
+	assign tag = 'slide-show'
+		assign is_carousel = true
+		assign carousel_class = 'carousel'
+	endif
+-%}
+<div class="row">
+	<div class="small-12 columns">
+		<div class="list-collections section-spacing{% if disable_top_spacing %} section-spacing--disable-top{% endif %}{% if disable_bottom_spacing %} section-spacing--disable-bottom{% endif %}" style="--overlay-color-rgb: {{ overlay_color.rgb | replace: ' ' , ',' }}; --overlay-opacity: {{ overlay_opacity | divided_by: 100.0 }}; --var-collection-list-columns:{{ columns_desktop }}; --collection-text-color: {{ text_color }}">
+			{%- render 'section-header', section_heading: section_heading, section_description: section_description, marker_color: marker_color, marker_style: marker_style -%}
+			<{{ tag }} class="collection-grid collection-grid__{{ collection_layout }} {{ carousel_class }}{% if collection_layout == 'grid' and mobile_swipe %} swipe-on-mobile{% endif %} mobile-columns--{{ columns_mobile | default: 1 }}">
+				{%- if collections.count > 0 -%}
+					{%- for collection in collections -%}
+						{%- render 'collection-card', grid_collection: collection, media_aspect_ratio: section.settings.image_ratio, style: style, layout: collection_layout, index: forloop.index, is_carousel: is_carousel, columns_desktop: columns_desktop, columns_mobile: columns_mobile, heading_position: heading_position, heading_size: heading_size, text_alignment: text_alignment -%}
+					{%- endfor -%}
+				{%- else -%}
+					{%- for i in (1..5) -%}
+						{%- render 'collection-card', grid_collection: empty, media_aspect_ratio: section.settings.image_ratio, style: style, layout: collection_layout, index: forloop.index, is_carousel: is_carousel, columns_desktop: columns_desktop, columns_mobile: columns_mobile, heading_position: heading_position, heading_size: heading_size, text_alignment: text_alignment -%}
+					{%- endfor -%}
+				{%- endif -%}
+				{%- if collection_layout == 'carousel' -%}
+					{%- if collections.count > columns_desktop -%}
+					<div class="flickity-nav flickity-prev" tabindex="0">{% render 'svg-icons' with 'carousel-prev' %}</div>
+					<div class="flickity-nav flickity-next" tabindex="0">{% render 'svg-icons' with 'carousel-next' %}</div>
+					{%- endif -%}
+				{%- endif -%}
+			</{{ tag }}>
+			{%- if collection_layout == 'carousel' and show_progress_bar -%}
+			<div class="flickity-progress">
+				<div class="flickity-progress--bar"></div>
+			</div>
+			{%- endif -%}
+		</div>
+	</div>
+</div>
+{{- 'list-collections.css' | asset_url | stylesheet_tag -}}
+{% schema %}
+  {
+    "name": "Collection list",
+	  "class": "section-collection-list",
+    "settings": [
+			{
+				"type": "text",
+				"id": "heading",
+				"label": "Heading",
+				"default": "Shop by Category",
+				"info": "Wrap your text between | to add animated markers. For example: Animated |marker| will underline marker text."
+			},
+			{
+				"type": "select",
+				"id": "marker_style",
+				"options": [
+					{
+						"value": "style1",
+						"label": "Basic"
+					},
+					{
+						"value": "style2",
+						"label": "Double"
+					},
+					{
+						"value": "style3",
+						"label": "Squiggle"
+					},
+					{
+						"value": "style4",
+						"label": "Zigzag"
+					}
+				],
+				"default": "style1",
+				"label": "Marker"
+			},
+			{
+				"type": "richtext",
+				"id": "description",
+				"label": "Description",
+				"default": "<p>Add a short description for your collections</p>"
+			},
+			{
+				"type": "select",
+				"id": "heading_size",
+				"options": [
+					{
+						"value": "small",
+						"label": "Small"
+					},
+					{
+						"value": "medium",
+						"label": "Medium"
+					},
+					{
+						"value": "large",
+						"label": "Large"
+					}
+				],
+				"default": "small",
+				"label": "Collection heading size"
+			},
+			{
+			  "type": "collection_list",
+			  "id": "collection_list",
+			  "label": "Collections",
+			  "limit": 18
+			},
+			{
+	      "type": "select",
+	      "id": "image_ratio",
+	      "options": [
+	        {
+	          "value": "adapt",
+	          "label": "Adapt to image"
+	        },
+	        {
+	          "value": "portrait",
+	          "label": "Portrait"
+	        },
+	        {
+	          "value": "square",
+	          "label": "Square"
+	        }
+	      ],
+	      "default": "portrait",
+	      "label": "Image ratio",
+	      "info": "Add images by editing your collections. [Learn more](https://help.shopify.com/en/manual/products/collections)"
+	    },
+			{
+				"type": "select",
+				"id": "collection_layout",
+				"options": [
+					{
+						"value": "grid",
+						"label": "Grid"
+					},
+					{
+						"value": "carousel",
+						"label": "Carousel"
+					}
+				],
+				"default": "grid",
+				"label": "Layout"
+			},
+			{
+				"type": "select",
+				"id": "style",
+				"options": [
+					{
+						"value": "style1",
+						"label": "Underneath image"
+					},
+					{
+						"value": "style2",
+						"label": "Over image"
+					}
+				],
+				"default": "style1",
+				"label": "Style"
+			},
+			{
+				"type": "select",
+				"id": "text_alignment",
+				"options": [
+					{
+						"value": "left",
+						"label": "Left"
+					},
+					{
+						"value": "center",
+						"label": "Center"
+					},
+					{
+						"value": "right",
+						"label": "Right"
+					}
+				],
+				"default": "center",
+				"label": "Text alignment"
+			},
+			{
+	      "type": "range",
+	      "id": "columns_desktop",
+	      "min": 2,
+	      "max": 6,
+	      "step": 1,
+	      "default": 4,
+	      "label": "Number of columns on desktop"
+	    },
+			{
+				"type": "select",
+				"id": "columns_mobile",
+				"options": [
+					{
+						"value": "1",
+						"label": "One column"
+					},
+					{
+						"value": "2",
+						"label": "Two Columns"
+					}
+				],
+				"default": "1",
+				"label": "Number of columns on mobile"
+			},
+			{
+        "type": "header",
+        "content": "Carousel"
+      },
+			{
+				"type": "checkbox",
+				"id": "show_progress_bar",
+				"label": "Show progress bar",
+				"default": true
+			},
+			{
+        "type": "header",
+        "content": "Grid"
+      },
+			{
+				"type": "checkbox",
+				"id": "mobile_swipe",
+				"default": true,
+				"label": "Enable swipe on mobile"
+			},
+			{
+        "type": "header",
+        "content": "Over image"
+      },
+			{
+				 "type": "select",
+				 "id": "heading_position",
+				 "label": "Heading position",
+				 "options": [
+					 { "value": "top-left", "label": "Top left" },
+					 { "value": "top-center", "label": "Top center" },
+					 { "value": "top-right", "label": "Top right" },
+					 { "value": "middle-left", "label": "Middle left" },
+					 { "value": "middle-center", "label": "Middle center" },
+					 { "value": "middle-right", "label": "Middle right" },
+					 { "value": "bottom-left", "label": "Bottom left" },
+					 { "value": "bottom-center", "label": "Bottom center" },
+					 { "value": "bottom-right", "label": "Bottom right" }
+				 ],
+				 "default": "bottom-center"
+			},
+			{
+        "type": "header",
+        "content": "Colors"
+      },
+			{
+				"type": "color",
+				"id": "marker_color",
+				"label": "Marker",
+				"default": "#FD6262"
+			},
+			{
+				"type": "color",
+				"id": "text_color",
+				"label": "Text",
+				"default": "#2C2D2E"
+			},
+			{
+				"type": "color",
+				"id": "overlay_color",
+				"label": "Overlay",
+				"default": "transparent"
+			},
+			{
+				"type": "range",
+				"id": "overlay_opacity",
+				"min": 0,
+				"max": 100,
+				"step": 1,
+				"unit": "%",
+				"label": "Overlay opacity",
+				"default": 30
+			},
+			{
+        "type": "header",
+        "content": "Spacing"
+      },
+			{
+				"type": "checkbox",
+				"id": "disable_top_spacing",
+				"default": false,
+				"label": "Remove top spacing"
+			},
+			{
+				"type": "checkbox",
+				"id": "disable_bottom_spacing",
+				"default": false,
+				"label": "Remove bottom spacing"
+			}
+    ],
+    "presets": [
+      {
+        "name": "Collection list"
+      }
+    ],
+		"enabled_on": {
+			"templates": ["*"],
+			"groups": [
+				"header", "footer"
+			]
+		}
+  }
+{% endschema %}

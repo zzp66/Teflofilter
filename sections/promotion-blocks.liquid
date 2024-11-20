@@ -1,0 +1,193 @@
+{{- 'promotion-blocks.css' | asset_url | stylesheet_tag -}}
+{%- liquid
+	assign column_spacing = section.settings.column_spacing
+	assign mobile_swipe = section.settings.mobile_swipe
+	assign image_ratio = section.settings.image_ratio
+
+	assign color_bg = section.settings.color_bg
+	assign color_text = section.settings.color_text
+	assign color_link = section.settings.color_link
+
+	assign disable_top_spacing = section.settings.disable_top_spacing
+	assign disable_bottom_spacing = section.settings.disable_bottom_spacing
+-%}
+<div class="promotion-blocks{% if mobile_swipe %} swipe-on-mobile{% endif %} section-spacing{% if disable_top_spacing %} section-spacing--disable-top{% endif %}{% if disable_bottom_spacing %} section-spacing--disable-bottom{% endif %}" style="--color-bg: {{ color_bg }}; --color-text: {{ color_text }}; --color-accent: {{ color_link }}; --column-size: {{ section.blocks.size }};">
+	<div class="promotion-blocks--inner column-spacing--{{ column_spacing }}">
+		{%- for block in section.blocks -%}
+			{%- liquid
+				assign ratio = 1
+				if image_ratio == 'adapt' and block.settings.image
+					assign ratio = block.settings.image.aspect_ratio
+				endif
+			-%}
+			<div class="promotion-blocks--item" {{ block.shopify_attributes }}>
+				<div class="promotion-blocks--text">
+					{% if block.settings.title != blank %}
+						<h6>{{ block.settings.title }}</h6>
+					{% endif %}
+					{% if block.settings.button_text != blank %}
+						{% render 'text-button', url: block.settings.button_link, title: block.settings.button_text %}
+					{% endif %}
+				</div>
+				{% if block.settings.image != blank %}
+				<figure class="promotion-blocks--image">
+					<div class="aspect-ratio aspect-ratio--{{ image_ratio }}" style="--ratio-percent:{{ 1.0 | divided_by: ratio | times: 100.0 }}%;">
+					{%- render 'responsive-image', image: block.settings.image, sizes: '120x0,240x0' -%}
+					</div>
+				</figure>
+				{% endif %}
+			</div>
+		{%- endfor -%}
+	</div>
+</div>
+
+{% schema %}
+  {
+    "name": "Promotion blocks",
+		"class": "section-promotion-blocks",
+    "settings": [
+			{
+	      "type": "checkbox",
+	      "id": "mobile_swipe",
+	      "default": false,
+	      "label": "Enable swipe on mobile"
+	    },
+			{
+	      "type": "select",
+	      "id": "image_ratio",
+	      "options": [
+	        {
+	          "value": "adapt",
+	          "label": "Adapt to image"
+	        },
+	        {
+	          "value": "portrait",
+	          "label": "Portrait"
+	        },
+					{
+	          "value": "landscape",
+	          "label": "Landscape"
+	        },
+	        {
+	          "value": "square",
+	          "label": "Square"
+	        }
+	      ],
+	      "default": "square",
+	      "label": "Image ratio"
+	    },
+			{
+	      "type": "select",
+	      "id": "column_spacing",
+	      "options": [
+	        {
+	          "value": "small",
+	          "label": "Small"
+	        },
+					{
+	          "value": "medium",
+	          "label": "Medium"
+	        },
+	        {
+	          "value": "large",
+	          "label": "Large"
+	        }
+	      ],
+	      "default": "medium",
+	      "label": "Column spacing"
+	    },
+			{
+	      "type": "header",
+	      "content": "Colors"
+	    },
+			{
+				"type": "color",
+				"id": "color_bg",
+				"label": "Background",
+				"default": "#ffffff"
+			},
+			{
+				"type": "color",
+				"id": "color_text",
+				"label": "Text",
+				"default": "#2c2d2e"
+			},
+			{
+				"type": "color",
+				"id": "color_link",
+				"label": "Link",
+				"default": "#3F72E5"
+			},
+			{
+	      "type": "header",
+	      "content": "Spacing"
+	    },
+			{
+				"type": "checkbox",
+				"id": "disable_top_spacing",
+				"default": false,
+				"label": "Remove top spacing"
+			},
+			{
+				"type": "checkbox",
+				"id": "disable_bottom_spacing",
+				"default": false,
+				"label": "Remove bottom spacing"
+			}
+    ],
+    "blocks": [
+      {
+        "type": "promotion",
+        "name": "Promotion",
+        "settings": [
+          {
+            "type": "image_picker",
+            "id": "image",
+            "label": "Image",
+						"info": "690 x 690 .jpg recommended."
+          },
+					{
+						"type": "text",
+						"id": "title",
+						"default": "Promotion heading",
+						"label": "Heading"
+					},
+					{
+            "id": "button_text",
+            "type": "text",
+            "label": "Button label",
+            "default": "Explore",
+						"info": "Leave the label blank to hide the button."
+          },
+          {
+            "id": "button_link",
+            "type": "url",
+            "label": "Button link"
+          }
+        ]
+      }
+    ],
+    "presets": [
+      {
+        "name": "Promotion blocks",
+				"blocks": [
+					{
+						"type": "promotion"
+					},
+					{
+						"type": "promotion"
+					},
+					{
+						"type": "promotion"
+					}
+				]
+      }
+    ],
+		"enabled_on": {
+			"templates": ["*"],
+			"groups": [
+				"header", "footer"
+			]
+		}
+  }
+{% endschema %}

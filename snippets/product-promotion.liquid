@@ -1,0 +1,40 @@
+{%- liquid
+	assign content_position = block.settings.content_position
+	assign text_alignment = block.settings.text_alignment
+	assign overlay_color = block.settings.overlay_color
+	assign overlay_opacity = block.settings.overlay_opacity
+-%}
+<div class="gallery--item" {{ block.shopify_attributes }} style="--overlay-color-rgb: {{ overlay_color.rgb | replace: ' ' , ',' }}; --overlay-opacity: {{ overlay_opacity | divided_by: 100.0 }}">
+	<figure class="aspect-ratio">
+		{%- if block.settings.image -%}
+			{%- liquid
+				assign sizes = block.settings.image.width | append: 'x' | append: block.settings.image.height
+			-%}
+			{%- render 'responsive-image', image: block.settings.image, sizes: sizes -%}
+		{%- else -%}
+			<div class="thb-placeholder">
+				{{ 'image' | placeholder_svg_tag: 'placeholder_svg_tag' }}
+			</div>
+		{%- endif -%}
+		<div class="gallery--item-content content-{{ content_position }} text-{{ text_alignment }}">
+			<div>
+				{% if block.settings.title != blank %}
+					<h4>{{ block.settings.title }}</h4>
+				{% endif %}
+				{% if block.settings.text != blank %}
+					<p>{{ block.settings.text }}</p>
+				{% endif %}
+				{% if block.settings.link_label != blank %}
+					{% if block.settings.use_text_button %}
+					{% render 'text-button', url: block.settings.link, title: block.settings.link_label, class: 'white' %}
+					{% else %}
+					<a class="button white medium"{% if block.settings.link == blank %} role="link" aria-disabled="true"{% else %} href="{{ block.settings.link }}"{% endif %}>{{ block.settings.link_label }}</a>
+					{% endif %}
+				{% endif %}
+				{% if block.settings.block_link != blank %}
+					<a href="{{ block.settings.block_link }}" class="gallery--item-content-link" target="_blank"></a>
+				{% endif %}
+			</div>
+		</div>
+	</figure>
+</div>

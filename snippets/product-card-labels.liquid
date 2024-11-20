@@ -1,0 +1,19 @@
+{%- capture product_labels -%}
+	{%- for i in (1..4) -%}
+		{%- liquid
+			 assign setting_name = 'product_label_' | append: i
+			 assign field = settings[setting_name]
+			 assign field_array = field | split: '.'
+			 assign field_namespace = field_array | first
+		 	 assign field_name = field_array | last
+		-%}
+		{%- if product.metafields[field_namespace][field_name] != blank -%}
+		<div class="product-card--label">{{- product.metafields[field_namespace][field_name] -}}</div>
+		{%- endif -%}
+	{%- endfor -%}
+{%- endcapture -%}
+{%- if product_labels != '' -%}
+<div class="product-card--label-container" {{ block.shopify_attributes }}>
+{{ product_labels }}
+</div>
+{%- endif -%}

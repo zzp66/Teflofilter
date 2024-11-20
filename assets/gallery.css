@@ -1,0 +1,140 @@
+
+
+.gallery--item {
+  isolation: isolate;
+  border-radius: var(--block-border-radius, 16px); }
+
+.gallery--item {
+  box-shadow: var(--block-shadows); }
+
+
+
+.gallery {
+  display: block; }
+  .gallery--inner {
+    display: grid; }
+    @media only screen and (min-width: 768px) {
+      .gallery--inner {
+        grid-template-columns: repeat(var(--gallery-columns), 1fr); } }
+    .gallery--inner.column-spacing--none .gallery--item {
+      border-radius: 0; }
+  .gallery--item {
+    position: relative;
+    overflow: hidden; }
+    .gallery--item figure {
+      position: relative;
+      width: 100%;
+      overflow: hidden; }
+      .gallery--item figure:after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 11;
+        background: rgba(var(--overlay-color-rgb), var(--overlay-opacity)); }
+    .gallery--item .gallery__video {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      pointer-events: none; }
+      .gallery--item .gallery__video video {
+        height: 100%;
+        width: 100%;
+        object-fit: cover; }
+    .gallery--item-content {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 20;
+      display: flex;
+      padding: 25px;
+      color: #fff; }
+      @media only screen and (min-width: 1068px) {
+        .gallery--item-content {
+          padding: 35px; } }
+      @media only screen and (min-width: 1440px) {
+        .gallery--item-content {
+          padding: 45px; } }
+      .gallery--item-content.content-top-left {
+        justify-content: flex-start;
+        align-items: flex-start; }
+      .gallery--item-content.content-top-center {
+        justify-content: center;
+        align-items: flex-start; }
+      .gallery--item-content.content-top-right {
+        justify-content: flex-end;
+        align-items: flex-start; }
+      .gallery--item-content.content-middle-left {
+        justify-content: flex-start;
+        align-items: center; }
+      .gallery--item-content.content-middle-center {
+        justify-content: center;
+        align-items: center; }
+      .gallery--item-content.content-middle-right {
+        justify-content: flex-end;
+        align-items: center; }
+      .gallery--item-content.content-bottom-left {
+        justify-content: flex-start;
+        align-items: flex-end; }
+      .gallery--item-content.content-bottom-center {
+        justify-content: center;
+        align-items: flex-end; }
+      .gallery--item-content.content-bottom-right {
+        justify-content: flex-end;
+        align-items: flex-end; }
+      .gallery--item-content h4 {
+        color: inherit;
+        margin-bottom: 8px; }
+        .gallery--item-content h4 + .button {
+          margin-top: 20px; }
+      .gallery--item-content p {
+        margin-bottom: 30px; }
+      .gallery--item-content p.subheading {
+        font-size: 0.75rem;
+        margin-bottom: 15px; }
+      @media only screen and (min-width: 1068px) {
+        .gallery--item-content .description-size--small {
+          font-size: 0.9375rem; } }
+      @media only screen and (min-width: 1068px) {
+        .gallery--item-content .description-size--large {
+          font-size: 1.25rem; } }
+      .gallery--item-content .description-size p {
+        font-size: inherit; }
+      @media only screen and (min-width: 768px) {
+        .gallery--item-content > div {
+          max-width: 90%; } }
+      .gallery--item-content > div > *:last-child {
+        margin-bottom: 0; }
+      .gallery--item-content .button,
+      .gallery--item-content .text-button {
+        position: relative;
+        z-index: 22; }
+      .gallery--item-content-link {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 21; }
+  @media only screen and (max-width: 767px) {
+    .gallery.swipe-on-mobile .gallery--inner {
+      grid-auto-flow: column;
+      grid-auto-columns: minmax(var(--mobile-swipe-width), 1fr);
+      overflow-x: auto;
+      grid-template-columns: repeat(auto-fill, minmax(var(--mobile-swipe-width), 1fr));
+      scroll-snap-type: x mandatory;
+      scrollbar-width: none; }
+      .gallery.swipe-on-mobile .gallery--inner::-webkit-scrollbar {
+        display: none; }
+      .gallery.swipe-on-mobile .gallery--inner .gallery--item {
+        scroll-snap-align: center;
+        scroll-snap-stop: always; }
+      .row .gallery.swipe-on-mobile .gallery--inner {
+        margin: 0 -15px;
+        width: calc(100% + 30px); } }

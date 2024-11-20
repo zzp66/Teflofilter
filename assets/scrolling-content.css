@@ -1,0 +1,125 @@
+
+
+.scrolling-content--has-bg, .scrolling-content--image img,
+.scrolling-content--image .thb-placeholder, .scrolling-content--content-image img,
+.scrolling-content--content-image .thb-placeholder {
+  isolation: isolate;
+  border-radius: var(--block-border-radius, 16px); }
+
+.scrolling-content--has-bg {
+  box-shadow: var(--block-shadows); }
+
+
+
+.scrolling-content--inner {
+  padding: 0 15px;
+  max-width: var(--grid-width-row, 1380px);
+  margin-left: auto;
+  margin-right: auto; }
+  @media only screen and (min-width: 768px) {
+    .scrolling-content--inner {
+      padding: 0 50px; } }
+
+.scrolling-content {
+  display: block; }
+  .scrolling-content--inner {
+    width: 100%; }
+  .scrolling-content--has-bg {
+    background: var(--color-bg);
+    padding: 25px 15px; }
+    @media only screen and (min-width: 768px) {
+      .scrolling-content--has-bg {
+        padding: 50px;
+        max-width: var(--grid-width, 1280px); } }
+    .scrolling-content--has-bg .flickity-page-dots {
+      right: -28px; }
+    .scrolling-content--has-bg .scrolling-content--container.image_first .flickity-page-dots {
+      right: auto;
+      left: -28px; }
+  .scrolling-content--container {
+    display: grid;
+    gap: 30px;
+    position: relative; }
+    @media only screen and (min-width: 768px) {
+      .scrolling-content--container {
+        grid-template-columns: 1fr 1fr;
+        gap: 50px; } }
+    @media only screen and (max-width: 767px) {
+      .scrolling-content--container.swipe-on-mobile {
+        grid-auto-flow: column;
+        grid-auto-columns: minmax(var(--mobile-swipe-width), 1fr);
+        overflow-x: auto;
+        overflow-y: hidden;
+        grid-template-columns: repeat(auto-fill, minmax(var(--mobile-swipe-width), 1fr));
+        gap: 12px;
+        margin-left: -15px;
+        width: calc(100% + 30px);
+        padding: 0 15px;
+        scrollbar-width: none;
+        scroll-snap-type: x mandatory;
+        align-items: start; }
+        .scrolling-content--container.swipe-on-mobile::-webkit-scrollbar {
+          display: none; }
+        .scrolling-content--container.swipe-on-mobile .scrolling-content--content {
+          scroll-snap-align: center;
+          scroll-snap-stop: always; }
+          .scrolling-content--container.swipe-on-mobile .scrolling-content--content-text {
+            padding-right: 15px; } }
+    .scrolling-content--container.image_first .flickity-page-dots {
+      right: auto;
+      left: -38px; }
+  .scrolling-content--image {
+    display: none; }
+    @media only screen and (min-width: 768px) {
+      .scrolling-content--image {
+        display: block;
+        position: sticky;
+        left: 0;
+        top: 20px; }
+        .header-sticky--active .scrolling-content--image {
+          top: calc(var(--header-height, 0px) + 20px); }
+        .scrolling-content--image.active {
+          visibility: visible; } }
+  .scrolling-content--content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center; }
+    .scrolling-content--content .rte {
+      color: var(--color-body); }
+    .scrolling-content--content-image {
+      display: block;
+      margin-bottom: 30px; }
+      @media only screen and (min-width: 768px) {
+        .scrolling-content--content-image {
+          display: none; } }
+    @media only screen and (min-width: 1068px) {
+      .scrolling-content--content {
+        padding-right: 30px; } }
+    .scrolling-content--content .subheading {
+      color: var(--color-body, #2c2d2e); }
+  @media only screen and (min-width: 768px) {
+    .scrolling-content--section {
+      min-height: 450px;
+      max-height: calc(100vh - var(--header-height, 0px)); } }
+  @supports (height: 100svh) {
+    @media only screen and (min-width: 768px) {
+      .scrolling-content--section {
+        max-height: calc(100svh - var(--header-height, 0px)); } } }
+  .scrolling-content .flickity-page-dots {
+    position: absolute;
+    top: 50%;
+    right: -38px;
+    transform: translateY(-50%);
+    bottom: auto;
+    left: auto;
+    width: 8px; }
+    @media only screen and (min-width: 768px) {
+      .scrolling-content .flickity-page-dots {
+        flex-direction: column; } }
+    @media only screen and (min-width: 768px) {
+      .scrolling-content .flickity-page-dots .dot.is-selected {
+        width: 8px;
+        height: 32px; } }
+    @media only screen and (min-width: 768px) {
+      .scrolling-content .flickity-page-dots .dot {
+        margin: 6px 0; } }

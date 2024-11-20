@@ -1,0 +1,136 @@
+
+
+.media-grid--item.has-link--true .media-grid--bg img,
+.media-grid--item.has-link--true .media-grid--bg video {
+  transition: all 1s cubic-bezier(0.104, 0.204, 0.492, 1); }
+
+.media-grid--item {
+  isolation: isolate;
+  border-radius: var(--block-border-radius, 16px); }
+
+.media-grid--item {
+  box-shadow: var(--block-shadows); }
+
+
+
+.media-grid--inner {
+  padding: 0 15px;
+  max-width: var(--grid-width-row, 1380px);
+  margin-left: auto;
+  margin-right: auto; }
+  @media only screen and (min-width: 768px) {
+    .media-grid--inner {
+      padding: 0 50px; } }
+
+.media-grid--inner {
+  display: grid;
+  grid-auto-flow: dense;
+  width: 100%;
+  align-items: start;
+  grid: auto-flow dense var(--mobile-height)/repeat(2, minmax(0, 1fr)); }
+  @media only screen and (min-width: 768px) {
+    .media-grid--inner {
+      grid: auto-flow dense var(--desktop-height)/repeat(4, minmax(0, 1fr)); } }
+  @media only screen and (max-width: 767px) {
+    .media-grid--inner.swipe-on-mobile {
+      grid-auto-flow: column;
+      grid-auto-columns: minmax(var(--mobile-swipe-width), 1fr);
+      overflow-x: auto;
+      grid-template-columns: repeat(auto-fill, minmax(var(--mobile-swipe-width), 1fr));
+      scroll-snap-type: x mandatory;
+      grid-template-rows: var(--desktop-height);
+      padding-bottom: 10px; }
+      .media-grid--inner.swipe-on-mobile .media-grid--item {
+        scroll-snap-align: center;
+        grid-area: auto; } }
+
+.media-grid--item {
+  background: var(--color-bg-gradient, var(--color-bg, #fff));
+  color: var(--color-text, var(--color-body, #2c2d2e));
+  overflow: hidden;
+  padding: 25px;
+  width: 100%;
+  height: 100%;
+  position: relative;
+  display: flex;
+  grid-area: span var(--row-span)/span var(--column-span--mobile); }
+  @media only screen and (min-width: 768px) {
+    .media-grid--item {
+      padding: 35px;
+      grid-area: span var(--row-span)/span var(--column-span); } }
+  .media-grid--item h4 {
+    color: var(--color-text, var(--color-body, #2c2d2e)); }
+    .media-grid--item h4.media-grid--heading-no-margin {
+      margin-bottom: 0; }
+  .media-grid--item.content-top-left {
+    justify-content: flex-start;
+    align-items: flex-start; }
+  .media-grid--item.content-top-center {
+    justify-content: center;
+    align-items: flex-start; }
+  .media-grid--item.content-top-right {
+    justify-content: flex-end;
+    align-items: flex-start; }
+  .media-grid--item.content-middle-left {
+    justify-content: flex-start;
+    align-items: center; }
+  .media-grid--item.content-middle-center {
+    justify-content: center;
+    align-items: center; }
+  .media-grid--item.content-middle-right {
+    justify-content: flex-end;
+    align-items: center; }
+  .media-grid--item.content-bottom-left {
+    justify-content: flex-start;
+    align-items: flex-end; }
+  .media-grid--item.content-bottom-center {
+    justify-content: center;
+    align-items: flex-end; }
+  .media-grid--item.content-bottom-right {
+    justify-content: flex-end;
+    align-items: flex-end; }
+  .media-grid--item.has-link--true:hover .media-grid--bg img,
+  .media-grid--item.has-link--true:hover .media-grid--bg video {
+    transform: scale(1.07); }
+  .media-grid--item.has-link--true .text-button {
+    position: relative;
+    z-index: 22; }
+
+.media-grid--link {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 21; }
+
+.media-grid--bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  pointer-events: none;
+  background: var(--color-bg-gradient, var(--color-bg, #fff)); }
+  .media-grid--bg img,
+  .media-grid--bg video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    pointer-events: none; }
+  .media-grid--bg:after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    pointer-events: none;
+    background: rgba(var(--overlay-color-rgb), var(--overlay-opacity)); }
+
+.media-grid--content {
+  z-index: 2; }
+  .media-grid--content > *:last-child {
+    margin-bottom: 0; }

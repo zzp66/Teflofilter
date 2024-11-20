@@ -1,0 +1,53 @@
+
+
+
+
+.compare-lightbox {
+  display: block;
+  min-height: 250px; }
+  .compare-lightbox--data {
+    --column-width: 255px;
+    display: grid;
+    gap: 10px;
+    grid-auto-flow: column;
+    grid-auto-columns: minmax(var(--column-width), 1fr);
+    overflow-x: auto;
+    grid-template-columns: repeat(auto-fill, var(--column-width));
+    scroll-snap-type: x mandatory;
+    margin-left: -25px;
+    width: calc(100% + 50px);
+    padding: 0 25px;
+    font-size: 0.875rem; }
+    @media only screen and (min-width: 768px) {
+      .compare-lightbox--data {
+        gap: 20px;
+        margin: 0;
+        width: 100%;
+        padding: 0;
+        --column-width: 255px; } }
+  .compare-lightbox.loading .compare-lightbox--date {
+    opacity: 0.7;
+    pointer-events: none; }
+  .compare-lightbox--table {
+    display: block;
+    width: auto;
+    max-width: 255px;
+    scroll-snap-align: center; }
+  .compare-lightbox--row {
+    margin-bottom: 20px; }
+    .compare-lightbox--row .product-card {
+      height: 100%;
+      margin-bottom: 0; }
+    .compare-lightbox--row .rte > *:last-child {
+      margin-bottom: 0; }
+  .compare-lightbox--fields {
+    border: 1px solid var(--color-border, #dadce0);
+    border-radius: var(--block-border-radius, 16px); }
+    .compare-lightbox--fields .compare-lightbox--row {
+      padding: 13px 15px;
+      margin: 0; }
+      .compare-lightbox--fields .compare-lightbox--row:nth-child(even) {
+        background-color: rgba(var(--color-body-rgb), 0.05); }
+  .compare-lightbox--header {
+    font-weight: var(--font-body-medium-weight, 500);
+    margin-bottom: 5px; }

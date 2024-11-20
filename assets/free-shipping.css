@@ -1,0 +1,36 @@
+
+
+.free-shipping--percentage {
+  transition: all 0.25s cubic-bezier(0.104, 0.204, 0.492, 1); }
+
+
+
+.free-shipping {
+  display: block;
+  font-size: 0.8125rem;
+  line-height: 1.2;
+  text-align: center;
+  margin-bottom: 25px;
+  font-weight: var(--font-body-medium-weight, 500); }
+  .free-shipping--text {
+    margin-bottom: 10px; }
+    .free-shipping--text-remaining {
+      display: none; }
+    .free-shipping--text-full {
+      display: block; }
+  .free-shipping--bar {
+    border: 1px solid var(--color-border, #dadce0);
+    border-radius: 3px;
+    height: 6px;
+    width: 100%;
+    position: relative; }
+  .free-shipping--percentage {
+    position: absolute;
+    top: -1px;
+    left: -1px;
+    right: -1px;
+    bottom: -1px;
+    border-radius: 3px;
+    transform: scale(var(--percentage, 0), 1);
+    transform-origin: center left;
+    background: var(--color-accent); }

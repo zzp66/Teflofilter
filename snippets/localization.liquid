@@ -1,0 +1,47 @@
+{%- if show_language_switcher or show_currency_switcher -%}
+<localization-form class="thb-localization-forms {{ class }}">
+	{%- form 'localization', id: id -%}
+		{%- if show_language_switcher -%}
+		<custom-select class="custom-select custom-select--language {%- if open_top %} custom-select--top{%- endif -%}">
+			<button class="custom-select--button"><span class="custom-select--text">{{ localization.language.endonym_name | capitalize }}</span> <span class="custom-select--arrow">{%- render 'svg-icons' with 'thb-select' -%}</span></button>
+			<div class="custom-select--list">
+				<scroll-shadow>
+					<ul>
+						{%- for language in localization.available_languages -%}
+						<li class="custom-select--item" tabindex="-1">
+              <button class="{% if language.iso_code == localization.language.iso_code %}custom-select--item-active{% endif %}" lang="{{ language.iso_code }}"{% if language.iso_code == localization.language.iso_code %} aria-current="true"{% endif %} data-value="{{ language.iso_code }}">
+                {{ language.endonym_name | capitalize }}
+              </button>
+            </li>
+						{%- endfor -%}
+					</ul>
+				</scroll-shadow>
+			</div>
+			<input type="hidden" name="locale_code" value="{{ localization.language.iso_code }}">
+		</custom-select>
+		{%- endif -%}
+		{%- if show_currency_switcher -%}
+		<custom-select class="custom-select custom-select--currency {%- if open_top %} custom-select--top{%- endif -%}">
+			<button class="custom-select--button"><span class="custom-select--text">{{ localization.country | image_url: width: 28, height: 28, format: 'jpg' | image_tag: loading: 'lazy', sizes: '14px', widths: '28', class: 'thb-localization-forms--flag' }} {{ localization.country.name }} ({{ localization.country.currency.iso_code }} {{ localization.country.currency.symbol }})</span> <span class="custom-select--arrow">{%- render 'svg-icons' with 'thb-select' -%}</span></button>
+			<div class="custom-select--list">
+				<scroll-shadow>
+					<ul>
+						{%- for country in localization.available_countries -%}
+	            <li class="custom-select--item" tabindex="-1">
+	              <button class="{% if country.iso_code == localization.country.iso_code %}custom-select--item-active{% endif %}" {% if country.iso_code == localization.country.iso_code %} aria-current="true"{% endif %} data-value="{{ country.iso_code }}">
+									{{ country | image_url: width: 28, height: 28, format: 'jpg' | image_tag: loading: 'lazy', sizes: '14px', widths: '28', class: 'thb-localization-forms--flag' }}{{ country.name }} <span class="thb-localization-forms--currency">({{ country.currency.iso_code }} {{ country.currency.symbol }})</span>
+	              </button>
+	            </li>
+	          {%- endfor -%}
+					</ul>
+				</scroll-shadow>
+			</div>
+			<input type="hidden" name="country_code" value="{{ localization.country.iso_code }}">
+		</custom-select>
+		{%- endif -%}
+		<noscript>
+			<button class="text-button">{{ 'localization.update_country' | t }}</button>
+		</noscript>
+	{%- endform -%}
+</localization-form>
+{%- endif -%}

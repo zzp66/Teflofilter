@@ -1,0 +1,208 @@
+{%- liquid
+	assign section_heading = section.settings.heading
+	assign marker_style = section.settings.marker_style
+	assign section_description = section.settings.description
+	assign columns_desktop = section.settings.columns_desktop
+  assign letters = section.settings.letters | split:',' 
+	assign vendor_layout = section.settings.vendor_layout
+
+	assign marker_color = section.settings.marker_color
+
+	assign disable_top_spacing = section.settings.disable_top_spacing
+	assign disable_bottom_spacing = section.settings.disable_bottom_spacing
+
+  assign columns_class = 'small-12 medium-6 large-4'
+  case columns_desktop
+    when 2
+      assign columns_class = 'small-12 medium-6'
+    when 3
+      assign columns_class = 'small-12 medium-4'
+    when 4
+      assign columns_class = 'small-12 medium-6 large-3'
+    when 5
+      assign columns_class = 'small-12 medium-1/5 large-1/5'
+    when 6
+      assign columns_class = 'small-12 medium-3 large-2'
+  endcase
+-%}
+{%- liquid
+  assign active_letters = ''
+  for letter in letters
+    assign the_letter = '' | append: letter | downcase
+    assign letter_found = false
+    assign main_loop = forloop
+
+    for vendor in shop.vendors
+      assign first_letter = vendor | truncate: 1, ''
+      assign first_letter = first_letter | downcase
+
+      if letter_found
+        continue
+      endif
+      if the_letter == first_letter
+        assign letter_found = true
+        
+        unless main_loop.last
+          assign comma = ','
+        endunless
+        assign active_letters = active_letters | append: letter | append: comma
+      endif
+    endfor
+  endfor
+
+  assign active_letters = active_letters | split: ','
+-%}
+<div class="row">
+	<div class="small-12 columns">
+		<div class="section-spacing{% if disable_top_spacing %} section-spacing--disable-top{% endif %}{% if disable_bottom_spacing %} section-spacing--disable-bottom{% endif %}" style="--overlay-color-rgb: {{ overlay_color.rgb | replace: ' ' , ',' }}; --overlay-opacity: {{ overlay_opacity | divided_by: 100.0 }}; --var-collection-list-columns:{{ columns_desktop }}; --collection-text-color: {{ text_color }}">
+			{%- render 'section-header', section_heading: section_heading, section_description: section_description, marker_color: marker_color, marker_style: marker_style -%}
+			<div class="vendor-list vendor-list--{{ vendor_layout }}">
+        <div class="row no-padding">
+          {%- for letter in active_letters -%}
+            {%- assign the_letter = '' | append: letter | downcase -%}
+            {%- if vendor_layout == 'vertical' -%}
+              <div class="small-12 columns vendor-list--column">
+                <div class="h3">{{ letter }}</div>
+                  <ul class="row no-padding">
+                  {%- for vendor in shop.vendors -%}
+                    {%- liquid
+                      assign first_letter = vendor | truncate: 1, ''
+                      assign first_letter = first_letter | downcase
+                    -%}
+                    {%- if the_letter == first_letter -%}
+                      <li class="{{ columns_class }} columns">{{ vendor | link_to_vendor }}</li>
+                    {%- endif -%}
+                  {%- endfor -%}
+                </ul>
+              </div>
+            {%- else -%}
+              <div class="{{ columns_class }} columns vendor-list--column">
+                <div class="h3">{{ letter }}</div>
+                <ul>
+                {%- for vendor in shop.vendors -%}
+                  {%- liquid
+                    assign first_letter = vendor | truncate: 1, ''
+                    assign first_letter = first_letter | downcase
+                  -%}
+                  {%- if the_letter == first_letter -%}
+                    <li>{{ vendor | link_to_vendor }}</li>
+                  {%- endif -%}
+                {%- endfor -%}
+                </ul>
+              </div>
+            {%- endif -%}
+          {%- endfor -%}
+        </div>
+			</div>
+		</div>
+	</div>
+</div>
+{{- 'list-vendors.css' | asset_url | stylesheet_tag -}}
+{% schema %}
+  {
+    "name": "Vendor list",
+	  "class": "section-vendor-list",
+    "settings": [
+			{
+				"type": "text",
+				"id": "heading",
+				"label": "Heading",
+				"default": "Shop by Vendor",
+				"info": "Wrap your text between | to add animated markers. For example: Animated |marker| will underline marker text."
+			},
+			{
+				"type": "select",
+				"id": "marker_style",
+				"options": [
+					{
+						"value": "style1",
+						"label": "Basic"
+					},
+					{
+						"value": "style2",
+						"label": "Double"
+					},
+					{
+						"value": "style3",
+						"label": "Squiggle"
+					},
+					{
+						"value": "style4",
+						"label": "Zigzag"
+					}
+				],
+				"default": "style1",
+				"label": "Marker"
+			},
+			{
+				"type": "richtext",
+				"id": "description",
+				"label": "Description",
+				"default": "<p>Add a short description for your vendors</p>"
+			},
+      {
+        "type": "header",
+        "content": "Layout"
+      },
+			{
+				"type": "select",
+				"id": "vendor_layout",
+				"options": [
+					{
+						"value": "vertical",
+						"label": "Vertical"
+					},
+					{
+						"value": "grid",
+						"label": "Grid"
+					}
+				],
+				"default": "vertical",
+				"label": "Layout"
+			},
+      {
+				"type": "text",
+				"id": "letters",
+				"label": "Vendor categories",
+				"default": "A,B,C,D,E,F,G,H,I,J,K,L,M,N,O,P,Q,R,S,T,U,V,W,X,Y,Z",
+				"info": "Edit starting letters to display."
+			},
+			{
+	      "type": "range",
+	      "id": "columns_desktop",
+	      "min": 2,
+	      "max": 6,
+	      "step": 1,
+	      "default": 4,
+	      "label": "Number of columns on desktop"
+	    },
+			{
+        "type": "header",
+        "content": "Spacing"
+      },
+			{
+				"type": "checkbox",
+				"id": "disable_top_spacing",
+				"default": false,
+				"label": "Remove top spacing"
+			},
+			{
+				"type": "checkbox",
+				"id": "disable_bottom_spacing",
+				"default": false,
+				"label": "Remove bottom spacing"
+			}
+    ],
+    "presets": [
+      {
+        "name": "Vendor list"
+      }
+    ],
+		"enabled_on": {
+			"templates": ["*"],
+			"groups": [
+				"header", "footer"
+			]
+		}
+  }
+{% endschema %}

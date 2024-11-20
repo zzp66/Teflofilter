@@ -1,0 +1,50 @@
+{%- liquid
+	assign badge_position = settings.badge_position
+
+	# Custom badges
+	assign product_tags = product_card_product.tags
+	assign badge_tags_1 = settings.custom_product_badge_group_1_tag_names | split: ', '
+	assign badge_tags_2 = settings.custom_product_badge_group_2_tag_names | split: ', '
+	assign badge_tags_3 = settings.custom_product_badge_group_3_tag_names | split: ', '
+	assign badge_tags_4 = settings.custom_product_badge_group_4_tag_names | split: ', '
+	assign badge_tags = badge_tags_1 | concat: badge_tags_2 | concat: badge_tags_3 | concat: badge_tags_4
+-%}
+{%- for badge_tag in badge_tags -%}
+	{%- for product_tag in product_tags -%}
+		{%- assign product_tag_lower = product_tag | downcase -%}
+		{%- assign badge_tag_lower = badge_tag | downcase -%}
+		{%- if product_tag_lower == badge_tag_lower -%}
+			{%- capture custom_badges -%}
+				{{ custom_badges }}
+				<div class="badge {{ badge_tag_lower | handleize }}">
+					{{ badge_tag }}
+				</div>
+			{%- endcapture -%}
+		{%- endif -%}
+	{%- endfor -%}
+{%- endfor -%}
+<span class="product-card--badges {{ badge_position }}">
+	{% unless product_card_product.available %}
+	<span class="badge out-of-stock">{{ 'products.product.sold_out' | t }}</span>
+	{% endunless %}
+	{% if product_card_product.compare_at_price > product_card_product.price and product_card_product.available %}
+		{%- if settings.sale_badge_type == 'save_amount' -%}
+			{%- capture saved_amount -%}{{ product_card_product.compare_at_price | minus: product_card_product.price | money }}{%- endcapture -%}
+		{%- elsif settings.sale_badge_type == 'save_percentage' -%}
+			{%- capture saved_amount -%}{{ product_card_product.compare_at_price | minus: product_card_product.price | times: 100.0 | divided_by: product_card_product.compare_at_price | round }}%{%- endcapture -%}
+		{%- endif -%}
+		<span class="badge onsale">
+			{%- if settings.sale_badge_type == 'sale' -%}
+			{{ 'products.product.on_sale' | t }}
+			{%- else -%}
+			{{ 'products.product.save_html' | t: saved_amount: saved_amount }}
+			{%- endif -%}
+		</span>
+	{%- endif -%}
+	{%- if product_card_product.metafields.theme.preorder and product_card_product.available -%}
+	<span class="badge pre-order">
+		{{ 'products.product.pre_order' | t }}
+	</span>
+	{%- endif -%}
+	{{ custom_badges }}
+</span>

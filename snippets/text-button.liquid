@@ -1,0 +1,1 @@
+<a href="{{ url }}" title="{{ title | escape }}" role="link" class="text-button {{ class }} text-button--has-icon" {% if disabled %}aria-disabled="true"{% endif %} {% if block %}{{ block.shopify_attributes }}{% endif %}>{{ title }} <span>{% render 'svg-icons' with 'thb-caret-right' %}</span></a>

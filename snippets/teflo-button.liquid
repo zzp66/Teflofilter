@@ -1,0 +1,244 @@
+
+{% assign button_link = button_link | default: '' %}
+{% assign button_text = button_text | default: 'Request a Quote' %}
+{% assign button_text_color = button_text_color | default: '#FFF' %}
+{% assign button_bg_color = button_bg_color | default: '#0D0D0D' %}
+{% assign button_hover_text_color = button_hover_text_color | default: '#fff' %}
+{% assign button_hover_bg_color = button_hover_bg_color | default: '#0522CB' %}
+{% assign  button_border_color = button_border_color | default: 'transparent' %}
+{% assign  button_border  = button_border | default:true %}
+{% assign button_hover_border_color = button_hover_border_color | default: 'transparent' %}
+
+
+
+
+
+
+{% if button_link != '' and button_link != '#' and button_link !=blank %}
+
+
+
+<a class="teflo_custom_button" href="{{ button_link }}"
+    data-text-color="{{ button_text_color }}" 
+    data-text-hover-color="{{ button_hover_text_color }}"
+     data-default-bg="{{ button_bg_color }}"
+      data-hover-bg="{{ button_hover_bg_color }}"
+    
+      data-button_border = "{{ button_border }}"
+      data-button_border_color = "{{ button_border_color }}"
+      
+    >
+    {% else %}
+        <div class="teflo_custom_button teflo_custom_button1"  href="{{ button_link }}"
+            data-text-color="{{ button_text_color }}" 
+            data-text-hover-color="{{ button_hover_text_color }}"
+             data-default-bg="{{ button_bg_color }}"
+              data-hover-bg="{{ button_hover_bg_color }}"
+              data-button_border = "{{ button_border }}"
+                data-button_border_color = "{{ button_border_color }}"
+       
+            >
+    {% endif %}
+   <div class="teflo_custom_button_text"  style="border:0.4px solid {{ button_border_color }}" >
+        <span class="teflo_custom_button_text_span" style="color:{{ button_text_color }}">{{ button_text }}</span>
+        <div class="teflo_bg_gress teflo_bg_gress1"  style="background:{{ button_bg_color }}" ></div>
+   </div>
+   <div class="teflo_custom_button_icon flex-center-center" style="border:0.4px solid {{ button_border_color }}" >
+    {% comment %} <svg xmlns="http://www.w3.org/2000/svg"  viewBox="0 0 13 13" fill="none">
+        <path d="M0.949747 1.05025H11.5563M11.5563 1.05025V11.6569M11.5563 1.05025L1.3033 11.3033" style="stroke:{{ button_text_color }}"  stroke-width="1.5" stroke-linecap="round"/>
+    </svg> {% endcomment %}
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 22 22" fill="none">
+        <path d="M1.55429 0.961331L20.9229 0.961331M20.9229 0.961331L20.9229 20.3299M20.9229 0.961331L2.19991 19.6843"  style="stroke:{{ button_text_color }}"  stroke-width="1.5" stroke-linecap="round"/>
+        </svg>
+    <div class="teflo_bg_gress teflo_bg_gress2"  style="background:{{ button_bg_color }}" ></div>
+   </div>
+   {% if button_link != '' and button_link != '#' and button_link !=blank %}
+    </a>
+    {% else %}
+    </div>
+    {% endif %}
+
+
+
+    <style>
+        .teflo_custom_button{
+            display: inline-flex;
+        }
+        .teflo_custom_button_text{
+            padding: calc(100vw * 12 / var(--base-width)) calc(100vw * 23 / var(--base-width));
+            {% comment %} border: 0.4px solid {{ button_border_color }}; {% endcomment %}
+            {% comment %} border: 0.4px solid transparent; {% endcomment %}
+            border-radius: calc(100vw * 3 / var(--base-width));
+            color: #FFF;
+            font-size: calc(100vw * 16 / var(--base-width));
+            font-style: normal;
+            font-weight: 400;
+            line-height: calc(100vw * 22 / var(--base-width));
+            letter-spacing: -0.8px;
+            position: relative;
+            cursor: pointer;
+       
+        }
+        .teflo_custom_button_text_span{
+            position: relative;
+            z-index: 1;
+        }
+        .teflo_custom_button_icon{
+            border-radius: calc(100vw * 3 / var(--base-width));
+            {% comment %} border: 0.4px solid {{ button_border_color }};  {% endcomment %}
+            {% comment %} border: 0.4px solid transparent; {% endcomment %}
+            padding: calc(100vw * 12 / var(--base-width)) calc(100vw * 20 / var(--base-width));
+            margin-left: calc(100vw * 4 / var(--base-width));
+            position: relative;
+        }
+        .teflo_custom_button_icon svg{
+            position: relative;
+            z-index: 1;
+            width: calc(100vw * 13 / var(--base-width));
+            height: calc(100vw * 13 / var(--base-width));
+        }
+        .teflo_custom_button_icon svg path {
+            stroke: {{ button_text_color }};
+            stroke-dasharray: 50;
+            stroke-dashoffset: 0; 
+            transition: stroke-dashoffset 1s ease-in-out;
+        }
+        .teflo_bg_gress{
+            position: absolute;
+            border-radius: calc(100vw * 3 / var(--base-width));
+           // background: #0522CB;
+            width: 100%;
+            top:0;
+            height: 100%;
+            left:0;
+            z-index:0;
+        }
+        {% comment %} .teflo_custom_button_0522CB:hover .teflo_bg_gress{
+            background: #0522CB; 
+        }
+        .teflo_custom_button_0522CB:hover .teflo_custom_button_text .teflo_custom_button_text_span{
+            color: #fff;
+        } {% endcomment %}
+        .teflo_custom_button:hover .teflo_custom_button_icon svg path{
+            stroke: #fff;
+            animation: draw-line 2s forwards;
+        }
+        .teflo_custom_button:hover .teflo_custom_button_icon{
+            border:0.4px solid {{ button_hover_border_color }} !important;
+        }
+        .teflo_custom_button:hover .teflo_custom_button_text{
+            border:0.4px solid {{ button_hover_border_color }} !important;
+        } 
+    
+    @keyframes draw-line {
+        from {
+            stroke-dashoffset: 50;
+        }
+        to {
+            stroke-dashoffset: 0;
+        }
+    }
+       
+    @media(max-width:1024px){
+        .teflo_custom_button_text{
+            padding: calc(100vw * 26 / var(--base-width)) calc(100vw * 50 / var(--base-width));
+            border-radius: calc(100vw * 6 / var(--base-width));
+            font-size: calc(100vw * 26 / var(--base-width));
+            line-height: calc(100vw * 32 / var(--base-width));
+            letter-spacing: calc(100vw * -1.3 / var(--base-width));
+        }
+      
+        .teflo_custom_button_icon svg{
+            width: calc(100vw * 22 / var(--base-width));
+            height: calc(100vw * 22 / var(--base-width));
+        }
+        .teflo_custom_button_icon{
+            padding: calc(100vw * 0 / var(--base-width)) calc(100vw * 40 / var(--base-width));
+            margin-left: calc(100vw * 8 / var(--base-width));
+        }
+    }
+    </style>
+    {% comment %} 样式 {% endcomment %}
+
+
+    
+    <script>
+        {% comment %} document.querySelectorAll('teflo_custom_button1').forEach(function(item){
+            item.addEventListener('click',function(){
+                console.log('点击了')
+            })
+        }) {% endcomment %}
+        document.querySelectorAll('.teflo_custom_button').forEach(function(button){
+            button.addEventListener('mouseover', function(){
+                // 当前 teflo_bg_gress1 跟 teflo_bg_gress2 的宽度 100%, 用gsap
+     
+                //获取data-hover-bg的值
+                let hoverBg = button.getAttribute('data-hover-bg')
+                //获取 button_border 的值
+                let button_border = button.getAttribute('data-button_border')
+                gsap.to(button.querySelector('.teflo_bg_gress1'), {
+                    background: hoverBg,
+                    duration: 0.3,
+                    ease: 'power2.easeIn'
+                })
+                gsap.to(button.querySelector('.teflo_bg_gress2'), {
+                    background: hoverBg,
+                    duration: 0.3,
+                    ease: 'power2.easeIn'
+                })
+    
+                //获取data-text-hover-color的值
+                let hoverTextColor = button.getAttribute('data-text-hover-color')
+                //给 teflo_custom_button_text_span 的颜色赋值
+                gsap.to(button.querySelector('.teflo_custom_button_text_span'), {
+                    color: hoverTextColor,
+                    duration: 0.3,
+                    ease: 'power2.easeIn'
+                })
+                //给 teflo_custom_button_icon svg path 的颜色赋值
+                gsap.to(button.querySelector('.teflo_custom_button_icon svg path'), {
+                    stroke: hoverTextColor,
+                    duration: 0.3,
+                    ease: 'power2.easeIn'
+                })
+    
+            })
+            button.addEventListener('mouseleave', function(){
+              
+                // 当前 teflo_bg_gress1 跟 teflo_bg_gress2 的宽度 0, 用gsap
+                //获取 data-default-bg 的值
+                let defaultBg = button.getAttribute('data-default-bg')
+                let button_border = button.getAttribute('data-button_border')
+                //给 teflo_bg_gress1 跟 teflo_bg_gress2 的背景色赋值
+                gsap.to(button.querySelector('.teflo_bg_gress1'), {
+                    background: defaultBg,
+                    duration: 0.3,
+                    ease: 'power2.easeOut'
+                })
+                gsap.to(button.querySelector('.teflo_bg_gress2'), {
+                    background: defaultBg,
+                    duration: 0.3,
+                    ease: 'power2.easeOut'
+                })
+                //获取data-text-color的值
+                let textColor = button.getAttribute('data-text-color')
+                //给 teflo_custom_button_text_span 的颜色赋值
+                gsap.to(button.querySelector('.teflo_custom_button_text_span'), {
+                    color: textColor,
+                    duration: 0.3,
+                    ease: 'power2.easeOut'
+                })
+                //给 teflo_custom_button_icon svg path 的颜色赋值
+                gsap.to(button.querySelector('.teflo_custom_button_icon svg path'), {
+                    stroke: textColor,
+                    duration: 0.3,
+                    ease: 'power2.easeOut'
+                })
+              
+            })
+
+            button.addEventListener('click',function(){
+                showSuccess("操作成功", 3000);
+            })
+        })
+    </script>

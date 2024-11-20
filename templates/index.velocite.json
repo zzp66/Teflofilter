@@ -1,0 +1,760 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "8ba47ba3-de7f-4f0a-b30d-6f2a540748c3": {
+      "type": "slideshow",
+      "blocks": {
+        "template--17993467625754__8ba47ba3-de7f-4f0a-b30d-6f2a540748c3-16787035832bb7b6a4-0": {
+          "type": "slide",
+          "settings": {
+            "image": "",
+            "slide_link": "",
+            "video_background": false,
+            "badge_text": "Bikes for all",
+            "subheading": "",
+            "heading": "Our Bikes Are Handcrafted For A Smooth Ride",
+            "heading_size": "h1",
+            "content": "",
+            "description_size": "medium",
+            "content_position": "middle-left",
+            "text_alignment": "left",
+            "content_size": "large",
+            "color_slidebg": "rgba(0,0,0,0)",
+            "color_slidebg_opacity": 0,
+            "color_slidebg_blur": 0,
+            "color_text": "#ffffff",
+            "color_badge_bg": "#3b3b41",
+            "color_badge_text": "#ffffff",
+            "overlay_color": "#000000",
+            "overlay_opacity": 0,
+            "overlay_gradient": "",
+            "button_1_text": "Buy now - $1290.00",
+            "button_1_color": "accent",
+            "button_1_link": "",
+            "use_text_button_1": false,
+            "button_2_text": "Learn more",
+            "button_2_color": "white",
+            "button_2_link": "",
+            "use_text_button_2": true
+          }
+        },
+        "template--17993467625754__8ba47ba3-de7f-4f0a-b30d-6f2a540748c3-16787035832bb7b6a4-1": {
+          "type": "slide",
+          "settings": {
+            "image": "",
+            "slide_link": "",
+            "video_background": false,
+            "badge_text": "Think Wheels",
+            "subheading": "",
+            "heading": "Let Your Bicycle Show You The Way Around Town",
+            "heading_size": "h1",
+            "content": "",
+            "description_size": "medium",
+            "content_position": "middle-left",
+            "text_alignment": "left",
+            "content_size": "large",
+            "color_slidebg": "rgba(0,0,0,0)",
+            "color_slidebg_opacity": 0,
+            "color_slidebg_blur": 0,
+            "color_text": "#ffffff",
+            "color_badge_bg": "#3b3b41",
+            "color_badge_text": "#ffffff",
+            "overlay_color": "#000000",
+            "overlay_opacity": 0,
+            "overlay_gradient": "",
+            "button_1_text": "Shop Now",
+            "button_1_color": "accent",
+            "button_1_link": "",
+            "use_text_button_1": false,
+            "button_2_text": "",
+            "button_2_color": "white",
+            "button_2_link": "",
+            "use_text_button_2": false
+          }
+        },
+        "f10777ee-d051-422b-9f79-00c875670773": {
+          "type": "slide",
+          "settings": {
+            "image": "",
+            "slide_link": "",
+            "video_background": false,
+            "badge_text": "Go Green",
+            "subheading": "",
+            "heading": "We Raise The Bar For What A Bike Should Be",
+            "heading_size": "h1",
+            "content": "",
+            "description_size": "medium",
+            "content_position": "middle-left",
+            "text_alignment": "left",
+            "content_size": "large",
+            "color_slidebg": "rgba(0,0,0,0)",
+            "color_slidebg_opacity": 0,
+            "color_slidebg_blur": 0,
+            "color_text": "#ffffff",
+            "color_badge_bg": "#9fc817",
+            "color_badge_text": "#ffffff",
+            "overlay_color": "#000000",
+            "overlay_opacity": 0,
+            "overlay_gradient": "",
+            "button_1_text": "Shop Now",
+            "button_1_color": "white",
+            "button_1_link": "",
+            "use_text_button_1": false,
+            "button_2_text": "",
+            "button_2_color": "white",
+            "button_2_link": "",
+            "use_text_button_2": false
+          }
+        }
+      },
+      "block_order": [
+        "template--17993467625754__8ba47ba3-de7f-4f0a-b30d-6f2a540748c3-16787035832bb7b6a4-0",
+        "template--17993467625754__8ba47ba3-de7f-4f0a-b30d-6f2a540748c3-16787035832bb7b6a4-1",
+        "f10777ee-d051-422b-9f79-00c875670773"
+      ],
+      "settings": {
+        "desktop_height": "desktop-height-750",
+        "mobile_height": "mobile-height-500",
+        "full_width": true,
+        "autoplay": true,
+        "autoplay_length": 5,
+        "transition": "zoom",
+        "controls": "dots",
+        "disable_top_spacing": true,
+        "disable_bottom_spacing": true
+      }
+    },
+    "b8776499-1aef-4ea7-b4e3-2443711000b5": {
+      "type": "single-image",
+      "settings": {
+        "image": "",
+        "image_mobile": "",
+        "full_width": false,
+        "disable_top_spacing": true,
+        "disable_bottom_spacing": true
+      }
+    },
+    "eb9559ad-0a35-4f46-a460-1309a19389d3": {
+      "type": "rich-text",
+      "blocks": {
+        "template--19142480036152__eb9559ad-0a35-4f46-a460-1309a19389d3-16843317298fdf372d-1": {
+          "type": "heading",
+          "settings": {
+            "text": "Making |Ways For You|",
+            "marker_style": "style1",
+            "size": "h2",
+            "marker_color": "#ffbf1c"
+          }
+        },
+        "template--19142480036152__eb9559ad-0a35-4f46-a460-1309a19389d3-16843317298fdf372d-2": {
+          "type": "text",
+          "settings": {
+            "text": "<p>An electric friendship fueled by adventure! We connected with a longtime supporter and filmmaker Ben Moon and his partner Sophie Kuller to chat EV progression and share a day on the Oregon Coast.</p>",
+            "size": "text-size-regular"
+          }
+        }
+      },
+      "block_order": [
+        "template--19142480036152__eb9559ad-0a35-4f46-a460-1309a19389d3-16843317298fdf372d-1",
+        "template--19142480036152__eb9559ad-0a35-4f46-a460-1309a19389d3-16843317298fdf372d-2"
+      ],
+      "settings": {
+        "text_width": "large",
+        "text_position": "center",
+        "text_alignment": "center",
+        "color_bg": "rgba(0,0,0,0)",
+        "color_heading": "#ffffff",
+        "color_text": "#eaeaea",
+        "color_links": "#2c2d2e",
+        "disable_top_spacing": true,
+        "disable_bottom_spacing": true
+      }
+    },
+    "81c43929-df48-4a42-b1bc-d91fc50dbaab": {
+      "type": "spacer",
+      "settings": {
+        "spacer_mobile": 25,
+        "spacer_desktop": 30,
+        "border_separator": false,
+        "border_separator_full": false
+      }
+    },
+    "a69147b7-46d8-4ad1-a8ff-fc94c73fe983": {
+      "type": "collection-list",
+      "settings": {
+        "heading": "",
+        "marker_style": "style1",
+        "description": "",
+        "heading_size": "small",
+        "collection_list": [
+          "mountain-bikes",
+          "city-bikes",
+          "bike-parts",
+          "accessories",
+          "clothing"
+        ],
+        "image_ratio": "adapt",
+        "collection_layout": "grid",
+        "style": "style1",
+        "columns_desktop": 5,
+        "columns_mobile": "2",
+        "show_progress_bar": true,
+        "mobile_swipe": true,
+        "heading_position": "bottom-center",
+        "marker_color": "#fd6262",
+        "text_color": "#eaeaea",
+        "overlay_color": "rgba(0,0,0,0)",
+        "overlay_opacity": 0,
+        "disable_top_spacing": true,
+        "disable_bottom_spacing": false
+      }
+    },
+    "62e5613d-cb56-4c54-b3a3-0b462f1e9e8c": {
+      "type": "gallery",
+      "blocks": {
+        "template--19142480036152__62e5613d-cb56-4c54-b3a3-0b462f1e9e8c-1684335822de34a7d2-0": {
+          "type": "image",
+          "settings": {
+            "image": "",
+            "enable_gallery_video": false,
+            "enable_hover_play": false,
+            "subheading": "CRUISER BIKES",
+            "title": "Comfort Cruiser – Electric Beach Cruiser",
+            "marker_style": "style1",
+            "text": "",
+            "link_label": "Buy now - $249.95",
+            "link": "",
+            "use_text_button": false,
+            "block_link": "",
+            "marker_color": "#fd6262"
+          }
+        },
+        "template--19142480036152__62e5613d-cb56-4c54-b3a3-0b462f1e9e8c-1684335822de34a7d2-1": {
+          "type": "image",
+          "settings": {
+            "image": "",
+            "enable_gallery_video": false,
+            "enable_hover_play": false,
+            "subheading": "City Bikes",
+            "title": "City Commuter – Mid Drive Edition",
+            "marker_style": "style1",
+            "text": "",
+            "link_label": "Explore",
+            "link": "",
+            "use_text_button": false,
+            "block_link": "",
+            "marker_color": "#fd6262"
+          }
+        }
+      },
+      "block_order": [
+        "template--19142480036152__62e5613d-cb56-4c54-b3a3-0b462f1e9e8c-1684335822de34a7d2-0",
+        "template--19142480036152__62e5613d-cb56-4c54-b3a3-0b462f1e9e8c-1684335822de34a7d2-1"
+      ],
+      "settings": {
+        "columns_desktop": 2,
+        "full_width": false,
+        "mobile_swipe": true,
+        "image_ratio": "adapt",
+        "content_position": "top-center",
+        "text_alignment": "center",
+        "column_spacing": "large",
+        "heading_size": "h3",
+        "description_size": "medium",
+        "overlay_color": "#000000",
+        "overlay_opacity": 0,
+        "disable_top_spacing": true,
+        "disable_bottom_spacing": false
+      }
+    },
+    "2363fb2c-772a-4b2b-88b7-582a54798bc5": {
+      "type": "featured-collection",
+      "settings": {
+        "heading": "More gear, less gas",
+        "marker_style": "style1",
+        "description": "",
+        "collection": "accessories",
+        "display_type": "grid",
+        "product_limit": 4,
+        "columns_desktop": 4,
+        "show_view_all": true,
+        "mobile_swipe": true,
+        "show_progress_bar": true,
+        "marker_color": "#fd6262",
+        "disable_top_spacing": true,
+        "disable_bottom_spacing": true
+      }
+    },
+    "04ba00fb-2984-448d-a9ad-b1c89bd382c5": {
+      "type": "single-image",
+      "settings": {
+        "image": "",
+        "full_width": false,
+        "disable_top_spacing": true,
+        "disable_bottom_spacing": true
+      }
+    },
+    "9d46a5b7-92c2-49f6-a5a1-393771bc04cb": {
+      "type": "rich-text",
+      "blocks": {
+        "template--19142480036152__9d46a5b7-92c2-49f6-a5a1-393771bc04cb-1684740889ca5682ac-1": {
+          "type": "heading",
+          "settings": {
+            "text": "Coyote series has a disc-specific aluminum frame with a replaceable derailleur hanger and an integrated headset.",
+            "marker_style": "style1",
+            "size": "h2",
+            "marker_color": "#fd6262"
+          }
+        },
+        "template--19142480036152__9d46a5b7-92c2-49f6-a5a1-393771bc04cb-1684740889ca5682ac-2": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Each frame size is paired with the wheel size that best fits the rider and sets them up for optimal efficiency and power transfer. It's simply logical to pair 29\" wheels with larger bikes, and more proportional, better-fitting 27.5\" wheels for smaller bikes.</p>",
+            "size": "text-size-regular"
+          }
+        }
+      },
+      "block_order": [
+        "template--19142480036152__9d46a5b7-92c2-49f6-a5a1-393771bc04cb-1684740889ca5682ac-1",
+        "template--19142480036152__9d46a5b7-92c2-49f6-a5a1-393771bc04cb-1684740889ca5682ac-2"
+      ],
+      "settings": {
+        "text_width": "xlarge",
+        "text_position": "left",
+        "text_alignment": "left",
+        "color_bg": "rgba(0,0,0,0)",
+        "color_heading": "linear-gradient(291deg, rgba(149, 239, 127, 1) 15%, rgba(244, 149, 143, 1) 85%)",
+        "color_text": "#eaeaea",
+        "color_links": "#2c2d2e",
+        "disable_top_spacing": true,
+        "disable_bottom_spacing": true
+      }
+    },
+    "dc4342cc-852d-4ea9-8948-81338f8557e0": {
+      "type": "progress-bars",
+      "blocks": {
+        "template--19142480036152__dc4342cc-852d-4ea9-8948-81338f8557e0-1684761074215f15b1-0": {
+          "type": "progress",
+          "settings": {
+            "heading": "Power",
+            "final_position": 78,
+            "color_bar": "linear-gradient(90deg, rgba(46, 189, 155, 1), rgba(70, 190, 40, 1) 100%)"
+          }
+        },
+        "template--19142480036152__dc4342cc-852d-4ea9-8948-81338f8557e0-1684761074215f15b1-1": {
+          "type": "progress",
+          "settings": {
+            "heading": "Acceleration",
+            "final_position": 50,
+            "color_bar": "linear-gradient(270deg, rgba(253, 200, 171, 1) 4%, rgba(225, 60, 53, 1) 100%)"
+          }
+        },
+        "template--19142480036152__dc4342cc-852d-4ea9-8948-81338f8557e0-1684761074215f15b1-2": {
+          "type": "progress",
+          "settings": {
+            "heading": "Grip",
+            "final_position": 84,
+            "color_bar": "linear-gradient(270deg, rgba(70, 190, 40, 1), rgba(46, 189, 155, 1) 100%)"
+          }
+        },
+        "template--19142480036152__dc4342cc-852d-4ea9-8948-81338f8557e0-1684761074215f15b1-3": {
+          "type": "progress",
+          "settings": {
+            "heading": "Control",
+            "final_position": 60,
+            "color_bar": "linear-gradient(270deg, rgba(70, 190, 40, 1) 3%, rgba(46, 189, 155, 1) 100%)"
+          }
+        },
+        "59d68ec7-d57a-4af7-9421-efc1efe7e90e": {
+          "type": "progress",
+          "settings": {
+            "heading": "Brakes",
+            "final_position": 24,
+            "color_bar": "linear-gradient(90deg, rgba(225, 60, 53, 1), rgba(253, 200, 171, 1) 99%)"
+          }
+        },
+        "cae1f7a6-acd1-45a5-8b98-4378f6b426fd": {
+          "type": "progress",
+          "settings": {
+            "heading": "Durability",
+            "final_position": 33,
+            "color_bar": "linear-gradient(90deg, rgba(225, 60, 53, 1), rgba(253, 200, 171, 1) 100%)"
+          }
+        }
+      },
+      "block_order": [
+        "template--19142480036152__dc4342cc-852d-4ea9-8948-81338f8557e0-1684761074215f15b1-0",
+        "template--19142480036152__dc4342cc-852d-4ea9-8948-81338f8557e0-1684761074215f15b1-1",
+        "template--19142480036152__dc4342cc-852d-4ea9-8948-81338f8557e0-1684761074215f15b1-2",
+        "template--19142480036152__dc4342cc-852d-4ea9-8948-81338f8557e0-1684761074215f15b1-3",
+        "59d68ec7-d57a-4af7-9421-efc1efe7e90e",
+        "cae1f7a6-acd1-45a5-8b98-4378f6b426fd"
+      ],
+      "settings": {
+        "columns_desktop": 2,
+        "color_bg": "#313138",
+        "disable_top_spacing": true,
+        "disable_bottom_spacing": false
+      }
+    },
+    "a8ef0510-7f67-49a4-abe4-e55ff069ba43": {
+      "type": "customer-reviews",
+      "blocks": {
+        "template--19142480036152__a8ef0510-7f67-49a4-abe4-e55ff069ba43-1684753682e883e5f6-0": {
+          "type": "review",
+          "settings": {
+            "product_handle": "",
+            "stars": "4",
+            "heading": "👍  Excellent",
+            "text": "Geared for climbs when needed but I spend most of my time on the larger chain wheel.",
+            "author": "Kyle W."
+          }
+        },
+        "template--19142480036152__a8ef0510-7f67-49a4-abe4-e55ff069ba43-1684753682e883e5f6-1": {
+          "type": "review",
+          "settings": {
+            "product_handle": "",
+            "stars": "5",
+            "heading": "🤩 Great Bike",
+            "text": "Im so happy with the bike, it was delivered on time and the quality of the bike is impressive.",
+            "author": "Melanie"
+          }
+        },
+        "template--19142480036152__a8ef0510-7f67-49a4-abe4-e55ff069ba43-1684753682e883e5f6-2": {
+          "type": "review",
+          "settings": {
+            "product_handle": "",
+            "stars": "4.5",
+            "heading": "🤗 Soft Ride",
+            "text": "Easy to get it setup and on the trails. Shipping was very fast once the order was processed.",
+            "author": "Jonah D."
+          }
+        },
+        "0d029ad1-6ffc-4493-8f66-e9a6cf1abb51": {
+          "type": "review",
+          "settings": {
+            "product_handle": "",
+            "stars": "3.5",
+            "heading": "😎 Very Happy",
+            "text": "The bike is awesome looking and I love the lockout on the rear. It’s very simple and fun!",
+            "author": "Connor M."
+          }
+        },
+        "c5c18b9f-0d31-489d-9d52-c27ae8c17979": {
+          "type": "review",
+          "settings": {
+            "product_handle": "",
+            "stars": "5",
+            "heading": "🤩 Awesome",
+            "text": "Couple of adjustments needed to be made after first couple of rides but expected that.",
+            "author": "Jackie C."
+          }
+        }
+      },
+      "block_order": [
+        "template--19142480036152__a8ef0510-7f67-49a4-abe4-e55ff069ba43-1684753682e883e5f6-0",
+        "template--19142480036152__a8ef0510-7f67-49a4-abe4-e55ff069ba43-1684753682e883e5f6-1",
+        "template--19142480036152__a8ef0510-7f67-49a4-abe4-e55ff069ba43-1684753682e883e5f6-2",
+        "0d029ad1-6ffc-4493-8f66-e9a6cf1abb51",
+        "c5c18b9f-0d31-489d-9d52-c27ae8c17979"
+      ],
+      "settings": {
+        "heading": "",
+        "description": "",
+        "columns": 4,
+        "autoplay": true,
+        "autoplay_length": 5,
+        "color_bg": "#2e2e35",
+        "color_heading": "#ffffff",
+        "color_text": "#eaeaea",
+        "disable_top_spacing": true,
+        "disable_bottom_spacing": false
+      }
+    },
+    "7085818e-cdf3-4500-a153-4b60b7aad842": {
+      "type": "rich-text",
+      "blocks": {
+        "91cf36fe-2e4b-42fd-ba15-04372724bfb3": {
+          "type": "badge",
+          "settings": {
+            "text": "Ride Young",
+            "color_bg": "#3b3b40",
+            "color_text": "#ffffff"
+          }
+        },
+        "template--19142480036152__7085818e-cdf3-4500-a153-4b60b7aad842-1684740889ca5682ac-1": {
+          "type": "heading",
+          "settings": {
+            "text": "Exploring Nature Has Never Been Easier",
+            "marker_style": "style1",
+            "size": "h1",
+            "marker_color": "#fd6262"
+          }
+        }
+      },
+      "block_order": [
+        "91cf36fe-2e4b-42fd-ba15-04372724bfb3",
+        "template--19142480036152__7085818e-cdf3-4500-a153-4b60b7aad842-1684740889ca5682ac-1"
+      ],
+      "settings": {
+        "text_width": "large",
+        "text_position": "center",
+        "text_alignment": "center",
+        "color_bg": "rgba(0,0,0,0)",
+        "color_heading": "linear-gradient(265deg, rgba(238, 136, 255, 1), rgba(33, 242, 255, 1) 100%)",
+        "color_text": "#2c2d2e",
+        "color_links": "#2c2d2e",
+        "disable_top_spacing": true,
+        "disable_bottom_spacing": true
+      }
+    },
+    "4bc9749a-f6ad-4b92-8853-43bb92afff31": {
+      "type": "spacer",
+      "settings": {
+        "spacer_mobile": 30,
+        "spacer_desktop": 40,
+        "border_separator": false,
+        "border_separator_full": false
+      }
+    },
+    "dd18e03f-7347-4ef4-b4d5-0d605ad1ea3a": {
+      "type": "scrolling-images",
+      "blocks": {
+        "template--19142480036152__dd18e03f-7347-4ef4-b4d5-0d605ad1ea3a-168467537077e20546-0": {
+          "type": "image",
+          "settings": {
+            "image": "",
+            "link": "",
+            "heading": "",
+            "text": ""
+          }
+        },
+        "template--19142480036152__dd18e03f-7347-4ef4-b4d5-0d605ad1ea3a-168467537077e20546-1": {
+          "type": "image",
+          "settings": {
+            "image": "",
+            "link": "",
+            "heading": "",
+            "text": ""
+          }
+        },
+        "template--19142480036152__dd18e03f-7347-4ef4-b4d5-0d605ad1ea3a-168467537077e20546-2": {
+          "type": "image",
+          "settings": {
+            "image": "",
+            "link": "",
+            "heading": "",
+            "text": ""
+          }
+        },
+        "template--19142480036152__dd18e03f-7347-4ef4-b4d5-0d605ad1ea3a-168467537077e20546-3": {
+          "type": "image",
+          "settings": {
+            "image": "",
+            "link": "",
+            "heading": "",
+            "text": ""
+          }
+        },
+        "template--19142480036152__dd18e03f-7347-4ef4-b4d5-0d605ad1ea3a-168467537077e20546-4": {
+          "type": "image",
+          "settings": {
+            "image": "",
+            "link": "",
+            "heading": "",
+            "text": ""
+          }
+        }
+      },
+      "block_order": [
+        "template--19142480036152__dd18e03f-7347-4ef4-b4d5-0d605ad1ea3a-168467537077e20546-0",
+        "template--19142480036152__dd18e03f-7347-4ef4-b4d5-0d605ad1ea3a-168467537077e20546-1",
+        "template--19142480036152__dd18e03f-7347-4ef4-b4d5-0d605ad1ea3a-168467537077e20546-2",
+        "template--19142480036152__dd18e03f-7347-4ef4-b4d5-0d605ad1ea3a-168467537077e20546-3",
+        "template--19142480036152__dd18e03f-7347-4ef4-b4d5-0d605ad1ea3a-168467537077e20546-4"
+      ],
+      "settings": {
+        "image_ratio": "adapt",
+        "column_spacing": "large",
+        "image_alignment": "top",
+        "direction": "left",
+        "speed": "50s",
+        "disable_top_spacing": true,
+        "disable_bottom_spacing": true
+      }
+    },
+    "1d74eab1-7864-46c6-9442-11604b7dce18": {
+      "type": "rich-text",
+      "blocks": {
+        "template--19142480036152__1d74eab1-7864-46c6-9442-11604b7dce18-1684740889ca5682ac-0": {
+          "type": "subheading",
+          "settings": {
+            "text": "Who we are"
+          }
+        },
+        "template--19142480036152__1d74eab1-7864-46c6-9442-11604b7dce18-1684740889ca5682ac-1": {
+          "type": "heading",
+          "settings": {
+            "text": "We give you detailed specifications, unbiased competitor comparisons, customer reviews, media reviews as well as in-depth product videos.",
+            "marker_style": "style1",
+            "size": "h3",
+            "marker_color": "#fd6262"
+          }
+        },
+        "template--19142480036152__1d74eab1-7864-46c6-9442-11604b7dce18-1684740889ca5682ac-3": {
+          "type": "button",
+          "settings": {
+            "link_label": "Our Story",
+            "link": "#"
+          }
+        }
+      },
+      "block_order": [
+        "template--19142480036152__1d74eab1-7864-46c6-9442-11604b7dce18-1684740889ca5682ac-0",
+        "template--19142480036152__1d74eab1-7864-46c6-9442-11604b7dce18-1684740889ca5682ac-1",
+        "template--19142480036152__1d74eab1-7864-46c6-9442-11604b7dce18-1684740889ca5682ac-3"
+      ],
+      "settings": {
+        "text_width": "large",
+        "text_position": "center",
+        "text_alignment": "center",
+        "color_bg": "rgba(0,0,0,0)",
+        "color_heading": "linear-gradient(270deg, rgba(239, 187, 127, 1), rgba(244, 143, 191, 1) 100%)",
+        "color_text": "#939199",
+        "color_links": "#2c2d2e",
+        "disable_top_spacing": false,
+        "disable_bottom_spacing": false
+      }
+    },
+    "972bcad9-f9b4-4c4d-b5f6-a4f3fd10e90a": {
+      "type": "multicolumn",
+      "blocks": {
+        "template--19142480036152__972bcad9-f9b4-4c4d-b5f6-a4f3fd10e90a-16847509437099eea5-0": {
+          "type": "column",
+          "settings": {
+            "image": "",
+            "image_full_width": false,
+            "image_link": "",
+            "title": "",
+            "text": "<p>Pair text with an image to focus on your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.</p>",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "template--19142480036152__972bcad9-f9b4-4c4d-b5f6-a4f3fd10e90a-16847509437099eea5-1": {
+          "type": "column",
+          "settings": {
+            "image": "",
+            "image_full_width": false,
+            "image_link": "",
+            "title": "",
+            "text": "<p>Pair text with an image to focus on your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.</p>",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "template--19142480036152__972bcad9-f9b4-4c4d-b5f6-a4f3fd10e90a-16847509437099eea5-2": {
+          "type": "column",
+          "settings": {
+            "image": "",
+            "image_full_width": false,
+            "image_link": "",
+            "title": "",
+            "text": "<p>Pair text with an image to focus on your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.</p>",
+            "link_label": "",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "template--19142480036152__972bcad9-f9b4-4c4d-b5f6-a4f3fd10e90a-16847509437099eea5-0",
+        "template--19142480036152__972bcad9-f9b4-4c4d-b5f6-a4f3fd10e90a-16847509437099eea5-1",
+        "template--19142480036152__972bcad9-f9b4-4c4d-b5f6-a4f3fd10e90a-16847509437099eea5-2"
+      ],
+      "settings": {
+        "heading": "",
+        "marker_style": "style1",
+        "description": "",
+        "columns_desktop": 3,
+        "mobile_swipe": true,
+        "image_ratio": "adapt",
+        "text_alignment": "center",
+        "heading_size": "h5",
+        "color_heading": "#ffffff",
+        "marker_color": "#fd6262",
+        "color_text": "#eaeaea",
+        "color_links": "#2c2d2e",
+        "disable_top_spacing": true,
+        "disable_bottom_spacing": false
+      }
+    },
+    "936d25c7-099f-4a91-a61c-ec8b65a57221": {
+      "type": "background-video",
+      "blocks": {
+        "template--19142480036152__936d25c7-099f-4a91-a61c-ec8b65a57221-168475120447f83232-0": {
+          "type": "subheading",
+          "settings": {
+            "text": "SHOW YOUR SPIRIT"
+          }
+        },
+        "template--19142480036152__936d25c7-099f-4a91-a61c-ec8b65a57221-168475120447f83232-1": {
+          "type": "heading",
+          "settings": {
+            "text": "The Journey Matters More Than The Destination",
+            "heading_size": "h2"
+          }
+        },
+        "template--19142480036152__936d25c7-099f-4a91-a61c-ec8b65a57221-168475120447f83232-2": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Pair text with an image to focus on your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.</p>",
+            "description_size": "small"
+          }
+        }
+      },
+      "block_order": [
+        "template--19142480036152__936d25c7-099f-4a91-a61c-ec8b65a57221-168475120447f83232-0",
+        "template--19142480036152__936d25c7-099f-4a91-a61c-ec8b65a57221-168475120447f83232-1",
+        "template--19142480036152__936d25c7-099f-4a91-a61c-ec8b65a57221-168475120447f83232-2"
+      ],
+      "settings": {
+        "desktop_height": "desktop-height-550",
+        "mobile_height": "mobile-height-500",
+        "full_width": true,
+        "video_controls": false,
+        "video": "https://www.youtube.com/watch?v=_9VUPq3SxOc",
+        "overlay_color": "#000000",
+        "overlay_opacity": 25,
+        "disable_top_spacing": true,
+        "disable_bottom_spacing": true
+      }
+    }
+  },
+  "order": [
+    "8ba47ba3-de7f-4f0a-b30d-6f2a540748c3",
+    "b8776499-1aef-4ea7-b4e3-2443711000b5",
+    "eb9559ad-0a35-4f46-a460-1309a19389d3",
+    "81c43929-df48-4a42-b1bc-d91fc50dbaab",
+    "a69147b7-46d8-4ad1-a8ff-fc94c73fe983",
+    "62e5613d-cb56-4c54-b3a3-0b462f1e9e8c",
+    "2363fb2c-772a-4b2b-88b7-582a54798bc5",
+    "04ba00fb-2984-448d-a9ad-b1c89bd382c5",
+    "9d46a5b7-92c2-49f6-a5a1-393771bc04cb",
+    "dc4342cc-852d-4ea9-8948-81338f8557e0",
+    "a8ef0510-7f67-49a4-abe4-e55ff069ba43",
+    "7085818e-cdf3-4500-a153-4b60b7aad842",
+    "4bc9749a-f6ad-4b92-8853-43bb92afff31",
+    "dd18e03f-7347-4ef4-b4d5-0d605ad1ea3a",
+    "1d74eab1-7864-46c6-9442-11604b7dce18",
+    "972bcad9-f9b4-4c4d-b5f6-a4f3fd10e90a",
+    "936d25c7-099f-4a91-a61c-ec8b65a57221"
+  ]
+}

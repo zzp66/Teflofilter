@@ -1,0 +1,60 @@
+<div class="product--icon-list" {{ block.shopify_attributes }}>
+	<ul>
+		{%- if block.settings.icon_1_text != empty -%}
+			<li>
+				{% if block.settings.icon_1_image %}
+				<span class="product--icon-list-image">
+					{%- render 'responsive-image', image: block.settings.icon_1_image, sizes: '20x20,40x40' -%}
+				</span>
+				{%- else -%}
+				<span class="product--icon-list-image">
+					{% render 'svg-icons-inline', icon: block.settings.icon_1_icon %}
+				</span>
+				{%- endif -%}
+				<span>{{ block.settings.icon_1_text }}</span>
+			</li>
+		{%- endif -%}
+		{%- if block.settings.icon_2_text != empty -%}
+			<li>
+				{% if block.settings.icon_2_image %}
+				<span class="product--icon-list-image">
+					{%- render 'responsive-image', image: block.settings.icon_2_image, sizes: '20x20,40x40' -%}
+				</span>
+				{%- else -%}
+				<span class="product--icon-list-image">
+					{% render 'svg-icons-inline', icon: block.settings.icon_2_icon %}
+				</span>
+				{%- endif -%}
+				<span>{{ block.settings.icon_2_text }}</span>
+			</li>
+		{%- endif -%}
+		{%- if block.settings.icon_3_text != empty -%}
+			<li>
+				{% if block.settings.icon_3_image %}
+				<span class="product--icon-list-image">
+					{%- render 'responsive-image', image: block.settings.icon_3_image, sizes: '20x20,40x40' -%}
+				</span>
+				{%- else -%}
+				<span class="product--icon-list-image">
+					{% render 'svg-icons-inline', icon: block.settings.icon_3_icon %}
+				</span>
+				{%- endif -%}
+				<span>{{ block.settings.icon_3_text }}</span>
+			</li>
+		{%- endif -%}
+		{%- if block.settings.icon_4_text != empty -%}
+			<li>
+				{% if block.settings.icon_4_image %}
+				<span class="product--icon-list-image">
+					{%- render 'responsive-image', image: block.settings.icon_4_image, sizes: '20x20,40x40' -%}
+				</span>
+				{%- else -%}
+				<span class="product--icon-list-image">
+					{% render 'svg-icons-inline', icon: block.settings.icon_4_icon %}
+				</span>
+				{%- endif -%}
+				<span>{{ block.settings.icon_4_text }}</span>
+			</li>
+		{%- endif -%}
+	</ul>
+</div>

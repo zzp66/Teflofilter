@@ -1,0 +1,69 @@
+<facet-remove class="active-facets">
+	{%- for filter in results.filters -%}
+		{%- for value in filter.active_values -%}
+			{% assign slug = filter.label | downcase | escape %}
+			{%- liquid
+				assign is_color = false
+				if slug contains 'color' or slug contains 'colour' or slug contains 'couleur' or slug contains 'farbe'
+					assign is_color = true
+				endif
+
+				if filter.presentation == 'swatch'
+					assign is_color = true
+				endif
+
+				if is_color
+					assign custom_colors = settings.color_swatches | newline_to_br | split: '<br />'
+					assign key_array = ''
+					assign val_array = ''
+
+					for color in custom_colors
+						assign key = color | split: ':' | first | rstrip
+						assign key_value = color | split: ':' | last | lstrip
+						assign key_array = key_array | append: ',' | append: key
+						assign val_array = val_array | append: ',' | append: key_value
+					endfor
+
+					assign key_array = key_array | remove_first: ',' | strip_newlines | downcase | split: ','
+					assign val_array = val_array | remove_first: ',' | split: ','
+
+					assign color_value = value.label | downcase | escape
+
+					for custom_color in key_array
+						if custom_color == color_value
+							assign color_value = val_array[forloop.index0]
+						endif
+					endfor
+
+					assign bg_value = false
+					if color_value contains '.'
+						assign bg_value = color_value | file_url
+						assign color_value = 'var(--bg-body)'
+					endif
+
+					if filter.presentation == 'swatch'
+						assign bg_value = empty
+						assign color_value = value.swatch.color
+
+						if value.swatch.image
+							assign bg_value = value.swatch.image | image_url: width: 40
+						endif
+					endif
+				endif
+			-%}
+			<a href="{{ value.url_to_remove }}" class="active-facets__button {% if is_color and filter_color_swatches %}active-facets__button--color{% endif %}"{% if is_color %} style="--bg-color: {{ color_value | downcase | escape }};{%- if bg_value != blank -%} --option-color-image: url('{{ bg_value | escape }}');{%- endif -%}"{%- endif -%}>
+				{{ value.label }}
+				<span>{% render 'svg-icons' with 'thb-filter-remove' %}</span>
+			</a>
+		{%- endfor -%}
+		{% if filter.type == "price_range" %}
+			{%- if filter.min_value.value != nil or filter.max_value.value != nil -%}
+				<a href="{{ filter.url_to_remove }}" class="active-facets__button">
+					{%- if filter.min_value.value -%}{{ filter.min_value.value | money }}{%- else -%}{{ 0 | money }}{%- endif %} - {% if filter.max_value.value -%}{{ filter.max_value.value | money }}{%- else -%}{{ filter.range_max | money }}{%- endif -%}
+					<span>{% render 'svg-icons' with 'thb-filter-remove' %}</span>
+				</a>
+			{%- endif -%}
+		{% endif %}
+	{%- endfor -%}
+	<a href="{{ results_url }}" class="active-facets__button-remove text-button">{{ 'products.facets.clear_all' | t }}</a>
+</facet-remove>

@@ -1,0 +1,312 @@
+{{- 'image-hotspots.css' | asset_url | stylesheet_tag -}}
+<script src="{{ 'image-hotspots.js' | asset_url }}" defer="defer"></script>
+{%- liquid
+	assign image = section.settings.image
+	assign image_mobile = section.settings.image_mobile
+
+	assign section_heading = section.settings.heading
+	assign marker_style = section.settings.marker_style
+	assign section_description = section.settings.description
+	assign badge_text = section.settings.badge_text
+	assign image_position = section.settings.image_position
+
+	assign marker_color = section.settings.marker_color
+	assign color_bg_badge = section.settings.color_bg_badge
+	assign color_badge = section.settings.color_badge
+
+	assign disable_top_spacing = section.settings.disable_top_spacing
+	assign disable_bottom_spacing = section.settings.disable_bottom_spacing
+-%}
+<div class="row">
+	<div class="small-12 columns">
+		<div class="image-hotspots image-hotspots--position-{{ image_position }} section-spacing{% if disable_top_spacing %} section-spacing--disable-top{% endif %}{% if disable_bottom_spacing %} section-spacing--disable-bottom{% endif %}">
+			<div class="image-hotspots--text">
+				{%- if badge_text != empty -%}
+				<div>
+					<span class="inline-badge" style="--badge-bg: {{ color_bg_badge }}; --badge-text: {{ color_badge }};">{{ badge_text }}</span>
+				</div>
+				{%- endif -%}
+				{%- if section_heading -%}
+				<h3 class="{{ section.settings.heading_size }}">{% render 'animated-marker-heading', heading: section_heading, style: marker_style, color: marker_color %}</h3>
+				{%- endif -%}
+				{%- if section_description != blank -%}
+					<div class="rte">
+						{{ section_description }}
+					</div>
+				{%- endif -%}
+			</div>
+			<image-hotspots class="image-hotspots--container">
+				<div class="image-hotspots--image">
+					{%- if image -%}
+						{%- liquid
+							assign master_width = image.src.width | append: 'x' | append: image.src.height
+							assign class = nil
+
+							if image_mobile != blank
+								assign class = 'image-hotspots--desktop'
+							endif
+						 -%}
+						{%- render 'responsive-image', image: image, sizes: master_width, class: class -%}
+					{%- else -%}
+						<div class="thb-placeholder">
+							{{ 'image' | placeholder_svg_tag: 'placeholder_svg_tag' }}
+						</div>
+					{%- endif -%}
+					{%- if image_mobile -%}
+						{%- liquid
+							assign master_width = image_mobile.src.width | append: 'x' | append: image_mobile.src.height
+						 -%}
+						{%- render 'responsive-image', image: image_mobile, sizes: master_width, class: 'image-hotspots--mobile' -%}
+					{%- endif -%}
+				</div>
+				{% for block in section.blocks %}
+          <div class="image-hotspots--pin" style="--mobile-left: {{- block.settings.x_position_mobile | append: '%' -}}; --mobile-top: {{- block.settings.y_position_mobile | append: '%' -}}; --desktop-left: {{- block.settings.x_position | append: '%' -}}; --desktop-top: {{- block.settings.y_position | append: '%' -}};">
+						<div class="image-hotspots--pin-button">{% render 'svg-icons' with 'thb-hotspot' %}</div>
+            <div class="image-hotspots--pin-bubble">
+							<div class="image-hotspots--pin-content">
+								{%- if block.settings.heading != blank -%}
+								<p class="h6">{{ block.settings.heading }}</p>
+								{%- endif -%}
+								{%- if block.settings.description != blank -%}
+								<p>{{ block.settings.description }}</p>
+								{%- endif -%}
+							</div>
+						</div>
+          </div>
+        {% endfor %}
+			</image-hotspots>
+		</div>
+	</div>
+</div>
+{% schema %}
+  {
+    "name": "Image hotspots",
+		"class": "section-image-hotspots",
+    "settings": [
+			{
+				"type": "image_picker",
+				"id": "image",
+				"label": "Image",
+				"info": "1340 x 650 .jpg recommended."
+			},
+			{
+				"type": "image_picker",
+				"id": "image_mobile",
+				"label": "Mobile image (optional)"
+			},
+			{
+				"type": "text",
+				"id": "heading",
+				"label": "Heading",
+				"default": "Image hotspots",
+				"info": "Wrap your text between | to add animated markers. For example: Animated |marker| will underline marker text."
+			},
+			{
+				"type": "select",
+				"id": "marker_style",
+				"options": [
+					{
+						"value": "style1",
+						"label": "Basic"
+					},
+					{
+						"value": "style2",
+						"label": "Double"
+					},
+					{
+						"value": "style3",
+						"label": "Squiggle"
+					},
+					{
+						"value": "style4",
+						"label": "Zigzag"
+					}
+				],
+				"default": "style1",
+				"label": "Marker"
+			},
+			{
+				"type": "select",
+				"id": "heading_size",
+				"label": "Size",
+				"options": [
+					{
+						"value": "h1",
+						"label": "Extra Large"
+					},
+					{
+						"value": "h2",
+						"label": "Large"
+					},
+					{
+						"value": "h3",
+						"label": "Medium"
+					},
+					{
+						"value": "h4",
+						"label": "Small"
+					}
+				],
+				"default": "h3"
+			},
+			{
+				"type": "richtext",
+				"id": "description",
+				"label": "Description",
+				"default": "<p>Add a short description for your image</p>"
+			},
+			{
+				"type": "text",
+				"id": "badge_text",
+				"label": "Badge text",
+				"default": "Badge"
+			},
+			{
+	      "type": "select",
+	      "id": "image_position",
+	      "options": [
+	        {
+	          "value": "image_first",
+	          "label": "Image first"
+	        },
+	        {
+	          "value": "text_first",
+	          "label": "Image second"
+	        },
+	        {
+	          "value": "image_top",
+	          "label": "Image bottom"
+	        }
+	      ],
+	      "default": "image_first",
+	      "label": "Desktop image placement"
+	    },
+			{
+				"type": "header",
+				"content": "Colors"
+			},
+			{
+				"type": "color",
+				"id": "marker_color",
+				"label": "Marker",
+				"default": "#FD6262"
+			},
+			{
+				"type": "color",
+				"id": "color_bg_badge",
+				"label": "Badge background",
+				"default": "#3f72e5"
+			},
+			{
+				"type": "color",
+				"id": "color_badge",
+				"label": "Badge text",
+				"default": "#ffffff"
+			},
+			{
+	      "type": "header",
+	      "content": "Spacing"
+	    },
+			{
+				"type": "checkbox",
+				"id": "disable_top_spacing",
+				"default": false,
+				"label": "Remove top spacing"
+			},
+			{
+				"type": "checkbox",
+				"id": "disable_bottom_spacing",
+				"default": false,
+				"label": "Remove bottom spacing"
+			}
+    ],
+    "blocks": [
+      {
+        "type": "hotspot",
+        "name": "Hotspot",
+        "settings": [
+					{
+						"type": "text",
+						"id": "heading",
+						"default": "Hotspot",
+						"label": "Heading"
+					},
+					{
+						"type": "textarea",
+						"id": "description",
+						"label": "Description",
+						"default": "Description text for this hotspot"
+					},
+					{
+						"type": "header",
+						"content": "Position"
+					},
+					{
+						"type": "range",
+						"id": "x_position",
+						"min": 0,
+						"max": 100,
+						"step": 1,
+						"unit": "%",
+						"label": "Horizontal",
+						"default": 20,
+						"info": "Horizontal position of the hot spot"
+					},
+					{
+						"type": "range",
+						"id": "y_position",
+						"min": 0,
+						"max": 100,
+						"step": 1,
+						"unit": "%",
+						"label": "Vertical",
+						"default": 20,
+						"info": "Vertical position of the hot spot"
+					},
+					{
+						"type": "header",
+						"content": "Mobile position"
+					},
+					{
+						"type": "range",
+						"id": "x_position_mobile",
+						"min": 0,
+						"max": 100,
+						"step": 1,
+						"unit": "%",
+						"label": "Horizontal",
+						"default": 20,
+						"info": "Horizontal position of the hot spot on mobile screens"
+					},
+					{
+						"type": "range",
+						"id": "y_position_mobile",
+						"min": 0,
+						"max": 100,
+						"step": 1,
+						"unit": "%",
+						"label": "Vertical",
+						"default": 20,
+						"info": "Vertical position of the hot spot on mobile screens"
+					}
+        ]
+      }
+    ],
+    "presets": [
+      {
+        "name": "Image hotspots",
+				"blocks": [
+					{
+						"type": "hotspot"
+					}
+				]
+      }
+    ],
+		"enabled_on": {
+			"templates": ["*"],
+			"groups": [
+				"header", "footer"
+			]
+		}
+  }
+{% endschema %}

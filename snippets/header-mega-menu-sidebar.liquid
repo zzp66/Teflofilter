@@ -1,0 +1,53 @@
+{%- liquid
+  assign content_collection_image = mega_menu_block.settings.content_collection_image
+  assign content_product_image = mega_menu_block.settings.content_product_image
+-%}
+<div class="sub-menu mega-menu-container" tabindex="-1">
+  <div class="mega-menu-columns mega-menu-container--inner-has-sidebar">
+    <mega-menu-sidebar class="mega-menu-sidebar">
+      <div class="mega-menu-sidebar--sidebar">
+        {%- if link.links.size > 0 -%}
+          <ul>
+          {%- for l in link.links -%}
+            <li role="none">
+              <a href="{{ l.url }}" class="mega-menu-sidebar--button{% if forloop.first %} active{% endif %}" data-target="#{{ mega_menu_block.id}}-{{ forloop.index }}">
+                <span>{{ l.title }}</span>
+                {%- if l.links.size > 0 -%}{%- render 'svg-icons' with 'thb-dropdown-right' -%}{%- endif -%}
+              </a>
+            </li>
+          {%- endfor -%}
+          </ul>
+        {%- endif -%}
+      </div>
+      <div class="mega-menu-sidebar--content">
+        {%- if link.links.size > 0 -%}
+          {%- for l in link.links -%}
+            <ul id="#{{ mega_menu_block.id}}-{{ forloop.index }}" class="mega-menu-sidebar--content-inner{% if forloop.first %} active{% endif %}">
+              {%- for sub_link in l.links -%}
+              <li>
+                {%- if sub_link.type == 'collection_link' -%}
+                  {%- if content_collection_image -%}
+                  <a href="{{ sub_link.url }}" class="mega-menu-sidebar--content-container">
+                    <div class="mega-menu-sidebar--content-image">
+                    {%- render 'responsive-image', image: sub_link.object.featured_image, sizes: '237x237', priority: 'low' -%}
+                    </div>
+                    <span class="text-button">{{- sub_link.title -}}</span>
+                  </a>
+                  {%- else -%}
+                  <a href="{{ sub_link.url }}" class="thb-full-menu--link">{{- sub_link.title -}}</a>
+                  {%- endif -%}
+                {%- elsif sub_link.type == 'product_link' -%}
+                  {%- render 'product-card-simple', product_card_product: sub_link.object, show_product_image: mega_menu_block.settings.content_product_image -%}
+                {%- else -%}
+                  <a href="{{ sub_link.url }}" class="thb-full-menu--link">{{- sub_link.title -}}</a>
+                {%- endif -%}
+              </li>
+              {%- endfor -%}
+            </ul>
+          {%- endfor -%}
+        {%- endif -%}
+      </div>
+    </mega-menu-sidebar>
+    <script src="{{ 'mega-menu-sidebar.js' | asset_url }}" defer="defer"></script>
+  </div>
+</div>

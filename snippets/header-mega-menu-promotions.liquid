@@ -1,0 +1,36 @@
+{%- liquid
+  assign max_columns = mega_menu_block.settings.max_columns
+  assign limit_columns = mega_menu_block.settings.limit_columns
+-%}
+<div class="sub-menu mega-menu-container" tabindex="-1">
+  <ul class="mega-menu-columns{% if limit_columns %} mega-menu-columns--limited{% endif %}" tabindex="-1" style="--max-megamenu-columns: {{ max_columns }}">
+    {% if link.links.size > 0 %}
+    {%- for l in link.links -%}
+      <li class="{% if l.active %} active{% endif %}" role="none">
+        <a href="{{ l.url }}" class="thb-full-menu--link mega-menu-columns__heading" role="menuitem">{{ l.title }}</a>
+        {%- if l.links.size > 0 -%}
+          <ul role="menu">
+            {%- for sub_link in l.links -%}
+              <li class="{% if sub_link.active %} active{% endif %}" role="none">
+                <a href="{{ sub_link.url }}" class="thb-full-menu--link" role="menuitem">{{ sub_link.title }}</a>
+              </li>
+            {%- endfor -%}
+          </ul>
+        {%- endif -%}
+      </li>
+    {%- endfor -%}
+    {% endif %}
+    {%- if mega_menu_block.settings.promo_1_image -%}
+      {% render 'header-full-menu-promotion', promotion_image: mega_menu_block.settings.promo_1_image, promotion_link: mega_menu_block.settings.promo_1_link, promotion_heading: mega_menu_block.settings.promo_1_heading, promotion_content: mega_menu_block.settings.promo_1_content %}
+    {%- endif -%}
+    {%- if mega_menu_block.settings.promo_2_image -%}
+      {% render 'header-full-menu-promotion', promotion_image: mega_menu_block.settings.promo_2_image, promotion_link: mega_menu_block.settings.promo_2_link, promotion_heading: mega_menu_block.settings.promo_2_heading, promotion_content: mega_menu_block.settings.promo_2_content %}
+    {%- endif -%}
+    {%- if mega_menu_block.settings.promo_3_image -%}
+      {% render 'header-full-menu-promotion', promotion_image: mega_menu_block.settings.promo_3_image, promotion_link: mega_menu_block.settings.promo_3_link, promotion_heading: mega_menu_block.settings.promo_3_heading, promotion_content: mega_menu_block.settings.promo_3_content %}
+    {%- endif -%}
+    {%- if mega_menu_block.settings.promo_4_image -%}
+      {% render 'header-full-menu-promotion', promotion_image: mega_menu_block.settings.promo_4_image, promotion_link: mega_menu_block.settings.promo_4_link, promotion_heading: mega_menu_block.settings.promo_4_heading, promotion_content: mega_menu_block.settings.promo_4_content %}
+    {%- endif -%}
+  </ul>
+</div>

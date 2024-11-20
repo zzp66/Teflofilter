@@ -1,0 +1,255 @@
+{{- 'scrolling-images.css' | asset_url | stylesheet_tag -}}
+{%- liquid
+	assign speed = section.settings.speed
+	assign direction = section.settings.direction
+	assign column_spacing = section.settings.column_spacing
+	assign image_alignment = section.settings.image_alignment
+	assign image_ratio = section.settings.image_ratio
+	assign disable_top_spacing = section.settings.disable_top_spacing
+	assign disable_bottom_spacing = section.settings.disable_bottom_spacing
+	assign size = section.blocks.size | plus: 0
+-%}
+<div class="scrolling-images section-spacing{% if disable_top_spacing %} section-spacing--disable-top{% endif %}{% if disable_bottom_spacing %} section-spacing--disable-bottom{% endif %}" id="scrolling-images-{{ section.id }}">
+	<div class="scrolling-images--inner scrolling-images--{{ image_alignment }} direction-{{ direction }} scrolling-images--spacing-{{ column_spacing }}" style="--marquee-speed: {{ speed }}">
+		{% capture scrolling_text %}
+			<div>
+				{%- for i in (1..size) -%}
+					{% assign index = i | minus: 1 %}
+					<div class="scrolling-images--item" {{ section.blocks[index].shopify_attributes }}>
+						{%- if section.blocks[index].settings.link -%}
+							<a href="{{ section.blocks[index].settings.link }}" target="_blank" class="scrolling-images--link">
+						{%- endif -%}
+						{%- liquid
+							assign image = section.blocks[index].settings.image
+							assign ratio = 1
+							if image_ratio == 'adapt' and image
+								assign ratio = image.aspect_ratio
+							endif
+
+							assign width = '300'
+							assign sizes = '300x'
+							if image
+								assign sizes = image.src.width | append: 'x' | append: image.src.height
+								assign width = image.width | divided_by: 2
+							endif
+
+						-%}
+						<div class="scrolling-images--image aspect-ratio aspect-ratio--{{ image_ratio }}" style="--ratio-percent:{{ 1.0 | divided_by: ratio | times: 100.0 }}%; width: {{ width }}px;">
+							{%- if image -%}
+								{%- render 'responsive-image', image: image, sizes: sizes, retina: 1 -%}
+							{%- else -%}
+							<div class="thb-placeholder">
+								{{ 'collection-1' | placeholder_svg_tag }}
+							</div>
+							{%- endif -%}
+						</div>
+						{%- if section.blocks[index].settings.link -%}
+							</a>
+						{%- endif -%}
+						{%- if section.blocks[index].settings.heading or section.blocks[index].settings.text -%}
+						<div class="scrolling-images--content">
+							{%- if section.blocks[index].settings.heading -%}
+							<h6>{{ section.blocks[index].settings.heading }}</h6>
+							{%- endif -%}
+							{%- if section.blocks[index].settings.text -%}
+							{{ section.blocks[index].settings.text }}
+							{%- endif -%}
+						</div>
+						{%- endif -%}
+					</div>
+				{%- endfor -%}
+			</div>
+		{% endcapture %}
+		{{ scrolling_text }}{{ scrolling_text }}
+	</div>
+</div>
+{% schema %}
+  {
+    "name": "Scrolling images",
+		"class": "section-scrolling-images",
+    "settings": [
+			{
+				"type": "select",
+				"id": "image_ratio",
+				"options": [
+					{
+						"value": "adapt",
+						"label": "Adapt to image"
+					},
+					{
+						"value": "portrait",
+						"label": "Portrait"
+					},
+					{
+						"value": "landscape",
+						"label": "Landscape"
+					},
+					{
+						"value": "square",
+						"label": "Square"
+					}
+				],
+				"default": "adapt",
+				"label": "Image ratio"
+			},
+			{
+	      "type": "select",
+	      "id": "column_spacing",
+	      "options": [
+					{
+						"value": "none",
+						"label": "None"
+					},
+	        {
+	          "value": "small",
+	          "label": "Small"
+	        },
+					{
+	          "value": "medium",
+	          "label": "Medium"
+	        },
+	        {
+	          "value": "large",
+	          "label": "Large"
+	        }
+	      ],
+	      "default": "small",
+	      "label": "Column spacing"
+	    },
+			{
+				"type": "select",
+				"id": "image_alignment",
+				"options": [
+					{
+						"value": "top",
+						"label": "Top"
+					},
+					{
+						"value": "center",
+						"label": "Center"
+					},
+					{
+						"value": "bottom",
+						"label": "Bottom"
+					}
+				],
+				"default": "top",
+				"label": "Vertical alignment"
+			},
+			{
+				"type": "select",
+				"id": "direction",
+				"options": [
+					{
+						"value": "left",
+						"label": "Left"
+					},
+					{
+						"value": "right",
+						"label": "Right"
+					}
+				],
+				"default": "left",
+				"label": "Direction"
+			},
+			{
+				"type": "select",
+				"id": "speed",
+				"options": [
+					{
+						"value": "10s",
+						"label": "Fast"
+					},
+					{
+						"value": "20s",
+						"label": "Normal"
+					},
+					{
+						"value": "30s",
+						"label": "Slow"
+					},
+					{
+						"value": "50s",
+						"label": "Very slow"
+					}
+				],
+				"default": "20s",
+				"label": "Speed"
+			},
+			{
+	      "type": "header",
+	      "content": "Spacing"
+	    },
+			{
+				"type": "checkbox",
+				"id": "disable_top_spacing",
+				"default": false,
+				"label": "Remove top spacing"
+			},
+			{
+				"type": "checkbox",
+				"id": "disable_bottom_spacing",
+				"default": false,
+				"label": "Remove bottom spacing"
+			}
+    ],
+		"blocks": [
+      {
+        "type": "image",
+        "name": "Image",
+        "settings": [
+					{
+						"type": "image_picker",
+						"id": "image",
+						"label": "Image"
+					},
+					{
+						"id": "link",
+						"type": "url",
+						"label": "Image link"
+					},
+					{
+            "type": "text",
+            "id": "heading",
+            "label": "Heading",
+						"default": "Heading"
+          },
+          {
+            "type": "richtext",
+            "id": "text",
+            "label": "Description",
+						"default": "<p>Add description text here.</p>"
+          }
+				]
+			}
+		],
+    "presets": [
+      {
+        "name": "Scrolling images",
+				"blocks": [
+					{
+						"type": "image"
+					},
+					{
+						"type": "image"
+					},
+					{
+						"type": "image"
+					},
+					{
+						"type": "image"
+					},
+					{
+						"type": "image"
+					}
+				]
+      }
+    ],
+		"enabled_on": {
+			"templates": ["*"],
+			"groups": [
+				"header", "footer"
+			]
+		}
+  }
+{% endschema %}

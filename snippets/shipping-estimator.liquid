@@ -1,0 +1,24 @@
+<shipping-estimator class="shipping-estimator" role="form" data-form-id="{{ section.id }}">
+  <div class="shipping-estimator--inner">
+    <div class="field">
+      <select class="shipping-estimator-country" data-address-country-select name="shipping-estimator[country]" id="shipping-estimator-country-{{ section.id }}" aria-owns="shipping-estimator-province-wrapper" {% if customer and customer.default_address %}data-default="{{ customer.default_address.country }}"{% else %}data-default="{{ shipping_estimator.settings.default_country }}"{% endif %}>{{ country_option_tags }}</select>
+      <label for="shipping-estimator-country-{{ section.id }}">{{ 'sections.cart.shipping_estimator.country' | t }}</label>
+    </div>
+    <div id="shipping-estimator-province-wrapper-{{ section.id }}" class="field" style="display: none">
+      <select class="shipping-estimator-province" name="shipping-estimator[province]" id="shipping-estimator-province-{{ section.id }}" {% if customer and customer.default_address %}data-default="{{ customer.default_address.province }}"{% endif %}></select>
+       <label for="shipping-estimator-province-{{ section.id }}">{{ 'sections.cart.shipping_estimator.province' | t }}</label>
+    </div>
+    <div class="field">
+      <input type="text" class="shipping-estimator-zip" name="shipping-estimator[zip]" id="shipping-estimator-zip-{{ section.id }}">
+      <label for="shipping-estimator-zip-{{ section.id }}">{{ 'sections.cart.shipping_estimator.zip_code' | t }}</label>
+    </div>
+  </div>
+  <button type="button" class="button"><span>{{ 'sections.cart.shipping_estimator.submit' | t }}</span>
+  <span class="loading-overlay">
+    {% render 'svg-icons' with 'thb-loading' %}
+  </span></button>
+  <div class="shipping-estimator--results"></div>
+</shipping-estimator>
+{{ 'shopify_common.js' | shopify_asset_url | script_tag }}
+<script src="{{ 'shipping-estimator.js' | asset_url }}" defer="defer"></script>
+<link rel="stylesheet" href="{{ 'shipping-estimator.css' | asset_url }}" media="print" onload="this.media='all'">

@@ -1,0 +1,50 @@
+
+
+
+
+.progress-bars {
+  padding: 0 15px;
+  max-width: var(--grid-width-row, 1380px);
+  margin-left: auto;
+  margin-right: auto; }
+  @media only screen and (min-width: 768px) {
+    .progress-bars {
+      padding: 0 50px; } }
+
+.progress-bars {
+  display: block; }
+  .progress-bars--inner {
+    display: grid;
+    gap: 30px; }
+    @media only screen and (min-width: 768px) {
+      .progress-bars--inner {
+        grid-template-columns: repeat(var(--columns, 2), 1fr); } }
+  .progress-bars--heading {
+    display: block;
+    margin-bottom: 13px;
+    font-weight: var(--font-body-medium-weight, 500); }
+  .progress-bars--progress {
+    height: 14px;
+    position: relative;
+    background: var(--color-bg);
+    border-radius: 7px;
+    counter-increment: variable var(--percent-value); }
+    .progress-bars--progress div {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      border-radius: 7px;
+      clip-path: inset(0 var(--final-position, 50%) 0 0 round 7px);
+      background: var(--color-bar); }
+    .progress-bars--progress:after {
+      display: block;
+      content: counter(variable) "%";
+      top: calc(100% + 10px);
+      left: var(--percent-position, 50%);
+      transform: translateX(-50%);
+      position: absolute;
+      font-size: 0.8125rem;
+      font-weight: var(--font-body-medium-weight, 500);
+      line-height: 1; }

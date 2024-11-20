@@ -1,0 +1,83 @@
+{{ 'single-image.css' | asset_url | stylesheet_tag }}
+{%- liquid
+	assign full_width = section.settings.full_width
+	assign image = section.settings.image
+	assign image_mobile = section.settings.image_mobile
+	assign disable_top_spacing = section.settings.disable_top_spacing
+	assign disable_bottom_spacing = section.settings.disable_bottom_spacing
+-%}
+<div class="single-image full-width--{{ full_width }} section-spacing{% if disable_top_spacing %} section-spacing--disable-top{% endif %}{% if disable_bottom_spacing %} section-spacing--disable-bottom{% endif %}">
+	{%- if image_mobile -%}
+		{%- liquid
+			assign master_width = image_mobile.src.width | append: 'x' | append: image_mobile.src.height
+
+			render 'responsive-image', image: image_mobile, class: 'single-image--mobile', sizes: master_width
+		 -%}
+	{%- endif -%}
+	{%- if image -%}
+		{%- liquid
+			assign master_width = image.src.width | append: 'x' | append: image.src.height
+
+			assign class = ''
+			if image_mobile
+				assign class = 'single-image--desktop'
+			endif
+			render 'responsive-image', image: image, class: class, sizes: master_width
+		-%}
+	{%- else -%}
+		<div class="thb-placeholder{% if image_mobile %} single-image--desktop{% endif %}">
+			{{ 'lifestyle-1' | placeholder_svg_tag }}
+		</div>
+	{%- endif -%}
+</div>
+{% schema %}
+  {
+    "name": "Single image",
+		"class": "section-single-image",
+    "settings": [
+			{
+        "type": "image_picker",
+        "id": "image",
+        "label": "Image"
+      },
+			{
+        "type": "image_picker",
+        "id": "image_mobile",
+        "label": "Mobile image (optional)"
+      },
+			{
+				"type": "checkbox",
+				"id": "full_width",
+				"label": "Make section full width",
+				"default": false
+			},
+			{
+        "type": "header",
+        "content": "Spacing"
+      },
+			{
+				"type": "checkbox",
+				"id": "disable_top_spacing",
+				"default": false,
+				"label": "Remove top spacing"
+			},
+			{
+				"type": "checkbox",
+				"id": "disable_bottom_spacing",
+				"default": false,
+				"label": "Remove bottom spacing"
+			}
+    ],
+    "presets": [
+      {
+        "name": "Single image"
+      }
+    ],
+		"enabled_on": {
+			"templates": ["*"],
+			"groups": [
+				"header", "footer"
+			]
+		}
+  }
+{% endschema %}

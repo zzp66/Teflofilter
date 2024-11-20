@@ -1,0 +1,11 @@
+{%- if secondary_menu.size > 0 -%}
+	<ul class="thb-full-menu thb-secondary-menu">
+		{%- for link in secondary_menu.links limit: 4 -%}
+			<li>
+				<a href="{{ link.url }}"{%- if link.active %} aria-current="page"{% endif -%}>
+					{{- link.title -}}
+				</a>
+			</li>
+		{%- endfor -%}
+	</ul>
+	{%- endif -%}

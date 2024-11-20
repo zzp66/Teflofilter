@@ -1,0 +1,423 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "166161901464a25e50": {
+      "type": "image-with-text-overlay",
+      "blocks": {
+        "166161901437c6bc67-1": {
+          "type": "heading",
+          "settings": {
+            "text": "OUR STORY",
+            "heading_size": "h1-large"
+          }
+        },
+        "9fd908de-4e24-4879-9e11-3c6e96928a7b": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Pair text with an image to focus on your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.</p>",
+            "description_size": "small"
+          }
+        }
+      },
+      "block_order": [
+        "166161901437c6bc67-1",
+        "9fd908de-4e24-4879-9e11-3c6e96928a7b"
+      ],
+      "settings": {
+        "image": "",
+        "image_parallax": true,
+        "desktop_height": "desktop-height-550",
+        "mobile_height": "mobile-height-350",
+        "full_width": true,
+        "content_width": "medium",
+        "content_position": "middle-center",
+        "text_alignment": "center",
+        "overlay_color": "#000000",
+        "overlay_opacity": 16,
+        "disable_top_spacing": true,
+        "disable_bottom_spacing": true
+      }
+    },
+    "c19060d2-05f6-4778-8caf-bb412d6a3037": {
+      "type": "rich-text",
+      "blocks": {
+        "cf0be76c-4633-41ce-9145-7b882cae04e6": {
+          "type": "subheading",
+          "settings": {
+            "text": "WE’RE JUST AS IMPERFECT AS YOU ARE"
+          }
+        },
+        "template--18092514083134__c19060d2-05f6-4778-8caf-bb412d6a3037-16787791017e58578e-1": {
+          "type": "heading",
+          "settings": {
+            "text": "It is typically made from precious metals such as gold, silver, and platinum, as well as precious stones such as diamonds, rubies, emeralds, and sapphires.",
+            "marker_style": "style1",
+            "size": "h3",
+            "marker_color": "#fd6262"
+          }
+        },
+        "template--18092514083134__c19060d2-05f6-4778-8caf-bb412d6a3037-16787791017e58578e-2": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Jewelry is a form of personal adornment that has been worn by humans for thousands of years. It is typically made from precious metals such as gold, silver, and platinum, as well as precious stones such as diamonds, rubies, emeralds, and sapphires. Jewelry can be worn for a variety of reasons, including as a form of self-expression, as a symbol of wealth or status, as a religious or cultural symbol, or as a way to commemorate a special occasion or relationship. When buying jewelry, it's important to consider factors such as the quality of the materials used, the design and style of the piece, and the reputation of the jeweler. It's also important to care for your jewelry properly to keep it looking its best, such as by storing it in a safe place, avoiding exposure to chemicals and moisture, and cleaning it regularly. Jewelry has been used throughout history for a variety of purposes, including as a symbol of wealth and social status, as a form of religious or cultural expression, and as a way to enhance one's personal appearance. In many cultures, jewelry is also used as a form of protection against evil or harmful forces.</p>",
+            "size": "text-size-regular"
+          }
+        }
+      },
+      "block_order": [
+        "cf0be76c-4633-41ce-9145-7b882cae04e6",
+        "template--18092514083134__c19060d2-05f6-4778-8caf-bb412d6a3037-16787791017e58578e-1",
+        "template--18092514083134__c19060d2-05f6-4778-8caf-bb412d6a3037-16787791017e58578e-2"
+      ],
+      "settings": {
+        "text_width": "xlarge",
+        "text_position": "center",
+        "text_alignment": "left",
+        "color_bg": "rgba(0,0,0,0)",
+        "color_heading": "#263d2d",
+        "color_text": "#3b5342",
+        "color_links": "#2c2d2e",
+        "disable_top_spacing": false,
+        "disable_bottom_spacing": true
+      }
+    },
+    "9e9c0c40-a021-4e51-9f27-2b825db5a509": {
+      "type": "spacer",
+      "settings": {
+        "spacer_mobile": 30,
+        "spacer_desktop": 40,
+        "border_separator": false,
+        "border_separator_full": false
+      }
+    },
+    "af206a75-cf94-4016-9ca5-815b9624d45d": {
+      "type": "background-video",
+      "blocks": {
+        "template--18092514083134__af206a75-cf94-4016-9ca5-815b9624d45d-16787803097de23dbb-0": {
+          "type": "subheading",
+          "settings": {
+            "text": "Add a tagline"
+          }
+        },
+        "template--18092514083134__af206a75-cf94-4016-9ca5-815b9624d45d-16787803097de23dbb-1": {
+          "type": "heading",
+          "settings": {
+            "text": "GET READY TO SHINE BRIGHT AS A DIAMOND!",
+            "heading_size": "h1"
+          }
+        },
+        "template--18092514083134__af206a75-cf94-4016-9ca5-815b9624d45d-16787803097de23dbb-2": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Pair text with an image to focus on your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.</p>",
+            "description_size": "small"
+          }
+        },
+        "template--18092514083134__af206a75-cf94-4016-9ca5-815b9624d45d-16787803097de23dbb-3": {
+          "type": "button",
+          "settings": {}
+        }
+      },
+      "block_order": [
+        "template--18092514083134__af206a75-cf94-4016-9ca5-815b9624d45d-16787803097de23dbb-0",
+        "template--18092514083134__af206a75-cf94-4016-9ca5-815b9624d45d-16787803097de23dbb-1",
+        "template--18092514083134__af206a75-cf94-4016-9ca5-815b9624d45d-16787803097de23dbb-2",
+        "template--18092514083134__af206a75-cf94-4016-9ca5-815b9624d45d-16787803097de23dbb-3"
+      ],
+      "settings": {
+        "desktop_height": "desktop-height-650",
+        "mobile_height": "mobile-height-500",
+        "full_width": true,
+        "video_controls": false,
+        "video": "https://www.youtube.com/watch?v=_9VUPq3SxOc",
+        "overlay_color": "#000000",
+        "overlay_opacity": 10,
+        "disable_top_spacing": true,
+        "disable_bottom_spacing": false
+      }
+    },
+    "b565abd1-e9cd-4f5a-8bc1-3e41602d8af6": {
+      "type": "layered-images-with-text",
+      "blocks": {
+        "template--18092514083134__b565abd1-e9cd-4f5a-8bc1-3e41602d8af6-16787829160ff98ae4-0": {
+          "type": "subheading",
+          "settings": {
+            "text": "WELL PRICED"
+          }
+        },
+        "template--18092514083134__b565abd1-e9cd-4f5a-8bc1-3e41602d8af6-16787829160ff98ae4-1": {
+          "type": "heading",
+          "settings": {
+            "text": "IT’S NEVER A BARGAIN IF YOU CAN’T AFFORD |THE PRICE|",
+            "marker_style": "style2",
+            "heading_size": "h2",
+            "marker_color": "#FFAA47"
+          }
+        },
+        "template--18092514083134__b565abd1-e9cd-4f5a-8bc1-3e41602d8af6-16787829160ff98ae4-2": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Fashion jewelry, which is often more affordable and made from a range of materials such as plastic, glass, and base metals. Customized jewelry, which can be created to reflect a person's individual style and preferences.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "template--18092514083134__b565abd1-e9cd-4f5a-8bc1-3e41602d8af6-16787829160ff98ae4-0",
+        "template--18092514083134__b565abd1-e9cd-4f5a-8bc1-3e41602d8af6-16787829160ff98ae4-1",
+        "template--18092514083134__b565abd1-e9cd-4f5a-8bc1-3e41602d8af6-16787829160ff98ae4-2"
+      ],
+      "settings": {
+        "image": "",
+        "image_ratio": "portrait",
+        "image_2": "",
+        "image_ratio_2": "adapt",
+        "image_3": "",
+        "image_ratio_3": "adapt",
+        "full_width": false,
+        "layout": "image_first",
+        "content_alignment": "text-left",
+        "content_position": "middle",
+        "disable_top_spacing": false,
+        "disable_bottom_spacing": false
+      }
+    },
+    "22150dee-ff92-4b3e-8b30-8aa712741216": {
+      "type": "spacer",
+      "settings": {
+        "spacer_mobile": 0,
+        "spacer_desktop": 0,
+        "border_separator": true,
+        "border_separator_full": true
+      }
+    },
+    "0ed1ea33-5110-4856-9f69-694c22844d7b": {
+      "type": "scrolling-text",
+      "blocks": {
+        "template--18092514083134__0ed1ea33-5110-4856-9f69-694c22844d7b-1678784613703c146f-0": {
+          "type": "text",
+          "settings": {
+            "image": "",
+            "text": "EARRINGS",
+            "link": "",
+            "outline_text": false
+          }
+        },
+        "template--18092514083134__0ed1ea33-5110-4856-9f69-694c22844d7b-1678784613703c146f-1": {
+          "type": "text",
+          "settings": {
+            "image": "",
+            "text": "NECKLACES",
+            "link": "",
+            "outline_text": false
+          }
+        },
+        "af196c49-61a1-4826-96c8-0b1c527cc0eb": {
+          "type": "text",
+          "settings": {
+            "image": "",
+            "text": "RINGS",
+            "link": "",
+            "outline_text": false
+          }
+        },
+        "f1a5f306-e9d6-489f-92ec-709aa01b3181": {
+          "type": "text",
+          "settings": {
+            "image": "",
+            "text": "BRACELETS",
+            "link": "",
+            "outline_text": false
+          }
+        }
+      },
+      "block_order": [
+        "template--18092514083134__0ed1ea33-5110-4856-9f69-694c22844d7b-1678784613703c146f-0",
+        "template--18092514083134__0ed1ea33-5110-4856-9f69-694c22844d7b-1678784613703c146f-1",
+        "af196c49-61a1-4826-96c8-0b1c527cc0eb",
+        "f1a5f306-e9d6-489f-92ec-709aa01b3181"
+      ],
+      "settings": {
+        "height": "height-auto",
+        "full_width": true,
+        "direction": "left",
+        "speed": "30s",
+        "rotation": 0,
+        "negative_rotation": false,
+        "font_family": "heading",
+        "text_size": 46,
+        "text_uppercase": false,
+        "image_size": "large",
+        "color_bg": "transparent",
+        "color_text": "#263d2d",
+        "overlay_color": "#000000",
+        "overlay_opacity": 0,
+        "disable_top_spacing": true,
+        "disable_bottom_spacing": true
+      }
+    },
+    "7b31d0f1-58b2-42bd-9633-986c2b265c80": {
+      "type": "spacer",
+      "settings": {
+        "spacer_mobile": 0,
+        "spacer_desktop": 0,
+        "border_separator": true,
+        "border_separator_full": true
+      }
+    },
+    "fe1d00b6-5d84-42fe-a575-c54d55e67f1a": {
+      "type": "image-with-text-overlay",
+      "blocks": {
+        "template--18092514083134__fe1d00b6-5d84-42fe-a575-c54d55e67f1a-16787854044292f024-1": {
+          "type": "heading",
+          "settings": {
+            "text": "OUR QUALITY",
+            "heading_size": "h2"
+          }
+        },
+        "template--18092514083134__fe1d00b6-5d84-42fe-a575-c54d55e67f1a-16787854044292f024-2": {
+          "type": "text",
+          "settings": {
+            "text": "<p>It's also important to care for jewelry properly to ensure that it lasts and maintains its appearance over time. This may include regular cleaning and maintenance, proper storage, and avoiding exposure to certain chemicals and environments that can damage the materials.</p>",
+            "description_size": "small"
+          }
+        }
+      },
+      "block_order": [
+        "template--18092514083134__fe1d00b6-5d84-42fe-a575-c54d55e67f1a-16787854044292f024-1",
+        "template--18092514083134__fe1d00b6-5d84-42fe-a575-c54d55e67f1a-16787854044292f024-2"
+      ],
+      "settings": {
+        "image_parallax": false,
+        "desktop_height": "desktop-height-450",
+        "mobile_height": "mobile-height-500",
+        "full_width": true,
+        "content_width": "medium",
+        "content_position": "middle-center",
+        "text_alignment": "center",
+        "overlay_color": "#3d2626",
+        "overlay_opacity": 100,
+        "disable_top_spacing": true,
+        "disable_bottom_spacing": false
+      }
+    },
+    "3b03a3b9-a6fd-4d11-ac5f-fbcbfa47664c": {
+      "type": "rich-text",
+      "blocks": {
+        "template--18092514083134__3b03a3b9-a6fd-4d11-ac5f-fbcbfa47664c-1678785365b19528e4-1": {
+          "type": "heading",
+          "settings": {
+            "text": "MORE TO |EXPLORE|",
+            "marker_style": "style1",
+            "size": "h3",
+            "marker_color": "#FFAA47"
+          }
+        },
+        "template--18092514083134__3b03a3b9-a6fd-4d11-ac5f-fbcbfa47664c-1678785365b19528e4-2": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Share information about your brand with your customers. Describe a product, make announcements, or welcome customers to your store.</p>",
+            "size": "text-size-regular"
+          }
+        }
+      },
+      "block_order": [
+        "template--18092514083134__3b03a3b9-a6fd-4d11-ac5f-fbcbfa47664c-1678785365b19528e4-1",
+        "template--18092514083134__3b03a3b9-a6fd-4d11-ac5f-fbcbfa47664c-1678785365b19528e4-2"
+      ],
+      "settings": {
+        "text_width": "large",
+        "text_position": "center",
+        "text_alignment": "center",
+        "color_bg": "transparent",
+        "color_heading": "#263d2d",
+        "color_text": "#3b5342",
+        "color_links": "#2c2d2e",
+        "disable_top_spacing": true,
+        "disable_bottom_spacing": true
+      }
+    },
+    "91c423cc-cfc3-4e79-bbb6-e23a1e99733d": {
+      "type": "multicolumn",
+      "blocks": {
+        "template--18092514083134__91c423cc-cfc3-4e79-bbb6-e23a1e99733d-1678786116dabcde39-0": {
+          "type": "column",
+          "settings": {
+            "image": "",
+            "image_full_width": true,
+            "image_link": "#",
+            "title": "",
+            "text": "",
+            "link_label": "Our Sustainability",
+            "link": ""
+          }
+        },
+        "template--18092514083134__91c423cc-cfc3-4e79-bbb6-e23a1e99733d-1678786116dabcde39-1": {
+          "type": "column",
+          "settings": {
+            "image": "",
+            "image_full_width": false,
+            "image_link": "#",
+            "title": "",
+            "text": "",
+            "link_label": "Our Approach",
+            "link": "#"
+          }
+        },
+        "template--18092514083134__91c423cc-cfc3-4e79-bbb6-e23a1e99733d-1678786116dabcde39-2": {
+          "type": "column",
+          "settings": {
+            "image": "",
+            "image_full_width": false,
+            "image_link": "#",
+            "title": "",
+            "text": "",
+            "link_label": "Our Stores",
+            "link": "#"
+          }
+        }
+      },
+      "block_order": [
+        "template--18092514083134__91c423cc-cfc3-4e79-bbb6-e23a1e99733d-1678786116dabcde39-0",
+        "template--18092514083134__91c423cc-cfc3-4e79-bbb6-e23a1e99733d-1678786116dabcde39-1",
+        "template--18092514083134__91c423cc-cfc3-4e79-bbb6-e23a1e99733d-1678786116dabcde39-2"
+      ],
+      "settings": {
+        "heading": "",
+        "marker_style": "style1",
+        "description": "",
+        "columns_desktop": 3,
+        "mobile_swipe": true,
+        "image_ratio": "adapt",
+        "text_alignment": "left",
+        "heading_size": "h5",
+        "color_heading": "#1a1c1d",
+        "marker_color": "#FD6262",
+        "color_text": "#2c2d2e",
+        "color_links": "#2c2d2e",
+        "disable_top_spacing": true,
+        "disable_bottom_spacing": false
+      }
+    }
+  },
+  "order": [
+    "166161901464a25e50",
+    "c19060d2-05f6-4778-8caf-bb412d6a3037",
+    "9e9c0c40-a021-4e51-9f27-2b825db5a509",
+    "af206a75-cf94-4016-9ca5-815b9624d45d",
+    "b565abd1-e9cd-4f5a-8bc1-3e41602d8af6",
+    "22150dee-ff92-4b3e-8b30-8aa712741216",
+    "0ed1ea33-5110-4856-9f69-694c22844d7b",
+    "7b31d0f1-58b2-42bd-9633-986c2b265c80",
+    "fe1d00b6-5d84-42fe-a575-c54d55e67f1a",
+    "3b03a3b9-a6fd-4d11-ac5f-fbcbfa47664c",
+    "91c423cc-cfc3-4e79-bbb6-e23a1e99733d"
+  ]
+}

@@ -1,0 +1,266 @@
+<style>
+    .teflo-customization{
+        padding:0 calc(100vw * 40 / var(--base-width));
+        padding-top: calc(100vw * 140 / var(--base-width));
+        background:#fff;
+        padding-bottom: calc(100vw * 100 / var(--base-width));
+    }
+    .teflo-customization-subtitle{
+        color: #191919;
+        font-size: calc(100vw * 16 / var(--base-width));
+        font-style: normal;
+        font-weight: 400;
+        line-height:  calc(100vw * 16 / var(--base-width));
+        margin-bottom: calc(100vw * 27 / var(--base-width));
+        text-align: center;
+        opacity: 0.5;
+    }
+    .teflo-customization-h2{
+        color: #191919;
+        text-align: center;
+        font-size: calc(100vw * 60 / var(--base-width));
+        font-style: normal;
+        font-weight: 400;
+        line-height: calc(100vw * 66 / var(--base-width));
+        letter-spacing: calc(100vw * -1.8 / var(--base-width));
+        max-width: calc(100vw * 853 / var(--base-width));
+        margin: 0 auto;
+
+    }
+    .teflo-customization-list{
+        display: grid;
+        grid-template-columns: repeat(2,1fr);
+        column-gap: calc(100vw * 44 / var(--base-width));
+
+       
+    }
+    .teflo-customization-list-item{
+        position: sticky;
+        top: 0;
+        background: #FFFFFF;
+        padding-top: calc(100vw * 70 / var(--base-width));
+    }
+    .teflo-customization-list-item-h3{
+        color: #0D0D0D;
+        font-size: calc(100vw * 40 / var(--base-width));
+        font-style: normal;
+        font-weight: 400;
+        line-height: calc(100vw * 44 / var(--base-width));
+        letter-spacing: calc(100vw * -1.2 / var(--base-width));
+        padding-bottom: calc(100vw * 30 / var(--base-width));
+        border-bottom: 0.4px solid rgba(13, 13, 13, 0.30);
+    }
+    .teflo-customization-list-item-content{
+        display: flex;
+        padding-top: calc(100vw * 30 / var(--base-width));
+        padding-bottom: calc(100vw * 70 / var(--base-width));
+     
+    }
+    .teflo-customization-list-item-content-time{
+        width: calc(100vw * 130 / var(--base-width));
+        color: #0D0D0D;
+        font-size: calc(100vw * 16 / var(--base-width));
+        font-style: normal;
+        font-weight: 400;
+        line-height: calc(100vw * 16 / var(--base-width));
+        flex-shrink: 0;
+        padding-top: calc(100vw * 10 / var(--base-width));
+    }
+    .teflo-customization-list-item-content-rt-item{
+        display: flex;
+        align-items: center;
+        margin-bottom: calc(100vw * 10 / var(--base-width));
+    }
+    .teflo-customization-list-item-content-rt-item *{
+        font-size: calc(100vw * 20 / var(--base-width));
+    }
+    .teflo-customization-list-item-content-rt-item-dot{
+        width: calc(100vw * 8 / var(--base-width));
+        height: calc(100vw * 8 / var(--base-width));
+        border-radius: 50%;
+        background: #324EEF;
+        margin-right: calc(100vw * 15 / var(--base-width));
+        flex-shrink: 0;
+    }
+    .teflo-customization-list-item-content-rt-item-h3{
+        color: #0D0D0D;
+        font-size: calc(100vw * 16 / var(--base-width));
+        font-style: normal;
+        font-weight: 400;
+        line-height: calc(100vw * 20 / var(--base-width));
+    }
+    .teflo-customization-list-item-content-rt{
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+    .teflo-customization-list-item-content-rt-img img{
+        width: 100%;
+    }
+
+
+    @media (max-width:1024px){
+        .teflo-customization{
+            padding:0 calc(100vw * 25 / var(--base-width));
+            padding-top: calc(100vw * 170 / var(--base-width));
+            padding-bottom: 0;
+        }
+        .teflo-customization-subtitle{
+            font-size: calc(100vw * 20 / var(--base-width));
+            line-height: calc(100vw * 26 / var(--base-width));
+            margin-bottom: calc(100vw * 30 / var(--base-width));
+        }
+        .teflo-customization-h2{
+            font-size: calc(100vw * 70 / var(--base-width));
+            line-height: calc(100vw * 76 / var(--base-width));
+            letter-spacing: calc(100vw * -2.1 / var(--base-width));
+            margin-bottom: calc(100vw * 130 / var(--base-width));
+            max-width: 100%;
+        }
+        .teflo-customization-list{
+            display: block;
+        }
+        .teflo-customization-list-item{
+            position: static;
+            padding-top: 0;
+        }
+        .teflo-customization-list-item-h3{
+            font-size: calc(100vw * 50 / var(--base-width));
+            line-height: calc(100vw * 44 / var(--base-width));
+            letter-spacing: calc(100vw * -1.5 / var(--base-width));
+            padding-bottom: calc(100vw * 30 / var(--base-width));
+        }
+        .teflo-customization-list-item-content{
+            display: block;
+            padding-top: 0;
+            padding-bottom: calc(100vw * 93 / var(--base-width));
+            border-bottom: 0;
+            height: auto;
+        }
+        .teflo-customization-list-item-content-time{
+            font-size: calc(100vw * 20 / var(--base-width));
+            line-height: calc(100vw * 26 / var(--base-width));
+            opacity: 0.4;
+            width: 100%;
+            margin-bottom: calc(100vw * 50 / var(--base-width));
+        }
+        .teflo-customization-list-item-content-rt{
+            display: block;
+        }
+        .teflo-customization-list-item-content-rt-item{
+            margin-bottom: calc(100vw * 10 / var(--base-width));
+        }
+     
+        .teflo-customization-list-item-content-rt-item-h3{
+            font-size: calc(100vw * 30 / var(--base-width));
+            line-height: calc(100vw * 36 / var(--base-width));
+        }
+        .teflo-customization-list-item-content-rt-img{
+            margin-top: calc(100vw * 30 / var(--base-width));
+        }
+        .teflo-customization-list-item-content-rt-img img{
+            
+        }
+    }
+</style>
+{%- liquid
+   assign half_blocks = section.blocks.size | divided_by: 2
+
+-%}
+
+
+<div class="teflo-customization">
+    <p class="teflo-customization-subtitle">{{ section.settings.subtitle }}</p>
+    <h2 class="teflo-customization-h2">{{ section.settings.title }}</h2>
+        <div class="teflo-customization-list">
+            {% for block in section.blocks %}
+            <div class="teflo-customization-list-item" style="z-index:{{ loop.index }}">
+                <h3 class="teflo-customization-list-item-h3">{{ block.settings.title }}</h3>
+                <div class="teflo-customization-list-item-content">
+                    <p class="teflo-customization-list-item-content-time">{{ block.settings.time }}</p>
+                    <div class="teflo-customization-list-item-content-rt">
+                        <div class="teflo-customization-list-item-content-rt-item">
+                            {{ block.settings.content }}
+                        </div>
+                        <div class="teflo-customization-list-item-content-rt-img">
+                            <img loading="lazy" src="{{ block.settings.image | img_url: 'master' }}" alt="{{ block.settings.image_alt }}">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+
+
+        </div>
+</div>
+  {% comment %} <div class="teflo-customization-list-item-content-rt-item-dot"></div>
+                    <h3 class="teflo-customization-list-item-content-rt-item-h3"></h3> {% endcomment %}
+{% schema %}
+{
+    "name": "Teflo Customization",
+    "settings": [
+        {
+            "type": "text",
+            "id": "subtitle",
+            "label": "Subtitle",
+            "default": "Subtitle"
+        },
+        {
+            "type": "text",
+            "id": "title",
+            "label": "Title",
+            "default": "Title"
+        }
+    ],
+    "blocks": [
+        {
+            "type": "list",
+            "name": "item info",
+            "settings": [
+                {
+                    "type": "text",
+                    "id": "title",
+                    "label": "Title",
+                    "default": "Title"
+                },
+                {
+                    "type": "text",
+                    "id": "time",
+                    "label": "Time",
+                    "default": "Time"
+                },
+                {
+                    "type": "richtext",
+                    "id": "content",
+                    "label": "Content"
+                },
+                {
+                    "type": "image_picker",
+                    "id": "image",
+                    "label": "Image"
+                },
+                {
+                    "type": "text",
+                    "id": "image_alt",
+                    "label": "Image Alt",
+                }
+            ]
+        }
+    ],
+    "presets": [
+        {
+            "name": "Teflo Customization",
+            "category": "Customization"
+        }
+    ]
+}
+{% endschema %}
+
+
+<style>
+
+    ul li::marker {
+        color: #324EEF; 
+        font-size: calc(100vw * 16 / var(--base-width));
+    }
+</style>

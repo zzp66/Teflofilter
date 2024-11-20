@@ -1,0 +1,97 @@
+{%- liquid
+	assign read_more = 'blogs.article.read_more' | t
+	assign ratio = 1
+	assign article_content_alignment = settings.article_content_alignment
+	assign info_spacing = true
+	assign article_card_border = settings.article_card_border
+	assign article_card_shadow = settings.article_card_shadow
+	assign article_card_shadow_class = 'has-shadow--' | append: article_card_shadow
+
+	case image_ratio
+		when 'adapt'
+			assign image_sizes = '320x0,640x0'
+			if article.image
+				assign ratio = article.image.aspect_ratio
+			endif
+		when 'square'
+			assign image_sizes = '320x320,640x640'
+			assign ratio = 1
+		when 'landscape'
+			assign image_sizes = '320x200,640x400'
+			assign ratio = 1.6
+		when 'portrait'
+			assign image_sizes = '320x400,640x800'
+			assign ratio = 0.8
+	endcase
+
+	assign color_body_bg = settings.color_body_bg | downcase
+	assign color_article_card_bg = settings.color_article_card_bg | downcase
+
+	if color_body_bg == color_article_card_bg or color_article_card_bg == 'transparent' or color_article_card_bg == 'rgba(0,0,0,0)'
+		unless article_card_border
+			assign info_spacing = false
+		endunless
+		if article_card_shadow
+			assign info_spacing = true
+		endif
+	endif
+
+-%}
+{%- if article -%}
+<div class="blog-post text-{{ article_content_alignment }} blog-post--content-spacing-{{ info_spacing }} blog-post--border-{{ article_card_border }} {{ article_card_shadow_class }}">
+	<figure class="featured-image">
+		<div class="aspect-ratio" style="--ratio-percent: {{ 1 | divided_by: ratio | times: 100 }}%;">
+			<a href="{{ article.url }}" class="featured-image-link" title="{{ article.title | escape }}">
+				{%- if article.image -%}
+					{%- render 'responsive-image', image: article.image, sizes: image_sizes -%}
+				{%- endif -%}
+			</a>
+		</div>
+	</figure>
+	<div class="blog-post-info">
+		{% if show_date %}
+		<aside class="post-meta">
+			{{ article.published_at | date: "%B %d %Y" }}
+		</aside>
+		{% endif %}
+		<h5><a href="{{ article.url }}" title="{{ article.title | escape }}">{{ article.title }}</a></h5>
+		{% if show_excerpt %}
+		<div class="post-excerpt">
+			<p>{{ article.excerpt_or_content | strip_html | truncatewords: 20 }}</p>
+		</div>
+		{% endif %}
+
+		{% if show_read_more %}
+		{% render 'text-button', url: article.url, title: read_more, class: 'read-more' %}
+		{% endif %}
+	</div>
+</div>
+{%- else -%}
+<div class="blog-post text-{{ article_content_alignment }} blog-post--content-spacing-{{ info_spacing }} blog-post--border-{{ article_card_border }} {{ article_card_shadow_class }}">
+	<figure class="featured-image">
+		<div class="aspect-ratio" style="--ratio-percent: {{ 1 | divided_by: ratio | times: 100 }}%;">
+			<a href="{{ article.url }}" class="featured-image-link" title="{{ article.title | escape }}">
+				<div class="thb-placeholder">
+					{{ 'image' | placeholder_svg_tag }}
+				</div>
+			</a>
+		</div>
+	</figure>
+	<div class="blog-post-info">
+		{% if show_date %}
+		<aside class="post-meta">
+			{{ "today" | date: "%B %d %Y" }}
+		</aside>
+		{% endif %}
+		<h5><a role="link" aria-disabled="true">{{ 'sections.featured_blog.onboarding_title' | t }}</a></h5>
+		{% if show_excerpt %}
+		<div class="post-excerpt">
+			<p>{{ 'sections.featured_blog.onboarding_content' | t }}</p>
+		</div>
+		{% endif %}
+		{% if show_read_more %}
+		{% render 'text-button', url: article.url, title: read_more, class: 'read-more', disabled: true %}
+		{% endif %}
+	</div>
+</div>
+{%- endif -%}

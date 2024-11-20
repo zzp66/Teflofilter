@@ -1,0 +1,414 @@
+{%- if section.settings.announcement_bar -%}
+	{%- liquid
+		assign color_announcement_bar_text = settings.color_announcement_bar_text
+		assign color_announcement_bar_bg = settings.color_announcement_bar_bg
+
+		assign announcement_bar_layout = section.settings.announcement_bar_layout
+		assign speed = section.settings.speed
+		assign direction = section.settings.direction
+		assign use_block_colors = section.settings.use_block_colors
+		assign autoplay = section.settings.autoplay
+
+		assign show_announcement_bar = true
+
+		if autoplay
+			assign autoplay = section.settings.autoplay_length | times: 1000
+		endif
+
+		if section.settings.announcement_bar_homepage_only
+			if template == 'index'
+				assign show_announcement_bar = true
+			else
+				assign show_announcement_bar = false
+			endif
+		endif
+
+		if announcement_bar_layout == 'carousel' and use_block_colors
+			assign color_announcement_bar_text = section.blocks[0].settings.color_text
+			assign color_announcement_bar_bg = section.blocks[0].settings.color_bg
+		endif
+	-%}
+	{%- if show_announcement_bar -%}
+		{{- 'announcement-bar.css' | asset_url | stylesheet_tag -}}
+		<div class="announcement-bar" style="--color-announcement-bar-text: {{ color_announcement_bar_text }}; --color-announcement-bar-bg: {{ color_announcement_bar_bg -}};">
+			<div class="announcement-bar--inner direction-{{ direction }} announcement-bar--{{ announcement_bar_layout }}" style="--marquee-speed: {{ speed }}">
+				{%- if announcement_bar_layout == 'marquee' -%}
+					{%- capture scrolling_text -%}
+					<div>
+						{%- for block in section.blocks -%}
+							<div class="announcement-bar--item" {{ block.shopify_attributes }}>
+								{%- if block.settings.link -%}
+									<a href="{{ block.settings.link }}" target="_blank">
+								{%- endif -%}
+								{%- if block.settings.icon -%}{% render 'svg-icons-inline', icon: block.settings.icon %}{%- endif -%}{{- block.settings.text -}}
+								{%- if block.settings.link -%}
+									</a>
+								{%- endif -%}
+							</div>
+						{%- endfor -%}
+					</div>
+					{%- endcapture -%}
+					{{ scrolling_text }}{{ scrolling_text }}{{ scrolling_text }}
+				{%- elsif announcement_bar_layout == 'carousel' -%}
+					<slide-show class="carousel announcement-bar--use-colors-{{ use_block_colors }}" data-autoplay="{{ autoplay }}">
+						{%- for block in section.blocks -%}
+							<div class="announcement-bar--item carousel__slide" data-color="{{ block.settings.color_text }}" data-bg="{{ block.settings.color_bg }}" {{ block.shopify_attributes }}>
+								{%- if block.settings.link -%}
+									<a href="{{ block.settings.link }}" target="_blank">
+								{%- endif -%}
+								{%- if block.settings.icon -%}{% render 'svg-icons-inline', icon: block.settings.icon %}{%- endif -%}{{- block.settings.text -}}
+								{%- if block.settings.link -%}
+									</a>
+								{%- endif -%}
+							</div>
+						{%- endfor -%}
+						{%- if section.blocks.size > 1 -%}
+						<div class="flickity-nav flickity-prev" tabindex="0">{% render 'svg-icons' with 'thb-caret-left' %}</div>
+						<div class="flickity-nav flickity-next" tabindex="0">{% render 'svg-icons' with 'thb-caret-right' %}</div>
+						{%- endif -%}
+					</slide-show>
+				{%- endif -%}
+			</div>
+		</div>
+	{%- endif -%}
+{%- endif -%}
+{% schema %}
+{
+	"name": "Announcement bar",
+	"class": "announcement-bar-section",
+	"max_blocks": 5,
+	"settings": [
+		{
+			"type": "checkbox",
+			"id": "announcement_bar",
+			"label": "Enable announcement bar",
+			"default": true
+		},
+		{
+			"type": "checkbox",
+			"id": "announcement_bar_homepage_only",
+			"label": "Show on home page only",
+			"default": false
+		},
+		{
+			"type": "select",
+			"id": "announcement_bar_layout",
+			"options": [
+				{
+					"value": "marquee",
+					"label": "Marquee"
+				},
+				{
+					"value": "carousel",
+					"label": "Carousel"
+				}
+			],
+			"default": "carousel",
+			"label": "Layout"
+		},
+		{
+			"type": "header",
+			"content": "Marquee"
+		},
+		{
+			"type": "select",
+			"id": "direction",
+			"options": [
+				{
+					"value": "left",
+					"label": "Left"
+				},
+				{
+					"value": "right",
+					"label": "Right"
+				}
+			],
+			"default": "left",
+			"label": "Direction"
+		},
+		{
+			"type": "select",
+			"id": "speed",
+			"options": [
+				{
+					"value": "10s",
+					"label": "Fast"
+				},
+				{
+					"value": "20s",
+					"label": "Normal"
+				},
+				{
+					"value": "30s",
+					"label": "Slow"
+				},
+				{
+					"value": "50s",
+					"label": "Very slow"
+				}
+			],
+			"default": "20s",
+			"label": "Speed"
+		},
+		{
+			"type": "header",
+			"content": "Carousel"
+		},
+		{
+			"type": "checkbox",
+			"id": "use_block_colors",
+			"label": "Use block colors",
+			"default": false
+		},
+		{
+			"type": "checkbox",
+			"id": "autoplay",
+			"label": "Auto-rotate slides",
+			"default": true
+		},
+		{
+			"type": "range",
+			"id": "autoplay_length",
+			"min": 3,
+			"max": 10,
+			"step": 1,
+			"unit": "s",
+			"label": "Change slides every",
+			"default": 5
+		}
+	],
+	"blocks": [
+		{
+			"type": "text",
+			"name": "Text",
+			"settings": [
+				{
+					"type": "select",
+					"id": "icon",
+					"options": [
+						{
+							"value": "none",
+							"label": "None"
+						},
+						{
+							"value": "apple",
+							"label": "Apple"
+						},
+						{
+							"value": "banana",
+							"label": "Banana"
+						},
+						{
+							"value": "bottle",
+							"label": "Bottle"
+						},
+						{
+							"value": "box",
+							"label": "Box"
+						},
+						{
+							"value": "carrot",
+							"label": "Carrot"
+						},
+						{
+							"value": "chat_bubble",
+							"label": "Chat bubble"
+						},
+						{
+							"value": "check_mark",
+							"label": "Check mark"
+						},
+						{
+							"value": "clipboard",
+							"label": "Clipboard"
+						},
+						{
+							"value": "dairy",
+							"label": "Dairy"
+						},
+						{
+							"value": "dairy_free",
+							"label": "Dairy free"
+						},
+						{
+							"value": "dryer",
+							"label": "Dryer"
+						},
+						{
+							"value": "eye",
+							"label": "Eye"
+						},
+						{
+							"value": "fire",
+							"label": "Fire"
+						},
+						{
+							"value": "gluten_free",
+							"label": "Gluten free"
+						},
+						{
+							"value": "heart",
+							"label": "Heart"
+						},
+						{
+							"value": "iron",
+							"label": "Iron"
+						},
+						{
+							"value": "leaf",
+							"label": "Leaf"
+						},
+						{
+							"value": "leather",
+							"label": "Leather"
+						},
+						{
+							"value": "lightning_bolt",
+							"label": "Lightning bolt"
+						},
+						{
+							"value": "lipstick",
+							"label": "Lipstick"
+						},
+						{
+							"value": "lock",
+							"label": "Lock"
+						},
+						{
+							"value": "map_pin",
+							"label": "Map pin"
+						},
+						{
+							"value": "nut_free",
+							"label": "Nut free"
+						},
+						{
+							"value": "pants",
+							"label": "Pants"
+						},
+						{
+							"value": "paw_print",
+							"label": "Paw print"
+						},
+						{
+							"value": "pepper",
+							"label": "Pepper"
+						},
+						{
+							"value": "perfume",
+							"label": "Perfume"
+						},
+						{
+							"value": "plane",
+							"label": "Plane"
+						},
+						{
+							"value": "plant",
+							"label": "Plant"
+						},
+						{
+							"value": "price_tag",
+							"label": "Price tag"
+						},
+						{
+							"value": "question_mark",
+							"label": "Question mark"
+						},
+						{
+							"value": "recycle",
+							"label": "Recycle"
+						},
+						{
+							"value": "return",
+							"label": "Return"
+						},
+						{
+							"value": "ruler",
+							"label": "Ruler"
+						},
+						{
+							"value": "serving_dish",
+							"label": "Serving dish"
+						},
+						{
+							"value": "shirt",
+							"label": "Shirt"
+						},
+						{
+							"value": "shoe",
+							"label": "Shoe"
+						},
+						{
+							"value": "silhouette",
+							"label": "Silhouette"
+						},
+						{
+							"value": "snowflake",
+							"label": "Snowflake"
+						},
+						{
+							"value": "star",
+							"label": "Star"
+						},
+						{
+							"value": "stopwatch",
+							"label": "Stopwatch"
+						},
+						{
+							"value": "truck",
+							"label": "Truck"
+						},
+						{
+							"value": "washing",
+							"label": "Washing"
+						}
+					],
+					"default": "none",
+					"label": "Icon"
+				},
+				{
+					"type": "text",
+					"id": "text",
+					"label": "Content",
+					"default": "Add campaign text here."
+				},
+				{
+					"id": "link",
+					"type": "url",
+					"label": "Link"
+				},
+				{
+	        "type": "header",
+	        "content": "Colors",
+					"info": "Used on carousel layout"
+	      },
+	      {
+	        "type": "color",
+	        "id": "color_bg",
+	        "label": "Background",
+	        "default": "#3F72E5"
+	      },
+	      {
+	        "type": "color",
+	        "id": "color_text",
+	        "label": "Text",
+	        "default": "#FFFFFF"
+	      }
+			]
+		}
+	],
+  "default": {
+    "blocks": [
+      {
+        "type": "text"
+      },
+			{
+        "type": "text"
+      },
+			{
+        "type": "text"
+      }
+    ]
+  }
+}
+{% endschema %}

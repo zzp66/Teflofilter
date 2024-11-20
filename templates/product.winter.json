@@ -1,0 +1,593 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "breadcrumbs": {
+      "type": "breadcrumbs",
+      "settings": {}
+    },
+    "main-product": {
+      "type": "main-product",
+      "blocks": {
+        "2b609eea-6cce-4efe-b447-c5560de1d797": {
+          "type": "label",
+          "settings": {}
+        },
+        "e431a79e-9c7b-4a53-a79a-0cb918617ecf": {
+          "type": "text",
+          "settings": {
+            "text": "{{ product.vendor }}",
+            "text_style": "style_vendor"
+          }
+        },
+        "title": {
+          "type": "title",
+          "settings": {
+            "show_products_rating": true
+          }
+        },
+        "a92a5f09-ca58-42f5-be74-9043d4f99bf9": {
+          "type": "description",
+          "settings": {}
+        },
+        "variant_picker": {
+          "type": "variant_picker",
+          "settings": {
+            "picker_type": "button",
+            "color_picker": true,
+            "variant_is_disabled": true,
+            "sizing_guide_variant": "Size",
+            "sizing_guide_text": "",
+            "sizing_guide_icon": "ruler",
+            "sizing_guide_page": ""
+          }
+        },
+        "quantity": {
+          "type": "quantity",
+          "settings": {}
+        },
+        "e70c72c9-a3ed-48a3-bea1-9a2d5d1872a9": {
+          "type": "inventory_level",
+          "settings": {
+            "show_inventory_notice": "always",
+            "show_inventory_count": "always",
+            "inventory_notice_pulse": true,
+            "inventory_notice_bar": false,
+            "inventory_notice_threshold": 10,
+            "inventory_notice_base": 20
+          }
+        },
+        "buy_buttons": {
+          "type": "buy_buttons",
+          "settings": {
+            "show_dynamic_checkout": true,
+            "show_gift_card_recipient": false
+          }
+        },
+        "fc6da228-45eb-4a6e-aa68-d6ec477bec34": {
+          "type": "complementary",
+          "settings": {
+            "block_heading": "Pairs well with",
+            "product_list_limit": 6
+          }
+        },
+        "4fd23485-293f-46a0-8a4c-34d0e25ea41b": {
+          "type": "share",
+          "settings": {}
+        }
+      },
+      "block_order": [
+        "2b609eea-6cce-4efe-b447-c5560de1d797",
+        "e431a79e-9c7b-4a53-a79a-0cb918617ecf",
+        "title",
+        "a92a5f09-ca58-42f5-be74-9043d4f99bf9",
+        "variant_picker",
+        "quantity",
+        "e70c72c9-a3ed-48a3-bea1-9a2d5d1872a9",
+        "buy_buttons",
+        "fc6da228-45eb-4a6e-aa68-d6ec477bec34",
+        "4fd23485-293f-46a0-8a4c-34d0e25ea41b"
+      ],
+      "settings": {
+        "enable_sticky_add_to_cart": true,
+        "show_taxes_included": true,
+        "thumbnail_position": "left",
+        "media_aspect_ratio": "adapt",
+        "display_captions": true,
+        "hide_variants": false,
+        "lightbox": true,
+        "enable_video_looping": false
+      }
+    },
+    "f7131140-c4ae-48dd-9870-2f4d34309d7c": {
+      "type": "spacer",
+      "settings": {
+        "spacer_mobile": 0,
+        "spacer_desktop": 25,
+        "border_separator": false,
+        "border_separator_full": false
+      }
+    },
+    "106d082c-28d1-450d-b7ba-7cb284df8dab": {
+      "type": "scrolling-text",
+      "blocks": {
+        "template--14745674022970__106d082c-28d1-450d-b7ba-7cb284df8dab-text-1": {
+          "type": "text",
+          "settings": {
+            "text": "For your everyday winter",
+            "link": "",
+            "outline_text": false
+          }
+        },
+        "template--14745674022970__106d082c-28d1-450d-b7ba-7cb284df8dab-text-2": {
+          "type": "text",
+          "settings": {
+            "text": "Don’t skip these coats",
+            "link": "",
+            "outline_text": false
+          }
+        },
+        "template--14745674022970__106d082c-28d1-450d-b7ba-7cb284df8dab-text-3": {
+          "type": "text",
+          "settings": {
+            "text": "Made for warmth and style",
+            "link": "",
+            "outline_text": false
+          }
+        }
+      },
+      "block_order": [
+        "template--14745674022970__106d082c-28d1-450d-b7ba-7cb284df8dab-text-1",
+        "template--14745674022970__106d082c-28d1-450d-b7ba-7cb284df8dab-text-2",
+        "template--14745674022970__106d082c-28d1-450d-b7ba-7cb284df8dab-text-3"
+      ],
+      "settings": {
+        "height": "height-auto",
+        "full_width": true,
+        "direction": "left",
+        "speed": "50s",
+        "rotation": 0,
+        "negative_rotation": false,
+        "font_family": "heading",
+        "text_size": 78,
+        "text_uppercase": false,
+        "image_size": "large",
+        "color_bg": "transparent",
+        "color_text": "#ffe589",
+        "overlay_color": "#000000",
+        "overlay_opacity": 0,
+        "disable_top_spacing": true,
+        "disable_bottom_spacing": true
+      }
+    },
+    "ab3dca5c-83d2-465d-a873-b36781bde0bd": {
+      "type": "spacer",
+      "settings": {
+        "spacer_mobile": 10,
+        "spacer_desktop": 25,
+        "border_separator": false,
+        "border_separator_full": false
+      }
+    },
+    "fd5c7a63-be6c-43da-a9c0-a887e1ab06dd": {
+      "type": "media-grid",
+      "blocks": {
+        "template--14745674022970__fd5c7a63-be6c-43da-a9c0-a887e1ab06dd-media-1": {
+          "type": "media",
+          "settings": {
+            "slide_link": "",
+            "use_video": false,
+            "video_autoplay": true,
+            "column": 2,
+            "row": 2,
+            "subheading": "",
+            "heading": "Two Zippered Pockets",
+            "heading_size": "h4",
+            "button_text": "",
+            "button_link": "",
+            "content_position": "bottom-left",
+            "text_alignment": "left",
+            "color_bg": "#eaeaea",
+            "color_bg_gradient": "",
+            "color_text": "#ffffff",
+            "color_link": "#3F72E5",
+            "overlay_color": "#000000",
+            "overlay_opacity": 0
+          }
+        },
+        "template--14745674022970__fd5c7a63-be6c-43da-a9c0-a887e1ab06dd-media-2": {
+          "type": "media",
+          "settings": {
+            "slide_link": "",
+            "video_autoplay": true,
+            "column": 2,
+            "row": 3,
+            "subheading": "",
+            "heading": "",
+            "heading_size": "h3",
+            "button_text": "",
+            "button_link": "",
+            "content_position": "middle-center",
+            "text_alignment": "center",
+            "color_bg": "#eaeaea",
+            "color_bg_gradient": "",
+            "color_text": "#2c2d2e",
+            "color_link": "#3F72E5",
+            "overlay_color": "#000000",
+            "overlay_opacity": 0
+          }
+        },
+        "2e5ac462-81a3-4194-b445-a2afd14c80d7": {
+          "type": "media",
+          "settings": {
+            "slide_link": "",
+            "use_video": false,
+            "video_autoplay": true,
+            "column": 1,
+            "row": 1,
+            "subheading": "",
+            "heading": "❄<br><br> Flat seams for optimal comfort",
+            "heading_size": "h4",
+            "button_text": "",
+            "button_link": "",
+            "content_position": "bottom-left",
+            "text_alignment": "left",
+            "color_bg": "#404cb7",
+            "color_bg_gradient": "",
+            "color_text": "#ffffff",
+            "color_link": "#3F72E5",
+            "overlay_color": "#000000",
+            "overlay_opacity": 0
+          }
+        },
+        "916f6918-46df-4a4d-bfe5-d1962f9e2f94": {
+          "type": "media",
+          "settings": {
+            "slide_link": "",
+            "use_video": false,
+            "video_autoplay": true,
+            "column": 1,
+            "row": 1,
+            "subheading": "",
+            "heading": "",
+            "heading_size": "h2",
+            "button_text": "",
+            "button_link": "",
+            "content_position": "middle-center",
+            "text_alignment": "center",
+            "color_bg": "#ffffff",
+            "color_bg_gradient": "",
+            "color_text": "#ffffff",
+            "color_link": "#3F72E5",
+            "overlay_color": "#000000",
+            "overlay_opacity": 0
+          }
+        }
+      },
+      "block_order": [
+        "template--14745674022970__fd5c7a63-be6c-43da-a9c0-a887e1ab06dd-media-1",
+        "template--14745674022970__fd5c7a63-be6c-43da-a9c0-a887e1ab06dd-media-2",
+        "2e5ac462-81a3-4194-b445-a2afd14c80d7",
+        "916f6918-46df-4a4d-bfe5-d1962f9e2f94"
+      ],
+      "settings": {
+        "desktop_height": 230,
+        "mobile_height": 250,
+        "column_spacing": "medium",
+        "color_bg": "#ffffff",
+        "color_text": "#2c2d2e",
+        "color_link": "#3f72e5",
+        "disable_top_spacing": true,
+        "disable_bottom_spacing": false
+      }
+    },
+    "cd525480-75e7-440b-8bc7-34e7962badac": {
+      "type": "rich-text",
+      "blocks": {
+        "d385b77f-aec5-40c3-b4b7-f6255d5e53ac": {
+          "type": "image",
+          "settings": {}
+        },
+        "080b30b7-1ded-4583-82dd-bd1f46475b97": {
+          "type": "heading",
+          "settings": {
+            "text": "The Ultimate |Polyester| Blend",
+            "marker_style": "style1",
+            "size": "h3",
+            "marker_color": "#FD6262"
+          }
+        },
+        "template--14745674022970__cd525480-75e7-440b-8bc7-34e7962badac-text-1": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Crafted entirely from high-quality 100% polyester fibers, this product offers an unparalleled combination of durability, softness, and easy maintenance.</p>",
+            "size": "text-size-small"
+          }
+        }
+      },
+      "block_order": [
+        "d385b77f-aec5-40c3-b4b7-f6255d5e53ac",
+        "080b30b7-1ded-4583-82dd-bd1f46475b97",
+        "template--14745674022970__cd525480-75e7-440b-8bc7-34e7962badac-text-1"
+      ],
+      "settings": {
+        "text_width": "large",
+        "text_position": "center",
+        "text_alignment": "center",
+        "color_bg": "transparent",
+        "color_heading": "#1a1c1d",
+        "color_text": "#35393d",
+        "color_links": "#2c2d2e",
+        "disable_top_spacing": false,
+        "disable_bottom_spacing": true
+      }
+    },
+    "3ff74432-f226-4925-ab0b-1c7dd17c12c8": {
+      "type": "spacer",
+      "settings": {
+        "spacer_mobile": 20,
+        "spacer_desktop": 20,
+        "border_separator": false,
+        "border_separator_full": false
+      }
+    },
+    "d61b1423-b711-4441-96d6-dcb826e67ddb": {
+      "type": "toggle-boxes",
+      "blocks": {
+        "template--14745674022970__d61b1423-b711-4441-96d6-dcb826e67ddb-box-1": {
+          "type": "box",
+          "settings": {
+            "image_link": "",
+            "open": false,
+            "heading": "Multiple Pockets",
+            "text": "<p>Thoughtfully designed with multiple pockets, including zippered handwarmer pockets and interior storage, for easy access to essentials without compromising warmth.</p>"
+          }
+        },
+        "template--14745674022970__d61b1423-b711-4441-96d6-dcb826e67ddb-box-2": {
+          "type": "box",
+          "settings": {
+            "image_link": "",
+            "open": false,
+            "heading": "Machine Washable",
+            "text": "<p>Designed for practicality, this winter coat is easy to care for with machine-washable materials that maintain their quality even after repeated use.</p>"
+          }
+        },
+        "template--14745674022970__d61b1423-b711-4441-96d6-dcb826e67ddb-box-3": {
+          "type": "box",
+          "settings": {
+            "image_link": "",
+            "open": false,
+            "heading": "Stylish Design",
+            "text": "<p>Fashion meets function with a sleek and contemporary design, making the ArcticGuard™ Winter Coat a versatile addition to any winter wardrobe.</p>"
+          }
+        },
+        "template--14745674022970__d61b1423-b711-4441-96d6-dcb826e67ddb-box-4": {
+          "type": "box",
+          "settings": {
+            "image_link": "",
+            "open": false,
+            "heading": "Adjustable Hood",
+            "text": "<p>The insulated, adjustable hood provides extra protection, and the detachable faux fur trim adds a touch of elegance while keeping your face shielded from the elements.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "template--14745674022970__d61b1423-b711-4441-96d6-dcb826e67ddb-box-1",
+        "template--14745674022970__d61b1423-b711-4441-96d6-dcb826e67ddb-box-2",
+        "template--14745674022970__d61b1423-b711-4441-96d6-dcb826e67ddb-box-3",
+        "template--14745674022970__d61b1423-b711-4441-96d6-dcb826e67ddb-box-4"
+      ],
+      "settings": {
+        "heading": "",
+        "marker_style": "style1",
+        "description": "",
+        "columns_desktop": 4,
+        "column_spacing": "medium",
+        "image_ratio": "adapt",
+        "mobile_swipe": true,
+        "text_alignment": "left",
+        "color_bg": "#404cb7",
+        "color_heading": "#ffffff",
+        "marker_color": "#FD6262",
+        "color_text": "#ffffff",
+        "color_link": "#3f72e5",
+        "disable_top_spacing": true,
+        "disable_bottom_spacing": false
+      }
+    },
+    "63456a0f-1257-4adc-9f0c-f2ae9e5c13a7": {
+      "type": "image-hotspots",
+      "blocks": {
+        "template--14745674022970__63456a0f-1257-4adc-9f0c-f2ae9e5c13a7-hotspot-1": {
+          "type": "hotspot",
+          "settings": {
+            "heading": "Waterproofing",
+            "description": "A water-resistant or waterproof outer layer to protect against rain, snow, and sleet.",
+            "x_position": 33,
+            "y_position": 76,
+            "x_position_mobile": 20,
+            "y_position_mobile": 20
+          }
+        },
+        "df7dc227-705f-4c25-bade-c0d156f0e04a": {
+          "type": "hotspot",
+          "settings": {
+            "heading": "Adjustable Hood",
+            "description": "A hood with adjustable features for a secure fit, and possibly a detachable faux fur trim for added style and warmth.",
+            "x_position": 37,
+            "y_position": 24,
+            "x_position_mobile": 20,
+            "y_position_mobile": 20
+          }
+        },
+        "905d6f5d-dfa9-43ad-aad7-cd3fd7ef0871": {
+          "type": "hotspot",
+          "settings": {
+            "heading": "Ventilation Zips",
+            "description": "Underarm ventilation zippers for regulating body temperature during physical activities.",
+            "x_position": 56,
+            "y_position": 54,
+            "x_position_mobile": 20,
+            "y_position_mobile": 20
+          }
+        }
+      },
+      "block_order": [
+        "template--14745674022970__63456a0f-1257-4adc-9f0c-f2ae9e5c13a7-hotspot-1",
+        "df7dc227-705f-4c25-bade-c0d156f0e04a",
+        "905d6f5d-dfa9-43ad-aad7-cd3fd7ef0871"
+      ],
+      "settings": {
+        "heading": "Beyond |Warmth|",
+        "marker_style": "style1",
+        "heading_size": "h2",
+        "description": "<p>The ArcticBreeze™ Winter Coat boasts an advanced thermal insulation system, ensuring you stay comfortably warm even in the most frigid conditions. Embrace the chill, knowing that every step is cocooned in a haven of cozy warmth.</p>",
+        "badge_text": "",
+        "image_position": "text_first",
+        "marker_color": "#FD6262",
+        "color_bg_badge": "#3f72e5",
+        "color_badge": "#ffffff",
+        "disable_top_spacing": true,
+        "disable_bottom_spacing": false
+      }
+    },
+    "28dc155d-c542-4ea3-9649-23d253d08ad6": {
+      "type": "rich-text",
+      "blocks": {
+        "template--14745674022970__28dc155d-c542-4ea3-9649-23d253d08ad6-subheading-1": {
+          "type": "subheading",
+          "settings": {
+            "text": "Also available at other stores"
+          }
+        }
+      },
+      "block_order": [
+        "template--14745674022970__28dc155d-c542-4ea3-9649-23d253d08ad6-subheading-1"
+      ],
+      "settings": {
+        "text_width": "medium",
+        "text_position": "center",
+        "text_alignment": "center",
+        "color_bg": "transparent",
+        "color_heading": "#1a1c1d",
+        "color_text": "#35393d",
+        "color_links": "#2c2d2e",
+        "disable_top_spacing": true,
+        "disable_bottom_spacing": true
+      }
+    },
+    "23eef362-d778-4250-9d08-b5c9cf650a77": {
+      "type": "spacer",
+      "settings": {
+        "spacer_mobile": 5,
+        "spacer_desktop": 15,
+        "border_separator": false,
+        "border_separator_full": false
+      }
+    },
+    "2c1df25b-3c9b-4858-a475-5d202e337a39": {
+      "type": "logo-list",
+      "blocks": {
+        "template--14745674022970__2c1df25b-3c9b-4858-a475-5d202e337a39-logo-1": {
+          "type": "logo",
+          "settings": {
+            "link": "#"
+          }
+        },
+        "template--14745674022970__2c1df25b-3c9b-4858-a475-5d202e337a39-logo-2": {
+          "type": "logo",
+          "settings": {
+            "link": "#"
+          }
+        },
+        "template--14745674022970__2c1df25b-3c9b-4858-a475-5d202e337a39-logo-3": {
+          "type": "logo",
+          "settings": {
+            "link": "#"
+          }
+        },
+        "template--14745674022970__2c1df25b-3c9b-4858-a475-5d202e337a39-logo-4": {
+          "type": "logo",
+          "settings": {
+            "link": "#"
+          }
+        },
+        "template--14745674022970__2c1df25b-3c9b-4858-a475-5d202e337a39-logo-5": {
+          "type": "logo",
+          "settings": {
+            "link": "#"
+          }
+        }
+      },
+      "block_order": [
+        "template--14745674022970__2c1df25b-3c9b-4858-a475-5d202e337a39-logo-1",
+        "template--14745674022970__2c1df25b-3c9b-4858-a475-5d202e337a39-logo-2",
+        "template--14745674022970__2c1df25b-3c9b-4858-a475-5d202e337a39-logo-3",
+        "template--14745674022970__2c1df25b-3c9b-4858-a475-5d202e337a39-logo-4",
+        "template--14745674022970__2c1df25b-3c9b-4858-a475-5d202e337a39-logo-5"
+      ],
+      "settings": {
+        "heading": "",
+        "marker_style": "style1",
+        "description": "",
+        "columns": 5,
+        "mobile_swipe": true,
+        "center_align": true,
+        "disable_top_spacing": true,
+        "disable_bottom_spacing": false,
+        "color_logo_bg": "#ffffff",
+        "marker_color": "#FD6262"
+      }
+    },
+    "16625458859c68803a": {
+      "type": "apps",
+      "settings": {}
+    },
+    "1662552569cce2536d": {
+      "type": "spacer",
+      "settings": {
+        "spacer_mobile": 60,
+        "spacer_desktop": 80,
+        "border_separator": true,
+        "border_separator_full": false
+      }
+    },
+    "product-recommendations": {
+      "type": "product-recommendations",
+      "settings": {
+        "heading": "You may also like",
+        "description": "<p>Combine your style with these products</p>",
+        "mobile_swipe": true,
+        "product_limit": 4,
+        "columns_desktop": 4,
+        "disable_top_spacing": true,
+        "disable_bottom_spacing": false
+      }
+    }
+  },
+  "order": [
+    "breadcrumbs",
+    "main-product",
+    "f7131140-c4ae-48dd-9870-2f4d34309d7c",
+    "106d082c-28d1-450d-b7ba-7cb284df8dab",
+    "ab3dca5c-83d2-465d-a873-b36781bde0bd",
+    "fd5c7a63-be6c-43da-a9c0-a887e1ab06dd",
+    "cd525480-75e7-440b-8bc7-34e7962badac",
+    "3ff74432-f226-4925-ab0b-1c7dd17c12c8",
+    "d61b1423-b711-4441-96d6-dcb826e67ddb",
+    "63456a0f-1257-4adc-9f0c-f2ae9e5c13a7",
+    "28dc155d-c542-4ea3-9649-23d253d08ad6",
+    "23eef362-d778-4250-9d08-b5c9cf650a77",
+    "2c1df25b-3c9b-4858-a475-5d202e337a39",
+    "16625458859c68803a",
+    "1662552569cce2536d",
+    "product-recommendations"
+  ]
+}

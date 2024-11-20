@@ -1,0 +1,101 @@
+
+
+.image-with-text-slideshow--content, .image-with-text-slideshow--image {
+  isolation: isolate;
+  border-radius: var(--block-border-radius, 16px); }
+
+.image-with-text-slideshow--image {
+  box-shadow: var(--block-shadows); }
+
+
+
+.image-with-text-slideshow {
+  display: grid;
+  grid-auto-flow: dense; }
+  @media only screen and (min-width: 768px) {
+    .image-with-text-slideshow {
+      grid-template-areas: "media content";
+      grid-template-columns: 1fr 1fr; } }
+  @media only screen and (min-width: 768px) {
+    .image-with-text-slideshow.text_first {
+      grid-template-areas: "content media"; } }
+  .image-with-text-slideshow .carousel__slide {
+    width: 100%; }
+  .image-with-text-slideshow--content {
+    display: flex;
+    width: 100%;
+    position: relative;
+    flex-grow: 0;
+    overflow: hidden; }
+    @media only screen and (min-width: 768px) {
+      .image-with-text-slideshow--content {
+        grid-area: content; } }
+    .image-with-text-slideshow--content-content {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      padding: 25px;
+      max-width: 700px;
+      flex-shrink: 0;
+      width: 100%;
+      background: var(--color-bg, var(--bg-body, #f5f5f5));
+      color: var(--color-text, var(--color-body, #2c2d2e)); }
+      @media only screen and (min-width: 768px) {
+        .image-with-text-slideshow--content-content {
+          padding: 45px; } }
+      @media only screen and (min-width: 1068px) {
+        .image-with-text-slideshow--content-content {
+          padding: 70px; } }
+      .image-with-text-slideshow--content-content > div {
+        width: 100%; }
+    @media only screen and (min-width: 1068px) {
+      .image-with-text-slideshow--content.is-draggable .image-with-text-slideshow__content-content {
+        padding: 70px;
+        padding-bottom: 90px; } }
+    .image-with-text-slideshow--content h3 {
+      color: inherit; }
+    .image-with-text-slideshow--content p {
+      margin-bottom: 30px; }
+    @media only screen and (min-width: 768px) {
+      .image-with-text-slideshow--content .flickity-viewport,
+      .image-with-text-slideshow--content .carousel__slide {
+        min-height: 100%; } }
+  .image-with-text-slideshow--image {
+    width: 100%;
+    overflow: hidden; }
+    @media only screen and (min-width: 768px) {
+      .image-with-text-slideshow--image {
+        grid-area: media; } }
+    .image-with-text-slideshow--image-slide {
+      flex-shrink: 0;
+      width: 100%; }
+    .image-with-text-slideshow--image svg,
+    .image-with-text-slideshow--image img {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover; }
+    .image-with-text-slideshow--image-media {
+      position: relative;
+      width: 100%;
+      overflow: hidden; }
+      .image-with-text-slideshow--image-media.desktop-height-auto svg,
+      .image-with-text-slideshow--image-media.desktop-height-auto img {
+        position: static; }
+  @media only screen and (min-width: 768px) {
+    .image-with-text-slideshow.grid--image-small {
+      grid-template-columns: 4fr 6fr; } }
+  @media only screen and (min-width: 768px) {
+    .image-with-text-slideshow.grid--image-small.text_first {
+      grid-template-columns: 6fr 4fr; } }
+  @media only screen and (min-width: 768px) {
+    .image-with-text-slideshow.grid--image-large {
+      grid-template-columns: 6fr 4fr; } }
+  @media only screen and (min-width: 768px) {
+    .image-with-text-slideshow.grid--image-large.text_first {
+      grid-template-columns: 4fr 6fr; } }
+  .image-with-text-slideshow .flickity-page-dots {
+    --color-body: #fff; }

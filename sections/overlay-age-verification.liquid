@@ -1,0 +1,80 @@
+
+{{ 'overlay-group.css' | asset_url | stylesheet_tag }}
+{%- liquid
+  assign title = section.settings.title
+  assign text = section.settings.text
+  assign verify_button_text = section.settings.verify_button_text
+  assign decline_button_text = section.settings.decline_button_text
+  assign decline_button_link = section.settings.decline_button_link
+  assign footer_text = section.settings.footer_text
+-%}
+<modal-dialog id="AgeVerification-{{ section.id }}" data-section-id="{{ section.id }}" class="product-popup-modal age-verification-modal" disabled>
+  <div role="dialog" aria-modal="true" class="product-popup-modal__content age-verification-modal__content" tabindex="-1">
+    <div class="product-popup-modal__content-info text-center">
+      <div class="product-popup-modal--heading h4">{{ title }}</div>
+      <div class="product-popup-modal--text rte">{{ text }}</div>
+      <div class="product-popup-modal--buttons">
+        <button class="button full" id="ModalClose-{{ section.id }}"><span>{{ verify_button_text }}</span></button>
+        <a href="{{ decline_button_link }}" class="text-button">{{ decline_button_text }}</a>
+      </div>
+      {% if footer_text != blank %}
+      <div class="product-popup-modal--footer">{{ footer_text }}</div>
+      {% endif %}
+    </div>
+  </div>
+</modal-dialog>
+<script src="{{ 'modal-dialog.js' | asset_url }}" defer="defer"></script>
+{% schema %}
+  {
+    "name": "Age verification",
+		"class": "section-overlay-age-verification",
+    "limit": 1,
+    "settings": [
+			{
+        "type": "text",
+        "id": "title",
+        "default": "Age verification",
+        "label": "Heading"
+      },
+      {
+        "type": "richtext",
+        "id": "text",
+        "default": "<p>This website contains products and content intended for adults.</p>",
+        "label": "Description"
+      },
+      {
+        "type": "text",
+        "id": "verify_button_text",
+        "default": "Yes, I'm 18 years or older",
+        "label": "Verify button text"
+      },
+      {
+        "type": "text",
+        "id": "decline_button_text",
+        "default": "No, thanks",
+        "label": "Decline button text"
+      },
+      {
+        "type": "url",
+        "id": "decline_button_link",
+        "label": "Decline button link"
+      },
+      {
+        "type": "richtext",
+        "id": "footer_text",
+        "default": "<p>By verifying your age, you agree to our terms and conditions and acknowledge our privacy policy.</p>",
+        "label": "Footer text"
+      }
+    ],
+    "presets": [
+      {
+        "name": "Age verification"
+      }
+    ],
+		"enabled_on": {
+			"groups": [
+				"custom.overlay"
+			]
+		}
+  }
+{% endschema %}

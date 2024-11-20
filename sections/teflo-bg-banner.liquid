@@ -1,0 +1,153 @@
+<style>
+    .teflo-bg-banner{
+        
+    }
+    .teflo-bg-banner-bg{
+        width: 100vw;
+        height: 100vh;
+        position: relative;
+        object-fit: cover;
+    }
+    .teflo-bg-banner-content{
+        position: absolute;
+        bottom: calc(100vw * 40 / var(--base-width));
+        left: calc(100vw * 20 / var(--base-width));
+        right: calc(100vw * 20 / var(--base-width));
+    }
+    .teflo-bg-banner-content-h1{
+        color: #FFF;
+        font-size: calc(100vw * 80 / var(--base-width));
+        font-style: normal;
+        font-weight: 400;
+        line-height: calc(100vw * 86 / var(--base-width));
+        letter-spacing: calc(100vw * -2.4 / var(--base-width));
+        margin-bottom: calc(100vw * 15 / var(--base-width));
+        text-transform: uppercase;
+    }
+    .teflo-bg-banner-content-subtitle{
+        
+    }
+    .teflo-bg-banner-content-subtitle *{
+        margin-bottom: 0px;
+        color: #FFF;
+        font-size: calc(100vw * 16 / var(--base-width));
+        font-style: normal;
+        font-weight: 400;
+        line-height: calc(100vw * 22 / var(--base-width));
+        opacity: 0.8;
+    }
+    .teflo-bg-banner-content-box{
+        padding-bottom: calc(100vw * 30 / var(--base-width));
+        border-bottom: 0.3px solid rgba(255, 255, 255, 0.50);
+        margin-bottom: calc(100vw * 30 / var(--base-width));
+    }
+    .teflo-bg-banner-content-desc{
+        color: #FFF;
+        font-size: calc(100vw * 16 / var(--base-width));
+        font-style: normal;
+        font-weight: 400;
+        line-height: calc(100vw * 16 / var(--base-width));
+        opacity: 0.5;
+        margin-bottom: 0px;
+    }
+
+    @media(max-width:1024px){
+        .teflo-bg-banner-bg{
+            height: auto;
+        }
+        .teflo-bg-banner-content{
+            {% comment %} position: static; {% endcomment %}
+            {% comment %} padding: 0 calc(100vw * 25 / var(--base-width));
+            padding-top: calc(100vw * 50 / var(--base-width));
+            padding-bottom: calc(100vw * 50 / var(--base-width)); {% endcomment %}
+        }
+        .teflo-bg-banner-content-h1{
+
+            -webkit-text-stroke-width: 1;
+            -webkit-text-stroke-color: rgba(25, 25, 25, 0.50);
+            font-size: calc(100vw * 70 / var(--base-width));
+            font-style: normal;
+            font-weight: 400;
+            line-height: calc(100vw * 70 / var(--base-width));
+            letter-spacing: calc(100vw * -2.1 / var(--base-width));
+        }
+        .teflo-bg-banner-content-subtitle{
+            
+            padding-top: calc(100vw * 30 / var(--base-width));
+        }
+        .teflo-bg-banner-content-subtitle *{
+
+            font-size: calc(100vw * 30 / var(--base-width)); 
+            font-style: normal;
+            font-weight: 400;
+            line-height: calc(100vw * 36 / var(--base-width));
+            opacity: 0.8;
+            margin-bottom: 0px;
+        }
+        .teflo-bg-banner-content-desc{
+            font-size: calc(100vw * 20 / var(--base-width));
+            font-style: normal;
+            font-weight: 400;
+            line-height: calc(100vw * 26 / var(--base-width));
+            opacity: 0.5;
+        }
+    }
+</style>
+<div class="teflo-bg-banner">
+    <picture>
+        <source media="(max-width: 1024px)" srcset="{{ section.settings.image_h5 | image_url: width: '750' }}">
+        <img class="teflo-bg-banner-bg" src="{{ section.settings.image_pc | image_url: width: '1920' }}" alt="{{  section.settings.image_alt }}">
+    </picture>
+    <div class="teflo-bg-banner-content">
+        <div class="teflo-bg-banner-content-box">
+            <h1 class="teflo-bg-banner-content-h1">{{ section.settings.title }}</h1>
+            {% if section.settings.subtitle != blank %}
+                <div class="teflo-bg-banner-content-subtitle">{{ section.settings.subtitle }}</div>
+            {% endif %}
+            
+        </div>
+        <p class="teflo-bg-banner-content-desc">{{ section.settings.desc }}</p>
+    </div>
+</div>
+
+{% schema %}
+    {
+        "name": "teflo Bg Banner",
+        "settings": [
+            {
+                "type": "text",
+                "id": "title",
+                "label": "Title"
+            },
+            {
+                "type": "richtext",
+                "id": "subtitle",
+                "label": "Subtitle"
+            },
+            {
+                "type": "image_picker",
+                "id": "image_pc",
+                "label": "pc Image"
+            },
+            {
+                "type": "image_picker",
+                "id": "image_h5",
+                "label": "h5 Image"
+            },
+            {
+                "type": "text",
+                "id": "image_alt",
+                "label": "Image alt text"
+            },{
+                "type": "text",
+                "id": "desc",
+                "label": "Description"
+            }
+        ],
+        "presets": [
+            {
+                "name": "teflo Bg Banner"
+            }
+        ]
+    }
+{% endschema %}

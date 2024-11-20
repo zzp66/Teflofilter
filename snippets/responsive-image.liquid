@@ -1,0 +1,64 @@
+{%- liquid
+	assign lazy_loading = settings.lazy_loading
+
+	unless sizes
+	assign sizes = image.width | append: 'x' | append: image.height
+	endunless
+	assign image_sizes = sizes | split: ","
+
+	if priority
+		assign fetchpriority = priority
+	else
+		assign fetchpriority = 'auto'
+	endif
+-%}
+{%- capture srcset -%}
+  {%- for size in image_sizes -%}
+    {%- liquid
+				assign small_size = '20x'
+    		assign size_array = size | split: "x"
+				assign size_width = size_array[0]
+				assign size_height = size_array[1]
+				if size_array[0] != "0"
+					assign size_x = size_array[0] | append: 'x'
+				else
+					assign size_width = image.width | times: size_array[1] | divided_by: image.height | floor
+				endif
+    		if size_array[1] != "0"
+      		assign size_x = size
+      		assign small_x = size_array[1] | times: 20 | divided_by: size_array[0] | floor
+  				assign small_size = small_size | append: small_x
+    		endif
+		-%}
+    {{- image.src | image_url: width: size_width }} {{ size_width }}w,
+  {%- endfor -%}
+{%- endcapture -%}
+{%- liquid
+	assign l = srcset | size | minus: 1
+	assign w = image.width
+	assign h = image.height
+	if retina
+		assign w = image.width | divided_by: 2
+		assign h = image.height | divided_by: 2
+	endif
+
+	assign focal_point = image.presentation.focal_point
+
+	capture src
+		if lazy_loading
+			assign image_size = small_size
+		else
+			assign image_size = image_sizes[0]
+		endif
+
+		assign image_size_array = image_size | split: "x"
+		
+		if image_size_array[1] != '0'
+			echo image.src | image_url: width: image_size_array[0], height: image_size_array[1]
+		else
+			echo image.src | image_url: width: image_size_array[0]
+		endif
+	endcapture
+-%}
+{% comment %}theme-check-disable ImgLazyLoading{% endcomment %}
+<img class="lazyload{% unless lazy_loading %} no-blur{% endunless %}{% if retina %} retina_size{% endif %} {{ class | escape }}" width="{{ w }}" height="{{ h }}" data-sizes="auto" {% if defer %}data-{% endif %}src="{{- src -}}" data-srcset="{{ srcset | slice: 0, l | strip_newlines -}}" fetchpriority="{{ fetchpriority }}" alt="{{ image.alt | escape }}" {% if focal_point -%}style="object-position: {{ focal_point }};"{% endif %} />

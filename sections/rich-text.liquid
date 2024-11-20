@@ -1,0 +1,430 @@
+{{- 'rich-text.css' | asset_url | stylesheet_tag -}}
+{%- liquid
+	assign text_width = section.settings.text_width
+	assign text_position = section.settings.text_position
+	assign text_alignment = section.settings.text_alignment
+
+	assign color_bg = section.settings.color_bg | downcase
+	assign color_heading = section.settings.color_heading
+	assign color_text = section.settings.color_text
+	assign color_links = section.settings.color_links
+
+	assign disable_top_spacing = section.settings.disable_top_spacing
+	assign disable_bottom_spacing = section.settings.disable_bottom_spacing
+
+	assign heading_class = ''
+	if color_heading contains 'gradient'
+		assign heading_class = 'heading-has-gradient'
+	endif
+
+	assign color_body_bg = settings.color_body_bg | downcase
+
+	assign transparent = false
+	if color_body_bg == color_bg or color_bg == 'transparent' or color_bg == 'rgba(0,0,0,0)'
+		assign transparent = true
+	endif
+-%}
+<div class="row">
+	<div class="small-12 columns">
+		<div class="rich-text rich-text--transparent-{{ transparent }} text-{{ text_alignment }} text-position-{{ text_position }} text-width-{{ text_width }} section-spacing-padding{% if disable_top_spacing %} section-spacing--disable-top{% endif %}{% if disable_bottom_spacing %} section-spacing--disable-bottom{% endif %}" style="--color-bg: {{ color_bg }}; --color-heading: {{ color_heading }}; --color-text: {{ color_text }}; --solid-button-background: {{ color_text }}; --bg-body: {{ color_bg }}; --color-accent: {{ color_links }}; --color-accent-rgb: {{ color_links.rgb | replace: ' ' , ',' }};">
+			<div class="rich-text__inner">
+				{% for block in section.blocks %}
+					{%- case block.type -%}
+						{%- when 'badge' -%}
+							<div>
+								<span class="inline-badge" style="--badge-bg: {{ block.settings.color_bg }};--badge-text: {{ block.settings.color_text }}">{{ block.settings.text }}</span>
+							</div>
+						{%- when 'image' -%}
+							{%- if block.settings.image != blank -%}
+								{%- liquid
+									assign image = block.settings.image
+									assign master_width = image.src.width | append: 'x' | append: image.src.height
+									render 'responsive-image', image: image, sizes: master_width, retina: true
+								-%}
+							{%- else -%}
+								<div class="thb-placeholder">
+									{{ 'image' | placeholder_svg_tag: 'placeholder_svg_tag' }}
+								</div>
+							{%- endif -%}
+						{%- when 'subheading' -%}
+							<p class="subheading" {{ block.shopify_attributes }}>{{ block.settings.text }}</p>
+						{%- when 'heading' -%}
+							{%- liquid
+								assign marker_style = block.settings.marker_style
+								assign marker_color = block.settings.marker_color
+								assign text = block.settings.text | newline_to_br
+							-%}
+							<h3 class="{{ block.settings.size }} {{ heading_class }}" {{ block.shopify_attributes }}>{% render 'animated-marker-heading', heading: text, style: marker_style, color: marker_color %}</h3>
+						{%- when 'text' -%}
+							<div class="rte {{ block.settings.size }}" {{ block.shopify_attributes }}>
+								{{ block.settings.text }}
+								{{ block.settings.custom_liquid }}
+							</div>
+						{%- when 'button' -%}
+						{% if block.settings.link_label != blank %}
+							<a class="button"{% if block.settings.link_label == blank %} aria-disabled="true"{% else %} href="{{ block.settings.link }}"{% endif %} {{ block.shopify_attributes }}>{{ block.settings.link_label }}</a>
+						{% endif %}
+						{%- when 'text-button' -%}
+							{% if block.settings.link_label != blank %}
+								{% render 'text-button', url: block.settings.link, title: block.settings.link_label %}
+							{% endif %}
+						{%- when 'custom_liquid' -%}
+    					{{ block.settings.custom_liquid }}
+					{%- endcase -%}
+				{% endfor %}
+			</div>
+		</div>
+	</div>
+</div>
+
+{% schema %}
+  {
+    "name": "Rich text",
+		"class": "section-rich-text",
+    "settings": [
+			{
+				"type": "select",
+				"id": "text_width",
+				"label": "Content width",
+				"options": [
+					{
+						"value": "small",
+						"label": "Small"
+					},
+					{
+						"value": "medium",
+						"label": "Medium"
+					},
+					{
+						"value": "large",
+						"label": "Large"
+					},
+					{
+						"value": "xlarge",
+						"label": "Extra large"
+					},
+					{
+						"value": "grid",
+						"label": "Grid"
+					}
+				],
+				"default": "medium"
+			},
+			{
+				"type": "select",
+				"id": "text_position",
+				"label": "Content position",
+				"options": [
+					{
+						"value": "left",
+						"label": "Left"
+					},
+					{
+						"value": "center",
+						"label": "Center"
+					},
+					{
+						"value": "right",
+						"label": "Right"
+					}
+				],
+				"default": "center"
+			},
+			{
+				"type": "select",
+				"id": "text_alignment",
+				"label": "Content alignment",
+				"options": [
+					{
+						"value": "left",
+						"label": "Left"
+					},
+					{
+						"value": "center",
+						"label": "Center"
+					},
+					{
+						"value": "right",
+						"label": "Right"
+					}
+				],
+				"default": "center"
+			},
+			{
+	      "type": "header",
+	      "content": "Colors"
+	    },
+			{
+        "type": "color",
+        "id": "color_bg",
+        "label": "Background",
+        "default": "transparent"
+      },
+			{
+        "type": "color_background",
+        "id": "color_heading",
+        "label": "Heading",
+        "default": "#1a1c1d"
+      },
+			{
+        "type": "color",
+        "id": "color_text",
+        "label": "Text",
+        "default": "#2c2d2e"
+      },
+			{
+        "type": "color",
+        "id": "color_links",
+        "label": "Links",
+        "default": "#2c2d2e"
+      },
+			{
+	      "type": "header",
+	      "content": "Spacing"
+	    },
+			{
+				"type": "checkbox",
+				"id": "disable_top_spacing",
+				"default": false,
+				"label": "Remove top spacing"
+			},
+			{
+				"type": "checkbox",
+				"id": "disable_bottom_spacing",
+				"default": false,
+				"label": "Remove bottom spacing"
+			}
+    ],
+		"blocks": [
+			{
+				"type": "badge",
+				"name": "Badge",
+				"settings": [
+					{
+						"type": "text",
+						"id": "text",
+						"label": "Text",
+						"default": "Badge heading"
+					},
+					{
+		        "type": "color",
+		        "id": "color_bg",
+		        "label": "Background",
+		        "default": "#3f72e5"
+		      },
+					{
+		        "type": "color",
+		        "id": "color_text",
+		        "label": "Text",
+		        "default": "#ffffff"
+		      }
+				]
+			},
+			{
+				"type": "image",
+				"name": "Image",
+				"settings": [
+					{
+						"type": "image_picker",
+						"id": "image",
+						"label": "Image"
+					}
+				]
+			},
+			{
+				"type": "subheading",
+				"name": "Subheading",
+				"settings": [
+					{
+						"type": "text",
+						"id": "text",
+						"label": "Text",
+						"default": "Subheading for this section"
+					}
+				]
+			},
+			{
+				"type": "heading",
+				"name": "Heading",
+				"settings": [
+					{
+						"type": "text",
+						"id": "text",
+						"label": "Text",
+						"default": "Talk about your brand",
+						"info": "Wrap your text between | to add animated markers. For example: Animated |marker| will underline marker text."
+					},
+					{
+						"type": "select",
+						"id": "marker_style",
+						"options": [
+							{
+								"value": "style1",
+								"label": "Basic"
+							},
+							{
+								"value": "style2",
+								"label": "Double"
+							},
+							{
+								"value": "style3",
+								"label": "Squiggle"
+							},
+							{
+								"value": "style4",
+								"label": "Zigzag"
+							}
+						],
+						"default": "style1",
+						"label": "Marker"
+					},
+					{
+		        "type": "select",
+		        "id": "size",
+		        "label": "Size",
+		        "options": [
+		          {
+		            "value": "h1",
+		            "label": "Extra Large"
+		          },
+							{
+		            "value": "h2",
+		            "label": "Large"
+		          },
+							{
+		            "value": "h3",
+		            "label": "Medium"
+		          },
+							{
+		            "value": "h4",
+		            "label": "Small"
+		          }
+		        ],
+		        "default": "h3"
+		      },
+					{
+			      "type": "header",
+			      "content": "Colors"
+			    },
+					{
+						"type": "color",
+						"id": "marker_color",
+						"label": "Marker",
+						"default": "#FD6262"
+					}
+				]
+			},
+      {
+        "type": "text",
+        "name": "Text",
+        "settings": [
+					{
+						"type": "richtext",
+						"id": "text",
+						"label": "Content",
+						"default": "<p>Share information about your brand with your customers. Describe a product, make announcements, or welcome customers to your store.</p>"
+					},
+					{
+						"type": "liquid",
+						"id": "custom_liquid",
+						"label": "Custom liquid",
+						"info": "Add app snippets or other Liquid code to create advanced customizations."
+					},
+					{
+		        "type": "select",
+		        "id": "size",
+		        "label": "Size",
+		        "options": [
+							{
+		            "value": "text-size-large",
+		            "label": "Large"
+		          },
+							{
+		            "value": "text-size-regular",
+		            "label": "Medium"
+		          },
+							{
+		            "value": "text-size-small",
+		            "label": "Small"
+		          }
+		        ],
+		        "default": "text-size-regular"
+		      }
+        ]
+      },
+			{
+        "type": "button",
+        "name": "Button",
+        "settings": [
+					{
+						"id": "link_label",
+						"type": "text",
+						"label": "Label",
+						"default": "Learn More",
+						"info": "Leave the label blank to hide the button."
+					},
+					{
+						"id": "link",
+						"type": "url",
+						"label": "Link"
+					}
+        ]
+      },
+			{
+        "type": "text-button",
+        "name": "Link",
+        "settings": [
+					{
+						"id": "link_label",
+						"type": "text",
+						"label": "Label",
+						"default": "Learn More",
+						"info": "Leave the label blank to hide the button."
+					},
+					{
+						"id": "link",
+						"type": "url",
+						"label": "Link"
+					}
+        ]
+      },
+			{
+				"type": "custom_liquid",
+				"name": "Custom liquid",
+				"settings": [
+					{
+						"type": "liquid",
+						"id": "custom_liquid",
+						"label": "Custom liquid",
+						"info": "Add app snippets or other Liquid code to create advanced customizations."
+					}
+				]
+			}
+    ],
+    "presets": [
+      {
+        "name": "Rich text",
+				"blocks": [
+					{
+						"type": "subheading"
+					},
+	        {
+	          "type": "heading"
+	        },
+	        {
+	          "type": "text"
+	        },
+	        {
+	          "type": "button"
+	        }
+	      ]
+      }
+    ],
+		"enabled_on": {
+			"templates": ["*"],
+			"groups": [
+				"header", "footer"
+			]
+		}
+  }
+{% endschema %}

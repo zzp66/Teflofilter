@@ -1,0 +1,77 @@
+
+
+
+
+.section-multicolumn {
+  overflow: hidden; }
+
+.multicolumn.text-alignment--center .section-header {
+  justify-content: center;
+  text-align: center; }
+
+.multicolumn.text-alignment--right .section-header {
+  justify-content: flex-end;
+  text-align: right; }
+
+.multicolumn__column {
+  margin-bottom: 40px; }
+  .multicolumn__column.carousel__slide {
+    margin-bottom: 0; }
+  .multicolumn__column h4 {
+    margin-bottom: 8px; }
+  .multicolumn__column p {
+    margin-bottom: 12px;
+    font-size: 0.9375rem;
+    color: var(--color-text, var(--color-body, #2c2d2e)); }
+  .multicolumn__column .text-button {
+    margin-right: 0; }
+
+.multicolumn__image {
+  display: inline-block;
+  width: 100%;
+  overflow: hidden;
+  margin-bottom: 15px;
+  max-width: 100%; }
+  .multicolumn__image--inner {
+    position: relative;
+    padding-bottom: var(--ratio-percent); }
+    .multicolumn__image--inner.aspect-ratio--portrait {
+      padding-bottom: 125%; }
+    .multicolumn__image--inner.aspect-ratio--square, .multicolumn__image--inner.aspect-ratio--circle {
+      padding-bottom: 100%; }
+    .multicolumn__image--inner.aspect-ratio--circle {
+      border-radius: 50%; }
+    .multicolumn__image--inner img {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover; }
+
+@media only screen and (max-width: 767px) {
+  .multicolumn.swipe-on-mobile .row {
+    display: grid;
+    gap: 8px;
+    grid-auto-flow: column;
+    grid-auto-columns: minmax(var(--mobile-swipe-width), 1fr);
+    overflow-x: auto;
+    grid-template-columns: repeat(auto-fill, minmax(var(--mobile-swipe-width), 1fr));
+    margin-left: -8px;
+    width: calc(100% + 16px);
+    padding: 0 15px;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none; }
+    .multicolumn.swipe-on-mobile .row::-webkit-scrollbar {
+      display: none; }
+    .multicolumn.swipe-on-mobile .row .columns {
+      padding: 0;
+      scroll-snap-stop: always; } }
+
+@media only screen and (max-width: 767px) {
+  .multicolumn.swipe-on-mobile .multicolumn__column {
+    margin-bottom: 0;
+    width: var(--mobile-swipe-width); } }
+
+.multicolumn.text-center .rte {
+  padding: 0 15px; }

@@ -1,0 +1,116 @@
+{{- 'blog.css' | asset_url | stylesheet_tag -}}
+{%- liquid
+	assign blog_layout = section.settings.blog_layout
+	assign show_date = section.settings.show_date
+	assign show_excerpt = section.settings.show_excerpt
+	assign image_ratio = section.settings.image_ratio
+	assign show_read_more = section.settings.show_read_more
+
+	case blog_layout
+		when 'style1'
+			assign per_page = 6
+		when 'style2'
+			assign per_page = 9
+		when 'style3'
+			assign per_page = 8
+	endcase
+-%}
+{%- paginate blog.articles by per_page -%}
+<div class="section-spacing-bottom">
+	<div class="row no-padding">
+		<div class="small-12 columns">
+			<div class="row articles">
+				{%- for article in blog.articles -%}
+					{%- liquid
+						case blog_layout
+							assign grid_item_width = ''
+							when 'style1'
+								assign grid_item_width = 'small-12 medium-6'
+							when 'style2'
+								assign grid_item_width = 'small-12 medium-4'
+							when 'style3'
+								assign class_1 = 'small-12 medium-4'
+								assign class_2 = 'small-12 medium-6'
+								capture grid_item_width
+									cycle class_1, class_1, class_1, class_2, class_2, class_1, class_1, class_1
+								endcapture
+						endcase
+					-%}
+					<div class="{{ grid_item_width }} columns">
+						{% render 'blog-post', article: article, show_date: show_date, show_excerpt: show_excerpt, image_ratio: image_ratio, show_read_more: show_read_more %}
+					</div>
+				{%- endfor -%}
+				<div class="small-12 columns">
+					{%- render 'pagination', paginate: paginate, pagination_type: 'paginated' -%}
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+{%- endpaginate -%}
+
+{% schema %}
+  {
+		"name": "Blog posts",
+	  "class": "blog-section",
+    "settings": [
+			{
+				"type": "select",
+				"id": "blog_layout",
+				"label": "Layout",
+				"default": "style3",
+				"options": [
+					{ "value": "style1", "label": "2 columns" },
+					{ "value": "style2", "label": "3 columns" },
+					{ "value": "style3", "label": "3 - 2 - 3 columns" }
+				]
+			},
+			{
+        "type": "select",
+        "id": "image_ratio",
+        "options": [
+          {
+            "value": "adapt",
+            "label": "Adapt to image"
+          },
+          {
+            "value": "portrait",
+            "label": "Portrait"
+          },
+          {
+            "value": "square",
+            "label": "Square"
+          },
+					{
+            "value": "landscape",
+            "label": "Landscape"
+          }
+        ],
+        "default": "landscape",
+        "label": "Image ratio"
+      },
+			{
+				"type": "checkbox",
+				"id": "show_date",
+				"default": true,
+				"label": "Show date"
+			},
+			{
+				"type": "checkbox",
+				"id": "show_excerpt",
+				"default": true,
+				"label": "Show excerpt"
+			},
+	    {
+	      "type": "paragraph",
+	      "content": "Change excerpts by editing your blog posts. [Learn more](https://help.shopify.com/en/manual/online-store/blogs/writing-blogs#display-an-excerpt-from-a-blog-post)"
+	    },
+			{
+				"type": "checkbox",
+				"id": "show_read_more",
+				"default": true,
+				"label": "Show read more"
+			}
+    ]
+  }
+{% endschema %}

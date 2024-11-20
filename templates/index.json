@@ -1,0 +1,1134 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "teflo_banner_FPVRD7": {
+      "type": "teflo-banner",
+      "blocks": {
+        "list_iftyNj": {
+          "type": "list",
+          "settings": {
+            "text": "<p>we provide customised product solutions to meet individual customer needs.</p>",
+            "image": "shopify://shop_images/Quadrangular-pyramid.svg",
+            "image_h5": "shopify://shop_images/Quadrangular-pyramid_1.svg",
+            "image_alt": ""
+          }
+        },
+        "list_qEJPDR": {
+          "type": "list",
+          "settings": {
+            "text": "<p>Strict quality control and testing to ensure product reliability.</p>",
+            "image": "shopify://shop_images/Nine-points-connected.svg",
+            "image_h5": "shopify://shop_images/Nine-points-connected_1.svg",
+            "image_alt": ""
+          }
+        },
+        "list_j9R4gm": {
+          "type": "list",
+          "settings": {
+            "text": "<p>understand the needs of different industries and provide solutions.</p>",
+            "image": "shopify://shop_images/Stereo-perspective.svg",
+            "image_h5": "shopify://shop_images/Nine-points-connected_1.svg",
+            "image_alt": ""
+          }
+        },
+        "list_AJaf3G": {
+          "type": "list",
+          "settings": {
+            "text": "<p>free pre-sales consulting services, professional team to provide product selection advice.</p>",
+            "image": "shopify://shop_images/Stereo-perspective.svg",
+            "image_h5": "shopify://shop_images/Nine-points-connected_1.svg",
+            "image_alt": ""
+          }
+        }
+      },
+      "block_order": [
+        "list_iftyNj",
+        "list_qEJPDR",
+        "list_j9R4gm",
+        "list_AJaf3G"
+      ],
+      "settings": {
+        "text_color": "#ffffff",
+        "bg_color": "#ffffff",
+        "pc_title_size": 50,
+        "ipa_title_size": 50,
+        "h5_title_size": 50,
+        "pc_desc_size": 20,
+        "ipa_desc_size": 20,
+        "h5_desc_size": 30,
+        "pc_icon_size": 20,
+        "ipa_icon_size": 20,
+        "h5_icon_size": 30,
+        "opacity": 1,
+        "image_pc": "shopify://shop_images/image_207.png",
+        "image_h5": "shopify://shop_images/20241105-153336.jpg",
+        "image_alt": "",
+        "title": "Precision Filtration from Top Filter Bag Manufacturers",
+        "description": "<p>We produce 5 million custom filter bags (0.2 to 500 microns) annually for 50+ countries, ensuring optimal performance across industries.</p>",
+        "button_border_color": "rgba(0,0,0,0)",
+        "button_hover_border_color": "#f91313",
+        "button_border": true,
+        "button_text": "Get instant quote",
+        "button_link": "",
+        "button_text_color": "#FFF",
+        "button_bg_color": "#0522CB",
+        "button_hover_text_color": "#000",
+        "button_hover_bg_color": "#FFF"
+      }
+    },
+    "teflo_factory_enCWbU": {
+      "type": "teflo-factory",
+      "blocks": {
+        "text_kx7Mfx": {
+          "type": "text",
+          "settings": {
+            "num": "10",
+            "unit": "+",
+            "title": "Years of Expertise",
+            "desc": "<p>Superior filtration performance, Delivering top-notch industrial filtration solutions across diverse sectors</p>"
+          }
+        },
+        "text_WbGbfj": {
+          "type": "text",
+          "settings": {
+            "num": "5",
+            "unit": "M",
+            "title": "Filters Bags Annually",
+            "desc": "<p>3 advanced production lines, High-capacity production from our 16,000 sq ft facility</p>"
+          }
+        },
+        "text_DCY6Yx": {
+          "type": "text",
+          "settings": {
+            "num": "100",
+            "unit": "%",
+            "title": "Quality Assurance",
+            "desc": "<p>Rigorous control measures at every production stage for consistent excellence</p>"
+          }
+        },
+        "text_QjmLi4": {
+          "type": "text",
+          "settings": {
+            "num": "5-8",
+            "unit": "%",
+            "title": "Below Market Rates",
+            "desc": "<p>Factory-direct pricing for unbeatable value. Contact us for a competitive quote!</p>"
+          }
+        }
+      },
+      "block_order": [
+        "text_kx7Mfx",
+        "text_WbGbfj",
+        "text_DCY6Yx",
+        "text_QjmLi4"
+      ],
+      "settings": {
+        "subtitle": "[ About us ]",
+        "title": "Your Partner in Industrial Filtration",
+        "desc": "<p>At Teflo, we don't just make filter bags – we engineer filtration solutions that drive your business forward.</p>",
+        "image_pc": "shopify://shop_images/image_302.png",
+        "image_h5": "shopify://shop_images/image_302_1.png",
+        "image_alt": ""
+      }
+    },
+    "teflo_our_goals_E4Fkxk": {
+      "type": "teflo-our-goals",
+      "blocks": {
+        "list_ymRFN4": {
+          "type": "list",
+          "settings": {
+            "num": "01",
+            "title": "Mission",
+            "desc": "<p>To provide innovative, cost-effective filtration solutions that enhance efficiency and productivity across industries.</p>"
+          }
+        },
+        "list_hiUDaa": {
+          "type": "list",
+          "settings": {
+            "num": "02",
+            "title": "Vision",
+            "desc": "<p>To become the global leader in custom filtration technology, driving industrial progress through cleaner, more efficient processes.custom filtration technology, driving industrial progress</p>"
+          }
+        }
+      },
+      "block_order": [
+        "list_ymRFN4",
+        "list_hiUDaa"
+      ],
+      "settings": {
+        "subtitle": "[ OUR GOALS ]",
+        "button_border_color": "#1a1c1d",
+        "button_hover_border_color": "rgba(0,0,0,0)",
+        "button_border": false,
+        "button_text": "Explore More About Us",
+        "button_link": "",
+        "button_text_color": "#1A1A1A",
+        "button_bg_color": "#FFFFFF",
+        "button_hover_text_color": "#FFFFFF",
+        "button_hover_bg_color": "#0522CB"
+      }
+    },
+    "a7802e0a-30f4-4485-bf29-8868a637ca3e": {
+      "type": "promotion-blocks",
+      "blocks": {
+        "55f7c68a-a8a2-4a5c-9d22-c648f5a90b07": {
+          "type": "promotion",
+          "settings": {
+            "title": "Promotion heading",
+            "button_text": "Explore",
+            "button_link": ""
+          }
+        },
+        "dbbd21fc-6396-4bee-a3ca-7cd24590466d": {
+          "type": "promotion",
+          "settings": {
+            "title": "Promotion heading",
+            "button_text": "Explore",
+            "button_link": ""
+          }
+        },
+        "7cae9ac6-8561-43db-a978-8a801d66a423": {
+          "type": "promotion",
+          "settings": {
+            "title": "Promotion heading",
+            "button_text": "Explore",
+            "button_link": ""
+          }
+        }
+      },
+      "block_order": [
+        "55f7c68a-a8a2-4a5c-9d22-c648f5a90b07",
+        "dbbd21fc-6396-4bee-a3ca-7cd24590466d",
+        "7cae9ac6-8561-43db-a978-8a801d66a423"
+      ],
+      "disabled": true,
+      "settings": {
+        "mobile_swipe": true,
+        "image_ratio": "adapt",
+        "column_spacing": "large",
+        "color_bg": "#ffffff",
+        "color_text": "#303c43",
+        "color_link": "#3f72e5",
+        "disable_top_spacing": true,
+        "disable_bottom_spacing": true
+      }
+    },
+    "8670c6b1-68f6-405f-bfff-2c6ff1e89099": {
+      "type": "spacer",
+      "disabled": true,
+      "settings": {
+        "spacer_mobile": 30,
+        "spacer_desktop": 50,
+        "border_separator": false,
+        "border_separator_full": false
+      }
+    },
+    "16614195534fb74bc3": {
+      "type": "collection-tabs",
+      "blocks": {
+        "62cb3915-bc43-41ce-b3f3-2e48c9eefdd2": {
+          "type": "collection",
+          "settings": {
+            "collection": "",
+            "enable_promotion": false,
+            "title": "Promotion",
+            "text": "Advertise a promotion or a sale",
+            "link_label": "Explore",
+            "content_position": "bottom-left",
+            "text_alignment": "left",
+            "link": "",
+            "use_text_button": false,
+            "block_link": "",
+            "overlay_color": "#000000",
+            "overlay_opacity": 70
+          }
+        },
+        "daf43de1-d4e8-41d4-b6ee-0d3a6da11a2e": {
+          "type": "collection",
+          "settings": {
+            "collection": "",
+            "enable_promotion": false,
+            "title": "Promotion",
+            "text": "Advertise a promotion or a sale",
+            "link_label": "Explore",
+            "content_position": "bottom-left",
+            "text_alignment": "left",
+            "link": "",
+            "use_text_button": false,
+            "block_link": "",
+            "overlay_color": "#000000",
+            "overlay_opacity": 70
+          }
+        }
+      },
+      "block_order": [
+        "62cb3915-bc43-41ce-b3f3-2e48c9eefdd2",
+        "daf43de1-d4e8-41d4-b6ee-0d3a6da11a2e"
+      ],
+      "disabled": true,
+      "settings": {
+        "heading": "Collection tabs",
+        "marker_style": "style1",
+        "description": "<p>Collection tabs description</p>",
+        "product_limit": 8,
+        "columns_desktop": 5,
+        "show_progress_bar": true,
+        "marker_color": "#fd6262",
+        "disable_top_spacing": true,
+        "disable_bottom_spacing": false
+      }
+    },
+    "b6a221e5-6cbb-4160-83a7-a387a8f98553": {
+      "type": "rich-text",
+      "blocks": {
+        "template--17918041129242__b6a221e5-6cbb-4160-83a7-a387a8f98553-16764607056c9a15f5-1": {
+          "type": "heading",
+          "settings": {
+            "text": "Rich |text|",
+            "marker_style": "style1",
+            "size": "h1",
+            "marker_color": "#fd6b62"
+          }
+        },
+        "template--17918041129242__b6a221e5-6cbb-4160-83a7-a387a8f98553-16764607056c9a15f5-2": {
+          "type": "text",
+          "settings": {
+            "text": "<p><strong>Add a section description here</strong></p>",
+            "custom_liquid": "",
+            "size": "text-size-large"
+          }
+        }
+      },
+      "block_order": [
+        "template--17918041129242__b6a221e5-6cbb-4160-83a7-a387a8f98553-16764607056c9a15f5-1",
+        "template--17918041129242__b6a221e5-6cbb-4160-83a7-a387a8f98553-16764607056c9a15f5-2"
+      ],
+      "disabled": true,
+      "settings": {
+        "text_width": "large",
+        "text_position": "center",
+        "text_alignment": "center",
+        "color_bg": "rgba(0,0,0,0)",
+        "color_heading": "#252f35",
+        "color_text": "#303c43",
+        "color_links": "#ffffff",
+        "disable_top_spacing": true,
+        "disable_bottom_spacing": true
+      }
+    },
+    "f896bcf0-40bd-4c23-8c79-b4d0863d7715": {
+      "type": "media-grid",
+      "blocks": {
+        "template--17918041129242__f896bcf0-40bd-4c23-8c79-b4d0863d7715-167639056582313b87-0": {
+          "type": "media",
+          "settings": {
+            "slide_link": "",
+            "use_video": false,
+            "video_autoplay": true,
+            "column": 2,
+            "row": 2,
+            "subheading": "Subheading",
+            "heading": "Block heading",
+            "heading_size": "h2",
+            "button_text": "Learn more",
+            "button_link": "",
+            "content_position": "top-center",
+            "text_alignment": "center",
+            "color_bg": "#ffffff",
+            "color_bg_gradient": "",
+            "color_text": "#252f35",
+            "color_link": "#3f72e5",
+            "overlay_color": "#000000",
+            "overlay_opacity": 0
+          }
+        },
+        "template--17918041129242__f896bcf0-40bd-4c23-8c79-b4d0863d7715-167639056582313b87-1": {
+          "type": "media",
+          "settings": {
+            "slide_link": "",
+            "use_video": false,
+            "video_autoplay": true,
+            "column": 2,
+            "row": 1,
+            "subheading": "Subheading",
+            "heading": "Add your block<br>description",
+            "heading_size": "h4",
+            "button_text": "Explore",
+            "button_link": "",
+            "content_position": "top-left",
+            "text_alignment": "left",
+            "color_bg": "#ffffff",
+            "color_bg_gradient": "",
+            "color_text": "#252f35",
+            "color_link": "#3f72e5",
+            "overlay_color": "#000000",
+            "overlay_opacity": 0
+          }
+        },
+        "template--17918041129242__f896bcf0-40bd-4c23-8c79-b4d0863d7715-167639056582313b87-2": {
+          "type": "media",
+          "settings": {
+            "slide_link": "",
+            "use_video": false,
+            "video_autoplay": true,
+            "column": 1,
+            "row": 1,
+            "subheading": "",
+            "heading": "Block Heading",
+            "heading_size": "h4",
+            "button_text": "",
+            "button_link": "",
+            "content_position": "middle-center",
+            "text_alignment": "center",
+            "color_bg": "#ffffff",
+            "color_bg_gradient": "linear-gradient(180deg, rgba(247, 177, 168, 1), rgba(63, 114, 229, 1) 99%)",
+            "color_text": "#ffffff",
+            "color_link": "#3f72e5",
+            "overlay_color": "#000000",
+            "overlay_opacity": 0
+          }
+        },
+        "3963f5c5-4bf4-4cd9-b70a-a4a9e5283569": {
+          "type": "media",
+          "settings": {
+            "slide_link": "",
+            "use_video": false,
+            "video_autoplay": true,
+            "column": 1,
+            "row": 1,
+            "subheading": "",
+            "heading": "Block Heading",
+            "heading_size": "h4",
+            "button_text": "Explore",
+            "button_link": "",
+            "content_position": "middle-center",
+            "text_alignment": "center",
+            "color_bg": "#ffffff",
+            "color_bg_gradient": "",
+            "color_text": "#ffffff",
+            "color_link": "#ffffff",
+            "overlay_color": "#000000",
+            "overlay_opacity": 40
+          }
+        }
+      },
+      "block_order": [
+        "template--17918041129242__f896bcf0-40bd-4c23-8c79-b4d0863d7715-167639056582313b87-0",
+        "template--17918041129242__f896bcf0-40bd-4c23-8c79-b4d0863d7715-167639056582313b87-1",
+        "template--17918041129242__f896bcf0-40bd-4c23-8c79-b4d0863d7715-167639056582313b87-2",
+        "3963f5c5-4bf4-4cd9-b70a-a4a9e5283569"
+      ],
+      "disabled": true,
+      "settings": {
+        "desktop_height": 300,
+        "mobile_height": 220,
+        "column_spacing": "medium",
+        "mobile_swipe": true,
+        "color_bg": "#ffffff",
+        "color_text": "#3a474e",
+        "color_link": "#151515",
+        "disable_top_spacing": true,
+        "disable_bottom_spacing": true
+      }
+    },
+    "1661426105a80f3333": {
+      "type": "scrolling-text",
+      "blocks": {
+        "1ca83ea2-5e93-4db4-a6e6-8fcf06ee541b": {
+          "type": "text",
+          "settings": {
+            "text": "Add campaign text here.",
+            "link": "",
+            "outline_text": false
+          }
+        },
+        "26518d78-5502-4bdf-a933-0020b59a8d9e": {
+          "type": "text",
+          "settings": {
+            "text": "Add campaign text here.",
+            "link": "",
+            "outline_text": false
+          }
+        },
+        "c2cf6d75-da2e-4ba7-9791-6b681127eeff": {
+          "type": "text",
+          "settings": {
+            "text": "Add campaign text here.",
+            "link": "",
+            "outline_text": false
+          }
+        }
+      },
+      "block_order": [
+        "1ca83ea2-5e93-4db4-a6e6-8fcf06ee541b",
+        "26518d78-5502-4bdf-a933-0020b59a8d9e",
+        "c2cf6d75-da2e-4ba7-9791-6b681127eeff"
+      ],
+      "disabled": true,
+      "settings": {
+        "height": "height-auto",
+        "full_width": false,
+        "direction": "left",
+        "speed": "50s",
+        "rotation": 0,
+        "negative_rotation": false,
+        "font_family": "heading",
+        "text_size": 48,
+        "text_uppercase": false,
+        "image_size": "small",
+        "color_bg": "rgba(0,0,0,0)",
+        "color_text": "#adb3bb",
+        "overlay_color": "#000000",
+        "overlay_opacity": 0,
+        "disable_top_spacing": true,
+        "disable_bottom_spacing": true
+      }
+    },
+    "60ed2e7d-3f50-428a-b546-03274d862db0": {
+      "type": "collection-list",
+      "disabled": true,
+      "settings": {
+        "heading": "",
+        "marker_style": "style1",
+        "description": "",
+        "heading_size": "small",
+        "collection_list": [],
+        "image_ratio": "adapt",
+        "collection_layout": "grid",
+        "style": "style2",
+        "text_alignment": "center",
+        "columns_desktop": 5,
+        "columns_mobile": "2",
+        "show_progress_bar": true,
+        "mobile_swipe": true,
+        "heading_position": "bottom-center",
+        "marker_color": "#fd6262",
+        "text_color": "#252f35",
+        "overlay_color": "rgba(0,0,0,0)",
+        "overlay_opacity": 0,
+        "disable_top_spacing": true,
+        "disable_bottom_spacing": false
+      }
+    },
+    "09fbaadd-eaad-4e04-9edb-42de8cc123f0": {
+      "type": "scrolling-content",
+      "blocks": {
+        "7dd63451-9849-436a-8d6f-6e1568fd6a0d": {
+          "type": "section",
+          "settings": {
+            "badge": "badge",
+            "subheading": "subheading",
+            "heading": "Heading",
+            "marker_style": "style1",
+            "heading_size": "small",
+            "content": "<p>Add a descriptive text here for your slide.</p>",
+            "description_size": "medium",
+            "button_text": "Shop Now",
+            "button_link": "",
+            "marker_color": "#fd6262",
+            "color_bg_badge": "#3f72e5",
+            "color_badge": "#ffffff"
+          }
+        },
+        "d364e04b-f192-401b-be30-5647164998ad": {
+          "type": "section",
+          "settings": {
+            "badge": "badge",
+            "subheading": "subheading",
+            "heading": "Heading",
+            "marker_style": "style1",
+            "heading_size": "small",
+            "content": "<p>Add a descriptive text here for your slide.</p>",
+            "description_size": "medium",
+            "button_text": "Shop Now",
+            "button_link": "",
+            "marker_color": "#fd6262",
+            "color_bg_badge": "#3f72e5",
+            "color_badge": "#ffffff"
+          }
+        },
+        "e7712faa-4bb2-424d-af95-93d14e9c13fd": {
+          "type": "section",
+          "settings": {
+            "badge": "badge",
+            "subheading": "subheading",
+            "heading": "Heading",
+            "marker_style": "style1",
+            "heading_size": "small",
+            "content": "<p>Add a descriptive text here for your slide.</p>",
+            "description_size": "medium",
+            "button_text": "Shop Now",
+            "button_link": "",
+            "marker_color": "#fd6262",
+            "color_bg_badge": "#3f72e5",
+            "color_badge": "#ffffff"
+          }
+        }
+      },
+      "block_order": [
+        "7dd63451-9849-436a-8d6f-6e1568fd6a0d",
+        "d364e04b-f192-401b-be30-5647164998ad",
+        "e7712faa-4bb2-424d-af95-93d14e9c13fd"
+      ],
+      "disabled": true,
+      "settings": {
+        "desktop_layout": "text_first",
+        "mobile_swipe": true,
+        "dots": true,
+        "color_bg": "#f5f5f5",
+        "color_heading": "#252f35",
+        "color_text": "#303c43",
+        "color_links": "#3f72e5",
+        "disable_top_spacing": true,
+        "disable_bottom_spacing": true
+      }
+    },
+    "1647955648d6a0baee": {
+      "type": "featured-blog",
+      "disabled": true,
+      "settings": {
+        "heading": "Featured blog",
+        "marker_style": "style1",
+        "description": "<p>Blog posts description</p>",
+        "blog": "news",
+        "post_limit": 4,
+        "columns_desktop": 4,
+        "mobile_swipe": true,
+        "image_ratio": "landscape",
+        "show_date": true,
+        "show_excerpt": true,
+        "show_read_more": true,
+        "show_view_all": true,
+        "marker_color": "#fd6262",
+        "disable_top_spacing": true,
+        "disable_bottom_spacing": false
+      }
+    },
+    "teflo_our_product_HwrBaG": {
+      "type": "teflo-our-product",
+      "blocks": {
+        "list_BmVXkt": {
+          "type": "list",
+          "settings": {
+            "product": "nylon-filter-bags"
+          }
+        },
+        "list_g4y7Uj": {
+          "type": "list",
+          "settings": {
+            "product": "nylon-filter-bags"
+          }
+        },
+        "list_dzcN7Y": {
+          "type": "list",
+          "settings": {
+            "product": "nylon-filter-bags"
+          }
+        },
+        "list_7JFxAd": {
+          "type": "list",
+          "settings": {
+            "product": "nylon-filter-bags"
+          }
+        },
+        "list_ydLa6G": {
+          "type": "list",
+          "settings": {
+            "product": "example-t-shirt"
+          }
+        },
+        "list_Fxpijr": {
+          "type": "list",
+          "settings": {
+            "product": "nylon-filter-bags"
+          }
+        }
+      },
+      "block_order": [
+        "list_BmVXkt",
+        "list_g4y7Uj",
+        "list_dzcN7Y",
+        "list_7JFxAd",
+        "list_ydLa6G",
+        "list_Fxpijr"
+      ],
+      "settings": {
+        "title": "Our Products",
+        "desc": "<p>With filtration accuracies ranging from 0.2 microns to 500 microns and customizable sizes, our products are designed to meet the most exacting standards across industries. <strong>Teflo offers</strong> a comprehensive range of <strong>filter bags to suit diverse applications</strong></p>"
+      }
+    },
+    "teflo_customization_3eGcgL": {
+      "type": "teflo-customization",
+      "blocks": {
+        "list_LwUnEA": {
+          "type": "list",
+          "settings": {
+            "title": "Size Customization",
+            "time": "001/007",
+            "content": "<ul><li>Diameter: From 4\" to 60\" (10cm to 152cm)</li><li>Length: Up to 200\" (508cm)</li><li>Custom shapes for non-standard housings</li></ul>",
+            "image": "shopify://shop_images/image_6.png",
+            "image_alt": ""
+          }
+        },
+        "list_zzRjtG": {
+          "type": "list",
+          "settings": {
+            "title": "Material Selection",
+            "time": "002/007",
+            "content": "<ul><li>Polyester: For general applications</li><li>Polypropylene: Chemical-resistant option</li><li>Nylon: High-temp applications up to 400°F (204°C)</li><li>PTFE: Extreme chemical resistance</li><li>Specialty blends: Tailored for unique environments</li><li>Specialty blends: Tailored for unique environments</li></ul>",
+            "image": "shopify://shop_images/image_7.png",
+            "image_alt": ""
+          }
+        },
+        "list_KfnkEB": {
+          "type": "list",
+          "settings": {
+            "title": "Size Customization",
+            "time": "001/007",
+            "content": "<ul><li>Diameter: From 4\" to 60\" (10cm to 152cm)</li><li>Length: Up to 200\" (508cm)</li><li>Custom shapes for non-standard housings</li></ul>",
+            "image": "shopify://shop_images/image_176_541cdabb-16bd-47f0-9773-945c29c2f25d.png",
+            "image_alt": ""
+          }
+        },
+        "list_DRw8dP": {
+          "type": "list",
+          "settings": {
+            "title": "Material Selection",
+            "time": "002/007",
+            "content": "<ul><li>Polyester: For general applications</li><li>Polypropylene: Chemical-resistant option</li><li>Nylon: High-temp applications up to 400°F (204°C)</li><li>PTFE: Extreme chemical resistance</li></ul>",
+            "image": "shopify://shop_images/image_7.png",
+            "image_alt": ""
+          }
+        }
+      },
+      "block_order": [
+        "list_LwUnEA",
+        "list_zzRjtG",
+        "list_KfnkEB",
+        "list_DRw8dP"
+      ],
+      "settings": {
+        "subtitle": "[ Customization ]",
+        "title": "Custom-Engineered Excellence | Tailored Filtration Solutions"
+      }
+    },
+    "teflo_case_JBCnyp": {
+      "type": "teflo-case",
+      "blocks": {
+        "case_cDi6tP": {
+          "type": "case",
+          "settings": {
+            "image": "shopify://shop_images/Rectangle_1236.png",
+            "image_alt": "",
+            "title": "Chemical Processing",
+            "desc": "<p>Removing contaminants for higher product purity and process efficiency</p>"
+          }
+        },
+        "case_kGGik6": {
+          "type": "case",
+          "settings": {
+            "image": "shopify://shop_images/Rectangle_1236.png",
+            "image_alt": "",
+            "title": "Chemical Processing",
+            "desc": "<p>Removing contaminants for higher product purity and process efficiency</p>"
+          }
+        },
+        "case_44UmVh": {
+          "type": "case",
+          "settings": {
+            "image": "shopify://shop_images/Rectangle_1236.png",
+            "image_alt": "",
+            "title": "Chemical Processing",
+            "desc": "<p>Removing contaminants for higher product purity and process efficiency</p>"
+          }
+        }
+      },
+      "block_order": [
+        "case_cDi6tP",
+        "case_kGGik6",
+        "case_44UmVh"
+      ],
+      "settings": {
+        "title": "Industrial Applications: Filtration Solutions Across Sectors",
+        "button_border_color": "#ffffff",
+        "button_hover_border_color": "#0522cb",
+        "button_border": true,
+        "button_text": "Explore Industry-Specific Solutions",
+        "button_link": "",
+        "button_text_color": "#FFFFFF",
+        "button_bg_color": "#0D0D0D",
+        "button_hover_text_color": "#FFFFFF",
+        "button_hover_bg_color": "#0522CB"
+      }
+    },
+    "teflo_choose_Wmhtwy": {
+      "type": "teflo-choose",
+      "blocks": {
+        "choose_r9wPai": {
+          "type": "choose",
+          "settings": {
+            "title": "Superior Customized Filtration",
+            "desc": "<p>Serving 50+ countries with 5 million filter bags annually. Custom sizes from 4\" to 12\" diameter, 3' to 33' length, and 0.2μm to 500μm filtration accuracy.</p>",
+            "image": "shopify://shop_images/Application-one.svg",
+            "image_alt": ""
+          }
+        },
+        "choose_cqFEhg": {
+          "type": "choose",
+          "settings": {
+            "title": "Rapid Turnaround, Uncompromised Quality",
+            "desc": "<p>Standard products ship in 3 days, custom orders in 7 days. ISO 9001:2015 certified with 100% air permeability testing.</p>",
+            "image": "shopify://shop_images/Application-one.svg",
+            "image_alt": ""
+          }
+        },
+        "choose_NTBnrx": {
+          "type": "choose",
+          "settings": {
+            "title": "Industry-Tailored Solutions",
+            "desc": "<p>Diverse portfolio serving cement to pharma. Our cement industry filters cut emissions by 20% on average. Food-grade filters meet FDA standards, ensuring 99.9% product purity.</p>",
+            "image": "shopify://shop_images/Application-one.svg",
+            "image_alt": ""
+          }
+        },
+        "choose_4mpdFj": {
+          "type": "choose",
+          "settings": {
+            "title": "Innovation-Driven Performance",
+            "desc": "<p>The latest filter media boosts dust holding capacity by 25%. Extended filter life saves customers an average of 15% on replacement costs annually.</p>",
+            "image": "shopify://shop_images/Application-one.svg",
+            "image_alt": ""
+          }
+        },
+        "choose_gLF63L": {
+          "type": "choose",
+          "settings": {
+            "title": "Eco-Conscious Manufacturing",
+            "desc": "<p>Reduced water usage by 30% since 2021. 70% of production waste is now recycled. Energy-efficient processes cut power consumption by 10% per unit produced.</p>",
+            "image": "shopify://shop_images/Application-one.svg",
+            "image_alt": ""
+          }
+        }
+      },
+      "block_order": [
+        "choose_r9wPai",
+        "choose_cqFEhg",
+        "choose_NTBnrx",
+        "choose_4mpdFj",
+        "choose_gLF63L"
+      ],
+      "settings": {
+        "subtitle": "[ Advantages ]",
+        "title": "Why Choose Teflo",
+        "desc": "<p>Customer focus, Dedicated support from design to deliveryGlobal Expertise, Tailored Precision </p>",
+        "image_pc": "shopify://shop_images/image_175.png",
+        "image_h5": "shopify://shop_images/image_175_1.png",
+        "image_alt": ""
+      }
+    },
+    "teflo_process_w9yH6C": {
+      "type": "teflo-process",
+      "blocks": {
+        "info_CaiidH": {
+          "type": "info",
+          "settings": {
+            "title": "Specification Analysis",
+            "desc": "<p>Share your filtration requirements and site conditions with our expert team</p>"
+          }
+        },
+        "info_NEp7qq": {
+          "type": "info",
+          "settings": {
+            "title": "Design Consultation",
+            "desc": "<p>Our engineers work with you to optimize the filter bag design for your specific needs</p>"
+          }
+        },
+        "info_jt7Mr6": {
+          "type": "info",
+          "settings": {
+            "title": "Receive Tailored Quote",
+            "desc": "<p>Get a comprehensive quote based on your customized specifications</p>"
+          }
+        },
+        "info_ByNcry": {
+          "type": "info",
+          "settings": {
+            "title": "Prototype Development",
+            "desc": "<p>We create a prototype for your approval, ensuring it meets your exact requirements</p>"
+          }
+        }
+      },
+      "block_order": [
+        "info_CaiidH",
+        "info_NEp7qq",
+        "info_jt7Mr6",
+        "info_ByNcry"
+      ],
+      "settings": {
+        "subtitle": "[ Process ]",
+        "title": "Our Custom Filter Bag Process",
+        "button_border_color": "#191919",
+        "button_hover_border_color": "",
+        "button_border": true,
+        "button_text": "Need a Custom Solution?",
+        "button_link": "",
+        "button_text_color": "#000000",
+        "button_bg_color": "#FFFFFF",
+        "button_hover_text_color": "#FFFFFF",
+        "button_hover_bg_color": "#0522CB"
+      }
+    },
+    "teflo_case_studie_jEzikz": {
+      "type": "teflo-case-studie",
+      "blocks": {
+        "case_studie_yKE7rQ": {
+          "type": "case_studie",
+          "settings": {
+            "image_pc": "shopify://shop_images/image_8.png",
+            "image_h5": "shopify://shop_images/image_176.png",
+            "image_alt": "",
+            "time": "001/004",
+            "title": "Cement Plant Efficiency Boost",
+            "desc": "<p>Teflo's custom filter bags reduced our dust emissions by 35% and extended replacement intervals by <strong>40%</strong>. Their expertise in high-temperature applications was crucial.</p>",
+            "username": "John Smith",
+            "introduction": "Plant Manager, MidWest Cement Co.",
+            "info_img": "shopify://shop_images/image_176.png",
+            "info_img_alt": "Info Image Alt"
+          }
+        },
+        "case_studie_B3TqmQ": {
+          "type": "case_studie",
+          "settings": {
+            "image_pc": "shopify://shop_images/image_176.png",
+            "image_h5": "shopify://shop_images/image_176.png",
+            "image_alt": "Image Alt",
+            "time": "002/004",
+            "title": "Food Processing Purity",
+            "desc": "<p>We needed FDA-compliant filters that wouldn't compromise our production speed. Teflo delivered a solution that maintained our output while achieving 99.9% product purity. Impressive work!</p>",
+            "username": "Sarah Johnson",
+            "introduction": "Operations Director, PureFoods Inc.",
+            "info_img": "shopify://shop_images/image_176.png",
+            "info_img_alt": "Info Image Alt"
+          }
+        },
+        "case_studie_FMaHAb": {
+          "type": "case_studie",
+          "settings": {
+            "image_pc": "shopify://shop_images/image_9.png",
+            "image_h5": "shopify://shop_images/image_176.png",
+            "image_alt": "Image Alt",
+            "time": "003/004",
+            "title": "Chemical Industry Innovation",
+            "desc": "",
+            "username": "Dr. Michael Chen",
+            "introduction": "Chief Engineer, SpectraChem Solutions",
+            "info_img": "shopify://shop_images/image_176.png",
+            "info_img_alt": "Info Image Alt"
+          }
+        }
+      },
+      "block_order": [
+        "case_studie_yKE7rQ",
+        "case_studie_B3TqmQ",
+        "case_studie_FMaHAb"
+      ],
+      "settings": {
+        "title": "Case Studie"
+      }
+    },
+    "teflo_form_e6NMFw": {
+      "type": "teflo-form",
+      "blocks": {
+        "industry_select_LXFxzC": {
+          "type": "industry_select",
+          "settings": {
+            "placeholder": "Agriculture",
+            "label": "Industry *",
+            "name": "Industry"
+          }
+        },
+        "industry_options_YgrpaY": {
+          "type": "industry_options",
+          "settings": {
+            "label": "one",
+            "value": "one"
+          }
+        },
+        "industry_options_KpLTwW": {
+          "type": "industry_options",
+          "settings": {
+            "label": "two",
+            "value": "two"
+          }
+        },
+        "industry_options_hLFbV9": {
+          "type": "industry_options",
+          "settings": {
+            "label": "three",
+            "value": "three"
+          }
+        },
+        "type_select_TRjQzC": {
+          "type": "type_select",
+          "settings": {
+            "placeholder": "Careers",
+            "label": "Request Type *",
+            "name": "type"
+          }
+        },
+        "type_options_A4aMrh": {
+          "type": "type_options",
+          "settings": {
+            "label": "Agriculture",
+            "value": "Agriculture"
+          }
+        },
+        "type_options_ADnfLe": {
+          "type": "type_options",
+          "settings": {
+            "label": "Agriculture",
+            "value": "Agriculture"
+          }
+        },
+        "type_options_DWmcVj": {
+          "type": "type_options",
+          "settings": {
+            "label": "Agriculture",
+            "value": "Agriculture"
+          }
+        },
+        "text_UTTa8t": {
+          "type": "text",
+          "settings": {
+            "placeholder": "Last Name",
+            "label": "Last Name *",
+            "name": "LastName"
+          }
+        },
+        "text_xeNcC8": {
+          "type": "text",
+          "settings": {
+            "placeholder": "Company",
+            "label": "Company *",
+            "name": "Company"
+          }
+        }
+      },
+      "block_order": [
+        "industry_select_LXFxzC",
+        "industry_options_YgrpaY",
+        "industry_options_KpLTwW",
+        "industry_options_hLFbV9",
+        "type_select_TRjQzC",
+        "type_options_A4aMrh",
+        "type_options_ADnfLe",
+        "type_options_DWmcVj",
+        "text_UTTa8t",
+        "text_xeNcC8"
+      ],
+      "settings": {
+        "title": "Get Your Free Consultation & Quote",
+        "desc1": "<p>Ready to enhance your filtration efficiency and reduce costs? Teflo's experts are here to help.</p>",
+        "desc2": "<ul><li>Free expert consultation on your filtration challenges</li><li>Free sample delivery to test our quality firsthand</li><li>Customized solutions tailored to your industry needs</li><li>No-obligation quotes for precision-engineered filter bags</li><li>Discover how our innovation can boost your operational performance</li></ul>",
+        "message_placeholder": "Tell us more about your project or application",
+        "message_label": "YOUR MESSAGE",
+        "message_name": "message",
+        "agree_label": "",
+        "agree_name": "",
+        "agree_placeholder": "By clicking here, you agree to receive marketing emails and other promotional communications from [Company Name] from time to time.",
+        "button_border_color": "#0d0d0d",
+        "button_hover_border_color": "",
+        "button_border": true,
+        "button_text": "",
+        "button_link": "",
+        "button_text_color": "#000000",
+        "button_bg_color": "#FFFFFF",
+        "button_hover_text_color": "#FFFFFF",
+        "button_hover_bg_color": "#0522CB"
+      }
+    },
+    "teflo_faq_HYU4Y3": {
+      "type": "teflo-faq",
+      "blocks": {
+        "text_GpR9Ji": {
+          "type": "text",
+          "settings": {
+            "question": "How do you determine the optimal micron rating for my specific application?",
+            "answer": "<p>We conduct a thorough analysis of your process conditions, including contaminant types, particle size distribution, and flow rates. Our experts use advanced simulation software to model filtration scenarios and recommend the most effective micron rating for your needs.</p>"
+          }
+        },
+        "text_ddFD7D": {
+          "type": "text",
+          "settings": {
+            "question": "How do I choose the right micron rating for my filter bag?",
+            "answer": "<p>We conduct a thorough analysis of your process conditions, including contaminant types, particle size distribution, and flow rates. Our experts use advanced simulation software to model filtration scenarios and recommend the most effective micron rating for your needs.</p>"
+          }
+        },
+        "text_mRj7kC": {
+          "type": "text",
+          "settings": {
+            "question": "How do I choose the right micron rating for my filter bag?",
+            "answer": "<p>We conduct a thorough analysis of your process conditions, including contaminant types, particle size distribution, and flow rates. Our experts use advanced simulation software to model filtration scenarios and recommend the most effective micron rating for your needs.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "text_GpR9Ji",
+        "text_ddFD7D",
+        "text_mRj7kC"
+      ],
+      "settings": {
+        "title": "Frequently asked questions"
+      }
+    },
+    "teflo_blog_XHWVNF": {
+      "type": "teflo-blog",
+      "settings": {
+        "subtitle": "[ blog ]",
+        "title": "Solving complex problems across all industries",
+        "post_limit": 3,
+        "blog": "news",
+        "button_border_color": "#ffffff",
+        "button_hover_border_color": "",
+        "button_border": true,
+        "button_text": "Read More",
+        "button_link": "",
+        "button_text_color": "#FFFFFF",
+        "button_bg_color": "transparent",
+        "button_hover_text_color": "#FFFFFF",
+        "button_hover_bg_color": "#0522CB"
+      }
+    }
+  },
+  "order": [
+    "teflo_banner_FPVRD7",
+    "teflo_factory_enCWbU",
+    "teflo_our_goals_E4Fkxk",
+    "a7802e0a-30f4-4485-bf29-8868a637ca3e",
+    "8670c6b1-68f6-405f-bfff-2c6ff1e89099",
+    "16614195534fb74bc3",
+    "b6a221e5-6cbb-4160-83a7-a387a8f98553",
+    "f896bcf0-40bd-4c23-8c79-b4d0863d7715",
+    "1661426105a80f3333",
+    "60ed2e7d-3f50-428a-b546-03274d862db0",
+    "09fbaadd-eaad-4e04-9edb-42de8cc123f0",
+    "1647955648d6a0baee",
+    "teflo_our_product_HwrBaG",
+    "teflo_customization_3eGcgL",
+    "teflo_case_JBCnyp",
+    "teflo_choose_Wmhtwy",
+    "teflo_process_w9yH6C",
+    "teflo_case_studie_jEzikz",
+    "teflo_form_e6NMFw",
+    "teflo_faq_HYU4Y3",
+    "teflo_blog_XHWVNF"
+  ]
+}

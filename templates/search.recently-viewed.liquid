@@ -1,0 +1,12 @@
+{% layout none %}
+{%- if search.performed -%}
+  <ul class="products collection row no-padding">
+    {%- for item in search.results -%}
+      {%- if item.object_type == 'product' -%}
+			<li class="small-6 medium-6 large-3 columns">
+        {% render 'product-card', product_card_product: item %}
+			</li>
+      {%- endif -%}
+    {%- endfor -%}
+  </ul>
+{%- endif -%}

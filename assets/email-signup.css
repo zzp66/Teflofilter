@@ -1,0 +1,46 @@
+
+
+.email-signup--full-width-false {
+  isolation: isolate;
+  border-radius: var(--block-border-radius, 16px); }
+
+.email-signup {
+  box-shadow: var(--block-shadows); }
+
+
+
+.email-signup--inner {
+  padding: 0 15px;
+  max-width: var(--grid-width-row, 1380px);
+  margin-left: auto;
+  margin-right: auto; }
+  @media only screen and (min-width: 768px) {
+    .email-signup--inner {
+      padding: 0 50px; } }
+
+.email-signup {
+  background-color: var(--color-bg, var(--bg-body, #f5f5f5));
+  color: var(--color-body, var(--color-body, #2c2d2e));
+  text-align: center;
+  background-size: cover;
+  position: relative; }
+  .email-signup:after {
+    content: "";
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    pointer-events: none;
+    background: rgba(var(--color-overlay-rgb), var(--overlay-opacity)); }
+  .email-signup--inner {
+    position: relative;
+    z-index: 10; }
+  .email-signup .thb-placeholder {
+    width: 150px;
+    margin: 0 auto; }
+  .email-signup .signup-container {
+    max-width: 380px;
+    margin: 0 auto; }

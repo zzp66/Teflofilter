@@ -1,0 +1,148 @@
+@charset "UTF-8";
+
+
+.testimonials--carousel .flickity-viewport, .flickity-custom-dots .dot {
+  transition: all 0.25s cubic-bezier(0.104, 0.204, 0.492, 1); }
+
+.testimonials--full-width-false {
+  isolation: isolate;
+  border-radius: var(--block-border-radius, 16px); }
+
+
+
+
+
+.star-rating {
+  --star-percent: calc(var(--star-rating) / 5 * 100%);
+  display: inline-block;
+  font-size: 1rem;
+  font-family: Times;
+  line-height: 1; }
+  .star-rating:before {
+    content: "★★★★★";
+    background: linear-gradient(90deg, var(--color-star) var(--star-percent), #e1e1e1 var(--star-percent));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent; }
+  .star-rating span {
+    font-size: 0.75rem;
+    margin-left: 8px; }
+
+.rating {
+  display: inline-block;
+  margin: 0; }
+
+.rating-star {
+  --letter-spacing: 0.3;
+  --font-size: 1.5;
+  --percent: calc(
+    (
+        var(--rating) / var(--rating-max) + var(--rating-decimal) *
+          var(--font-size) /
+          (var(--rating-max) * (var(--letter-spacing) + var(--font-size)))
+      ) * 100%
+  );
+  letter-spacing: calc(var(--letter-spacing) * 1rem);
+  font-size: calc(var(--font-size) * 1rem);
+  line-height: 1;
+  display: inline-block;
+  font-family: Times;
+  margin: 0; }
+
+.rating-star:before {
+  content: "\2605\2605\2605\2605\2605";
+  background: linear-gradient(90deg, var(--color-reviews) var(--percent), rgba(var(--color-foreground), 0.15) var(--percent));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent; }
+
+.rating-text {
+  display: none; }
+
+.rating-count {
+  display: none;
+  margin: 0; }
+
+@media (forced-colors: active) {
+  .rating {
+    display: none; }
+  .rating-text {
+    display: block; } }
+
+
+.section-testimonials .row.full-width-row {
+  padding: 0; }
+  .section-testimonials .row.full-width-row > .columns {
+    padding: 0; }
+
+.testimonials {
+  background: var(--color-bg, var(--bg-body, #f5f5f5));
+  color: var(--color-text, var(--color-body, #2c2d2e));
+  text-align: center;
+  overflow: hidden; }
+  .testimonials--heading {
+    margin: 0 auto;
+    text-align: center; }
+    .testimonials--heading h6 {
+      font-size: 0.8125rem;
+      color: var(--color-text, var(--color-body, #2c2d2e));
+      letter-spacing: 0.1em; }
+      @media only screen and (min-width: 768px) {
+        .testimonials--heading h6 {
+          margin-bottom: 40px; } }
+  .testimonials--inner {
+    font-size: 1.5rem;
+    max-width: 830px;
+    padding: 0 15px;
+    margin: 0 auto; }
+    @media only screen and (min-width: 768px) {
+      .testimonials--inner.text-small {
+        font-size: 1.5rem; } }
+    @media only screen and (min-width: 768px) {
+      .testimonials--inner.text-medium {
+        font-size: 2.125rem; } }
+    @media only screen and (min-width: 768px) {
+      .testimonials--inner.text-large {
+        font-size: 2.5rem; } }
+  .testimonials--carousel {
+    display: flex;
+    flex-direction: column; }
+    .testimonials--carousel .flickity-page-dots {
+      margin-top: 30px; }
+    .testimonials--carousel.pagination--logos {
+      flex-direction: column-reverse; }
+  .testimonials--testimonial {
+    width: 100%; }
+    .testimonials--testimonial .star-rating {
+      font-size: 1.125rem;
+      margin-bottom: 1.25rem; }
+    .testimonials--testimonial-content p {
+      line-height: 1.3;
+      font-family: inherit; }
+  .testimonials--author {
+    font-size: 0.875rem;
+    line-height: 1; }
+    .testimonials--author:before {
+      content: "\2014";
+      margin-right: 10px; }
+  .testimonials scroll-shadow {
+    margin: 0 -15px;
+    width: calc(100% + 30px); }
+
+.flickity-custom-dots {
+  list-style: none;
+  margin: 40px 0 0;
+  padding: 0 15px;
+  display: inline-flex;
+  flex-wrap: nowrap;
+  align-items: center;
+  gap: 25px;
+  overflow-x: scroll; }
+  @media only screen and (min-width: 768px) {
+    .flickity-custom-dots {
+      gap: 50px; } }
+  .flickity-custom-dots .dot {
+    display: inline-flex;
+    opacity: 0.4;
+    flex-shrink: 0;
+    cursor: pointer; }
+    .flickity-custom-dots .dot.is-selected {
+      opacity: 1; }

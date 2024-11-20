@@ -1,0 +1,29 @@
+{% if header_settings.logo %}
+	<a class="logolink" href="{{ routes.root_url }}">
+		<img
+			src="{{ header_settings.logo | image_url }}"
+			class="logoimg"
+			alt="{{ header_settings.logo.alt | default: shop.name | escape }}"
+			width="{{ header_settings.logo.width }}"
+			height="{{ header_settings.logo.height }}"
+		>
+		{%- liquid
+			if header_settings.logo_light != blank
+				assign light_logo = header_settings.logo_light
+			else
+				assign light_logo = header_settings.logo
+			endif
+		-%}
+		<img
+			src="{{ light_logo | image_url }}"
+			class="logoimg logoimg--light"
+			alt="{{ header_settings.logo.alt | default: shop.name | escape }}"
+			width="{{ header_settings.logo.width }}"
+			height="{{ section.settings.logo.height }}"
+		>
+	</a>
+{% else %}
+	<a class="logolink text-logo" href="{{ routes.root_url }}">
+		{{ shop.name }}
+	</a>
+{% endif %}

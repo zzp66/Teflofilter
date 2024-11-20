@@ -1,0 +1,293 @@
+<style>
+    .teflo-process{
+        padding:0 calc(100vw * 20 / var(--base-width));
+        padding-top: calc(100vw * 70 / var(--base-width));
+        display: flex;
+        background: #fff;
+        position:relative;
+        z-index:100;
+    }
+    .teflo-process-lt{
+        width: calc(100vw * 360 / var(--base-width));
+        flex-shrink: 0;
+    }
+    .teflo-process-lt-subtitle{
+        display: flex;
+        align-items: center;
+        height: calc(100vw * 66 / var(--base-width));
+        color: #191919;
+        font-size: calc(100vw * 16 / var(--base-width));
+        font-style: normal;
+        font-weight: 400;
+        line-height: calc(100vw * 16 / var(--base-width));
+        opacity: 0.5;
+    }
+    .teflo-process-rt{
+        flex:1;
+    }
+    .teflo-process-rt-h2{
+        color: #191919;
+        font-size: calc(100vw * 60 / var(--base-width));
+        font-style: normal;
+        font-weight: 400;
+        line-height: calc(100vw * 66 / var(--base-width));
+        letter-spacing: calc(100vw * -1.8 / var(--base-width));
+        margin-bottom: calc(100vw * 48 / var(--base-width));
+    }
+    .teflo-process-rt-list-item{
+        display: grid;
+        grid-template-columns: 1fr 2fr 3fr;
+        border-top: 0.4px dashed rgba(25, 25, 25, 0.30); 
+        padding-top: calc(100vw * 14 / var(--base-width));
+        padding-bottom: calc(100vw * 14 / var(--base-width));
+    }
+    .teflo-process-rt-list-item-num{
+        color: #0D0D0D;
+        font-size: calc(100vw * 16 / var(--base-width));
+        font-style: normal;
+        font-weight: 400;
+        line-height: calc(100vw * 16 / var(--base-width));
+        letter-spacing: calc(100vw * -0.48 / var(--base-width));
+        opacity: 0.5;
+    }
+    .teflo-process-rt-list-item-h3{
+        color: #0D0D0D;
+        font-size: calc(100vw * 20 / var(--base-width));
+        font-style: normal;
+        font-weight: 400;
+        line-height: calc(100vw * 24 / var(--base-width));
+        letter-spacing: calc(100vw * -0.6 / var(--base-width));
+        
+    }
+    .teflo-process-rt-list-item-desc{
+        padding-right: calc(100vw * 155 / var(--base-width));
+    }
+    .teflo-process-rt-list-item-desc *{
+        color: #0D0D0D;
+        font-size: calc(100vw * 16 / var(--base-width));
+        font-style: normal;
+        font-weight: 400;
+        line-height: calc(100vw * 20 / var(--base-width));
+        letter-spacing: calc(100vw * -0.48 / var(--base-width));
+        margin-bottom: 0;
+        display: inline-block;
+
+    }
+    .teflo-process-rt-list-item-desc p{
+        opacity: 0.7;
+    }
+    .teflo-process-rt-btn{
+        display: flex;
+        justify-content: flex-end;
+        margin-top: calc(100vw * 64 / var(--base-width));
+    }
+    @media(max-width:1400px){
+        .teflo-process-rt-list-item-desc{
+            padding-right: calc(100vw * 30 / var(--base-width));
+        }
+    }
+    @media(max-width:1024px){
+        .teflo-process{
+            padding:0 calc(100vw * 25 / var(--base-width));
+            padding-top: calc(100vw * 170 / var(--base-width));
+            display: block;
+        }
+      .teflo-process-lt{
+            width: 100%;
+            margin-bottom: calc(100vw * 30 / var(--base-width));
+        }
+        .teflo-process-lt-subtitle{
+            font-size: calc(100vw * 20 / var(--base-width));
+            line-height: calc(100vw * 26 / var(--base-width));
+        }
+        .teflo-process-rt-h2{
+            font-size: calc(100vw * 70 / var(--base-width));
+            line-height: calc(100vw * 76 / var(--base-width));
+            letter-spacing: calc(100vw * -2.1 / var(--base-width));
+            margin-bottom: calc(100vw * 70 / var(--base-width));
+        }
+
+        .teflo-process-rt-list-item{
+            border-top: 0;
+            margin-bottom: calc(100vw * 40 / var(--base-width));
+
+            grid-template-columns: 1fr 1fr; 
+            grid-template-rows: auto auto;
+            grid-template-areas: 
+              "box1 box1"
+              "box2 box3";
+          }
+        
+        .teflo-process-rt-list-item-num{
+            grid-area: box1;
+            font-size: calc(100vw * 20 / var(--base-width));
+            line-height: calc(100vw * 26 / var(--base-width));
+            padding-bottom: calc(100vw * 20 / var(--base-width));
+            border-bottom: 0.4px dashed rgba(25, 25, 25, 0.30);
+        }
+        .teflo-process-rt-list-item-h3{
+            grid-area: box2;
+            font-size: calc(100vw * 36 / var(--base-width));
+            line-height: calc(100vw * 42 / var(--base-width));
+            grid-column: span 1;
+            padding-right: calc(100vw * 40 / var(--base-width));
+        }
+        .teflo-process-rt-list-item-desc{
+            grid-area: box3;
+            grid-column: 2/4;
+           
+          
+        }
+        .teflo-process-rt-list-item-desc * {
+        
+            font-size: calc(100vw * 26 / var(--base-width));
+            line-height: calc(100vw * 32 / var(--base-width));
+            letter-spacing: calc(100vw * -0.78 / var(--base-width));
+        }
+        .teflo-process-rt-list-item{
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+        }
+        .teflo-process-rt-btn{
+            margin-top: calc(100vw * 70 / var(--base-width));
+        }
+    }
+</style>
+{%- liquid
+    assign logo = section.settings.logo
+    assign logo_alt = section.settings.logo_alt
+    assign logo_link = section.settings.logo_link
+    assign button_text = section.settings.button_text
+    assign button_link = section.settings.button_link
+    assign button_text_color = section.settings.button_text_color
+    assign button_bg_color = section.settings.button_bg_color
+    assign button_hover_text_color = section.settings.button_hover_text_color
+    assign button_hover_bg_color = section.settings.button_hover_bg_color
+    assign button_border_color = section.settings.button_border_color
+    assign button_border = section.settings.button_border
+    assign button_hover_border_color = section.settings.button_hover_border_color
+-%}
+
+<div class="teflo-process">
+    <div class="teflo-process-lt">
+        <p class="teflo-process-lt-subtitle">{{ section.settings.subtitle }}</p>
+    </div>
+    <div class="teflo-process-rt">
+        <h2 class="teflo-process-rt-h2">{{ section.settings.title }}</h2>
+        <div class="teflo-process-rt-list">
+           {% for block in section.blocks %}
+            <div class="teflo-process-rt-list-item">
+                <p class="teflo-process-rt-list-item-num">A0{{ forloop.index }}</p>
+                <h3 class="teflo-process-rt-list-item-h3">{{ block.settings.title }}</h3>
+                <div class="teflo-process-rt-list-item-desc">{{ block.settings.desc }}</div>
+            </div>
+            {% endfor %} 
+        </div>
+        <div class="teflo-process-rt-btn">
+            {% render 'teflo-button',
+                button_link:button_link,
+                 button_text:button_text,
+                  button_text_color:button_text_color,
+                 button_bg_color:button_bg_color,
+                 button_hover_text_color:button_hover_text_color,
+                 button_hover_bg_color:button_hover_bg_color,
+                 button_border_color:button_border_color, 
+                 button_border:button_border,
+                     button_hover_border_color:button_hover_border_color
+                 
+            %}
+        </div>
+    </div>
+</div>
+
+{% schema %}
+{
+  "name": "Teflo Process",
+  "settings": [
+    {
+      "type": "text",
+      "id": "subtitle",
+      "label": "Subtitle"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title"
+    },
+     {
+        "type": "color",
+        "id": "button_border_color",
+        "label": "Button border color"
+    },
+    {
+        "type": "color",
+        "id": "button_hover_border_color",
+        "label": "Button hover border color"
+    },
+    {
+        "type": "checkbox",
+        "id": "button_border",
+        "label": "Button border",
+        "default": true
+    },
+    {
+        "type": "text",
+        "id": "button_text",
+        "label": "Button text"
+    },
+    {
+        "type": "text",
+        "id": "button_link",
+        "label": "Button link, enter a URL or popup"
+    },
+    {
+        "type": "text",
+        "id": "button_text_color",
+        "label": "Button text color",
+        "default": "#000000"
+    },
+    {
+        "type": "text",
+        "id": "button_bg_color",
+        "label": "Button background color",
+        "default": "#FFFFFF"
+    },
+    {
+        "type": "text",
+        "id": "button_hover_text_color",
+        "label": "Button hover text color",
+        "default": "#FFFFFF"
+    },
+    {
+        "type": "text",
+        "id": "button_hover_bg_color",
+        "label": "Button hover background color",
+        "default": "#000000"
+    }
+  ],
+  "blocks":[
+    {
+      "type": "info",
+      "name": "Teflo Process",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title"
+        },
+        {
+          "type": "richtext",
+          "id": "desc",
+          "label": "Desc"
+        }
+      ]
+    }
+  ],
+    "presets": [
+        {
+        "name": "Teflo Process"
+        }
+    ]
+}
+
+{% endschema %}

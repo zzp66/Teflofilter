@@ -1,0 +1,23 @@
+{%- liquid
+assign body_bg_setting = settings.color_body_bg
+if template contains 'quick-view'
+  assign body_bg_setting = settings.color_drawer_bg
+endif
+assign body_bg = body_bg_setting
+
+unless no_bg
+  assign body_bg = body_bg_setting | color_darken: 5
+endunless
+assign body_bg_rgb = body_bg.rgb
+%}
+<max-height class="max-height{% if no_bg %} max-height--no-background{%- endif-%}" data-max="{{ max_height }}" style="--max-height: {{ max_height | append: 'px'}}; --bg-body: {{ body_bg }};  --bg-body-rgb: {{ body_bg_rgb | replace: ' ' , ',' }}">
+  <div class="max-height--inner">
+    <div class="max-height--inner-content rte {{ extra_class }}">
+      {{ content }}
+      {{ custom_liquid }}
+    </div>
+  </div>
+  <button class="max-height--toggle"><span class="text-button text-button--read-more">{{ read_more }}</span><span class="text-button text-button--read-less">{{ read_less }}</span></button>
+</max-height>
+<link rel="stylesheet" href="{{ 'max-height.css' | asset_url }}" media="print" onload="this.media='all'">
+<script src="{{ 'max-height.js' | asset_url }}" defer="defer"></script>

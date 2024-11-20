@@ -1,0 +1,356 @@
+{{- 'scrolling-content.css' | asset_url | stylesheet_tag -}}
+<script src="{{ 'scrolling-content.js' | asset_url }}" defer="defer"></script>
+{%- liquid
+	assign desktop_layout = section.settings.desktop_layout
+	assign mobile_swipe = section.settings.mobile_swipe
+	assign dots = section.settings.dots
+
+	assign disable_top_spacing = section.settings.disable_top_spacing
+	assign disable_bottom_spacing = section.settings.disable_bottom_spacing
+
+	assign color_heading = section.settings.color_heading
+	assign color_text = section.settings.color_text
+	assign color_links = section.settings.color_links
+
+	assign color_bg = section.settings.color_bg | downcase
+	assign color_body_bg = settings.color_body_bg | downcase
+
+	assign has_bg = true
+	if color_body_bg == color_bg or color_bg == 'transparent' or color_bg == 'rgba(0,0,0,0)'
+		assign has_bg = false
+	endif
+-%}
+<scrolling-content class="scrolling-content section-spacing{% if disable_top_spacing %} section-spacing--disable-top{% endif %}{% if disable_bottom_spacing %} section-spacing--disable-bottom{% endif %}">
+	<div class="scrolling-content--inner {% if has_bg -%}scrolling-content--has-bg{% endif %}" style="--color-bg: {{ color_bg }}; --color-heading: {{ color_heading }}; --color-body: {{ color_text }}; --color-accent: {{ color_links }};">
+		<div class="scrolling-content--container {{ desktop_layout }}{% if mobile_swipe %} swipe-on-mobile{% endif %}">
+			{%- capture pagination_dots -%}
+			<div class="scrolling-content--dots">
+				<div class="flickity-page-dots">
+					{%- for block in section.blocks -%}
+						<div class="dot{% if forloop.index == 1 %} is-selected{% endif %}"></div>
+					{%- endfor -%}
+				</div>
+			</div>
+			{%- endcapture -%}
+			{%- for block in section.blocks -%}
+				{%- liquid
+					assign heading_size = block.settings.heading_size
+					assign description_size = block.settings.description_size
+
+					assign color_bg_badge = block.settings.color_bg_badge
+					assign color_badge = block.settings.color_badge
+
+				-%}
+				{%- capture section_image -%}
+				<div class="scrolling-content--image{% if forloop.index == 1 %} active{% endif %}">
+					<div class="scrolling-content--image-inner">
+						{% if block.settings.image %}
+							{%- liquid
+								assign image = block.settings.image
+								assign master_width = image.src.width | append: 'x' | append: image.src.height
+								assign width = '375x0' | append: ',' | append: master_width
+							-%}
+							{%- render 'responsive-image', image: image, sizes: width -%}
+						{% else %}
+							{% assign index = forloop.index | modulo: 3 | plus: 1 %}
+							<div class="thb-placeholder">
+								{{ 'blog-apparel-' | append: index | placeholder_svg_tag: 'placeholder_svg_tag' }}
+							</div>
+						{% endif %}
+					</div>
+					{% if forloop.index == 1 and dots %}{{ pagination_dots }}{% endif %}
+				</div>
+				{%- endcapture -%}
+				{% if desktop_layout == 'image_first' %}
+					{{ section_image }}
+				{% endif %}
+				<div class="scrolling-content--content" {{ block.shopify_attributes }}>
+					<div class="scrolling-content--content-image">
+						{% if block.settings.image %}
+							{%- liquid
+								assign image = block.settings.image
+								assign master_width = image.src.width | append: 'x' | append: image.src.height
+								assign width = '375x0' | append: ',' | append: master_width
+							-%}
+							{%- render 'responsive-image', image: image, sizes: width -%}
+						{% else %}
+							{% assign index = forloop.index | modulo: 2 | plus: 1 %}
+							<div class="thb-placeholder">
+								{{ 'collection-' | append: index | placeholder_svg_tag: 'placeholder_svg_tag' }}
+							</div>
+						{% endif %}
+					</div>
+					<div class="scrolling-content--content-text" style="--badge-bg: {{ color_bg_badge }};--badge-text: {{ color_badge }}; --color-heading: {{ color_heading }}; --color-body: {{ color_text }}; --color-accent: {{ color_links }}">
+						{% if block.settings.badge != blank %}
+							<div>
+								<span class="inline-badge">{{ block.settings.badge }}</span>
+							</div>
+						{% endif %}
+						{% if block.settings.subheading != blank %}
+							<p class="subheading">{{ block.settings.subheading }}</p>
+						{% endif %}
+						{% if block.settings.heading %}
+						{%- liquid
+							assign marker_style = block.settings.marker_style
+							assign marker_color = block.settings.marker_color
+							assign text = block.settings.heading | newline_to_br
+						-%}
+							<h3 class="{{ heading_size }}">{% render 'animated-marker-heading', heading: text, style: marker_style, color: marker_color %}</h3>
+						{% endif %}
+						{% if block.settings.content %}
+							<div class="rte description-size--{{ description_size }}">{{ block.settings.content }}</div>
+						{% endif %}
+						{% if block.settings.button_text != blank %}
+							{% render 'text-button', url: block.settings.button_link, title: block.settings.button_text %}
+		        {% endif %}
+					</div>
+				</div>
+				{% if desktop_layout == 'text_first' %}
+					{{ section_image }}
+				{% endif %}
+			{%- endfor -%}
+
+		</div>
+	</div>
+</scrolling-content>
+
+{% schema %}
+  {
+    "name": "Scrolling content",
+		"class": "section-scrolling-content",
+    "settings": [
+			{
+	      "type": "select",
+	      "id": "desktop_layout",
+	      "options": [
+	        {
+	          "value": "image_first",
+	          "label": "Image first"
+	        },
+	        {
+	          "value": "text_first",
+	          "label": "Image second"
+	        }
+	      ],
+	      "default": "text_first",
+	      "label": "Desktop image placement",
+	      "info": "Image first is the default mobile layout."
+	    },
+			{
+				"type": "checkbox",
+				"id": "mobile_swipe",
+				"default": true,
+				"label": "Enable swipe on mobile"
+			},
+			{
+				"type": "checkbox",
+				"id": "dots",
+				"default": true,
+				"label": "Enable dots"
+			},
+			{
+	      "type": "header",
+	      "content": "Colors"
+	    },
+			{
+        "type": "color",
+        "id": "color_bg",
+        "label": "Background",
+        "default": "transparent"
+      },
+			{
+				"type": "color",
+				"id": "color_heading",
+				"label": "Heading",
+				"default": "#1a1c1d"
+			},
+			{
+				"type": "color",
+				"id": "color_text",
+				"label": "Text",
+				"default": "#2c2d2e"
+			},
+			{
+				"type": "color",
+				"id": "color_links",
+				"label": "Links",
+				"default": "#2c2d2e"
+			},
+			{
+	      "type": "header",
+	      "content": "Spacing"
+	    },
+			{
+				"type": "checkbox",
+				"id": "disable_top_spacing",
+				"default": false,
+				"label": "Remove top spacing"
+			},
+			{
+				"type": "checkbox",
+				"id": "disable_bottom_spacing",
+				"default": false,
+				"label": "Remove bottom spacing"
+			}
+    ],
+    "blocks": [
+      {
+        "type": "section",
+        "name": "Section",
+        "settings": [
+					{
+						"type": "image_picker",
+						"id": "image",
+						"label": "Image",
+						"info": "1280 x 1280 .jpg recommended."
+					},
+					{
+            "type": "text",
+            "id": "badge",
+            "label": "Badge",
+            "default": "badge"
+          },
+					{
+            "type": "text",
+            "id": "subheading",
+            "label": "Subheading",
+            "default": "subheading"
+          },
+          {
+            "type": "textarea",
+            "id": "heading",
+            "label": "Heading",
+            "default": "Heading",
+						"info": "Wrap your text between | to add animated markers. For example: Animated |marker| will underline marker text."
+          },
+					{
+						"type": "select",
+						"id": "marker_style",
+						"options": [
+							{
+								"value": "style1",
+								"label": "Basic"
+							},
+							{
+								"value": "style2",
+								"label": "Double"
+							},
+							{
+								"value": "style3",
+								"label": "Squiggle"
+							},
+							{
+								"value": "style4",
+								"label": "Zigzag"
+							}
+						],
+						"default": "style1",
+						"label": "Marker"
+					},
+					{
+						"type": "select",
+						"id": "heading_size",
+						"label": "Heading size",
+						"options": [
+							{
+								"value": "large",
+								"label": "Large"
+							},
+							{
+								"value": "medium",
+								"label": "Medium"
+							},
+							{
+								"value": "small",
+								"label": "Small"
+							}
+						],
+						"default": "small"
+					},
+          {
+            "type": "richtext",
+            "id": "content",
+            "label": "Description",
+            "default": "<p>Add a descriptive text here for your slide.</p>"
+          },
+					{
+						"type": "select",
+						"id": "description_size",
+						"label": "Size",
+						"options": [
+							{
+								"value": "h2",
+								"label": "Large"
+							},
+							{
+								"value": "h3",
+								"label": "Medium"
+							},
+							{
+								"value": "h4",
+								"label": "Small"
+							}
+						],
+						"default": "h3"
+					},
+          {
+            "id": "button_text",
+            "type": "text",
+            "label": "Button label",
+            "default": "Shop Now",
+						"info": "Leave the label blank to hide the button."
+          },
+          {
+            "id": "button_link",
+            "type": "url",
+            "label": "Button link"
+          },
+					{
+			      "type": "header",
+			      "content": "Colors"
+			    },
+					{
+						"type": "color",
+						"id": "marker_color",
+						"label": "Marker",
+						"default": "#FD6262"
+					},
+					{
+		        "type": "color",
+		        "id": "color_bg_badge",
+		        "label": "Badge background",
+		        "default": "#3f72e5"
+		      },
+					{
+		        "type": "color",
+		        "id": "color_badge",
+		        "label": "Badge text",
+		        "default": "#ffffff"
+		      }
+        ]
+      }
+    ],
+    "presets": [
+      {
+        "name": "Scrolling content",
+				"blocks": [
+					{
+						"type": "section"
+					},
+					{
+						"type": "section"
+					},
+					{
+						"type": "section"
+					}
+				]
+      }
+    ],
+		"enabled_on": {
+			"templates": ["*"],
+			"groups": [
+				"header", "footer"
+			]
+		}
+  }
+{% endschema %}

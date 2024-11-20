@@ -1,0 +1,258 @@
+<nav id="mobile-menu" class="mobile-menu-drawer" role="dialog" tabindex="-1">
+	<div class="mobile-menu-drawer--inner">
+		{%- if header_settings.menu -%}
+    <ul class="mobile-menu">
+			{%- for link in header_settings.menu.links -%}
+				{%- liquid
+					assign parent_index = forloop.index
+					assign has_sub_menu = false
+					assign has_mega_menu = false
+					assign has_menu_badge = false
+					assign mega_menu_block_index = false
+					assign mega_menu_block_index_sidebar = false
+
+					assign mega_menu_blocks = blocks | where: "type", "megamenu"
+					assign mega_menu_blocks_sidebar = blocks | where: "type", "megamenu_sidebar"
+
+					assign menu_badge_index = false
+					assign menu_badge_blocks = blocks | where: "type", "menu_badge"
+
+					if link.links.size > 0
+						assign has_sub_menu = true
+					endif
+					for block in mega_menu_blocks
+						assign position = block.settings.position | plus: 0
+			    	if position == parent_index
+							assign has_mega_menu = true
+							assign mega_menu_block_index = forloop.index0
+						endif
+					endfor
+
+					for block in mega_menu_blocks_sidebar
+						assign position_sidebar = block.settings.position | plus: 0
+						if position_sidebar == parent_index
+							assign has_mega_menu = true
+							assign mega_menu_block_index_sidebar = forloop.index0
+						endif
+					endfor
+					
+					for block in menu_badge_blocks
+						assign badge_position = block.settings.badge_position | plus: 0
+			    	if badge_position == parent_index
+							assign has_menu_badge = true
+
+							assign menu_badge_index = forloop.index0
+						endif
+					endfor
+				-%}
+			  <li>
+			    {%- if has_sub_menu == true or has_mega_menu == true -%}
+						{%- liquid
+							assign mega_menu_block = mega_menu_blocks[mega_menu_block_index]
+						-%}
+						<details class="link-container">
+							<summary class="parent-link">{{ link.title }}{%- if has_menu_badge -%}
+								{%- assign menu_badge_block = menu_badge_blocks[menu_badge_index] -%}
+								<span class="menu-item-badge" style="--menu-badge-bg: {{ menu_badge_block.settings.color_bg }};--menu-badge-text: {{ menu_badge_block.settings.color_text }};">{{ menu_badge_block.settings.text }}</span>
+							{%- endif -%}<span class="link-forward">{%- render 'svg-icons' with 'thb-mobile-menu-forward' -%}</span></summary>
+							<ul class="sub-menu">
+								<li class="parent-link-back">
+									<button class="parent-link-back--button"><span>{%- render 'svg-icons' with 'thb-mobile-menu-back' -%}</span> {{ link.title }}</button>
+								</li>
+								{%- if link.links.size > 0 -%}
+					        {%- for l in link.links -%}
+										{%- liquid
+											assign has_sub_menu = false
+									  	if l.links.size > 0
+									    	assign has_sub_menu = true
+											endif
+
+											assign mega_menu_block_sidebar = mega_menu_blocks_sidebar[mega_menu_block_index_sidebar]
+											assign content_collection_image = mega_menu_block_sidebar.settings.content_collection_image
+											assign content_product_image = mega_menu_block_sidebar.settings.content_product_image
+										-%}
+										<li>
+											{%- if has_mega_menu and mega_menu_block_sidebar -%}
+												{%- if l.links.size > 0 -%}
+												<details class="link-container">
+													<summary>
+														{{- l.title }}
+														<span class="link-forward">{%- render 'svg-icons' with 'thb-mobile-menu-down' -%}</span>
+													</summary>
+													<div class="mega-menu-sidebar--content">
+														<ul class="sub-menu sub-menu--sidebar" tabindex="-1">
+															{%- for sub_link in l.links -%}
+																<li>
+																	{%- if sub_link.type == 'collection_link' -%}
+																		{%- if content_collection_image -%}
+																		<a href="{{ sub_link.url }}" class="mega-menu-sidebar--content-container">
+																			<div class="mega-menu-sidebar--content-image">
+																			{%- render 'responsive-image', image: sub_link.object.featured_image, sizes: '237x237', priority: 'low' -%}
+																			</div>
+																			<span class="text-button">{{- sub_link.title -}}</span>
+																		</a>
+																		{%- else -%}
+																		<a href="{{ sub_link.url }}" class="thb-full-menu--link">{{- sub_link.title -}}</a>
+																		{%- endif -%}
+																	{%- elsif sub_link.type == 'product_link' -%}
+																		{%- render 'product-card-simple', product_card_product: sub_link.object, show_product_image: mega_menu_block.settings.content_product_image -%}
+																	{%- else -%}
+																		<a href="{{ sub_link.url }}" class="thb-full-menu--link">{{- sub_link.title -}}</a>
+																	{%- endif -%}
+																</li>
+															{%- endfor -%}
+														</ul>
+													</div>
+												</details>
+												{%- else -%}
+													<a href="{{ l.url }}" title="{{ l.title | escape }}">
+														{%- if sidebar_image and l.type == 'collection_link' and l.object.featured_image -%}{%- render 'responsive-image', image: l.object.featured_image, sizes: '38x38', priority: 'low', defer: true -%}{% endif %}
+														{{- l.title }}
+													</a>
+												{%- endif -%}
+											{%- elsif has_sub_menu -%}
+												<details class="link-container">
+													<summary>{{ l.title }}<span class="link-forward">{%- render 'svg-icons' with 'thb-mobile-menu-forward' -%}</span></summary>
+													<ul class="sub-menu" tabindex="-1">
+														<li class="parent-link-back">
+															<button class="parent-link-back--button"><span>{%- render 'svg-icons' with 'thb-mobile-menu-back' -%}</span> {{ link.title }}</button>
+														</li>
+														{%- for sub_link in l.links -%}
+															{%- liquid
+																assign has_sub_menu = false
+																if sub_link.links.size > 0
+																	assign has_sub_menu = true
+																endif
+															-%}
+															<li>
+																<a href="{{ sub_link.url }}" title="{{ sub_link.title | escape }}" role="menuitem">{{ sub_link.title }} {% if has_sub_menu %}<span></span>{%- endif -%}</a>
+															</li>
+														{%- endfor -%}
+													</ul>
+												</details>
+											{%- else -%}
+												<a href="{{ l.url }}" title="{{ l.title | escape }}">{{ l.title }}</a>
+											{%- endif -%}
+										</li>
+									{%- endfor -%}
+								{%- endif -%}
+								{% if mega_menu_block %}
+										{%- liquid
+											assign block_settings = mega_menu_block.settings
+										-%}
+										<div class="mega-menu-promotions" style="--promotions-text-size: {{ promotions_text_size | append: 'px' }}; --promotions-text-width: {{ promotions_text_width | append: '%' }} ">
+											{%- if block_settings.promo_1_image -%}
+												{% render 'header-full-menu-promotion', promotion_image: block_settings.promo_1_image, promotions_min_height: block_settings.promotions_min_height, text_alignment: block_settings.text_alignment, promotion_link: block_settings.promo_1_link, promotion_heading: block_settings.promo_1_heading, promotion_bg_color: block_settings.promo_1_bg, promotion_text_color: block_settings.promo_1_text, promotions_bg_opacity: block_settings.promo_1_bg_opacity %}
+											{%- endif -%}
+											{%- if block_settings.promo_2_image -%}
+												{% render 'header-full-menu-promotion', promotion_image: block_settings.promo_2_image, promotions_min_height: block_settings.promotions_min_height, text_alignment: block_settings.text_alignment, promotion_link: block_settings.promo_2_link, promotion_heading: block_settings.promo_2_heading, promotion_bg_color: block_settings.promo_2_bg, promotion_text_color: block_settings.promo_2_text, promotions_bg_opacity: block_settings.promo_2_bg_opacity %}
+											{%- endif -%}
+											{%- if block_settings.promo_3_image -%}
+												{% render 'header-full-menu-promotion', promotion_image: block_settings.promo_3_image, promotions_min_height: block_settings.promotions_min_height, text_alignment: block_settings.text_alignment, promotion_link: block_settings.promo_3_link, promotion_heading: block_settings.promo_3_heading, promotion_bg_color: block_settings.promo_3_bg, promotion_text_color: block_settings.promo_3_text, promotions_bg_opacity: block_settings.promo_3_bg_opacity %}
+											{%- endif -%}
+											{%- if block_settings.promo_4_image -%}
+												{% render 'header-full-menu-promotion', promotion_image: block_settings.promo_4_image, promotions_min_height: block_settings.promotions_min_height, text_alignment: block_settings.text_alignment, promotion_link: block_settings.promo_4_link, promotion_heading: block_settings.promo_4_heading, promotion_bg_color: block_settings.promo_4_bg, promotion_text_color: block_settings.promo_4_text, promotions_bg_opacity: block_settings.promo_3_bg_opacity %}
+											{%- endif -%}
+										</div>
+									{% elsif mega_menu_block_cta %}
+										{% assign block_settings = mega_menu_block_cta.settings %}
+										<div class="mega-menu-promotions">
+											{%- if block_settings.cta_1_heading != blank -%}
+												{% render 'header-full-menu-cta', cta_heading: block_settings.cta_1_heading, cta_text: block_settings.cta_1_text, cta_link: block_settings.cta_1_link, cta_color: block_settings.cta_1_color %}
+											{%- endif -%}
+											{%- if block_settings.cta_2_heading != blank -%}
+												{% render 'header-full-menu-cta', cta_heading: block_settings.cta_2_heading, cta_text: block_settings.cta_2_text, cta_link: block_settings.cta_2_link, cta_color: block_settings.cta_2_color %}
+											{%- endif -%}
+											{%- if block_settings.cta_3_heading != blank -%}
+												{% render 'header-full-menu-cta', cta_heading: block_settings.cta_3_heading, cta_text: block_settings.cta_3_text, cta_link: block_settings.cta_3_link, cta_color: block_settings.cta_3_color %}
+											{%- endif -%}
+											{%- if block_settings.cta_4_heading != blank -%}
+												{% render 'header-full-menu-cta', cta_heading: block_settings.cta_4_heading, cta_text: block_settings.cta_4_text, cta_link: block_settings.cta_4_link, cta_color: block_settings.cta_4_color %}
+											{%- endif -%}
+										</div>
+									{% elsif mega_menu_block_collections %}
+										{%- liquid
+											assign block_settings = mega_menu_block_collections.settings
+											assign layout = block_settings.layout
+											assign heading = block_settings.heading
+
+											if layout == 'tagcloud'
+												assign sizes = '34x34'
+											else
+												assign sizes = '148x148'
+											endif
+										-%}
+										<div class="mega-menu-promotions">
+											{% if heading != blank %}<strong class="mega-menu-heading">{{ heading }}</strong>{% endif %}
+											<div class="mega-menu-collections mega-menu-collections--layout-{{ layout }}">
+												{%- for the_collection in block_settings.collection_list -%}
+													<a href="{{ the_collection.url }}" class="mega-menu-collections--collection-{{ layout }}">
+														{% if the_collection.featured_image %}
+															{%- render 'responsive-image', image: the_collection.featured_image | image_url, sizes: sizes, priority: 'low' -%}
+														{% endif %}
+														<span>{{ the_collection.title }}</span>
+													</a>
+												{%- endfor -%}
+											</div>
+										</div>
+									{% elsif mega_menu_block_products %}
+										{%- liquid
+											assign block_settings = mega_menu_block_products.settings
+											assign heading = block_settings.heading
+										-%}
+										<div class="mega-menu-promotions">
+											{% if heading != blank %}<strong class="mega-menu-heading">{{ heading }}</strong>{% endif %}
+											<div class="mega-menu-products">
+												{%- for the_product in block_settings.product_list -%}
+													{% render 'product-card-small', product_small: the_product %}
+												{%- endfor -%}
+											</div>
+										</div>
+									{% endif %}
+					    </ul>
+						</details>
+					{%- else -%}
+					<a href="{{ link.url }}" title="{{ link.title | escape }}">{{ link.title }}{%- if has_menu_badge -%}
+						{%- assign menu_badge_block = menu_badge_blocks[menu_badge_index] -%}
+						<span class="menu-item-badge" style="--menu-badge-bg: {{ menu_badge_block.settings.color_bg }};--menu-badge-text: {{ menu_badge_block.settings.color_text }};">{{ menu_badge_block.settings.text }}</span>
+						{%- endif -%}</a>
+			    {%- endif -%}
+			  </li>
+		  {%- endfor -%}
+    </ul>
+		{%- endif -%}
+		{%- if header_settings.mobile_secondary_menu != blank -%}
+		<ul class="mobile-secondary-menu">
+			{%- for link in header_settings.mobile_secondary_menu.links -%}
+			  <li class="{% if link.active %} active{% endif %}">
+			    <a href="{{ link.url }}" title="{{ link.title | escape }}">{{ link.title }}</a>
+			  </li>
+		  {%- endfor -%}
+    </ul>
+		{%- endif -%}
+		{%- if header_settings.show_social_links -%}
+			{%- render 'social-links', show_label: false -%}
+		{%- endif -%}
+		<div class="thb-mobile-menu-footer">
+			{%- if shop.customer_accounts_enabled -%}
+				{%- if customer -%}
+				  {%- assign profile_link = routes.account_url -%}
+				  {%- capture profile_text -%}
+				    {{ 'sections.header.my_account' | t }}
+				  {%- endcapture -%}
+				{%- else -%}
+				  {%- assign profile_link = routes.account_login_url -%}
+				  {%- capture profile_text -%}
+				    {{ 'sections.header.login' | t }}
+				  {%- endcapture -%}
+				{%- endif -%}
+		    <a class="thb-mobile-account-link" href="{{ profile_link | escape }}" title="{{ profile_text | escape }}">{%- render 'svg-icons' with 'myaccount' %} {{ profile_text }}</a>
+		  {%- endif -%}
+			<div class="no-js-hidden">
+				{%- render 'localization', id: 'MobileMenuLocalization', show_language_switcher: header_settings.show_language_switcher, show_currency_switcher: header_settings.show_currency_switcher, open_top: true -%}
+			</div>
+		</div>
+	</div>
+</nav>
+<link rel="stylesheet" href="{{ 'mobile-menu.css' | asset_url }}" media="print" onload="this.media='all'">
+<noscript>{{- 'mobile-menu.css' | asset_url | stylesheet_tag -}}</noscript>

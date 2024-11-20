@@ -1,0 +1,12 @@
+{%- if settings.cart_terms_conditions_enable -%}
+  <terms-checkbox class="cart-drawer--terms" data-append="{{ append }}">
+    <input type="checkbox" id="CartTerms{{ append }}" required>
+    <label for="CartTerms{{ append }}">
+      {% if settings.cart_terms_conditions_page != blank %}
+        {{ 'sections.cart.terms_html' | t: url: settings.cart_terms_conditions_page.url }}
+      {% else %}
+        {{ 'sections.cart.terms' | t }}
+      {% endif %}
+    </label>
+  </terms-checkbox>
+{%- endif -%}

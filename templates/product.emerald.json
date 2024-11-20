@@ -1,0 +1,631 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "breadcrumbs": {
+      "type": "breadcrumbs",
+      "settings": {}
+    },
+    "main-product": {
+      "type": "main-product",
+      "blocks": {
+        "2b609eea-6cce-4efe-b447-c5560de1d797": {
+          "type": "label",
+          "settings": {}
+        },
+        "e431a79e-9c7b-4a53-a79a-0cb918617ecf": {
+          "type": "text",
+          "settings": {
+            "text": "{{ product.vendor }}",
+            "text_style": "style_vendor"
+          }
+        },
+        "title": {
+          "type": "title",
+          "settings": {
+            "show_products_rating": true
+          }
+        },
+        "32816dd9-0969-4e55-8d1b-39a1dc390a77": {
+          "type": "inventory_level",
+          "settings": {
+            "show_inventory_notice": "always",
+            "show_inventory_count": "always",
+            "inventory_notice_pulse": true,
+            "inventory_notice_bar": false,
+            "inventory_notice_threshold": 10,
+            "inventory_notice_base": 60
+          }
+        },
+        "0b3e272b-c86a-4dba-946c-c6912251371c": {
+          "type": "description",
+          "settings": {}
+        },
+        "825df3d7-3c38-47d9-992b-58f7de580749": {
+          "type": "separator",
+          "settings": {}
+        },
+        "variant_picker": {
+          "type": "variant_picker",
+          "settings": {
+            "picker_type": "button",
+            "color_picker": true,
+            "variant_is_disabled": true,
+            "sizing_guide_variant": "Size",
+            "sizing_guide_text": "",
+            "sizing_guide_icon": "ruler",
+            "sizing_guide_page": ""
+          }
+        },
+        "quantity": {
+          "type": "quantity",
+          "settings": {}
+        },
+        "buy_buttons": {
+          "type": "buy_buttons",
+          "settings": {
+            "show_dynamic_checkout": true
+          }
+        },
+        "5888aa0c-355f-4170-98ba-c3206a38aa5d": {
+          "type": "icon_list",
+          "settings": {
+            "icon_1_icon": "heart",
+            "icon_1_text": "90 day returns policy",
+            "icon_2_icon": "box",
+            "icon_2_text": "Free shipping on all U.S. orders of $40+",
+            "icon_3_icon": "lightning_bolt",
+            "icon_3_text": "Designed in London",
+            "icon_4_icon": "none",
+            "icon_4_text": ""
+          }
+        },
+        "4fd23485-293f-46a0-8a4c-34d0e25ea41b": {
+          "type": "share",
+          "settings": {}
+        },
+        "fc6da228-45eb-4a6e-aa68-d6ec477bec34": {
+          "type": "complementary",
+          "settings": {
+            "block_heading": "Pairs well with",
+            "product_list_limit": 6
+          }
+        }
+      },
+      "block_order": [
+        "2b609eea-6cce-4efe-b447-c5560de1d797",
+        "e431a79e-9c7b-4a53-a79a-0cb918617ecf",
+        "title",
+        "32816dd9-0969-4e55-8d1b-39a1dc390a77",
+        "0b3e272b-c86a-4dba-946c-c6912251371c",
+        "825df3d7-3c38-47d9-992b-58f7de580749",
+        "variant_picker",
+        "quantity",
+        "buy_buttons",
+        "5888aa0c-355f-4170-98ba-c3206a38aa5d",
+        "4fd23485-293f-46a0-8a4c-34d0e25ea41b",
+        "fc6da228-45eb-4a6e-aa68-d6ec477bec34"
+      ],
+      "settings": {
+        "enable_sticky_add_to_cart": true,
+        "show_taxes_included": true,
+        "thumbnail_position": "bottom",
+        "media_aspect_ratio": "adapt",
+        "display_captions": true,
+        "hide_variants": false,
+        "lightbox": true,
+        "enable_video_looping": false
+      }
+    },
+    "0e93ba7e-195e-407f-9b80-7d265aa6e1e2": {
+      "type": "spacer",
+      "settings": {
+        "spacer_mobile": 30,
+        "spacer_desktop": 70,
+        "border_separator": true,
+        "border_separator_full": false
+      }
+    },
+    "d0580603-597c-4390-9156-0932eb66d473": {
+      "type": "collapsible-content",
+      "blocks": {
+        "template--18092558549310__d0580603-597c-4390-9156-0932eb66d473-1678719764ae63a7d1-0": {
+          "type": "collapsible_tab",
+          "settings": {
+            "heading": "Product Specs",
+            "open": false,
+            "content": "<p>Metal: Solid 18k recycled Yellow/Rose/White gold</p><p>Metal weight: 1g</p><p>Setting: Pave set</p><p>Band width: 1.2mm</p>",
+            "page": ""
+          }
+        },
+        "template--18092558549310__d0580603-597c-4390-9156-0932eb66d473-1678719764ae63a7d1-1": {
+          "type": "collapsible_tab",
+          "settings": {
+            "heading": "Details",
+            "open": false,
+            "content": "<p>To clean your earrings use a dry, soft, clean cloth. For a deep clean use water and a soap without harsh chemicals and dry immediately with a clean soft cloth. Always store your earrings in a cool, dry place.</p>",
+            "page": ""
+          }
+        },
+        "b2725065-be45-4cda-8bd8-7d19175fe886": {
+          "type": "collapsible_tab",
+          "settings": {
+            "heading": "Shipping & Returns",
+            "open": false,
+            "content": "<p>Make sure to read and understand the return policy before making a purchase. Some stores offer free returns, while others may charge a restocking fee or only accept returns for certain items.</p>",
+            "page": ""
+          }
+        },
+        "3d9a545e-5381-4bfa-a4f8-c98f5a66622c": {
+          "type": "collapsible_tab",
+          "settings": {
+            "heading": "Care Guide",
+            "open": false,
+            "content": "<p>When not in use, store your jewelry in a cool and dry place. Keep your pieces separated to avoid scratches and tangles. You can use a jewelry box with compartments or a soft pouch to store your jewelry.</p>",
+            "page": ""
+          }
+        },
+        "94c72e42-9a5b-4923-b4bd-1d42e86c5d81": {
+          "type": "collapsible_tab",
+          "settings": {
+            "heading": "Warranty",
+            "open": false,
+            "content": "<p>A jewelry warranty is a type of protection plan that provides coverage for your jewelry in the event of damage, loss, or theft. Jewelry warranties typically come from the manufacturer or retailer of the jewelry and vary in terms of coverage and duration.</p>",
+            "page": ""
+          }
+        },
+        "template--18092558549310__d0580603-597c-4390-9156-0932eb66d473-1678719764ae63a7d1-2": {
+          "type": "collapsible_tab",
+          "settings": {
+            "heading": "About Emerald",
+            "open": false,
+            "content": "<p>Materials used in jewelry making can range from precious metals like gold and silver to more affordable materials like plastic and glass. Gemstones such as diamonds, rubies, emeralds, and sapphires are often incorporated into jewelry to add color, sparkle, and value.</p>",
+            "page": ""
+          }
+        }
+      },
+      "block_order": [
+        "template--18092558549310__d0580603-597c-4390-9156-0932eb66d473-1678719764ae63a7d1-0",
+        "template--18092558549310__d0580603-597c-4390-9156-0932eb66d473-1678719764ae63a7d1-1",
+        "b2725065-be45-4cda-8bd8-7d19175fe886",
+        "3d9a545e-5381-4bfa-a4f8-c98f5a66622c",
+        "94c72e42-9a5b-4923-b4bd-1d42e86c5d81",
+        "template--18092558549310__d0580603-597c-4390-9156-0932eb66d473-1678719764ae63a7d1-2"
+      ],
+      "settings": {
+        "heading": "PRODUCT DETAILS",
+        "marker_style": "style1",
+        "description": "<p>Please read our <a href=\"#\" title=\"#\">frequently asked questions</a> to find out more.</p>",
+        "color_bg": "rgba(0,0,0,0)",
+        "color_heading": "#263d2d",
+        "marker_color": "#fd6262",
+        "color_text": "#3b5342",
+        "color_links": "#8d5d48",
+        "color_border": "#edeae6",
+        "disable_top_spacing": true,
+        "disable_bottom_spacing": false
+      }
+    },
+    "16623873609e87da8b": {
+      "type": "multicolumn",
+      "blocks": {
+        "1662387360fb14d4f3-0": {
+          "type": "column",
+          "settings": {
+            "image": "",
+            "image_full_width": true,
+            "image_link": "",
+            "title": "EASY RETURNS",
+            "text": "<p>Research your appliances and language capabilities to be sure the voice assistant you choose works with your household’s needs.</p>",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "1662387360fb14d4f3-1": {
+          "type": "column",
+          "settings": {
+            "image": "",
+            "image_full_width": false,
+            "image_link": "",
+            "title": "HANDMADE IN LONDON",
+            "text": "<p>Stay connected to your community with real-time crime and safety alerts from your neighbors and local public safety agencies.</p>",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "1662387360fb14d4f3-2": {
+          "type": "column",
+          "settings": {
+            "image": "",
+            "image_full_width": false,
+            "image_link": "",
+            "title": "FINANCING OPTIONS",
+            "text": "<p>Keeping up with the devices connected to your network has never been easier. Invite guests or view and manage connected devices with just a few clicks.</p>",
+            "link_label": "",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "1662387360fb14d4f3-0",
+        "1662387360fb14d4f3-1",
+        "1662387360fb14d4f3-2"
+      ],
+      "settings": {
+        "heading": "",
+        "marker_style": "style1",
+        "description": "",
+        "columns_desktop": 3,
+        "mobile_swipe": true,
+        "image_ratio": "adapt",
+        "text_alignment": "left",
+        "heading_size": "h5",
+        "color_heading": "#263d2d",
+        "marker_color": "#fd6262",
+        "color_text": "#3b5342",
+        "color_links": "#2c2d2e",
+        "disable_top_spacing": true,
+        "disable_bottom_spacing": true
+      }
+    },
+    "ce478cd3-8e68-4d00-9340-761148ce25d7": {
+      "type": "layered-images-with-text",
+      "blocks": {
+        "template--18092558549310__ce478cd3-8e68-4d00-9340-761148ce25d7-167869559284111ea8-0": {
+          "type": "subheading",
+          "settings": {
+            "text": "Add a tagline"
+          }
+        },
+        "template--18092558549310__ce478cd3-8e68-4d00-9340-761148ce25d7-167869559284111ea8-1": {
+          "type": "heading",
+          "settings": {
+            "text": "THERE IS |NO BETTER TIME| TO BE YOUR BEST THAN NOW",
+            "marker_style": "style2",
+            "heading_size": "h2",
+            "marker_color": "#ff8947"
+          }
+        },
+        "template--18092558549310__ce478cd3-8e68-4d00-9340-761148ce25d7-167869559284111ea8-2": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Pair text with an image to focus on your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "template--18092558549310__ce478cd3-8e68-4d00-9340-761148ce25d7-167869559284111ea8-0",
+        "template--18092558549310__ce478cd3-8e68-4d00-9340-761148ce25d7-167869559284111ea8-1",
+        "template--18092558549310__ce478cd3-8e68-4d00-9340-761148ce25d7-167869559284111ea8-2"
+      ],
+      "settings": {
+        "image": "",
+        "image_ratio": "portrait",
+        "image_2": "",
+        "image_ratio_2": "square",
+        "image_3": "",
+        "image_ratio_3": "portrait",
+        "full_width": false,
+        "layout": "text_first",
+        "content_alignment": "text-left",
+        "content_position": "middle",
+        "disable_top_spacing": false,
+        "disable_bottom_spacing": false
+      }
+    },
+    "2eca3524-4504-4783-a597-5e561b1d47cf": {
+      "type": "scrolling-text",
+      "blocks": {
+        "template--18092558549310__2eca3524-4504-4783-a597-5e561b1d47cf-167843461214241178-0": {
+          "type": "text",
+          "settings": {
+            "image": "",
+            "text": "THE FINEST GEMSTONES",
+            "link": "",
+            "outline_text": false
+          }
+        },
+        "771c0aa5-3968-4f33-8897-be6efe6bca8f": {
+          "type": "text",
+          "settings": {
+            "image": "",
+            "text": "YOUR STYLE, OUR DESIGN",
+            "link": "",
+            "outline_text": false
+          }
+        },
+        "5b76df22-5b9f-4946-b1f8-e7ac842eb8e1": {
+          "type": "text",
+          "settings": {
+            "image": "",
+            "text": "ROMANCE IS PRICELESS",
+            "link": "",
+            "outline_text": false
+          }
+        }
+      },
+      "block_order": [
+        "template--18092558549310__2eca3524-4504-4783-a597-5e561b1d47cf-167843461214241178-0",
+        "771c0aa5-3968-4f33-8897-be6efe6bca8f",
+        "5b76df22-5b9f-4946-b1f8-e7ac842eb8e1"
+      ],
+      "settings": {
+        "height": "height-auto",
+        "full_width": true,
+        "direction": "left",
+        "speed": "30s",
+        "rotation": 2,
+        "negative_rotation": false,
+        "font_family": "heading",
+        "text_size": 40,
+        "text_uppercase": false,
+        "image_size": "small",
+        "color_bg": "#e9f1eb",
+        "color_text": "#263d2d",
+        "overlay_color": "#000000",
+        "overlay_opacity": 0,
+        "disable_top_spacing": true,
+        "disable_bottom_spacing": true
+      }
+    },
+    "617a5fcd-05c0-4c07-8927-c3cb3f6a9fba": {
+      "type": "rich-text",
+      "blocks": {
+        "1cab4358-b030-4716-95cc-37d0ab7555d1": {
+          "type": "badge",
+          "settings": {
+            "text": "Custom Design",
+            "color_bg": "#f4e3db",
+            "color_text": "#483d38"
+          }
+        },
+        "template--18092558549310__617a5fcd-05c0-4c07-8927-c3cb3f6a9fba-16783764387a92f58a-1": {
+          "type": "heading",
+          "settings": {
+            "text": "JEWELRY IS THE |COMPANION| OF LOVE✨",
+            "marker_style": "style3",
+            "size": "h2",
+            "marker_color": "#ff8947"
+          }
+        },
+        "9ff96f68-3c05-4bb1-b9bb-39f527585b7a": {
+          "type": "text",
+          "settings": {
+            "text": "<p>For women, jewelry is often seen as a way to express their personal style and add a touch of glamour to their outfit. Popular jewelry styles for women include delicate necklaces, statement earrings, and stackable bracelets.</p>",
+            "size": "text-size-regular"
+          }
+        },
+        "b7550ecc-6ef4-4b4f-b16e-e2ef55c23c36": {
+          "type": "text-button",
+          "settings": {
+            "link_label": "Book an appointment",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "1cab4358-b030-4716-95cc-37d0ab7555d1",
+        "template--18092558549310__617a5fcd-05c0-4c07-8927-c3cb3f6a9fba-16783764387a92f58a-1",
+        "9ff96f68-3c05-4bb1-b9bb-39f527585b7a",
+        "b7550ecc-6ef4-4b4f-b16e-e2ef55c23c36"
+      ],
+      "settings": {
+        "text_width": "large",
+        "text_position": "center",
+        "text_alignment": "center",
+        "color_bg": "rgba(0,0,0,0)",
+        "color_heading": "#263d2d",
+        "color_text": "#3b5342",
+        "color_links": "#ee3b45",
+        "disable_top_spacing": false,
+        "disable_bottom_spacing": true
+      }
+    },
+    "4db42190-49b3-4fde-b80c-ae713f7a121d": {
+      "type": "background-video",
+      "settings": {
+        "desktop_height": "desktop-height-550",
+        "mobile_height": "mobile-height-500",
+        "full_width": false,
+        "video_controls": true,
+        "video": "https://www.youtube.com/watch?v=_9VUPq3SxOc",
+        "overlay_color": "#000000",
+        "overlay_opacity": 0,
+        "disable_top_spacing": false,
+        "disable_bottom_spacing": true
+      }
+    },
+    "03832af4-5cc2-4bb6-bf9c-45f62721db0c": {
+      "type": "customer-reviews",
+      "blocks": {
+        "template--18092558549310__03832af4-5cc2-4bb6-bf9c-45f62721db0c-1678718158e36474b6-0": {
+          "type": "review",
+          "settings": {
+            "product_handle": "",
+            "stars": "4.5",
+            "heading": "Great Company ✌️",
+            "text": "I am so grateful to have worked with this company. Thank you for a wonderful experience and the ring of a lifetime.",
+            "author": "Amanda D.",
+            "author_image": ""
+          }
+        },
+        "template--18092558549310__03832af4-5cc2-4bb6-bf9c-45f62721db0c-1678718158e36474b6-1": {
+          "type": "review",
+          "settings": {
+            "product_handle": "",
+            "stars": "5",
+            "heading": "Outstanding ❤️️",
+            "text": "I was very pleased from start to finish. I have never bought a ring before and I was put at ease at every turn.",
+            "author": "Audrey",
+            "author_image": ""
+          }
+        },
+        "template--18092558549310__03832af4-5cc2-4bb6-bf9c-45f62721db0c-1678718158e36474b6-2": {
+          "type": "review",
+          "settings": {
+            "product_handle": "",
+            "stars": "4",
+            "heading": "Extremely Happy  💫",
+            "text": "They paid full attention to what I asked for even though I only gave them a small amount of info to complete the task with.",
+            "author": "Theresa M.",
+            "author_image": ""
+          }
+        },
+        "10ac3f10-47af-421f-a870-75e71111618f": {
+          "type": "review",
+          "settings": {
+            "product_handle": "",
+            "stars": "4.5",
+            "heading": "Amazing!",
+            "text": "The design is perfect, and they wen't above and beyond on everything. I couldn't have asked for a better experience",
+            "author": "Melanie Claire",
+            "author_image": ""
+          }
+        }
+      },
+      "block_order": [
+        "template--18092558549310__03832af4-5cc2-4bb6-bf9c-45f62721db0c-1678718158e36474b6-0",
+        "template--18092558549310__03832af4-5cc2-4bb6-bf9c-45f62721db0c-1678718158e36474b6-1",
+        "template--18092558549310__03832af4-5cc2-4bb6-bf9c-45f62721db0c-1678718158e36474b6-2",
+        "10ac3f10-47af-421f-a870-75e71111618f"
+      ],
+      "settings": {
+        "heading": "CUSTOMER REVIEWS",
+        "description": "<p>Add a short description for this section</p>",
+        "columns": 3,
+        "autoplay": true,
+        "autoplay_length": 5,
+        "color_bg": "#f5f3f2",
+        "color_heading": "#263d2d",
+        "color_text": "#3b5342",
+        "disable_top_spacing": false,
+        "disable_bottom_spacing": true
+      }
+    },
+    "3e5caf98-2469-4c87-ad73-d18e80b0da67": {
+      "type": "media-with-tabs",
+      "blocks": {
+        "template--18092558549310__3e5caf98-2469-4c87-ad73-d18e80b0da67-16787180058b0713ba-0": {
+          "type": "badge",
+          "settings": {
+            "text": "Self Expression",
+            "color_bg": "#a45050",
+            "color_text": "#ffffff"
+          }
+        },
+        "template--18092558549310__3e5caf98-2469-4c87-ad73-d18e80b0da67-16787180058b0713ba-1": {
+          "type": "heading",
+          "settings": {
+            "text": "DISCOVER THE PERFECT ACCESSORY FOR YOUR STYLE",
+            "heading_size": "h2"
+          }
+        },
+        "template--18092558549310__3e5caf98-2469-4c87-ad73-d18e80b0da67-16787180058b0713ba-2": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Pair text with an image to focus on your chosen product.</p>"
+          }
+        },
+        "template--18092558549310__3e5caf98-2469-4c87-ad73-d18e80b0da67-16787180058b0713ba-3": {
+          "type": "tab",
+          "settings": {
+            "image": "",
+            "use_video": false,
+            "heading_icon": "none",
+            "heading": "Jewels are like a second skin",
+            "description": "They have the power to make you feel confident, comfortable, and beautiful.",
+            "video_autoplay": true
+          }
+        },
+        "template--18092558549310__3e5caf98-2469-4c87-ad73-d18e80b0da67-16787180058b0713ba-4": {
+          "type": "tab",
+          "settings": {
+            "image": "",
+            "use_video": false,
+            "heading_icon": "none",
+            "heading": "Express your style",
+            "description": "Jewelry is a way to express your style, but it’s also a way to show the world who you are. And it’s important that we remember that.",
+            "video_autoplay": true
+          }
+        }
+      },
+      "block_order": [
+        "template--18092558549310__3e5caf98-2469-4c87-ad73-d18e80b0da67-16787180058b0713ba-0",
+        "template--18092558549310__3e5caf98-2469-4c87-ad73-d18e80b0da67-16787180058b0713ba-1",
+        "template--18092558549310__3e5caf98-2469-4c87-ad73-d18e80b0da67-16787180058b0713ba-2",
+        "template--18092558549310__3e5caf98-2469-4c87-ad73-d18e80b0da67-16787180058b0713ba-3",
+        "template--18092558549310__3e5caf98-2469-4c87-ad73-d18e80b0da67-16787180058b0713ba-4"
+      ],
+      "settings": {
+        "desktop_height": "desktop-height-550",
+        "mobile_height": "mobile-height-400",
+        "height": "adapt",
+        "desktop_layout": "image_first",
+        "color_bg": "#ffe8e3",
+        "color_text": "#a45050",
+        "color_link": "#ffffff",
+        "color_border": "#edcdc5",
+        "disable_top_spacing": false,
+        "disable_bottom_spacing": true
+      }
+    },
+    "16625458859c68803a": {
+      "type": "apps",
+      "settings": {}
+    },
+    "1662552569cce2536d": {
+      "type": "spacer",
+      "settings": {
+        "spacer_mobile": 40,
+        "spacer_desktop": 0,
+        "border_separator": true,
+        "border_separator_full": true
+      }
+    },
+    "c8ffd9d1-87ab-4077-af55-ca2be6c41b1c": {
+      "type": "spacer",
+      "settings": {
+        "spacer_mobile": 35,
+        "spacer_desktop": 60,
+        "border_separator": false,
+        "border_separator_full": false
+      }
+    },
+    "product-recommendations": {
+      "type": "product-recommendations",
+      "settings": {
+        "heading": "YOU MAY ALSO LIKE",
+        "description": "<p>Combine your style with these products</p>",
+        "mobile_swipe": true,
+        "product_limit": 4,
+        "columns_desktop": 4,
+        "disable_top_spacing": true,
+        "disable_bottom_spacing": false
+      }
+    }
+  },
+  "order": [
+    "breadcrumbs",
+    "main-product",
+    "0e93ba7e-195e-407f-9b80-7d265aa6e1e2",
+    "d0580603-597c-4390-9156-0932eb66d473",
+    "16623873609e87da8b",
+    "ce478cd3-8e68-4d00-9340-761148ce25d7",
+    "2eca3524-4504-4783-a597-5e561b1d47cf",
+    "617a5fcd-05c0-4c07-8927-c3cb3f6a9fba",
+    "4db42190-49b3-4fde-b80c-ae713f7a121d",
+    "03832af4-5cc2-4bb6-bf9c-45f62721db0c",
+    "3e5caf98-2469-4c87-ad73-d18e80b0da67",
+    "16625458859c68803a",
+    "1662552569cce2536d",
+    "c8ffd9d1-87ab-4077-af55-ca2be6c41b1c",
+    "product-recommendations"
+  ]
+}

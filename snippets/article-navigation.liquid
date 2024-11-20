@@ -1,0 +1,14 @@
+{%- if article_show_nav -%}
+<article-navigation class="blog-post-detail--navigation">
+	<div class="blog-post-detail--navigation--inner">
+		<div class="blog-post-detail--navigation--title"><div>{{ article.title }}</div></div>
+		{%- liquid
+			if article_show_sharing
+				render 'social-share', share_label: true, share_title: article.title, share_permalink: article.url, share_image: article.featured_image
+			endif
+		-%}
+	</div>
+	<span class="blog-post-detail--navigation--bar" id="progress-bar"></span>
+</article-navigation>
+<script src="{{ 'article-navigation.js' | asset_url }}" defer="defer"></script>
+{%- endif -%}

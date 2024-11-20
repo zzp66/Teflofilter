@@ -1,0 +1,96 @@
+
+
+
+
+.subheader--inner {
+  padding: 0 15px;
+  max-width: var(--grid-width-row, 1380px);
+  margin-left: auto;
+  margin-right: auto; }
+  @media only screen and (min-width: 768px) {
+    .subheader--inner {
+      padding: 0 50px; } }
+
+.social-links {
+  list-style: none;
+  margin: 0;
+  padding: 0; }
+  .social-links li {
+    margin-bottom: 5px; }
+    .social-links li a {
+      display: inline-flex;
+      align-items: center;
+      width: 44px;
+      height: 44px;
+      justify-content: center; }
+  .social-links svg {
+    width: 16px;
+    height: auto;
+    flex-shrink: 0; }
+  .social-links span {
+    margin-left: 15px; }
+  .social-links--has-label li a {
+    width: auto;
+    height: auto; }
+
+.header-secondary-menu-section {
+  position: relative;
+  z-index: 51; }
+
+.subheader {
+  --color-accent: var(--color-secondary-menu-text);
+  display: none;
+  margin: 0;
+  color: var(--color-secondary-menu-text);
+  background: var(--color-secondary-menu-bg);
+  font-size: 0.75rem;
+  min-height: 38px;
+  padding: 5px 0;
+  align-items: center; }
+  .subheader a {
+    color: var(--color-secondary-menu-text); }
+  @media only screen and (min-width: 768px) {
+    .subheader {
+      display: flex; } }
+  .subheader--inner {
+    display: grid;
+    grid-template-columns: auto auto;
+    width: 100%;
+    gap: 15px; }
+    .subheader--inner .subheader--right,
+    .subheader--inner .subheader--left {
+      display: flex;
+      align-items: center; }
+    .subheader--inner .subheader--right {
+      justify-content: flex-end;
+      text-align: right; }
+      .subheader--inner .subheader--right > * {
+        flex-shrink: 0;
+        margin-left: 15px; }
+  .subheader--full-width .subheader--inner {
+    max-width: 100%; }
+  .subheader-border--true {
+    border-bottom: 1px solid var(--color-border, #dadce0); }
+  .subheader .custom-select--button {
+    padding: 5px 0;
+    --color-body: var(--color-secondary-menu-text); }
+  .subheader .social-links {
+    display: inline-flex; }
+    .subheader .social-links li {
+      margin: 0; }
+      .subheader .social-links li a {
+        width: 26px;
+        height: 26px; }
+        .subheader .social-links li a svg {
+          height: 14px;
+          width: auto; }
+  .subheader .thb-full-menu {
+    text-align: left; }
+    .subheader .thb-full-menu > li {
+      padding: 0 10px; }
+      .subheader .thb-full-menu > li > a {
+        margin: 0;
+        font-weight: 400;
+        font-size: calc(var(--font-navigation-scale, 1) * 12px); }
+      .subheader .thb-full-menu > li:first-child {
+        padding-left: 0; }

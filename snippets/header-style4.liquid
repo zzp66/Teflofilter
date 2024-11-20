@@ -1,0 +1,15 @@
+<div class="thb-header-mobile-left">
+	{% render 'header-mobile-toggle', header_settings: header_settings, blocks: blocks %}
+</div>
+<div class="thb-header-desktop-left">
+	<div class="thb-secondary-area">
+		{%- unless header_settings.minimized_search -%}
+			{%- render 'header-inline-search', header_settings: header_settings -%}
+		{%- else -%}
+			<a class="thb-secondary-area-item thb-quick-search" href="{{ routes.search_url }}" title="{{ 'sections.header.search' | t }}">{%- render 'svg-icons' with 'search' -%}</a>
+		{%- endunless -%}
+	</div>
+</div>
+{% render 'header-logo', header_settings: header_settings %}
+{% render 'header-secondary-area', header_settings: header_settings %}
+{% render 'header-full-menu', menu: header_settings.menu, blocks: blocks %}

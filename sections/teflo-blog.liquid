@@ -1,0 +1,322 @@
+<style>
+    .teflo-blog{
+        padding: 0 calc(100vw * 20 / var(--base-width));
+        padding-top: calc(100vw * 50 / var(--base-width));
+        padding-bottom: calc(100vw * 54 / var(--base-width));
+        background: #0D0D0D;
+        position: relative;
+        z-index: 2;
+    }
+    .teflo-blog-top{
+
+        padding-top: calc(100vw * 30 / var(--base-width));
+        border-top: 0.4px solid rgba(255, 255, 255, 0.30);
+        display: flex;
+        margin-bottom: calc(100vw * 58 / var(--base-width));
+    }
+    .teflo-blog-list{
+        display: grid;
+        grid-template-columns: repeat({{ section.settings.post_limit }}, 1fr);
+        column-gap: calc(100vw * 20 / var(--base-width));
+    }
+    .teflo-blog-top-subtitle{
+        color: #FFF;
+        font-size: calc(100vw * 16 / var(--base-width));
+        font-style: normal;
+        font-weight: 400;
+        line-height: calc(100vw * 16 / var(--base-width));
+        width: 50%;
+        opacity: 0.5;
+    }
+    .teflo-blog-top-h2{
+        color: #FFF;
+        font-size: calc(100vw * 60 / var(--base-width));
+        font-style: normal;
+        font-weight: 400;
+        line-height: calc(100vw * 66 / var(--base-width));
+        letter-spacing: calc(100vw * -1.8 / var(--base-width));
+        margin-bottom: calc(100vw * 50 / var(--base-width));
+    }
+    .teflo-blog-top-rt{
+        max-width: calc(100vw * 552 / var(--base-width));
+    }
+    .teflo-blog-list-item-time{
+        color: #FFF;
+        font-size: calc(100vw * 16 / var(--base-width));
+        font-style: normal;
+        font-weight: 400;
+        line-height: calc(100vw * 16 / var(--base-width));
+        margin-bottom: calc(100vw * 12 / var(--base-width));
+        opacity: 0.5;
+    }
+    .teflo-blog-list-item-img{
+        height: calc(100vw * 305 / var(--base-width));
+    }
+    .teflo-blog-list-item-img img{
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        border-radius: calc(100vw * 4 / var(--base-width));
+    }
+    .teflo-blog-list-item-label{
+        display: flex;
+        felx-wrap: wrap;
+        margin-top: calc(100vw * 23 / var(--base-width));
+        min-height: calc(100vw * 52 / var(--base-width));
+    }
+    .teflo-blog-list-item-label-title{
+        color: #FFF;
+        font-size: calc(100vw * 12 / var(--base-width));
+        font-style: normal;
+        font-weight: 400;
+        line-height: calc(100vw * 18 / var(--base-width));
+        padding: calc(100vw * 4 / var(--base-width)) calc(100vw * 12 / var(--base-width));
+        margin-right: calc(100vw * 7 / var(--base-width));
+        
+        border-radius: calc(100vw * 3 / var(--base-width));
+        background: rgba(255, 255, 255, 0.1);
+        height:fit-content;
+    }
+    .teflo-blog-list-item-h3 a{
+        color: #FFF;
+        font-size: calc(100vw * 20 / var(--base-width));
+        font-style: normal;
+        font-weight: 400;
+        line-height: calc(100vw * 24 / var(--base-width));
+        letter-spacing: calc(100vw * -0.6 / var(--base-width));
+        margin-bottom: calc(100vw * 26 / var(--base-width));
+        display: block;
+    }
+    .teflo-blog-list-item-username{
+        color: #FFF;
+        font-size: calc(100vw * 16 / var(--base-width));
+        font-style: normal;
+        font-weight: 300;
+        line-height: calc(100vw * 20 / var(--base-width));
+        letter-spacing: calc(100vw * -0.48 / var(--base-width));
+        opacity: 0.5;
+    }
+
+    @media(max-width:1500px){
+        .teflo-blog-list{
+            grid-template-columns: repeat(3, 1fr);
+            row-gap: calc(100vw * 60 / var(--base-width));
+        }
+    }
+
+    @media(max-width:1024px){
+        .teflo-blog{
+            padding: 0 calc(100vw * 25 / var(--base-width));
+            padding-bottom: calc(100vw * 140 / var(--base-width));
+            padding-top: calc(100vw * 80 / var(--base-width));
+        }
+        .teflo-blog-top{
+            display: block;
+            margin-bottom: calc(100vw * 80 / var(--base-width));
+            border-top:0px;
+        }
+        .teflo-blog-top-subtitle{
+            width: 100%;
+            margin-bottom: calc(100vw * 40 / var(--base-width));
+        }
+        .teflo-blog-top-rt{
+            max-width: 100%;
+        }
+        .teflo-blog-top-h2{
+            color: #FFF;
+            font-size: calc(100vw * 70 / var(--base-width));
+            font-style: normal;
+            font-weight: 400;
+            line-height: calc(100vw * 76 / var(--base-width));
+            letter-spacing: calc(100vw * -2.1 / var(--base-width));
+            margin-bottom: calc(100vw * 70 / var(--base-width));
+        }
+        .teflo-blog-list{
+            grid-template-columns: repeat(1, 1fr);
+            column-gap: 0;
+            row-gap: calc(100vw * 100 / var(--base-width));
+        }
+        .teflo-blog-list-item-time{
+            font-size: calc(100vw * 20 / var(--base-width));
+            line-height: calc(100vw * 26 / var(--base-width));
+            margin-bottom: calc(100vw * 20 / var(--base-width));
+            opacity: 0.5;
+        }
+        .teflo-blog-list-item-img{
+            height: auto;
+        }
+        .teflo-blog-list-item-img img{
+            width: 100%;
+            height: auto;
+        }
+        .teflo-blog-list-item-label{
+            margin-top: calc(100vw * 40 / var(--base-width));
+            min-height: auto;
+        }
+        .teflo-blog-list-item-label-title{
+            color: #FFF;
+            font-size: calc(100vw * 20 / var(--base-width));
+            font-style: normal;
+            font-weight: 400;
+            line-height: calc(100vw * 26 / var(--base-width));
+           padding:calc(100vw * 10 / var(--base-width)) calc(100vw * 20 / var(--base-width));
+           margin-bottom:calc(100vw * 35 / var(--base-width));
+        }
+        .teflo-blog-list-item-h3 a{
+            font-size: calc(100vw * 36 / var(--base-width));
+            line-height: calc(100vw * 42 / var(--base-width));
+            margin-bottom: calc(100vw * 20 / var(--base-width));
+            letter-spacing: calc(100vw * -1.08 / var(--base-width));
+            min-height: calc(100vw * 50 / var(--base-width));
+        }
+        .teflo-blog-list-item-username{
+            font-size: calc(100vw * 30 / var(--base-width));
+            line-height: calc(100vw * 36 / var(--base-width));
+            letter-spacing: calc(100vw * -0.9 / var(--base-width));
+            margin-bottom:0px;
+        }
+    }
+</style>
+{%- liquid
+    assign button_text = section.settings.button_text
+    assign button_link = section.settings.button_link
+    assign button_text_color = section.settings.button_text_color
+    assign button_bg_color = section.settings.button_bg_color
+    assign button_hover_text_color = section.settings.button_hover_text_color
+    assign button_hover_bg_color = section.settings.button_hover_bg_color
+    assign button_border_color = section.settings.button_border_color
+    assign button_border = section.settings.button_border
+    assign button_hover_border_color = section.settings.button_hover_border_color
+
+
+    assign section_blog = section.settings.blog
+	assign post_limit = section.settings.post_limit
+-%}
+
+<div class="teflo-blog">
+    <div  class="teflo-blog-top">
+        <p class="teflo-blog-top-subtitle">{{ section.settings.subtitle }}</p>
+        <div class="teflo-blog-top-rt">
+            <h2 class="teflo-blog-top-h2">{{ section.settings.title }}</h2>
+            <div class="teflo-blog-top-btn">
+                {% render 'teflo-button',
+                    button_link:button_link,
+                     button_text:button_text,
+                      button_text_color:button_text_color,
+                     button_bg_color:button_bg_color,
+                     button_hover_text_color:button_hover_text_color,
+                     button_hover_bg_color:button_hover_bg_color,
+                     button_border_color:button_border_color, 
+                     button_border:button_border,
+                    button_hover_border_color:button_hover_border_color
+                     
+                %}
+            </div>
+        </div>
+    </div>
+    <div class="teflo-blog-list">
+        {% for article in blogs[section_blog].articles limit: post_limit %}
+            <div class="teflo-blog-list-item">
+                <p class="teflo-blog-list-item-time">{{ article.published_at | date: "%B %d %Y" }}</p>
+                <div class="teflo-blog-list-item-img">
+                    <a href="{{ article.url }}" title="{{ article.title | escape }}"><img loading="lazy" src="{{ article.image | image_url: width: '650' }}" alt="{{ article.image_alt }}" /></a>
+                </div>
+                <div class="teflo-blog-list-item-label">
+                    {% for tag in article.tags %}
+                        <p class="teflo-blog-list-item-label-title">{{ tag }}</p>
+                    {% endfor %}
+                </div>
+                <h3 class="teflo-blog-list-item-h3"><a href="{{ article.url }}" title="{{ article.title | escape }}">{{ article.title }}</a></h3>
+                <p class="teflo-blog-list-item-username">{{ article.author }}</p>
+            </div>
+
+        {% endfor %}
+    </div>
+</div>
+
+{% schema %}
+{
+    "name": "Teflo Blog",
+    "settings": [
+        {
+            "id": "subtitle",
+            "type": "text",
+            "label": "subtitle"
+        },
+        {
+            "id": "title",
+            "type": "text",
+            "label": "title"
+        },
+        {
+            "type": "range",
+            "id": "post_limit",
+            "min": 2,
+            "max": 4,
+            "step": 1,
+            "label": "show number of items",
+            "default": 3
+          },
+          {
+            "type": "blog",
+            "id": "blog",
+            "label": "Blog"
+          },
+        {
+            "type": "color",
+            "id": "button_border_color",
+            "label": "Button border color"
+        },
+        {
+            "type": "color",
+            "id": "button_hover_border_color",
+            "label": "Button hover border color"
+        },
+        {
+            "type": "checkbox",
+            "id": "button_border",
+            "label": "Button border",
+            "default": true
+        },
+        {
+            "type": "text",
+            "id": "button_text",
+            "label": "Button text"
+        },
+        {
+            "type": "text",
+            "id": "button_link",
+            "label": "Button link, enter a URL or popup"
+        },
+        {
+            "type": "text",
+            "id": "button_text_color",
+            "label": "Button text color",
+            "default": "#000000"
+        },
+        {
+            "type": "text",
+            "id": "button_bg_color",
+            "label": "Button background color",
+            "default": "#FFFFFF"
+        },
+        {
+            "type": "text",
+            "id": "button_hover_text_color",
+            "label": "Button hover text color",
+            "default": "#FFFFFF"
+        },
+        {
+            "type": "text",
+            "id": "button_hover_bg_color",
+            "label": "Button hover background color",
+            "default": "#000000"
+        }
+    ],
+    "presets": [
+        {
+            "name": "Teflo Blog"
+        }
+    ]
+}
+{% endschema %} 

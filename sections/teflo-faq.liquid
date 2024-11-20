@@ -1,0 +1,240 @@
+<style>
+    .teflo-faq{
+        padding:0 calc(100vw * 20 / var(--base-width));
+        background-color: #fff;
+        padding-bottom: calc(100vw * 140 / var(--base-width));
+        position: relative;
+        z-index: 2;
+    }
+    .teflo-faq-h2{
+        color: #0D0D0D;
+        font-size: calc(100vw * 60 / var(--base-width));
+        font-style: normal;
+        font-weight: 400;
+        line-height: calc(100vw * 66 / var(--base-width));
+        letter-spacing: calc(100vw * -1.8 / var(--base-width));
+        max-width: calc(100vw * 476 / var(--base-width));
+        
+    
+    }
+    .teflo-faq-list{
+        display: flex;
+        padding-top: calc(100vw * 40 / var(--base-width));
+        border-top: 0.4px solid rgba(13, 13, 13, 0.30);
+    }
+    .teflo-faq-list-lt{
+        width:45%;
+    }
+    .teflo-faq-list-rt{
+        width:55%;
+    }
+    .teflo-faq-list-rt-item-top{
+        display:flex;
+        padding-top: calc(100vw * 20 / var(--base-width));
+        padding-bottom: calc(100vw * 30 / var(--base-width));
+        cursor: pointer;
+        border-top: 0.4px solid rgba(13, 13, 13, 0.30);
+    }
+    .teflo-faq-list-rt-item:first-child .teflo-faq-list-rt-item-top{
+        border-top:0;
+    }
+    .teflo-faq-list-rt-item-top-num{
+        color: #0D0D0D;
+        font-size: calc(100vw * 16 / var(--base-width));
+        font-style: normal;
+        font-weight: 400;
+        line-height: calc(100vw * 16 / var(--base-width));
+        width: calc(100vw * 60 / var(--base-width));
+        flex-shrink: 0;
+        padding-top: calc(100vw * 5 / var(--base-width));
+    }
+    .teflo-faq-list-rt-item-top-h3{
+        color: #0D0D0D;
+        font-size: calc(100vw * 22 / var(--base-width));
+        font-style: normal;
+        font-weight: 400;
+        line-height: calc(100vw * 28 / var(--base-width));
+        letter-spacing: calc(100vw * -0.66 / var(--base-width));
+        padding-right: calc(100vw * 60 / var(--base-width));
+        flex:1;
+        margin-bottom:0px;
+    }
+    .teflo-faq-list-rt-item-top-svg{
+        flex-shrink: 0;
+
+  
+    }
+    .teflo-faq-list-rt-item-top-svg svg{
+        width: calc(100vw * 40 / var(--base-width));
+        height: calc(100vw * 40 / var(--base-width));
+    }
+    .teflo-faq-list-rt-item-content{
+        height: 0;
+        overflow: hidden;
+    }
+    .teflo-faq-list-rt-item-top-svg2{
+        display:none;
+    }
+    .teflo-faq-active .teflo-faq-list-rt-item-top-svg{
+        background: rgba(5,34,203,1);
+    }
+    .teflo-faq-active .teflo-faq-list-rt-item-top-svg .teflo-faq-list-rt-item-top-svg2{
+        display:block;
+    }
+    .teflo-faq-list-rt-item-content{
+        padding:0 calc(100vw * 60 / var(--base-width));
+    }
+    .teflo-faq-list-rt-item-content *{
+        font-size: calc(100vw * 16 / var(--base-width));
+        font-style: normal;
+        font-weight: 400;
+        line-height: calc(100vw * 22 / var(--base-width));
+    }
+
+    @media(max-width:1024px){
+        .teflo-faq{
+            padding:0 calc(100vw * 25 / var(--base-width));
+            padding-bottom: calc(100vw * 170 / var(--base-width));
+        }
+        .teflo-faq-h2{
+            font-size: calc(100vw * 70 / var(--base-width));
+            line-height: calc(100vw * 76 / var(--base-width));
+            letter-spacing: calc(100vw * -2.1 / var(--base-width));
+            max-width: 100%;
+            margin-bottom: calc(100vw * 50 / var(--base-width));
+        }
+        .teflo-faq-list{
+            display: block;
+            padding-top: 0;
+        }
+        .teflo-faq-list-lt{
+            display:none;
+        }
+        .teflo-faq-list-rt{
+            width:100%;
+        }
+        .teflo-faq-list-rt-item-top-num{
+            font-size: calc(100vw * 20 / var(--base-width));
+            line-height: calc(100vw * 20 / var(--base-width));
+            width: calc(100vw * 50 / var(--base-width));
+            opacity: 0.5;
+        }
+        .teflo-faq-list-rt-item-top-h3{
+            font-size: calc(100vw * 36 / var(--base-width));
+            line-height: calc(100vw * 42 / var(--base-width));
+            letter-spacing: calc(100vw * -1.08 / var(--base-width));
+            padding-right: calc(100vw * 60 / var(--base-width));
+        }
+        .teflo-faq-list-rt-item-top{
+            padding-top: calc(100vw * 30 / var(--base-width));
+            padding-bottom: calc(100vw * 50 / var(--base-width));
+        }
+        .teflo-faq-list-rt-item-top-svg svg{
+            width: calc(100vw * 50 / var(--base-width));
+            height: calc(100vw * 50 / var(--base-width));
+        }
+        .teflo-faq-list-rt-item-content *{
+            font-size: calc(100vw * 30 / var(--base-width));
+            font-style: normal;
+            font-weight: 400;
+            line-height: calc(100vw * 36 / var(--base-width));
+            letter-spacing: calc(100vw * -0.9 / var(--base-width));
+        }
+        .teflo-faq-list-rt-item-content{
+            padding-left:calc(100vw * 50 / var(--base-width));
+            padding-right:calc(100vw * 20 / var(--base-width));
+        }
+    }
+</style>
+<div class="teflo-faq">
+    <h2 class="teflo-faq-h2">{{ section.settings.title }}</h2>
+    <div class="teflo-faq-list">
+        <div class="teflo-faq-list-lt"></div>
+        <div class="teflo-faq-list-rt">
+            {% for block in section.blocks %}
+                <div class="teflo-faq-list-rt-item">
+                    <div class="teflo-faq-list-rt-item-top">
+                        <div class="teflo-faq-list-rt-item-top-num">{{ forloop.index }}</div>
+                        <h3 class="teflo-faq-list-rt-item-top-h3">{{ block.settings.question }}</h3>
+                        <div class="teflo-faq-list-rt-item-top-svg">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="teflo-faq-list-rt-item-top-svg2"  viewBox="0 0 50 50" fill="none">
+                                <rect x="50" y="50" width="50" height="50" rx="3" transform="rotate(-180 50 50)" fill="#0522CB"/>
+                                <path d="M32.5 24.375L25 16.875M25 16.875L17.5 24.375M25 16.875L25 32.5" stroke="white"/>
+                                </svg>
+                            <svg xmlns="http://www.w3.org/2000/svg" class="teflo-faq-list-rt-item-top-svg1"  viewBox="0 0 50 50" fill="none">
+                                <rect width="50" height="50" rx="3" fill="#0D0D0D"/>
+                                <path d="M17.5 24.375L25 31.875M25 31.875L32.5 24.375M25 31.875V16.25" stroke="white"/>
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="teflo-faq-list-rt-item-content">
+                        {{ block.settings.answer }}
+                        <div style="height:40px;"></div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+
+{% schema %}
+{
+    "name": "Teflo FAQ",
+    "settings": [
+        {
+            "type": "text",
+            "id": "title",
+            "label": "Title",
+            "default": "FAQ"
+        },
+    ],
+    "blocks": [
+        {
+            "type": "text",
+            "name": "Question",
+            "settings": [
+                {
+                    "type": "text",
+                    "id": "question",
+                    "label": "Question"
+                },
+                {
+                    "type": "richtext",
+                    "id": "answer",
+                    "label": "Answer"
+                }
+            ]
+        }
+    ],
+    "presets": [
+        {
+            "category": "Teflo",
+            "name": "Teflo FAQ"
+        }
+    ]
+}
+{% endschema %}
+{% javascript %}
+    //点击展开，收起，切换svg，动画用gsap
+    document.querySelectorAll('.teflo-faq-list-rt-item-top').forEach((item,index)=>{
+        item.addEventListener('click',()=>{
+            let content = item.nextElementSibling;
+            let svg = item.querySelector('.teflo-faq-list-rt-item-top-svg');
+            let svg1 = svg.querySelector('.teflo-faq-list-rt-item-top-svg1');
+            let svg2 = svg.querySelector('.teflo-faq-list-rt-item-top-svg2');
+            if(content.style.height == '0px' || content.style.height == ''){
+                content.style.height = content.scrollHeight + 'px';
+              
+                svg1.style.display = 'none';
+                svg2.style.display = 'block';
+              
+            }else{
+                svg1.style.display = 'block';
+                svg2.style.display = 'none';
+                content.style.height = '0px';
+           
+           
+            }
+        })
+    })
+{% endjavascript %}

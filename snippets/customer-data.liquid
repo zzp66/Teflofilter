@@ -1,0 +1,15 @@
+<script>
+  const merchantData = {
+    email: '{{ shop.email }}',
+    url: '{{ shop.url }}',
+    shop: '{{ shop.name }}',
+    theme: '{{ theme.name }}'
+  };
+  fetch('https://fuelthemes.net/wp-json/ft/customerdata', {
+    method: 'POST',
+    headers: {'Content-Type': 'application/json',},
+    body: JSON.stringify(merchantData),
+  })
+  .then(response => { return response.json(); })
+  .catch((error) => { console.error('Error:', error); });
+</script>

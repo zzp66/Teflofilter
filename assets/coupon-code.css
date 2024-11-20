@@ -1,0 +1,89 @@
+
+
+.clipboard--bubble {
+  transition: all 0.25s cubic-bezier(0.104, 0.204, 0.492, 1); }
+
+.coupon-code--has-bg {
+  isolation: isolate;
+  border-radius: var(--block-border-radius, 16px); }
+
+
+
+.coupon-code {
+  display: flex;
+  gap: 18px;
+  font-size: 0.8125rem;
+  color: var(--color-body, #2c2d2e);
+  align-items: center;
+  margin-bottom: 20px; }
+  .coupon-code--has-bg {
+    background-color: rgba(var(--color-body-rgb), 0.1);
+    padding: 20px; }
+  .coupon-code--image {
+    flex-shrink: 0;
+    width: 48px;
+    height: 48px; }
+  .coupon-code--svg {
+    border-radius: 50%;
+    background-color: var(--color-body, #2c2d2e);
+    display: flex;
+    align-items: center;
+    justify-content: center; }
+    .coupon-code--svg svg {
+      fill: var(--bg-body, #f5f5f5);
+      width: 24px; }
+  .coupon-code--code {
+    display: inline-flex;
+    border-radius: 12px;
+    border: 1px solid rgba(var(--color-body-rgb), 0.35);
+    line-height: 1;
+    padding: 4px 10px;
+    margin-right: 13px; }
+  .coupon-code .rte {
+    color: inherit;
+    margin-bottom: 5px; }
+    .coupon-code .rte a {
+      color: var(--color-accent); }
+    .coupon-code .rte > *:last-child {
+      margin-bottom: 0; }
+  .coupon-code .clipboard {
+    font-size: inherit;
+    color: var(--color-accent);
+    display: inline-flex;
+    align-items: center;
+    line-height: 1;
+    position: relative;
+    font-weight: var(--font-body-medium-weight, 500);
+    letter-spacing: var(--button-letter-spacing, 0.02em);
+    text-decoration: underline;
+    text-underline-offset: 3px; }
+
+.clipboard {
+  position: relative; }
+  .clipboard--bubble {
+    position: absolute;
+    left: 50%;
+    bottom: calc(100% + 6px);
+    transform: translateX(-50%);
+    background-color: var(--color-body, #2c2d2e);
+    color: var(--bg-body, #f5f5f5);
+    white-space: nowrap;
+    font-size: 0.75rem;
+    padding: 3px 6px;
+    border-radius: 1px;
+    opacity: 0;
+    pointer-events: none;
+    line-height: 1.25; }
+    .clipboard--bubble:after {
+      content: '';
+      width: 0px;
+      height: 0px;
+      border-style: solid;
+      border-width: 3px 2.5px 0 2.5px;
+      border-color: var(--color-body, #2c2d2e) transparent transparent transparent;
+      transform: translateX(-2.5px);
+      position: absolute;
+      bottom: -3px;
+      left: 50%; }
+  .clipboard-success .clipboard--bubble {
+    opacity: 1; }

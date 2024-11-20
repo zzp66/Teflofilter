@@ -1,0 +1,42 @@
+{%- liquid
+	assign current_variant = product.selected_or_first_available_variant
+	assign inventory_quantity = current_variant.inventory_quantity
+	assign threshold = settings.inventory_notice_threshold
+-%}
+{%- if settings.show_products_inventory -%}
+<div id="inventory-{{ product.id }}" class="product-inventory-notice--wrapper">
+	{% if current_variant != blank and inventory_quantity > 0 %}
+		{% if settings.show_inventory_notice == 'always' or inventory_quantity <= threshold %}
+				{%- liquid
+					assign show_inventory_count = false
+					if settings.show_inventory_count == 'always'
+						assign show_inventory_count = true
+					endif
+					if settings.show_inventory_count == 'low' and inventory_quantity <= threshold
+						assign show_inventory_count = true
+					endif
+
+					if show_inventory_count
+						if inventory_quantity <= threshold
+							assign notice = 'products.product.inventory.only_x_left' | t: quantity: inventory_quantity
+						else
+							assign notice = 'products.product.inventory.x_units_available' | t: quantity: inventory_quantity
+						endif
+					else
+						if inventory_quantity <= threshold
+							assign notice = 'products.product.inventory.low_stock' | t
+						else
+							assign notice = 'products.product.inventory.in_stock' | t
+						endif
+					endif
+				-%}
+			<div class="product-inventory-notice product-inventory-notice--{% if inventory_quantity <= threshold %}low{% else %}normal{% endif %}">
+				<div class="product-inventory-notice--text">
+					{%- if settings.inventory_notice_pulse -%}<div class="product-inventory-notice--pulse"></div>{%- endif %}
+					{{ notice }}
+				</div>
+			</div>
+		{% endif %}
+	{% endif %}
+</div>
+{%- endif -%}

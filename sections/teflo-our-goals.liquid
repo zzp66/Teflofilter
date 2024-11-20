@@ -1,0 +1,244 @@
+<style>
+    .teflo-our-goals{
+        padding-top: calc(100vw * 140 / var(--base-width));
+        background: #fff;
+    }
+    .teflo-our-goals-subtitle{
+        color: #1A1A1A;
+        font-size: calc(100vw * 16 / var(--base-width));
+        font-style: normal;
+        font-weight: 400;
+        line-height: calc(100vw * 16 / var(--base-width));
+        margin-bottom: calc(100vw * 60 / var(--base-width));
+        opacity: 0.5;
+        padding-left: calc(100vw * 20 / var(--base-width));
+    }
+    .teflo-our-goals-list{
+        padding: 0 calc(100vw * 20 / var(--base-width));
+    }
+    .teflo-our-goals-list-item{
+        height: calc(100vw * 220 / var(--base-width));
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        border-top: 0.4px solid rgba(25, 25, 25, 0.1);
+    }
+    .teflo-our-goals-list-item-lt{
+        display: flex;
+        align-items: flex-start;
+    }
+    .teflo-our-goals-list-item-lt-span{
+        font-size: calc(100vw * 16 / var(--base-width));
+        font-style: normal;
+        font-weight: 400;
+        line-height: calc(100vw * 16 / var(--base-width));
+        opacity: 0.5;
+        margin-top: calc(100vw * 10 / var(--base-width));
+        margin-right: calc(100vw * 30 / var(--base-width));
+    }
+    .teflo-our-goals-list-item-lt-title{
+        color: #1A1A1A;
+        font-size: calc(100vw * 70 / var(--base-width));
+        font-style: normal;
+        font-weight: 400;
+        line-height: calc(100vw * 70 / var(--base-width));
+        letter-spacing: calc(100vw * -1.4 / var(--base-width));
+    }
+    .teflo-our-goals-list-item-rt{
+        max-width: calc(100vw * 690 / var(--base-width));
+    }
+    .teflo-our-goals-list-item-rt *{
+        color: #1A1A1A;
+        font-size: calc(100vw * 20 / var(--base-width));
+        font-style: normal;
+        font-weight: 400;
+        line-height: calc(100vw * 26 / var(--base-width));
+        opacity: 0.8;
+    }
+    .teflo-our-goals-button{
+        display: flex;
+        justify-content: end;
+        margin-top: calc(100vw * 10 / var(--base-width));
+        padding-right: calc(100vw * 40 / var(--base-width));
+    }
+
+    @media (max-width:1024px){
+        .teflo-our-goals{
+            padding-top: calc(100vw * 170 / var(--base-width));
+        }
+        .teflo-our-goals-subtitle{
+            font-size: calc(100vw * 20 / var(--base-width));
+            line-height: calc(100vw * 26 / var(--base-width));
+            margin-bottom: calc(100vw * 30 / var(--base-width));
+        }
+        .teflo-our-goals-list{
+            padding: 0 calc(100vw * 25 / var(--base-width));
+        }
+        .teflo-our-goals-list-item{
+            height: auto;
+            display: block;
+            padding: calc(100vw * 50 / var(--base-width)) 0;
+            padding-bottom: calc(100vw * 60 / var(--base-width));
+        }
+        .teflo-our-goals-list-item-lt{
+            margin-bottom: calc(100vw * 30 / var(--base-width));
+        }
+        .teflo-our-goals-list-item-lt-span{
+            font-size: calc(100vw * 20 / var(--base-width));
+            line-height: calc(100vw * 26 / var(--base-width));
+            width: calc(100vw * 46 / var(--base-width));
+        }
+        .teflo-our-goals-list-item-lt-title{
+            font-size: calc(100vw * 70 / var(--base-width));
+            line-height: calc(100vw * 76 / var(--base-width));
+            letter-spacing: calc(100vw * -1.4 / var(--base-width));
+            color: #191919;
+        }
+        .teflo-our-goals-list-item-rt{
+            max-width: 100%;
+            padding-left: calc(100vw * 71 / var(--base-width));
+            box-sizing: border-box;
+        }
+        .teflo-our-goals-list-item-rt *{
+            font-size: calc(100vw * 30 / var(--base-width));
+            line-height: calc(100vw * 36 / var(--base-width));
+        }
+    }
+</style>
+{%- liquid
+    assign logo = section.settings.logo
+    assign logo_alt = section.settings.logo_alt
+    assign logo_link = section.settings.logo_link
+    assign button_text = section.settings.button_text
+    assign button_link = section.settings.button_link
+    assign button_text_color = section.settings.button_text_color
+    assign button_bg_color = section.settings.button_bg_color
+    assign button_hover_text_color = section.settings.button_hover_text_color
+    assign button_hover_bg_color = section.settings.button_hover_bg_color
+    assign button_border_color = section.settings.button_border_color
+    assign button_border = section.settings.button_border
+    assign button_hover_border_color = section.settings.button_hover_border_color
+-%}
+{% schema %}
+{
+    "name": "Our goals",
+    "settings": [
+        {
+            "type": "text",
+            "id": "subtitle",
+            "label": "Subtitle",
+            "default": "Our goals"
+        },
+            // hover 的颜色
+            {
+                "type": "color",
+                "id": "button_border_color",
+                "label": "Button border color",
+            },
+            {
+                "type": "color",
+                "id": "button_hover_border_color",
+                "label": "Button hover border color",
+            },
+            {
+                "type": "checkbox",
+                "id": "button_border",
+                "label": "Button border",
+                "default": false
+            },
+            {
+                "type": "text",
+                "id": "button_text",
+                "label": "Button text"
+            },
+            {
+                "type": "text",
+                "id": "button_link",
+                "label": "Button link, enter a URL or popup"
+            },
+            {
+                "type": "text",
+                "id": "button_text_color",
+                "label": "Button text color",
+                "default": "#000000"
+            },
+            {
+                "type": "text",
+                "id": "button_bg_color",
+                "label": "Button background color",
+                "default": "#FFFFFF"
+            },
+            {
+                "type": "text",
+                "id": "button_hover_text_color",
+                "label": "Button hover text color",
+                "default": "#FFFFFF"
+            },
+            {
+                "type": "text",
+                "id": "button_hover_bg_color",
+                "label": "Button hover background color",
+                "default": "#000000"
+            }
+    ],
+    "blocks":[
+        {
+            "type": "list",
+            "name": "Info item",
+            "settings": [
+                {
+                    "type": "text",
+                    "id": "num",
+                    "label": "Num"
+                },
+                {
+                    "type": "text",
+                    "id": "title",
+                    "label": "Title"
+                },
+                {
+                    "type": "richtext",
+                    "id": "desc",
+                    "label": "Description"
+                }
+            ]
+        }
+    ],
+    "presets": [
+        {
+            "name": "Our goals"
+        }
+    ]
+}
+{% endschema %}
+<div class="teflo-our-goals">
+    <p class="teflo-our-goals-subtitle">{{ section.settings.subtitle }}</p>
+    <div class="teflo-our-goals-list">
+        {% for block in section.blocks %}
+            <div class="teflo-our-goals-list-item">
+                <div class="teflo-our-goals-list-item-lt">
+                    <span class="teflo-our-goals-list-item-lt-span">{{ block.settings.num }}</span>
+                    <h3 class="teflo-our-goals-list-item-lt-title">{{ block.settings.title }}</h3>
+                </div>
+                <div class="teflo-our-goals-list-item-rt">
+                    {{ block.settings.desc }}
+                </div>
+            </div>
+        {% endfor %}
+     
+    </div>
+    <div class="teflo-our-goals-button">
+        {% render 'teflo-button',
+            button_link:button_link,
+             button_text:button_text,
+              button_text_color:button_text_color,
+             button_bg_color:button_bg_color,
+             button_hover_text_color:button_hover_text_color,
+             button_hover_bg_color:button_hover_bg_color,
+             button_border_color:button_border_color, 
+             button_border:button_border,
+                 button_hover_border_color:button_hover_border_color
+             
+        %}
+    </div>
+</div>

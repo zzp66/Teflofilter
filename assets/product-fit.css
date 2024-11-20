@@ -1,0 +1,39 @@
+
+
+
+
+.product-fit-guide {
+  margin-bottom: 20px; }
+  .product-fit-guide--heading {
+    font-size: 0.8125rem;
+    font-weight: 600;
+    line-height: 1;
+    margin-bottom: 10px;
+    text-transform: uppercase; }
+  .product-fit-guide--lines {
+    display: grid;
+    gap: 8px;
+    grid-template-columns: repeat(5, 1fr); }
+  .product-fit-guide--line {
+    background-color: var(--color-border, #dadce0);
+    height: 6px;
+    margin-bottom: 8px;
+    border-radius: 3px; }
+    .product-fit-guide--line--active {
+      border-color: var(--active-color);
+      background-color: var(--active-color); }
+  .product-fit-guide--labels {
+    display: flex;
+    justify-content: space-around;
+    gap: 10px;
+    font-size: 0.8125rem; }
+  .product-fit-guide--label-left, .product-fit-guide--label-right {
+    flex: 1 0 0; }
+  .product-fit-guide--label-middle {
+    flex-grow: 0;
+    max-width: 70%;
+    padding: 0 5px;
+    text-align: center; }
+  .product-fit-guide--label-right {
+    flex: 1 0 0;
+    text-align: right; }

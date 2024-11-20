@@ -1,0 +1,46 @@
+{%- liquid
+	assign is_purchasable = false
+	if product_small.available and product_small.variants.size == 1
+		assign is_purchasable = true
+	endif
+-%}
+<product-card-small class="product-card-small quick-add-to-card--{{ is_purchasable }}" data-url="{{ product_small.url }}" data-id="{{ product_small.selected_or_first_available_variant.id }}" data-product-handle="{{ product_small.handle }}">
+	<div class="product-card-small--image">
+		<a href="{{ product_small.url }}" title="{{ product_small.title | escape }}" class="product-cart-small--image-link">
+			{% if product_small.featured_image %}
+				{%- render 'responsive-image', image: product_small.featured_image, sizes: '200x0' -%}
+			{% else %}
+				<div class="thb-placeholder" style="width: 70px; height:80px;">
+					{%-
+						liquid
+						capture index
+							cycle '1', '2', '3', '4', '5', '6'
+						endcapture
+					-%}
+					{{ 'product-' | append: index | placeholder_svg_tag }}
+				</div>
+			{% endif %}
+		</a>
+	</div>
+	<div class="product-card-small--info">
+		{%-
+			liquid
+			assign product_title = product_small.title
+			if predictive_search
+				assign product_title = product_title | highlight: predictive_search.terms
+			endif
+		-%}
+		<a href="{{ product_small.url }}" title="{{ product_small.title | escape }}" class="product-card-small--link">{{ product_title }}</a>
+		<div class="product-card-small--add-to-cart">
+			{% render 'product-price', product: product_small %}
+			{% if is_purchasable %}
+			<button class="product-card-small--add-to-cart-button" type="button"><span class="product-card-small--add-to-cart-icon">{%- render 'svg-icons' with 'thb-add-to-cart' %}<span class="loading-overlay">{% render 'svg-icons' with 'thb-loading' %}</span></span> <span class="product-card-small--add-to-cart-text">{{ 'products.product.add_to_cart' | t }}</span></button>
+			{% else %}
+			<quick-view class="product-card-small--add-to-cart-button" data-product-handle="{{ product_small.handle }}"><span class="product-card-small--add-to-cart-icon">{%- render 'svg-icons' with 'thb-add-to-cart' %}<span class="loading-overlay">{% render 'svg-icons' with 'thb-loading' %}</span></span> <span class="product-card-small--add-to-cart-text">	{{ 'products.product.choose_options' | t }}</span></quick-view>
+			{% endif %}
+		</div>
+		{%- if show_close -%}
+			<button class="compare-remove" data-product-id="{{ product_small.id }}">{%- render 'svg-icons' with 'close' -%}</button>
+		{%- endif -%}
+	</div>
+</product-card-small>

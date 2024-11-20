@@ -1,0 +1,205 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "a6918ad0-9870-48e2-8fc1-bdf42d316de1": {
+      "type": "spacer",
+      "settings": {
+        "spacer_mobile": 15,
+        "spacer_desktop": 30,
+        "border_separator": false,
+        "border_separator_full": false
+      }
+    },
+    "bb6b08ef-45e6-457a-aa39-7899f1ea2d80": {
+      "type": "scrolling-images",
+      "blocks": {
+        "template--19142479806776__bb6b08ef-45e6-457a-aa39-7899f1ea2d80-16849108989a659d2f-0": {
+          "type": "image",
+          "settings": {
+            "image": "",
+            "link": "",
+            "heading": "",
+            "text": ""
+          }
+        },
+        "template--19142479806776__bb6b08ef-45e6-457a-aa39-7899f1ea2d80-16849108989a659d2f-1": {
+          "type": "image",
+          "settings": {
+            "image": "",
+            "link": "",
+            "heading": "",
+            "text": ""
+          }
+        },
+        "template--19142479806776__bb6b08ef-45e6-457a-aa39-7899f1ea2d80-16849108989a659d2f-2": {
+          "type": "image",
+          "settings": {
+            "image": "",
+            "link": "",
+            "heading": "",
+            "text": ""
+          }
+        },
+        "template--19142479806776__bb6b08ef-45e6-457a-aa39-7899f1ea2d80-16849108989a659d2f-3": {
+          "type": "image",
+          "settings": {
+            "image": "",
+            "link": "",
+            "heading": "",
+            "text": ""
+          }
+        },
+        "template--19142479806776__bb6b08ef-45e6-457a-aa39-7899f1ea2d80-16849108989a659d2f-4": {
+          "type": "image",
+          "settings": {
+            "image": "",
+            "link": "",
+            "heading": "",
+            "text": ""
+          }
+        }
+      },
+      "block_order": [
+        "template--19142479806776__bb6b08ef-45e6-457a-aa39-7899f1ea2d80-16849108989a659d2f-0",
+        "template--19142479806776__bb6b08ef-45e6-457a-aa39-7899f1ea2d80-16849108989a659d2f-1",
+        "template--19142479806776__bb6b08ef-45e6-457a-aa39-7899f1ea2d80-16849108989a659d2f-2",
+        "template--19142479806776__bb6b08ef-45e6-457a-aa39-7899f1ea2d80-16849108989a659d2f-3",
+        "template--19142479806776__bb6b08ef-45e6-457a-aa39-7899f1ea2d80-16849108989a659d2f-4"
+      ],
+      "settings": {
+        "image_ratio": "adapt",
+        "column_spacing": "large",
+        "image_alignment": "top",
+        "direction": "left",
+        "speed": "50s",
+        "disable_top_spacing": true,
+        "disable_bottom_spacing": false
+      }
+    },
+    "f102557d-7d1a-4cec-8313-1784bb42d94b": {
+      "type": "rich-text",
+      "blocks": {
+        "92f1ca0f-f157-4b71-8c38-69d95886257f": {
+          "type": "badge",
+          "settings": {
+            "text": "We take the fun to a new level",
+            "color_bg": "#454545",
+            "color_text": "#ffffff"
+          }
+        },
+        "template--19142479806776__f102557d-7d1a-4cec-8313-1784bb42d94b-1684916273cd1667e7-1": {
+          "type": "heading",
+          "settings": {
+            "text": "We’ll Build The Bike You Want And |Deliver It To You|",
+            "marker_style": "style2",
+            "size": "h1",
+            "marker_color": "#fd6262"
+          }
+        },
+        "template--19142479806776__f102557d-7d1a-4cec-8313-1784bb42d94b-1684916273cd1667e7-2": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Our story begins with an old, neglected bicycle gathering dust in a forgotten corner of a garage. Once a cherished possession, it had fallen into disrepair, a symbol of lost potential. Enter Jack, a curious young mechanic with a passion for restoration. With skilled hands and a heart full of determination, he resurrected the rusty relic, revealing its hidden beauty and untapped potential. As Jack took the newly refurbished bicycle for a test ride, he rediscovered the sheer joy of cycling. The wind in his face, the rhythmic pedaling, and the freedom of movement awakened a sense of adventure long forgotten. Inspired by this experience, Jack set out to share this newfound exhilaration with his community, vowing to spread the joy of cycling to others.</p>",
+            "size": "text-size-regular"
+          }
+        }
+      },
+      "block_order": [
+        "92f1ca0f-f157-4b71-8c38-69d95886257f",
+        "template--19142479806776__f102557d-7d1a-4cec-8313-1784bb42d94b-1684916273cd1667e7-1",
+        "template--19142479806776__f102557d-7d1a-4cec-8313-1784bb42d94b-1684916273cd1667e7-2"
+      ],
+      "settings": {
+        "text_width": "large",
+        "text_position": "center",
+        "text_alignment": "center",
+        "color_bg": "rgba(0,0,0,0)",
+        "color_heading": "linear-gradient(54deg, rgba(114, 255, 179, 1) 14%, rgba(255, 250, 99, 1) 85%)",
+        "color_text": "#eaeaea",
+        "color_links": "#2c2d2e",
+        "disable_top_spacing": true,
+        "disable_bottom_spacing": false
+      }
+    },
+    "476b9a92-a364-40c3-8864-fb10e00a04b6": {
+      "type": "scrolling-images",
+      "blocks": {
+        "template--19142479806776__476b9a92-a364-40c3-8864-fb10e00a04b6-16849108989a659d2f-0": {
+          "type": "image",
+          "settings": {
+            "image": "",
+            "link": "",
+            "heading": "",
+            "text": ""
+          }
+        },
+        "template--19142479806776__476b9a92-a364-40c3-8864-fb10e00a04b6-16849108989a659d2f-1": {
+          "type": "image",
+          "settings": {
+            "image": "",
+            "link": "",
+            "heading": "",
+            "text": ""
+          }
+        },
+        "template--19142479806776__476b9a92-a364-40c3-8864-fb10e00a04b6-16849108989a659d2f-2": {
+          "type": "image",
+          "settings": {
+            "image": "",
+            "link": "",
+            "heading": "",
+            "text": ""
+          }
+        },
+        "template--19142479806776__476b9a92-a364-40c3-8864-fb10e00a04b6-16849108989a659d2f-3": {
+          "type": "image",
+          "settings": {
+            "image": "",
+            "link": "",
+            "heading": "",
+            "text": ""
+          }
+        },
+        "template--19142479806776__476b9a92-a364-40c3-8864-fb10e00a04b6-16849108989a659d2f-4": {
+          "type": "image",
+          "settings": {
+            "image": "",
+            "link": "",
+            "heading": "",
+            "text": ""
+          }
+        }
+      },
+      "block_order": [
+        "template--19142479806776__476b9a92-a364-40c3-8864-fb10e00a04b6-16849108989a659d2f-0",
+        "template--19142479806776__476b9a92-a364-40c3-8864-fb10e00a04b6-16849108989a659d2f-1",
+        "template--19142479806776__476b9a92-a364-40c3-8864-fb10e00a04b6-16849108989a659d2f-2",
+        "template--19142479806776__476b9a92-a364-40c3-8864-fb10e00a04b6-16849108989a659d2f-3",
+        "template--19142479806776__476b9a92-a364-40c3-8864-fb10e00a04b6-16849108989a659d2f-4"
+      ],
+      "settings": {
+        "image_ratio": "adapt",
+        "column_spacing": "large",
+        "image_alignment": "bottom",
+        "direction": "right",
+        "speed": "50s",
+        "disable_top_spacing": true,
+        "disable_bottom_spacing": true
+      }
+    }
+  },
+  "order": [
+    "a6918ad0-9870-48e2-8fc1-bdf42d316de1",
+    "bb6b08ef-45e6-457a-aa39-7899f1ea2d80",
+    "f102557d-7d1a-4cec-8313-1784bb42d94b",
+    "476b9a92-a364-40c3-8864-fb10e00a04b6"
+  ]
+}

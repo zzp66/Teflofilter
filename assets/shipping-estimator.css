@@ -1,0 +1,36 @@
+
+
+
+
+
+.shipping-estimator {
+  display: block; }
+  .shipping-estimator--container.accordion {
+    margin-bottom: 0; }
+  .shipping-estimator--inner {
+    display: grid;
+    gap: 10px;
+    margin-bottom: 10px; }
+    @media only screen and (min-width: 768px) {
+      .shipping-estimator--inner {
+        grid-template-columns: repeat(auto-fit, minmax(10px, 1fr)); } }
+    .shipping-estimator--inner select,
+    .shipping-estimator--inner input {
+      margin-bottom: 0; }
+  .shipping-estimator--results {
+    padding-top: 30px;
+    font-size: 0.875rem; }
+    .shipping-estimator--results:empty {
+      padding-top: 0; }
+    .shipping-estimator--results p {
+      margin-bottom: 10px;
+      font-weight: var(--font-body-medium-weight, 500); }
+    .shipping-estimator--results ul {
+      margin: 0;
+      padding: 0;
+      list-style: none; }
+  .shipping-estimator .field select,
+  .shipping-estimator .field input {
+    width: 100%; }
+  .shipping-estimator .field:first-child {
+    grid-column: span 2; }

@@ -1,0 +1,6 @@
+{%- if template.name contains 'collection' or template.name contains 'search' -%}
+<div class="product-card-compare">
+  <input type="checkbox" class="checkbox product-card-compare--checkbox" id="compare-{{ product_card_product.id }}" data-product-id="{{ product_card_product.id }}" data-product-url="{{ product_card_product.url }}" data-product-handle="{{ product_card_product.handle }}">
+  <label for="compare-{{ product_card_product.id }}"><span class="product-card-compare-text">Compare</span></label>
+</div>
+{%- endif -%}

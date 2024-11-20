@@ -1,0 +1,261 @@
+{%- liquid
+	assign article_show_sharing = section.settings.article_show_sharing
+	assign article_show_nav = section.settings.article_show_nav
+
+	assign article_card_shadow = settings.article_card_shadow
+	assign article_card_shadow_class = 'has-shadow--' | append: article_card_shadow
+
+-%}
+{{ 'article.css' | asset_url | stylesheet_tag }}
+{%- render 'article-navigation', article_show_nav: article_show_nav, article_show_sharing: article_show_sharing -%}
+<div class="blog-post-detail--wrapper section-spacing-bottom">
+	<div class="row">
+		<div class="small-12 columns">
+			<article class="blog-post-detail" id="main-article">
+				{% for block in section.blocks %}
+					{% if block.type == '@app' %}
+						<div class="page-content-width">
+							{% render block %}
+						</div>
+					{% endif %}
+					{% if block.type == 'title' %}
+					{%- liquid
+						assign has_image = false
+						if article.image
+							assign has_image = true
+						endif
+
+						assign article_card_border = settings.article_card_border
+					-%}
+					<div class="post-title-wrapper post-title-wrapper--has-img-{{- has_image }} post-title-wrapper--border-{{ article_card_border }} {{ article_card_shadow_class }}" id="post-title-wrapper" {{ block.shopify_attributes }}>
+						<div class="post-title">
+							{% if section.settings.article_show_date or section.settings.article_show_author %}
+							<div class="post-meta-wrapper">
+								{%- if section.settings.article_show_date -%}
+								<aside class="post-meta">
+									{{- article.published_at | time_tag: '%b %d, %Y' -}}
+								</aside>
+								{%- endif -%}
+								{%- if section.settings.article_show_author -%}
+								<aside class="post-author">{{- article.author -}}</aside>
+								{% endif %}
+							</div>
+							{% endif %}
+							<h1 class="entry-title h2">{{ article.title }}</h1>
+							{%- liquid
+								if article_show_sharing
+									render 'social-share', share_label: true, share_title: article.title, share_permalink: article.url, share_image: article.image
+								endif
+							-%}
+						</div>
+						{%- if article.image -%}
+						<div class="featured-image">
+							{%- render 'responsive-image', image: article.image, sizes: '345x300,640x550,1280x1100' -%}
+						</div>
+						{%- endif -%}
+					</div>
+					{% endif %}
+					{% if block.type == 'content' %}
+						<div class="post-content page-content-width rte" {{ block.shopify_attributes }}>
+							{{ article.content }}
+						</div>
+					{% endif %}
+					{% if block.type == 'tags' %}
+						{%- if article.tags.size > 0 -%}
+						<footer class="article-tags page-content-width" {{ block.shopify_attributes }}>
+					    {% for tag in article.tags %}
+					      <a href="{{ blog.url | escape }}/tagged/{{ tag | handle }}" class="tag-link">{{ tag }}</a>
+					    {% endfor %}
+					  </footer>
+						{%- endif -%}
+					{% endif %}
+					{% if block.type == 'post_navigation' %}
+						{%- liquid
+							assign current_found = false
+							assign done = false
+
+							for a in blog.articles
+								if current_found and done == false
+									assign next_article = a
+									assign done = true
+								endif
+								unless done
+									if a.id == article.id
+										assign current_found = true
+									endif
+								endunless
+							endfor
+						-%}
+						{%- if next_article -%}
+						<div class="page-content-width">
+							<div class="blog-post-detail--continue {{ article_card_shadow_class }} blog-post-detail--continue--border-{{ article_card_border }}">
+								<div class="blog-post-detail--continue-content">
+									<span class="blog-post-detail--continue-title">{{ 'blogs.article.continue_reading' | t }}</span>
+									<h5><a href="{{ next_article.url }}" title="{{ next_article.title | escape }}">{{ next_article.title }}</a></h5>
+									{%- assign read_more = 'blogs.article.read_more' | t -%}
+									{%- render 'text-button', url: next_article.url, title: read_more -%}
+								</div>
+								{%- if next_article.image -%}
+								<div class="blog-post-detail--continue-image">
+									<a href="{{ next_article.url }}" title="{{ next_article.title | escape }}">
+										{%- render 'responsive-image', image: next_article.image, sizes: '380x360' -%}
+									</a>
+								</div>
+								{%- endif -%}
+							</div>
+						</div>
+						{%- endif -%}
+					{% endif %}
+				{% endfor %}
+				<div class="blog-post-detail--end"></div>
+			</article>
+		</div>
+	</div>
+	{% if blog.comments_enabled? %}
+	{{ 'comments.css' | asset_url | stylesheet_tag }}
+	<div class="row">
+		<div class="small-12 columns">
+			<div class="comments-wrapper page-content-width">
+			  {% if article.comments_count > 0 %}
+					<div class="comments-container page-content-width" id="comments">
+			      <h5 class="comments-title">{{ 'blogs.article.comments_html' | t: count: article.comments_count, title: article.title }}</h5>
+			      <ul class="commentlist">
+			        {% paginate article.comments by 5 %}
+			          {% for comment in article.comments %}
+			            <li class="comment">
+			              <img data-src="https://www.gravatar.com/avatar/{{ comment.email | remove: ' ' | strip_newlines | downcase | md5 }}?s=200" class="avatar lazyload" alt="{{ comment.author | escape }}" width="100" height="100" />
+										<div class="comment-body">
+			                <div class="comment-author">
+			                  <cite class="fn">{{ comment.author }}</cite>
+			                </div>
+											<div class="comment-text">
+				                {{ comment.content }}
+											</div>
+											<a href="{{ comment.url }}" class="comment-meta">{{ comment.created_at | date: "%B %d, %Y" }}</a>
+			              </div>
+			            </li>
+			          {% endfor %}
+			          {% if paginate.pages > 1 %}
+			            {{ paginate | default_pagination }}
+			          {% endif %}
+			        {% endpaginate %}
+			      </ul>
+			    </div>
+			  {% endif %}
+				<div class="respond-container page-content-width">
+		      <div class="comment-respond">
+		        {% form 'new_comment', article %}
+							{%- liquid
+		            assign post_message = 'blogs.article.success'
+		            if blog.moderated? and comment.status == 'unapproved'
+		              assign post_message = 'blogs.article.success_moderated'
+		            endif
+		          -%}
+							<div class="comment-reply-title--container">
+			          <h5 id="reply-title" class="comment-reply-title">{{ 'blogs.article.comment_form_title' | t }}</h5>
+			          <p class="comment-notes">{{ 'blogs.article.comment_form_note' | t }}.</p>
+							</div>
+		          {% if form.errors %}
+								<div class="form-notification error">
+		              {% render 'svg-icons' with 'thb-error' %} {{ form.errors | default_errors }}
+								</div>
+							{%- elsif form.posted_successfully? -%}
+								<div class="form-notification success">
+									{% render 'svg-icons' with 'thb-success' %} {{ post_message | t }}
+								</div>
+		          {%- endif -%}
+							<div class="comment-form-fields">
+		            <div class="field">
+		              <textarea name="comment[body]" class="full {% if form.errors contains 'body' %}invalid{% endif %}" id="CommentBody" placeholder="{{ 'blogs.article.message' | t }}">{{ form.body }}</textarea>
+									<label>{{ 'blogs.article.message' | t }}</label>
+		            </div>
+		            <div class="field">
+		              <input type="text" class="full {% if form.errors contains 'author' %}invalid{% endif %}" name="comment[author]" id="CommentAuthor" value="{{ form.author }}" autocapitalize="words" placeholder="{{ 'blogs.article.name' | t }}">
+									<label>{{ 'blogs.article.name' | t }}</label>
+		            </div>
+		            <div class="field">
+		              <input type="email" class="full {% if form.errors contains 'email' %}invalid{% endif %}" name="comment[email]" id="CommentEmail" value="{{ form.email }}" autocorrect="off" autocapitalize="off" placeholder="{{ 'blogs.article.email' | t }}">
+									<label>{{ 'blogs.article.email' | t }}</label>
+		            </div>
+							</div>
+							<input class="button" type="submit" value="{{ 'blogs.article.post' | t | escape }}">
+		        {% endform %}
+		      </div>
+		    </div>
+			</div>
+	  </div>
+	</div>
+	{% endif %}
+</div>
+<script type="application/ld+json">
+  {{ article | structured_data }}
+</script>
+{% schema %}
+  {
+		"name": "Blog post",
+		"class": "article-section",
+    "settings": [
+			{
+				"type": "header",
+				"content": "Settings"
+			},
+			{
+				"type": "checkbox",
+				"id": "article_show_date",
+				"label": "Show date",
+				"default": true
+			},
+			{
+				"type": "checkbox",
+				"id": "article_show_author",
+				"label": "Show author",
+				"default": true
+			},
+			{
+				"type": "checkbox",
+				"id": "article_show_nav",
+				"label": "Show sticky information",
+				"default": true
+			},
+			{
+				"type": "checkbox",
+				"id": "article_show_sharing",
+				"label": "Show sharing buttons",
+				"default": true
+			},
+			{
+				"type": "paragraph",
+				"content": "If you include a link in social media posts, the page’s featured image will be shown as the preview image. [Learn more](https://help.shopify.com/en/manual/online-store/images/showing-social-media-thumbnail-images)."
+			},
+			{
+				"type": "paragraph",
+				"content": "A store title and description are included with the preview image. [Learn more](https://help.shopify.com/en/manual/promoting-marketing/seo/adding-keywords#set-a-title-and-description-for-your-online-store)."
+			}
+    ],
+		"blocks": [
+			{
+	      "type": "@app"
+	    },
+			{
+        "type": "title",
+        "name": "Title",
+	      "limit": 1
+      },
+			{
+        "type": "post_navigation",
+        "name": "Next article",
+	      "limit": 1
+      },
+			{
+        "type": "content",
+        "name": "Content",
+	      "limit": 1
+      },
+			{
+        "type": "tags",
+        "name": "Tags",
+	      "limit": 1
+      }
+    ]
+  }
+{% endschema %}

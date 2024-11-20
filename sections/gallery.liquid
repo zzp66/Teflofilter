@@ -1,0 +1,422 @@
+{{- 'gallery.css' | asset_url | stylesheet_tag -}}
+{%- liquid
+	assign columns_desktop = section.settings.columns_desktop
+	assign full_width = section.settings.full_width
+	assign column_spacing = section.settings.column_spacing
+	assign content_position = section.settings.content_position
+	assign text_alignment = section.settings.text_alignment
+	assign mobile_swipe = section.settings.mobile_swipe
+	assign image_ratio = section.settings.image_ratio
+
+	assign heading_size = section.settings.heading_size
+	assign description_size = section.settings.description_size
+
+	assign overlay_color = section.settings.overlay_color
+	assign overlay_opacity = section.settings.overlay_opacity
+
+	assign disable_top_spacing = section.settings.disable_top_spacing
+	assign disable_bottom_spacing = section.settings.disable_bottom_spacing
+-%}
+<div class="row {% if full_width %} full-width-row-full{% endif %}">
+	<div class="small-12 columns">
+		<theme-gallery class="gallery text-{{ text_alignment }}{% if mobile_swipe %} swipe-on-mobile{% endif %} section-spacing{% if disable_top_spacing %} section-spacing--disable-top{% endif %}{% if disable_bottom_spacing %} section-spacing--disable-bottom{% endif %}" style="--gallery-columns: {{ columns_desktop }};--overlay-color-rgb: {{ overlay_color.rgb | replace: ' ' , ',' }}; --overlay-opacity: {{ overlay_opacity | divided_by: 100.0 }}">
+			<div class="gallery--inner column-spacing--{{ column_spacing }}">
+				{%- for block in section.blocks -%}
+					<div class="gallery--item" {{ block.shopify_attributes }}>
+						{%- liquid
+							assign ratio = 1
+							if image_ratio == 'adapt' and block.settings.image
+								assign ratio = block.settings.image.aspect_ratio
+							endif
+						-%}
+						<figure class="aspect-ratio aspect-ratio--{{ image_ratio }}" style="--ratio-percent:{{ 1.0 | divided_by: ratio | times: 100.0 }}%;">
+							{%- if block.settings.enable_gallery_video -%}
+								{%- if block.settings.video_hosted -%}
+									{%- liquid
+										assign video = block.settings.video_hosted
+										assign autoplay = true
+										if block.settings.enable_hover_play
+											assign autoplay = false
+										endif
+									-%}
+									<div class="gallery__video-hosted gallery__video{% if block.settings.enable_hover_play %} hover-play{% endif %}" data-provider="hosted" data-video-id="{{ video.id }}" >
+										{{ video | video_tag: autoplay: autoplay, loop: true, controls: false, muted: true, image_size: '750x' }}
+									</div>
+								{%- endif -%}
+							{%- else -%}
+								{%- if block.settings.image -%}
+									{%- liquid
+										assign sizes = '375x0,750x0'
+
+										if full_width
+											assign sizes = sizes | append: ',1125x0'
+										endif
+									-%}
+									{%- render 'responsive-image', image: block.settings.image, sizes: sizes -%}
+								{%- else -%}
+									<div class="thb-placeholder">
+										{{ 'detailed-apparel-1' | placeholder_svg_tag: 'placeholder_svg_tag' }}
+									</div>
+								{%- endif -%}
+							{%- endif -%}
+							<div class="gallery--item-content content-{{ content_position }} {% if block.settings.enable_gallery_video %} content--has-video{% endif %}">
+								<div>
+									{% if block.settings.subheading != blank %}
+										<p class="subheading">{{ block.settings.subheading }}</p>
+									{% endif %}
+									{% if block.settings.title != blank %}
+										{%- liquid
+											assign marker_style = block.settings.marker_style
+											assign marker_color = block.settings.marker_color
+											assign text = block.settings.title | newline_to_br
+										-%}
+										<h4 class="{{ heading_size }}">{% render 'animated-marker-heading', heading: text, style: marker_style, color: marker_color %}</h4>
+									{% endif %}
+									{% if block.settings.text != blank %}
+										<div class="description-size--{{ description_size }}"><p>{{ block.settings.text }}</p></div>
+									{% endif %}
+									{% if block.settings.link_label != blank %}
+										{%- if block.settings.use_text_button -%}
+											{%- render 'text-button', url: block.settings.link, title: block.settings.link_label, class: 'white' -%}
+										{%- else -%}
+											<a class="button white"{% if block.settings.link == blank %} role="link" aria-disabled="true"{% else %} href="{{ block.settings.link }}"{% endif %}>{{ block.settings.link_label }}</a>
+										{% endif %}
+									{% endif %}
+									{% if block.settings.block_link != blank %}
+										<a href="{{ block.settings.block_link }}" class="gallery--item-content-link" target="_blank"></a>
+									{% endif %}
+								</div>
+							</div>
+						</figure>
+					</div>
+				{%- endfor -%}
+			</div>
+		</theme-gallery>
+	</div>
+</div>
+<script src="{{ 'gallery.js' | asset_url }}" defer="defer"></script>
+
+{% schema %}
+  {
+    "name": "Gallery",
+		"class": "section-gallery",
+    "settings": [
+			{
+				"type": "range",
+				"id": "columns_desktop",
+				"min": 2,
+				"max": 4,
+				"step": 1,
+				"default": 3,
+				"label": "Number of columns on desktop"
+			},
+			{
+				"type": "checkbox",
+				"id": "full_width",
+				"label": "Make section full width",
+				"default": false
+			},
+			{
+	      "type": "checkbox",
+	      "id": "mobile_swipe",
+	      "default": false,
+	      "label": "Enable swipe on mobile"
+	    },
+			{
+	      "type": "select",
+	      "id": "image_ratio",
+	      "options": [
+	        {
+	          "value": "adapt",
+	          "label": "Adapt to image"
+	        },
+	        {
+	          "value": "portrait",
+	          "label": "Portrait"
+	        },
+					{
+	          "value": "landscape",
+	          "label": "Landscape"
+	        },
+	        {
+	          "value": "square",
+	          "label": "Square"
+	        }
+	      ],
+	      "default": "adapt",
+	      "label": "Image ratio"
+	    },
+			{
+				 "type": "select",
+				 "id": "content_position",
+				 "label": "Content position",
+				 "options": [
+					 { "value": "top-left", "label": "Top left" },
+					 { "value": "top-center", "label": "Top center" },
+					 { "value": "top-right", "label": "Top right" },
+					 { "value": "middle-left", "label": "Middle left" },
+					 { "value": "middle-center", "label": "Middle center" },
+					 { "value": "middle-right", "label": "Middle right" },
+					 { "value": "bottom-left", "label": "Bottom left" },
+					 { "value": "bottom-center", "label": "Bottom center" },
+					 { "value": "bottom-right", "label": "Bottom right" }
+				 ],
+				 "default": "bottom-left"
+			},
+			{
+				"type": "select",
+				"id": "text_alignment",
+				"options": [
+					{
+						"value": "left",
+						"label": "Left"
+					},
+					{
+						"value": "center",
+						"label": "Center"
+					},
+					{
+						"value": "right",
+						"label": "Right"
+					}
+				],
+				"default": "left",
+				"label": "Content alignment"
+			},
+			{
+	      "type": "select",
+	      "id": "column_spacing",
+	      "options": [
+					{
+						"value": "none",
+						"label": "None"
+					},
+	        {
+	          "value": "small",
+	          "label": "Small"
+	        },
+					{
+	          "value": "medium",
+	          "label": "Medium"
+	        },
+	        {
+	          "value": "large",
+	          "label": "Large"
+	        }
+	      ],
+	      "default": "small",
+	      "label": "Column spacing"
+	    },
+			{
+				"type": "select",
+				"id": "heading_size",
+				"label": "Heading size",
+				"options": [
+					{
+						"value": "h1",
+						"label": "Large"
+					},
+					{
+						"value": "h2",
+						"label": "Medium"
+					},
+					{
+						"value": "h3",
+						"label": "Small"
+					}
+				],
+				"default": "h2"
+			},
+			{
+				"type": "select",
+				"id": "description_size",
+				"label": "Description size",
+				"options": [
+					{
+						"value": "small",
+						"label": "Small"
+					},
+					{
+						"value": "medium",
+						"label": "Medium"
+					},
+					{
+						"value": "large",
+						"label": "Large"
+					}
+				],
+				"default": "medium"
+			},
+			{
+	      "type": "header",
+	      "content": "Colors"
+	    },
+			{
+				"type": "color",
+				"id": "overlay_color",
+				"label": "Overlay",
+				"default": "#000000"
+			},
+			{
+				"type": "range",
+				"id": "overlay_opacity",
+				"min": 0,
+				"max": 100,
+				"step": 1,
+				"unit": "%",
+				"label": "Overlay opacity",
+				"default": 70
+			},
+			{
+	      "type": "header",
+	      "content": "Spacing"
+	    },
+			{
+				"type": "checkbox",
+				"id": "disable_top_spacing",
+				"default": false,
+				"label": "Remove top spacing"
+			},
+			{
+				"type": "checkbox",
+				"id": "disable_bottom_spacing",
+				"default": false,
+				"label": "Remove bottom spacing"
+			}
+    ],
+    "blocks": [
+      {
+        "type": "image",
+        "name": "Image",
+        "settings": [
+          {
+            "type": "image_picker",
+            "id": "image",
+            "label": "Image",
+						"info": "720 x 550 .jpg recommended."
+          },
+					{
+						"type": "header",
+						"content": "Video"
+					},
+					{
+					  "type": "checkbox",
+					  "id": "enable_gallery_video",
+					  "label": "Use video instead of image",
+					  "default": false
+					},
+					{
+					  "type": "video",
+					  "id": "video_hosted",
+					  "label": "A Shopify-hosted video"
+					},
+					{
+					  "type": "checkbox",
+					  "id": "enable_hover_play",
+					  "label": "Play on hover",
+					  "default": false
+					},
+					{
+						"type": "text",
+						"id": "subheading",
+						"label": "Subheading",
+						"default": "Add a tagline"
+					},
+					{
+						"type": "text",
+						"id": "title",
+						"default": "Column",
+						"label": "Heading",
+						"info": "Wrap your text between | to add animated markers. For example: Animated |marker| will underline marker text."
+		      },
+					{
+						"type": "select",
+						"id": "marker_style",
+						"options": [
+							{
+								"value": "style1",
+								"label": "Basic"
+							},
+							{
+								"value": "style2",
+								"label": "Double"
+							},
+							{
+								"value": "style3",
+								"label": "Squiggle"
+							},
+							{
+								"value": "style4",
+								"label": "Zigzag"
+							}
+						],
+						"default": "style1",
+						"label": "Marker"
+					},
+					{
+						"type": "textarea",
+						"id": "text",
+						"default": "Pair text with an image to focus on your chosen image",
+						"label": "Description"
+					},
+					{
+            "id": "link_label",
+            "type": "text",
+            "label": "Button label",
+            "default": "Explore",
+						"info": "Leave the label blank to hide the button."
+          },
+          {
+            "id": "link",
+            "type": "url",
+            "label": "Button link"
+          },
+					{
+						 "type": "checkbox",
+						 "id": "use_text_button",
+						 "label": "Use text button",
+						 "default": false
+					},
+					{
+            "id": "block_link",
+            "type": "url",
+            "label": "Image link",
+						"info": "This will allow you to set a link to whole image."
+          },
+					{
+			      "type": "header",
+			      "content": "Colors"
+			    },
+					{
+						"type": "color",
+						"id": "marker_color",
+						"label": "Marker",
+						"default": "#FD6262"
+					}
+        ]
+      }
+    ],
+    "presets": [
+      {
+        "name": "Gallery",
+				"blocks": [
+					{
+						"type": "image"
+					},
+					{
+						"type": "image"
+					},
+					{
+						"type": "image"
+					}
+				]
+      }
+    ],
+		"enabled_on": {
+			"templates": ["*"],
+			"groups": [
+				"header", "footer"
+			]
+		}
+  }
+{% endschema %}

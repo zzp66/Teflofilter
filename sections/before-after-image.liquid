@@ -1,0 +1,426 @@
+{{- 'before-after-image.css' | asset_url | stylesheet_tag -}}
+{%- liquid
+	assign section_heading = section.settings.heading
+	assign marker_style = section.settings.marker_style
+	assign section_description = section.settings.description
+	assign badge_text = section.settings.badge_text
+	assign image_position = section.settings.image_position
+
+	assign desktop_height = section.settings.desktop_height
+	assign mobile_height = section.settings.mobile_height
+	assign initial_position = section.settings.initial_position
+
+	assign marker_color = section.settings.marker_color
+	assign line_color = section.settings.line_color
+	assign color_bg_badge = section.settings.color_bg_badge
+	assign color_badge = section.settings.color_badge
+
+	assign disable_top_spacing = section.settings.disable_top_spacing
+	assign disable_bottom_spacing = section.settings.disable_bottom_spacing
+
+	case mobile_height
+		when 'mobile-height-image'
+			assign mobile_image_height = 0
+		when 'mobile-height-350'
+			assign mobile_image_height = 350
+		when 'mobile-height-400'
+			assign mobile_image_height = 400
+		when 'mobile-height-450'
+			assign mobile_image_height = 450
+		when 'mobile-height-500'
+			assign mobile_image_height = 500
+		else
+			assign mobile_image_height = 500
+	endcase
+-%}
+<div class="row">
+	<div class="small-12 columns">
+		<div class="before-after-image image-position--{{ image_position }} section-spacing{% if disable_top_spacing %} section-spacing--disable-top{% endif %}{% if disable_bottom_spacing %} section-spacing--disable-bottom{% endif %}" style="--percent:{{ initial_position }}%; --color-line: {{ line_color }};">
+			<div class="before-after-image--text">
+				{%- if badge_text -%}
+				<div>
+					<span class="inline-badge" style="--badge-bg: {{ color_bg_badge }}; --badge-text: {{ color_badge }};">{{ badge_text }}</span>
+				</div>
+				{%- endif -%}
+				{%- if section_heading -%}
+				<h3 class="{{ section.settings.heading_size }}">{% render 'animated-marker-heading', heading: section_heading, style: marker_style, color: marker_color %}</h3>
+				{%- endif -%}
+				{%- if section_description != blank -%}
+					<div class="rte">
+						{{ section_description }}
+					</div>
+				{%- endif -%}
+			</div>
+			<before-after class="before-after-image--container">
+				{%- for block in section.blocks -%}
+					{%- liquid
+						assign image = block.settings.image
+						assign mobile_image = block.settings.mobile_image
+						assign title = block.settings.title
+
+						assign heading_position = block.settings.heading_position
+						assign heading_size = block.settings.heading_size
+
+						assign text_bg = block.settings.text_bg
+						assign text_color = block.settings.text_color
+						assign overlay_color = block.settings.overlay_color
+						assign overlay_opacity = block.settings.overlay_opacity
+					-%}
+					<div class="before-after-image--media before-after-image--{{ forloop.index }}" style="--color-bg: {{ text_bg }}; --color-body: {{ text_color }}; --overlay-opacity: {{ overlay_opacity | divided_by: 100.0 }}; --color-overlay-rgb: {{ overlay_color.rgb | replace: ' ' , ',' }};">
+						<div class="before-after-image--image {{ mobile_height }} {{ desktop_height }}" style="--image-aspect: {{ image.aspect_ratio }}">
+							{%- if image -%}
+								{%- liquid
+									assign master_width = image.src.width | append: 'x' | append: image.src.height
+									assign width = '375x' | append: mobile_image_height | append: ',' | append: master_width
+									assign class = nil
+
+									if mobile_image != blank
+										assign class = 'before-after-image--desktop'
+									endif
+								 -%}
+								{%- render 'responsive-image', image: image, sizes: width, class: class -%}
+							{%- else -%}
+								<div class="thb-placeholder">
+									{{ 'collection-' | append: forloop.index | placeholder_svg_tag: 'placeholder_svg_tag' }}
+								</div>
+							{%- endif -%}
+							{%- if mobile_image != blank -%}
+								{%- liquid
+									assign image = mobile_image
+									assign master_width = image.src.width | append: 'x' | append: image.src.height
+									assign width = '375x' | append: mobile_image_height | append: ',' | append: master_width
+								 -%}
+								{%- render 'responsive-image', image: image, sizes: width, class: 'before-after-image--mobile' -%}
+							{%- endif -%}
+						</div>
+						<div class="before-after-image--content before-after-image--content-{{ heading_position }}">
+							{%- if title != blank -%}
+								<div class="before-after-image--label before-after-image--label-{{ heading_size }}">{{ title }}</div>
+							{%- endif -%}
+						</div>
+					</div>
+				{%- endfor -%}
+				<div class="before-after-image--divider">{%- render 'svg-icons' with 'thb-before-after-divider' -%}</div>
+				<input type="range" min="0" max="1000" value="{{ initial_position | times: 10 }}" class="before-after-image--slider">
+			</before-after>
+		</div>
+	</div>
+</div>
+<script src="{{ 'before-after-image.js' | asset_url }}" defer="defer"></script>
+{% schema %}
+  {
+    "name": "Before/after image",
+		"class": "section-before-after",
+		"max_blocks": 2,
+    "settings": [
+			{
+				"type": "text",
+				"id": "heading",
+				"label": "Heading",
+				"default": "Image Comparison",
+				"info": "Wrap your text between | to add animated markers. For example: Animated |marker| will underline marker text."
+			},
+			{
+				"type": "select",
+				"id": "marker_style",
+				"options": [
+					{
+						"value": "style1",
+						"label": "Basic"
+					},
+					{
+						"value": "style2",
+						"label": "Double"
+					},
+					{
+						"value": "style3",
+						"label": "Squiggle"
+					},
+					{
+						"value": "style4",
+						"label": "Zigzag"
+					}
+				],
+				"default": "style1",
+				"label": "Marker"
+			},
+			{
+				"type": "select",
+				"id": "heading_size",
+				"label": "Size",
+				"options": [
+					{
+						"value": "h1",
+						"label": "Extra Large"
+					},
+					{
+						"value": "h2",
+						"label": "Large"
+					},
+					{
+						"value": "h3",
+						"label": "Medium"
+					},
+					{
+						"value": "h4",
+						"label": "Small"
+					}
+				],
+				"default": "h3"
+			},
+			{
+				"type": "richtext",
+				"id": "description",
+				"label": "Description",
+				"default": "<p>Add a short description for your image comparison</p>"
+			},
+			{
+				"type": "text",
+				"id": "badge_text",
+				"label": "Text",
+				"default": "Badge"
+			},
+			{
+	      "type": "select",
+	      "id": "image_position",
+	      "options": [
+	        {
+	          "value": "image_first",
+	          "label": "Image first"
+	        },
+	        {
+	          "value": "text_first",
+	          "label": "Image second"
+	        },
+	        {
+	          "value": "image_top",
+	          "label": "Image bottom"
+	        }
+	      ],
+	      "default": "image_first",
+	      "label": "Desktop image placement"
+	    },
+			{
+				"type": "select",
+				"id": "desktop_height",
+				"label": "Desktop height",
+				"options": [
+					{
+						"value": "desktop-height-image",
+						"label": "Adapt to image"
+					},
+					{
+						"value": "desktop-height-450",
+						"label": "450px"
+					},
+					{
+						"value": "desktop-height-550",
+						"label": "550px"
+					},
+					{
+						"value": "desktop-height-650",
+						"label": "650px"
+					},
+					{
+						"value": "desktop-height-750",
+						"label": "750px"
+					}
+				],
+				"default": "desktop-height-650"
+			},
+			{
+				"type": "select",
+				"id": "mobile_height",
+				"label": "Mobile height",
+				"options": [
+					{
+						"value": "mobile-height-image",
+						"label": "Adapt to image"
+					},
+					{
+						"value": "mobile-height-350",
+						"label": "350px"
+					},
+					{
+						"value": "mobile-height-400",
+						"label": "400px"
+					},
+					{
+						"value": "mobile-height-450",
+						"label": "450px"
+					},
+					{
+						"value": "mobile-height-500",
+						"label": "500px"
+					}
+				],
+				"default": "mobile-height-500"
+			},
+			{
+				"type": "range",
+				"id": "initial_position",
+				"min": 0,
+				"max": 100,
+				"step": 1,
+				"unit": "%",
+				"label": "Drag initial position",
+				"default": 50
+			},
+			{
+				"type": "header",
+				"content": "Colors"
+			},
+			{
+				"type": "color",
+				"id": "marker_color",
+				"label": "Marker",
+				"default": "#FD6262"
+			},
+			{
+				"type": "color",
+				"id": "line_color",
+				"label": "Lines",
+				"default": "#3f72e5"
+			},
+			{
+				"type": "color",
+				"id": "color_bg_badge",
+				"label": "Badge background",
+				"default": "#3f72e5"
+			},
+			{
+				"type": "color",
+				"id": "color_badge",
+				"label": "Badge text",
+				"default": "#ffffff"
+			},
+			{
+	      "type": "header",
+	      "content": "Spacing"
+	    },
+			{
+				"type": "checkbox",
+				"id": "disable_top_spacing",
+				"default": false,
+				"label": "Remove top spacing"
+			},
+			{
+				"type": "checkbox",
+				"id": "disable_bottom_spacing",
+				"default": false,
+				"label": "Remove bottom spacing"
+			}
+    ],
+    "blocks": [
+      {
+        "type": "image",
+        "name": "Image",
+        "settings": [
+					{
+						"type": "image_picker",
+						"id": "image",
+						"label": "Image",
+						"info": "1340 x 650 .jpg recommended."
+					},
+					{
+						"type": "image_picker",
+						"id": "mobile_image",
+						"label": "Mobile image (optional)"
+					},
+					{
+						"type": "text",
+						"id": "title",
+						"default": "Column",
+						"label": "Heading"
+					},
+					{
+						"type": "select",
+						"id": "heading_size",
+						"label": "Heading size",
+						"options": [
+							{
+								"value": "h1",
+								"label": "Extra large"
+							},
+							{
+								"value": "h2",
+								"label": "Large"
+							},
+							{
+								"value": "h3",
+								"label": "Medium"
+							},
+							{
+								"value": "h4",
+								"label": "Small"
+							}
+						],
+						"default": "h3"
+					},
+					{
+						 "type": "select",
+						 "id": "heading_position",
+						 "label": "Heading position",
+						 "options": [
+							 { "value": "top", "label": "Top" },
+							 { "value": "center", "label": "Center" },
+							 { "value": "bottom", "label": "Bottom" }
+						 ],
+						 "default": "top"
+					},
+					{
+			      "type": "header",
+			      "content": "Colors"
+			    },
+					{
+						"type": "color",
+						"id": "text_bg",
+						"label": "Text background",
+						"default": "#ffffff"
+					},
+					{
+						"type": "color",
+						"id": "text_color",
+						"label": "Text",
+						"default": "#2c2d2e"
+					},
+					{
+						"type": "color",
+						"id": "overlay_color",
+						"label": "Overlay",
+						"default": "#000000"
+					},
+					{
+						"type": "range",
+						"id": "overlay_opacity",
+						"min": 0,
+						"max": 100,
+						"step": 1,
+						"unit": "%",
+						"label": "Overlay opacity",
+						"default": 0
+					}
+        ]
+      }
+    ],
+    "presets": [
+      {
+        "name": "Before/after image",
+				"blocks": [
+					{
+						"type": "image"
+					},
+					{
+						"type": "image"
+					}
+				]
+      }
+    ],
+		"enabled_on": {
+			"templates": ["*"],
+			"groups": [
+				"header", "footer"
+			]
+		}
+  }
+{% endschema %}

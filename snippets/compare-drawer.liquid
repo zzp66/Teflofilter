@@ -1,0 +1,48 @@
+{%- if settings.enable_compare -%}
+<product-compare-panel class="compare-parent" data-max="{{ settings.compare_products_max }}">
+  <button class="button outline compare-toggle"><span class="compare-toggle--text">{{ 'products.compare.compare_products' | t }} (<span class="compare-counter">0</span>/{{- settings.compare_products_max -}})</span></button>
+  <div class="side-panel compare-drawer" inert>
+    <div class="side-panel-inner compare-drawer-inner">
+      <div class="side-panel-header">
+        <div>
+          <span class="h6"><span>{{ 'products.compare.compare_products' | t }} (<span class="compare-counter">0</span>/{{- settings.compare_products_max -}})</span></span></span>
+          <side-panel-close class="side-panel-close">{%- render 'svg-icons' with 'close' -%}</side-panel-close>
+        </div>
+      </div>
+      <div class="side-panel-content compare-drawer-content">
+        <div class="compare-drawer--list">
+          {%- assign product_limit = settings.compare_products_max -%}
+          {%- for i in (1..product_limit) -%}
+            <div class="compare-drawer--list-item"></div>
+          {%- endfor -%}
+        </div>
+      </div>
+      <div class="side-panel-footer compare-drawer-footer">
+        <button class="button compare-start accent" disabled>{{ 'products.compare.compare_products' | t }}</button>
+        <button class="text-button compare-clear">{{ 'products.compare.clear_all' | t }}</button>
+      </div>
+    </div>
+  </div>
+  <modal-dialog id="CompareModal" class="product-compare-modal">
+    <div role="dialog" aria-label="{{ 'products.compare.compare_products' | t }}" aria-modal="true" class="product-compare-modal__content" tabindex="-1">
+      <div class="product-compare-modal__content-header">
+        <h5>{{ 'products.compare.compare_products' | t }}</h5>
+        <button id="ModalClose-{{ block.id }}" type="button" class="product-compare-modal__toggle" aria-label="{{ 'accessibility.close' | t }}">{% render 'svg-icons' with 'close' %}</button>
+      </div>
+      <div class="product-compare-modal__content-info">
+        <product-compare-table class="compare-lightbox loading">
+          <div class="compare-lightbox--data"></div>
+          <span class="loading-overlay">
+            {% render 'svg-icons' with 'thb-loading' %}
+          </span>
+        </product-compare-table>
+      </div>
+    </div>
+  </modal-dialog>
+</product-compare-panel>
+<script src="{{ 'product-compare-panel.js' | asset_url }}" defer="defer"></script>
+<link rel="stylesheet" href="{{ 'compare.css' | asset_url }}" media="print" onload="this.media='all'">
+<script src="{{ 'modal-dialog.js' | asset_url }}" defer="defer"></script>
+<link rel="stylesheet" href="{{ 'compare-lightbox.css' | asset_url }}" media="print" onload="this.media='all'">
+<script src="{{ 'product-compare-table.js' | asset_url }}" defer="defer"></script>
+{%- endif -%}

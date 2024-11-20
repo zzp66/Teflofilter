@@ -1,0 +1,310 @@
+{{- 'toggle-boxes.css' | asset_url | stylesheet_tag -}}
+<script src="{{ 'toggle-boxes.js' | asset_url }}" defer="defer"></script>
+{%- liquid
+	assign section_heading = section.settings.heading
+	assign marker_style = section.settings.marker_style
+	assign section_description = section.settings.description
+	assign columns_desktop = section.settings.columns_desktop
+	assign column_spacing = section.settings.column_spacing
+	assign mobile_swipe = section.settings.mobile_swipe
+	assign image_ratio = section.settings.image_ratio
+	assign text_alignment = section.settings.text_alignment
+
+	assign color_bg = section.settings.color_bg
+	assign color_heading = section.settings.color_heading
+	assign marker_color = section.settings.marker_color
+	assign color_text = section.settings.color_text
+	assign color_link = section.settings.color_link
+
+	assign disable_top_spacing = section.settings.disable_top_spacing
+	assign disable_bottom_spacing = section.settings.disable_bottom_spacing
+-%}
+<div class="toggle-boxes section-spacing{% if disable_top_spacing %} section-spacing--disable-top{% endif %}{% if disable_bottom_spacing %} section-spacing--disable-bottom{% endif %}">
+	<div class="row">
+		<div class="small-12 columns">
+			{%- render 'section-header', section_heading: section_heading, section_description: section_description, marker_color: marker_color, marker_style: marker_style -%}
+		</div>
+	</div>
+	<div class="toggle-boxes--inner column-spacing--{{ column_spacing }}{% if mobile_swipe %} swipe-on-mobile{% endif %}" style="--toggle-columns: {{ columns_desktop }}; --color-bg: {{ color_bg }}; --color-body: {{ color_text }}; --color-heading: {{ color_heading }}; --color-accent: {{ color_link }};">
+		{%- for block in section.blocks -%}
+			{%- liquid
+				assign ratio = 1
+				if image_ratio == 'adapt' and block.settings.image
+					assign ratio = block.settings.image.aspect_ratio
+				endif
+			-%}
+			<toggle-box class="toggle-box" {{ block.shopify_attributes }}{% if block.settings.open %} open{%- endif -%}>
+				<figure class="toggle-box--image aspect-ratio aspect-ratio--{{ image_ratio }}" style="--ratio-percent: {{ 1 | divided_by: ratio | times: 100 }}%;">
+					{%- if block.settings.image_link != blank -%}
+					<a href="{{ block.settings.image_link }}">
+					{%- endif -%}
+					{%- if block.settings.image -%}
+						{%- liquid
+							assign sizes = '345x0,690x0'
+						-%}
+						{%- render 'responsive-image', image: block.settings.image, sizes: sizes -%}
+					{%- else -%}
+						{% assign index = forloop.index | modulo: 4 | plus: 1 %}
+						<div class="thb-placeholder">
+							{{ 'product-apparel-' | append: index| placeholder_svg_tag: 'placeholder_svg_tag' }}
+						</div>
+					{%- endif -%}
+					{%- if block.settings.image_link != blank -%}
+					</a>
+					{%- endif -%}
+				</figure>
+				<div class="toggle-box--content rte text-{{ text_alignment }}">
+					<scroll-shadow class="toggle-box--content-inner" style="--bg-body-rgb: {{ color_bg.rgb | replace: ' ' , ',' }}">
+						<div>
+							{% if block.settings.text != blank %}
+								{{ block.settings.text | newline_to_br }}
+							{% endif %}
+						</div>
+					</scroll-shadow>
+				</div>
+				<button class="toggle-box--button">{{ block.settings.heading | default: 'Toggle' }} <span></span></button>
+			</toggle-box>
+		{%- endfor -%}
+	</div>
+</div>
+
+{% schema %}
+  {
+    "name": "Toggle boxes",
+		"class": "section-toggle-boxes",
+    "settings": [
+			{
+				"type": "text",
+				"id": "heading",
+				"label": "Heading",
+				"default": "Toggle boxes",
+				"info": "Wrap your text between | to add animated markers. For example: Animated |marker| will underline marker text."
+			},
+			{
+				"type": "select",
+				"id": "marker_style",
+				"options": [
+					{
+						"value": "style1",
+						"label": "Basic"
+					},
+					{
+						"value": "style2",
+						"label": "Double"
+					},
+					{
+						"value": "style3",
+						"label": "Squiggle"
+					},
+					{
+						"value": "style4",
+						"label": "Zigzag"
+					}
+				],
+				"default": "style1",
+				"label": "Marker"
+			},
+			{
+				"type": "richtext",
+				"id": "description",
+				"label": "Description",
+				"default": "<p>Add a short description for this section</p>"
+			},
+			{
+				"type": "range",
+				"id": "columns_desktop",
+				"min": 2,
+				"max": 4,
+				"step": 1,
+				"default": 4,
+				"label": "Number of columns on desktop"
+			},
+			{
+	      "type": "select",
+	      "id": "column_spacing",
+	      "options": [
+	        {
+	          "value": "small",
+	          "label": "Small"
+	        },
+					{
+	          "value": "medium",
+	          "label": "Medium"
+	        },
+	        {
+	          "value": "large",
+	          "label": "Large"
+	        }
+	      ],
+	      "default": "medium",
+	      "label": "Column spacing"
+	    },
+			{
+	      "type": "select",
+	      "id": "image_ratio",
+	      "options": [
+	        {
+	          "value": "adapt",
+	          "label": "Adapt to image"
+	        },
+	        {
+	          "value": "portrait",
+	          "label": "Portrait"
+	        },
+					{
+	          "value": "landscape",
+	          "label": "Landscape"
+	        },
+	        {
+	          "value": "square",
+	          "label": "Square"
+	        }
+	      ],
+	      "default": "adapt",
+	      "label": "Image ratio"
+	    },
+			{
+	      "type": "checkbox",
+	      "id": "mobile_swipe",
+	      "default": true,
+	      "label": "Enable swipe on mobile"
+	    },
+			{
+				"type": "select",
+				"id": "text_alignment",
+				"options": [
+					{
+						"value": "left",
+						"label": "Left"
+					},
+					{
+						"value": "center",
+						"label": "Center"
+					},
+					{
+						"value": "right",
+						"label": "Right"
+					}
+				],
+				"default": "left",
+				"label": "Content alignment"
+			},
+			{
+	      "type": "header",
+	      "content": "Colors"
+	    },
+			{
+				"type": "color",
+				"id": "color_bg",
+				"label": "Background",
+				"default": "#ffffff"
+			},
+			{
+				"type": "color",
+				"id": "color_heading",
+				"label": "Heading",
+				"default": "#1a1c1d"
+			},
+			{
+				"type": "color",
+				"id": "marker_color",
+				"label": "Marker",
+				"default": "#FD6262"
+			},
+			{
+				"type": "color",
+				"id": "color_text",
+				"label": "Text",
+				"default": "#2c2d2e"
+			},
+			{
+				"type": "color",
+				"id": "color_link",
+				"label": "Link",
+				"default": "#3f72e5"
+			},
+			{
+	      "type": "header",
+	      "content": "Spacing"
+	    },
+			{
+				"type": "checkbox",
+				"id": "disable_top_spacing",
+				"default": false,
+				"label": "Remove top spacing"
+			},
+			{
+				"type": "checkbox",
+				"id": "disable_bottom_spacing",
+				"default": false,
+				"label": "Remove bottom spacing"
+			}
+    ],
+    "blocks": [
+      {
+        "type": "box",
+        "name": "Box",
+        "settings": [
+					{
+						"type": "image_picker",
+						"id": "image",
+						"label": "Image",
+						"info": "690 x 800 .jpg recommended. Depends on your block content size."
+					},
+          {
+            "id": "image_link",
+            "type": "url",
+            "label": "Image link"
+          },
+					{
+			      "type": "header",
+			      "content": "Content"
+			    },
+					{
+						"type": "checkbox",
+						"id": "open",
+						"default": false,
+						"label": "Open by default"
+					},
+          {
+            "type": "textarea",
+            "id": "heading",
+            "label": "Heading",
+            "default": "Heading"
+          },
+					{
+						"type": "richtext",
+						"id": "text",
+						"default": "<p>Pair text with an image to focus on your chosen image</p>",
+						"label": "Description"
+					}
+        ]
+      }
+    ],
+    "presets": [
+      {
+        "name": "Toggle boxes",
+				"blocks": [
+					{
+						"type": "box"
+					},
+					{
+						"type": "box"
+					},
+					{
+						"type": "box"
+					},
+					{
+						"type": "box"
+					}
+				]
+      }
+    ],
+		"enabled_on": {
+			"templates": ["*"],
+			"groups": [
+				"header", "footer"
+			]
+		}
+  }
+{% endschema %}

@@ -1,0 +1,158 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "type": "footer",
+  "name": "Footer group",
+  "sections": {
+    "footer": {
+      "type": "footer",
+      "blocks": {
+        "ebdaaa5c-c47c-42ac-a830-30a799694755": {
+          "type": "text",
+          "settings": {
+            "column_size": "large",
+            "text_alignment": "left",
+            "title": "",
+            "text": "<p><strong>Text block</strong></p>",
+            "text_size": "medium",
+            "button_text": "",
+            "button_link": "",
+            "show_social_links": false
+          }
+        },
+        "d402e6d5-9d79-43ad-900a-cfaddc6cd9f8": {
+          "type": "menu",
+          "settings": {
+            "column_size": "small",
+            "title": "Company",
+            "menu": "main-menu"
+          }
+        },
+        "055d0c35-3f11-4f51-9e3d-eab55edb7a9b": {
+          "type": "menu",
+          "settings": {
+            "column_size": "small",
+            "title": "Resources",
+            "menu": "main-menu"
+          }
+        },
+        "2ab8345e-9f63-4c80-b028-f4edae3633b5": {
+          "type": "signup",
+          "settings": {
+            "column_size": "large",
+            "title": "Subscribe to our newsletter",
+            "text": "<p>Subscription description</p>"
+          }
+        }
+      },
+      "block_order": [
+        "ebdaaa5c-c47c-42ac-a830-30a799694755",
+        "d402e6d5-9d79-43ad-900a-cfaddc6cd9f8",
+        "055d0c35-3f11-4f51-9e3d-eab55edb7a9b",
+        "2ab8345e-9f63-4c80-b028-f4edae3633b5"
+      ],
+      "disabled": true,
+      "settings": {
+        "footer_reveal_animation": true,
+        "copyright_text": "All rights reserved.",
+        "show_language_switcher": true,
+        "show_currency_switcher": true,
+        "show_payment_icons": true,
+        "enable_follow_on_shop": true
+      }
+    },
+    "teflo-footer": {
+      "type": "teflo-footer",
+      "blocks": {
+        "btm_lists_ydDWRL": {
+          "type": "btm_lists",
+          "settings": {
+            "list_title": "Privacy Policy",
+            "list_link": ""
+          }
+        },
+        "btm_lists_iY48YY": {
+          "type": "btm_lists",
+          "settings": {
+            "list_title": "Terms",
+            "list_link": ""
+          }
+        },
+        "right_icons_kGTVMW": {
+          "type": "right_icons",
+          "settings": {
+            "button_icon": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewbox=\"0 0 68 69\" fill=\"none\">\n            <rect y=\"0.730469\" width=\"67.3699\" height=\"67.3699\" rx=\"3\" fill=\"#EDF1F3\"></rect>\n            <path fill-rule=\"evenodd\" clip-rule=\"evenodd\" d=\"M41.5263 48.2842H47.5434L47.5459 37.6353C47.5459 32.4076 46.4215 28.3891 40.3228 28.3891C39.1786 28.3466 38.0442 28.6157 37.0406 29.1679C36.0369 29.7201 35.2016 30.5346 34.6235 31.5248H34.5426V28.872H28.7661V48.2836H34.7833V38.6807C34.7833 36.1485 35.2628 33.696 38.3967 33.696C41.4862 33.696 41.5263 36.5936 41.5263 38.8446V48.2842ZM20.0367 25.6294C20.611 26.0136 21.2862 26.2186 21.9768 26.2185C22.4354 26.2184 22.8894 26.1279 23.313 25.952C23.7366 25.7762 24.1216 25.5184 24.4457 25.1936C24.7699 24.8687 25.027 24.483 25.2024 24.0586C25.3779 23.6342 25.4681 23.1793 25.468 22.72C25.4679 22.0281 25.263 21.3519 24.8792 20.7767C24.4954 20.2016 23.95 19.7533 23.3119 19.4887C22.6738 19.224 21.9717 19.1549 21.2944 19.29C20.617 19.4251 19.9949 19.7583 19.5067 20.2476C19.0184 20.7369 18.686 21.3602 18.5513 22.0388C18.4167 22.7173 18.486 23.4207 18.7504 24.0598C19.0148 24.6989 19.4625 25.2451 20.0367 25.6294ZM18.962 48.2842H24.9854V28.872H18.962V48.2842Z\" fill=\"#0F1225\"></path>\n            </svg>",
+            "button_text": "",
+            "button_link": ""
+          }
+        },
+        "right_icons_Ua3kPU": {
+          "type": "right_icons",
+          "settings": {
+            "button_icon": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewbox=\"0 0 69 69\" fill=\"none\">\n<rect x=\"0.921875\" y=\"0.730469\" width=\"67.3699\" height=\"67.3699\" rx=\"3\" fill=\"#EDF1F3\"></rect>\n<path d=\"M30.2976 49.6052H36.5833L36.5835 34.6287H41.3209L41.784 29.7526H36.5837V26.4438C36.5837 24.6534 37.4534 24.0057 39.6811 24.0057H41.8674V19.4781C41.8674 19.4781 39.7859 19.2227 38.46 19.2227C32.1913 19.2227 30.2974 22.1714 30.2974 26.283V29.7526H26.0156V34.6287H30.2976V49.6052Z\" fill=\"#0F1225\"></path>\n</svg>",
+            "button_text": "",
+            "button_link": ""
+          }
+        },
+        "right_icons_jbAKcr": {
+          "type": "right_icons",
+          "settings": {
+            "button_icon": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewbox=\"0 0 69 69\" fill=\"none\">\n<rect x=\"0.859375\" y=\"0.730469\" width=\"67.3699\" height=\"67.3699\" rx=\"3\" fill=\"#EDF1F3\"></rect>\n<path d=\"M44.1518 22.4219H48.1618L39.4031 32.4996L49.7446 46.1652H41.6192L35.2876 37.8814L28.0064 46.1652H23.9964L33.3882 35.4015L23.4688 22.4219H31.8053L37.5564 30.0197L44.1518 22.4219ZM42.7272 43.7381H44.9432L30.5917 24.6907H28.1646L42.7272 43.7381Z\" fill=\"#0F1225\"></path>\n</svg>",
+            "button_text": "",
+            "button_link": ""
+          }
+        },
+        "right_icons_JzcmAM": {
+          "type": "right_icons",
+          "settings": {
+            "button_icon": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewbox=\"0 0 69 69\" fill=\"none\">\n<rect x=\"0.78125\" y=\"0.730469\" width=\"67.3699\" height=\"67.3699\" rx=\"3\" fill=\"#EDF1F3\"></rect>\n<path d=\"M32.6171 39.2329V30.2043L40.5798 34.7188L32.6171 39.2329ZM50.3292 27.3634C49.9789 26.0485 48.9465 25.0131 47.6357 24.6618C45.2599 24.0231 35.7329 24.0231 35.7329 24.0231C35.7329 24.0231 26.206 24.0231 23.8301 24.6618C22.5193 25.0131 21.4869 26.0485 21.1366 27.3634C20.5 29.7465 20.5 34.7186 20.5 34.7186C20.5 34.7186 20.5 39.6907 21.1366 42.0738C21.4869 43.3887 22.5193 44.424 23.8301 44.7756C26.206 45.4141 35.7329 45.4141 35.7329 45.4141C35.7329 45.4141 45.2599 45.4141 47.6357 44.7756C48.9465 44.424 49.9789 43.3887 50.3292 42.0738C50.9659 39.6907 50.9659 34.7186 50.9659 34.7186C50.9659 34.7186 50.9659 29.7465 50.3292 27.3634Z\" fill=\"#0F1225\"></path>\n</svg>",
+            "button_text": "",
+            "button_link": ""
+          }
+        }
+      },
+      "block_order": [
+        "btm_lists_ydDWRL",
+        "btm_lists_iY48YY",
+        "right_icons_kGTVMW",
+        "right_icons_Ua3kPU",
+        "right_icons_jbAKcr",
+        "right_icons_JzcmAM"
+      ],
+      "settings": {
+        "footer_bg_color": "#0d0d0d",
+        "footer_font_color": "#ffffff",
+        "button_border_color": "#ffffff",
+        "button_hover_border_color": "",
+        "button_border": true,
+        "button_text": "Contact Us",
+        "button_link": "",
+        "button_text_color": "#FFFFFF",
+        "button_bg_color": "transparent",
+        "button_hover_text_color": "#FFFFFF",
+        "button_hover_bg_color": "#0522CB",
+        "footer_font_hover_color": "#ffffff",
+        "footer_lt_title": "Work with us",
+        "footer_lt_desc": "<p>Looking to level-up your website or move over to Webflow? Let's startwith a free consultation.</p>",
+        "footer_btm_lt_title_img": "shopify://shop_images/Teflo_1.png",
+        "footer_btm_lt_title_img_alt": "",
+        "footer_btm_rt_copyright": "<p>Copyright © 2024 Teflo All rights reserved.</p>",
+        "footer_btm_rt_contact_title": "Contact Info",
+        "footer_btm_rt_contact_email": "Service01@himalayacn.cn",
+        "footer_btm_rt_contact_phone": "400-101-7958",
+        "footer_btm_rt_contact_address": "Zouqu Town Zhonglou District Changzhou City Jiangsu province"
+      }
+    }
+  },
+  "order": [
+    "footer",
+    "teflo-footer"
+  ]
+}

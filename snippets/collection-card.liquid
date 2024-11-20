@@ -1,0 +1,70 @@
+{%- liquid
+	assign grid_collection_image = nil
+	assign index_c = index | modulo: 4 | plus: 1
+-%}
+{%- if grid_collection == empty -%}
+	{%- assign grid_collection_url = '#' -%}
+	{%- assign grid_collection_title = 'onboarding.collection_title' | t -%}
+{%- else -%}
+	{%- assign grid_collection_url = grid_collection.url -%}
+	{%- assign grid_collection_title = grid_collection.title -%}
+	{%- if grid_collection.featured_image -%}
+		{%- assign grid_collection_image = grid_collection.featured_image -%}
+	{%- endif -%}
+{%- endif -%}
+{%- liquid
+	assign sizes = '345x345,640x640'
+	assign media_aspect_percentage = 100 | append: '%'
+  if media_aspect_ratio == 'portrait'
+    assign sizes = '345x400,640x800'
+  elsif media_aspect_ratio == 'adapt'
+    assign sizes = '345x0,640x0'
+		assign media_aspect_percentage = 100 | divided_by: grid_collection_image.aspect_ratio | append: '%'
+  endif
+
+	assign mobile_columns_class = 'small-12'
+	if is_carousel
+		if columns_mobile == '2'
+			assign mobile_columns_class = 'small-6'
+		endif
+		assign columns_class = 'medium-6 large-4'
+		case columns_desktop
+			when 2
+				assign columns_class = 'medium-6'
+			when 3
+				assign columns_class = 'medium-4'
+			when 4
+				assign columns_class = 'medium-6 large-3'
+			when 5
+				assign columns_class = 'medium-1/5 large-1/5'
+			when 6
+				assign columns_class = 'medium-3 large-2'
+		endcase
+		assign columns_class = columns_class | append: ' carousel__slide columns'
+	endif
+
+	if settings.block_shadows
+		assign collection_card_shadow_class = 'collection-card--has-shadow'
+	endif
+	assign collection_image_shadow_class = 'has-shadow--true'
+-%}
+<div class="{{ mobile_columns_class }} {{ columns_class }}">
+	<div class="collection-card {{ style }} {{ collection_card_shadow_class }} text-{{ text_alignment }}">
+		<div class="collection-card--image media-aspect-{{ media_aspect_ratio }} {{ collection_image_shadow_class }}" style="--var-media-aspect-ratio: {{ media_aspect_percentage }}">
+			<a href="{{ grid_collection_url }}" class="collection-card--link" title="{{ grid_collection_title | escape }}">
+				{% if grid_collection == empty %}
+					<div class="thb-placeholder">{{ 'collection-apparel-' | append: index_c | placeholder_svg_tag }}</div>
+				{% else %}
+					{% if grid_collection_image %}
+						{%- render 'responsive-image', image: grid_collection.featured_image | image_url, sizes: sizes -%}
+					{% else %}
+						<div class="thb-placeholder">{{ 'collection-apparel-' | append: index_c | placeholder_svg_tag }}</div>
+					{% endif %}
+				{% endif %}
+			</a>
+		</div>
+		<div class="collection-card--content">
+			<a href="{{ grid_collection_url }}" class="collection-card--link collection-card--link-{{ heading_size }} collection-card--link-{{ heading_position }}" title="{{ grid_collection_title | escape }}"><span>{{ grid_collection_title }}</span></a>
+		</div>
+	</div>
+</div>

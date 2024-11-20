@@ -1,0 +1,655 @@
+{%- liquid
+    assign logo = section.settings.logo
+    assign logo_alt = section.settings.logo_alt
+    assign logo_link = section.settings.logo_link
+    assign button_text = section.settings.button_text
+    assign button_link = section.settings.button_link
+    assign button_text_color = section.settings.button_text_color
+    assign button_bg_color = section.settings.button_bg_color
+    assign button_hover_text_color = section.settings.button_hover_text_color
+    assign button_hover_bg_color = section.settings.button_hover_bg_color
+    assign button_border_color = section.settings.button_border_color
+    assign button_border = section.settings.button_border
+    assign button_hover_border_color = section.settings.button_hover_border_color
+-%}
+
+<style>
+
+.teflo-header-navbar{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 999;
+}
+.fixed-teflo-header-navbar{
+    {% comment %} height: calc(100vw * 95 / var(--base-width)); {% endcomment %}
+}
+
+@media (max-width: 1024px) {
+    .fixed-teflo-header-navbar{
+        {% comment %} height: calc(100vw * 95 / var(--base-width)); {% endcomment %}
+    }
+    
+}
+
+.teflo-hander{
+    position: relative;
+    z-index: 99;
+	height: calc(100vw * 95 / var(--base-width));
+	padding: 0 calc(100vw * 20 / var(--base-width));
+	{% comment %} background: #0D0D0D; {% endcomment %}
+    
+}
+.teflo-hander-height-fixed{
+    height:0px;
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    z-index: 0;
+    background: #0D0D0D;
+}
+.teflo-hander-box{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+ 
+}
+.teflo-hander-nav-a-dwonsvg{
+	width: calc(100vw * 10 / var(--base-width));
+	height: calc(100vw * 7 / var(--base-width));
+	margin-left: calc(100vw * 6 / var(--base-width));
+    transition: transform 0.3s ease;
+}
+.teflo-hander-nav-a{
+	display: flex;
+    align-items: center;
+    margin-right: calc(100vw * 60 / var(--base-width));
+    position: relative;
+}
+.teflo-hander-nav-a::before{
+    position: absolute;
+    content: '';
+    width: 0;
+    height: calc(100vw * 1 / var(--base-width));
+    bottom: 0;
+    left: 0;
+    background: #fff;
+    transition: width 0.3s ease;
+}
+
+.teflo-hander-nav-a:hover::before{
+    width: 100%;
+}
+
+
+.teflo-hander-nav-a:hover .teflo-hander-nav-a-span{
+    color:#fff;
+}
+.teflo-hander-nav-a:last-child{
+    margin-right: 0;
+}
+.teflo-hander-nav-a-span{
+	color: #FFF;
+	font-family: Matter;
+	font-size: calc(100vw * 16 / var(--base-width));
+	font-style: normal;
+	font-weight: 400;
+	line-height: calc(100vw * 22 / var(--base-width));
+	letter-spacing: -0.48px;
+}
+.teflo-hander-log .teflo-hander-log-img{
+	width: calc(100vw * 139 / var(--base-width));
+	height: calc(100vw * 31 / var(--base-width));
+	flex-shrink: 0;
+}
+.teflo-hander-nav{
+	
+}
+.teflo-hander-droMuen-fixedHeight{
+    height:calc(100vw * 37 / var(--base-width));
+    background:transparent;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+}
+.teflo-hander-droMuen-content{
+    height:calc(100% - calc(100vw * 37 / var(--base-width)));
+    {% comment %} background: #000; {% endcomment %}
+   
+}
+.teflo-hander-droMuen-content-paddingtop{
+    height:calc(100vw * 20 / var(--base-width));
+}
+.teflo-hander-droMuen-content-paddingbottom{
+    height:calc(100vw * 30 / var(--base-width));
+}
+.teflo-hander-droMuen{
+    position: absolute;
+    height:0px;
+    width:calc(100vw - 17px);
+    overflow: hidden;
+    z-index: 999;
+}
+
+.teflo-hander-droMuen::-webkit-scrollbar {
+    display: none;
+}
+.teflo-hander-droMuen-content-a{
+    color: #FFF;
+    font-size: calc(100vw * 16 / var(--base-width));
+    font-style: normal;
+    font-weight: 300;
+    line-height: calc(100vw * 20 / var(--base-width));
+    transition: opacity 0.3s ease;
+    opacity: 0.7;
+    margin-bottom: calc(100vw * 15 / var(--base-width));
+    display: block;
+    width: fit-content;
+    position: relative;
+}
+.teflo-hander-droMuen-content-a::before{
+    position: absolute;
+    content: '';
+    width: 0;
+    height: calc(100vw * 1 / var(--base-width));
+    bottom: 0;
+    left: 0;
+    background: #fff;
+    transition: width 0.3s ease;
+}
+
+.teflo-hander-droMuen-content-a:hover::before{
+    width: 100%;
+}
+
+.teflo-hander-droMuen-content-a:last-child{
+    margin-bottom: 0;
+}
+.teflo-hander-droMuen-content-a:hover{
+    opacity: 1;
+    color:#fff;
+}
+
+
+.teflo-hander-mobile-logo{
+    display: flex;
+    width: calc(100vw * 192 / var(--base-width));
+	cursor: pointer;
+}
+ .teflo-hander-mobile-logo-img{
+    width: 100%;
+}
+.teflo-hander-mobile-btn-svg{
+    width: calc(100vw * 86 / var(--base-width));
+    height: calc(100vw * 23 / var(--base-width));
+	cursor: pointer;
+}
+.teflo-hander-mobile{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding:calc(100vw * 28 / var(--base-width)) calc(100vw * 25 / var(--base-width));
+
+}
+
+.teflo-hander-mobile-popup{
+    position: fixed;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100vh;
+    background: #0D0D0D;
+    z-index: 999;
+    overflow: hidden;
+    padding-bottom: 50px;
+    overflow-y: scroll;
+    
+}
+
+.teflo-hander-mobile-popup::-webkit-scrollbar {
+    display: none;
+}
+.teflo-hander-mobile-popup-top{
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	padding: calc(100vw * 25 / var(--base-width));
+	padding-top: calc(100vw * 28 / var(--base-width));
+    margin-bottom: calc(100vw * 115 / var(--base-width));
+    position:sticky;
+    top:0;
+    background: #0D0D0D;
+}
+.teflo-hander-mobile-popup-close-svg{
+	width: calc(100vw * 60 / var(--base-width));
+	height: calc(100vw * 60 / var(--base-width));
+	cursor: pointer;
+}
+.teflo-hander-mobile-popup-logo{
+	width: calc(100vw * 192 / var(--base-width));
+}
+.teflo-hander-mobile-popup-logo-img{
+	width: 100%;
+}
+
+.teflo-hander-mobile-popup-content-a{
+    display: flex;
+    align-items: center;
+    padding:calc(100vw * 30 / var(--base-width)) calc(100vw * 25 / var(--base-width));
+   
+}
+.teflo-hander-mobile-popup-content-box{
+    border-top: 1px solid rgba(255, 255, 255, 0.5);
+}
+.teflo-hander-mobile-popup-content-num{
+    display: inline-block;
+    width: calc(100vw * 100 / var(--base-width));
+    flex-shrink: 0;
+
+}
+.teflo-hander-mobile-popup-content-item{
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    color: #FFF;
+    font-size: calc(100vw * 20 / var(--base-width));
+    font-style: normal;
+    font-weight: 400;
+    line-height: calc(100vw * 26 / var(--base-width));
+    text-transform: uppercase;
+}
+.teflo-hander-mobile-popup-content-item-svgbox{
+    width: calc(100vw * 40 / var(--base-width));
+    height: calc(100vw * 40 / var(--base-width));
+    border-radius:  calc(100vw * 3 / var(--base-width));
+    border: 1px solid #FFF;
+    display: flex;
+    justify-content: center;
+    align-items: center; 
+    flex-shrink: 0;  
+}
+.teflo-hander-mobile-popup-content-item-svgbox-svg{
+    width: calc(100vw * 18 / var(--base-width));
+    height: calc(100vw * 18 / var(--base-width));
+    display:none;
+}
+.teflo-hander-mobile-popup-content-item-svgbox-svg1{
+    display:none;
+}
+.teflo-hander-mobile-popup-content-item-svgbox-svg2{
+    display: block;
+}
+.mobile-popup-active .teflo-hander-mobile-popup-content-item-svgbox-svg2{
+    display:none;
+}
+.mobile-popup-active .teflo-hander-mobile-popup-content-item-svgbox-svg1{
+    display:block;
+}
+.mobile-popup-active .teflo-hander-mobile-popup-content-item-svgbox{
+    {% comment %} border-color:transparent;
+    background: #FFF; {% endcomment %}
+}
+.mobile-popup-active .teflo-hander-mobile-popup-content-num{
+    color:rgba(255, 255, 255, 0.5);
+}
+.teflo-hander-mobile-popup-content-item-text{
+    color: #FFF;
+    font-size: calc(100vw * 36 / var(--base-width));
+    font-style: normal;
+    font-weight: 400;
+    line-height: calc(100vw * 40 / var(--base-width));
+    letter-spacing: -1.08px;
+    max-width: calc(100vw * 540 / var(--base-width));
+}
+.mobile-popup-active .teflo-hander-mobile-popup-content-item-text{
+
+}
+.teflo-hander-mobile-popup-content-box-two{
+
+    padding-left: calc(100vw * 125 / var(--base-width));
+ 
+    height:0px;
+    overflow: hidden;
+}
+
+.teflo-hander-mobile-popup-content-box-two::-webkit-scrollbar {
+    display: none;
+}
+.teflo-hander-mobile-popup-content-box-two-top{
+    height: calc(100vw * 30 / var(--base-width));
+}
+.teflo-hander-mobile-popup-content-box-two-bottom{
+    height: calc(100vw * 70 / var(--base-width));
+}
+.teflo-hander-mobile-popup-content-box-two a{
+    display: block;
+    color: rgba(255, 255, 255, 0.5);
+    font-size: calc(100vw * 26 / var(--base-width));
+    font-style: normal;
+    font-weight: 300;
+    line-height: calc(100vw * 36 / var(--base-width));
+    margin-bottom: calc(100vw * 30 / var(--base-width));
+}
+.teflo-hander-mobile-popup-content-box-two a:last-child{
+    margin-bottom: 0;
+}
+.teflo-hander-mobile-popup-button{
+    padding-left: calc(100vw * 25 / var(--base-width));
+    padding-top: calc(100vw * 80 / var(--base-width));
+}
+</style>
+{% assign main_menu = linklists['main-menu'] %}
+<div class="fixed-teflo-header-navbar"></div>
+<div class="teflo-header-navbar">
+   
+    <div class="pc-show">
+        <div class="teflo-hander">
+            <div class="teflo-hander-box">
+                 <a href="" class="teflo-hander-log">
+                     <img class="teflo-hander-log-img" src="{{ logo | image_url:  width:'139' }}" alt="{{ logo_alt }}">
+                 </a>
+                 <div class="teflo-hander-nav flex-center-start">
+                    {% for link in main_menu.links %}
+                     <div class="teflo-hander-nav-a flex-center-start">
+                         <a  href="{{ link.url }}" class="teflo-hander-nav-a-span">{{ link.title }}</a>
+                         {% if link.links.size > 0  %}
+                            <svg class="teflo-hander-nav-a-dwonsvg" xmlns="http://www.w3.org/2000/svg"  viewBox="0 0 8 5" fill="none">
+                                <path d="M1 1L4 4L7 1" stroke="white"/>
+                            </svg>
+                            <div class="teflo-hander-droMuen">
+                                <div class="teflo-hander-droMuen-fixedHeight"></div>
+                                <div class="teflo-hander-droMuen-content">
+                                    <div class="teflo-hander-droMuen-content-paddingtop"></div>
+                                    {% for link in link.links %}
+                                        <a class="teflo-hander-droMuen-content-a" href="{{ link.url }}">{{ link.title }}</a>
+                                    {% endfor %}
+                                    <div class="teflo-hander-droMuen-content-paddingbottom"></div>
+                                </div>
+                            </div>
+                         {% endif %}
+                     </div>
+                    {% endfor %}
+                     {% render 'teflo-button',
+                        button_link:button_link,
+                         button_text:button_text,
+                          button_text_color:button_text_color,
+                         button_bg_color:button_bg_color,
+                         button_hover_text_color:button_hover_text_color,
+                         button_hover_bg_color:button_hover_bg_color,
+                         button_border_color:button_border_color, 
+                         button_border:button_border,
+                         button_hover_border_color:button_hover_border_color
+                    %}
+                 </div>
+            </div>
+         </div>
+         <div class="teflo-hander-height-fixed"></div>
+        </div>
+    <div class="h5-show">
+        <div class="teflo-hander-mobile">
+            <a href="" class="teflo-hander-mobile-logo">
+                <img class="teflo-hander-mobile-logo-img" src="{{ logo | image_url:  width:'192' }}" alt="{{ logo_alt }}">
+            </a>
+           
+            <svg xmlns="http://www.w3.org/2000/svg" class="teflo-hander-mobile-btn-svg" viewBox="0 0 86 23" fill="none">
+                <line y1="1" x2="86" y2="1" stroke="white" stroke-width="2"/>
+                <line y1="22" x2="86" y2="22" stroke="white" stroke-width="2"/>
+            </svg>
+           
+        </div>
+
+        <div class="teflo-hander-mobile-popup">
+            <div class="teflo-hander-mobile-popup-top">
+                <a href="" class="teflo-hander-mobile-popup-logo">
+                    <img class="teflo-hander-mobile-popup-logo-img" src="{{ logo | image_url:  width:'192' }}" alt="{{ logo_alt }}">
+                </a>
+                <svg xmlns="http://www.w3.org/2000/svg" class="teflo-hander-mobile-popup-close-svg"  viewBox="0 0 65 63" fill="none">
+                    <line x1="1.29289" y1="62.1034" x2="62.1041" y2="1.29226" stroke="white" stroke-width="2"/>
+                    <line x1="2.70711" y1="1.29289" x2="63.5183" y2="62.1041" stroke="white" stroke-width="2"/>
+                </svg>
+            </div>
+            <div class="teflo-hander-mobile-popup-content">
+                {% for link in main_menu.links %}
+                    <div class="teflo-hander-mobile-popup-content-box">
+                        <a class="teflo-hander-mobile-popup-content-a" data-idx="{{ forloop.index }}" data-has="{% if link.links.size > 0  %}1{% else %}0{% endif %}"  href="{{ link.url }}" title="{{ link.title }}">
+                            <span class="teflo-hander-mobile-popup-content-num">0{{ forloop.index }}</span>
+                            <div class="teflo-hander-mobile-popup-content-item">
+                                <span class="teflo-hander-mobile-popup-content-item-text">{{ link.title }}</span>
+                                {% if link.links.size > 0  %}
+                                    <div class="teflo-hander-mobile-popup-content-item-svgbox">
+                                        <svg class="teflo-hander-mobile-popup-content-item-svgbox-svg teflo-hander-mobile-popup-content-item-svgbox-svg1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 18 18" fill="none">
+                                            <path d="M1 8.32L9 16M9 16L17 8.32M9 16L9 0" stroke="white"  stroke-width="2"/>
+                                        </svg>
+                                        <svg  class="teflo-hander-mobile-popup-content-item-svgbox-svg teflo-hander-mobile-popup-content-item-svgbox-svg2" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18" fill="none">
+                                            <path d="M17 9.68L9 2M9 2L1 9.68M9 2L9 18" stroke="#0522CB" stroke-width="2"/>
+                                        </svg>
+                                    </div>
+                                {% endif %}
+                            </div>
+                        </a>
+                        <div class="teflo-hander-mobile-popup-content-box-two teflo-hander-mobile-popup-content-box-two{{ forloop.index }}">
+                            <div class="teflo-hander-mobile-popup-content-box-two-top"></div>
+                           
+                            {% for link in link.links %}
+                                <a href="{{ link.url }}">{{ link.title }}</a>
+                            {% endfor %}
+
+                            <div class="teflo-hander-mobile-popup-content-box-two-bottom"></div>
+                        </div>
+                    </div>
+                {% endfor %}
+
+                
+               <div class="teflo-hander-mobile-popup-button">
+                {% render 'teflo-button',
+                    button_link:button_link,
+                         button_text:button_text,
+                          button_text_color:"#0D0D0D",
+                         button_bg_color:"#FFF",
+                         button_hover_text_color:button_hover_text_color,
+                         button_hover_bg_color:button_hover_bg_color,
+                         button_border_color:button_border_color, 
+                         button_border:button_border,
+                         button_hover_border_color:button_hover_border_color
+                     
+                %}
+               </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+       let tefloHanderNavA =  document.querySelectorAll('.teflo-hander-nav-a');
+       tefloHanderNavA.forEach(function(item) {
+           item.addEventListener('mouseover', function() {
+                if(this.querySelector('.teflo-hander-droMuen')){
+                    var offsetLeft = this.offsetLeft;
+                    var offsetHeight = this.offsetHeight;
+                    var offsetWidth = this.offsetWidth;
+
+                    this.querySelector('.teflo-hander-droMuen .teflo-hander-droMuen-content').style.paddingLeft = offsetLeft + 'px';
+                    this.querySelector('.teflo-hander-droMuen').style.top = offsetHeight + 'px';
+                    this.querySelector('.teflo-hander-droMuen').style.left = '-'+offsetLeft + 'px';
+                    this.querySelector('.teflo-hander-nav-a-dwonsvg').style.transform = 'rotate(180deg)';
+                   
+     
+                    gsap.to(document.querySelector('.teflo-hander-height-fixed'), {height: '457px', duration: 0.5, ease: 'power2.inOut'});
+                    gsap.to(this.querySelector('.teflo-hander-droMuen'), {height: '370px', duration: 0.5, ease: 'power2.inOut'});
+                }
+        });
+        item.addEventListener('mouseout', function() {
+            if(this.querySelector('.teflo-hander-droMuen')){
+                this.querySelector('.teflo-hander-nav-a-dwonsvg').style.transform = 'rotate(0deg)';
+
+                gsap.to(document.querySelector('.teflo-hander-height-fixed'), {height: 0+'px', duration: 0.5, ease: 'power2.inOut'});
+                gsap.to(this.querySelector('.teflo-hander-droMuen'), {height: 0+'px', duration: 0.5, ease: 'power2.inOut'});
+            }
+        });
+    });
+    // teflo-hander-mobile-popup
+    let tefloHanderMobileBtnSvg = document.querySelector('.teflo-hander-mobile-btn-svg');
+    let tefloHanderMobilePopup = document.querySelector('.teflo-hander-mobile-popup');
+    let tefloHanderMobilePopupCloseSvg = document.querySelector('.teflo-hander-mobile-popup-close-svg');
+    tefloHanderMobileBtnSvg.addEventListener('click', function() {
+        tefloHanderMobilePopup.classList.add('mobile-popup-active');
+        disableScroll();
+        gsap.to(tefloHanderMobilePopup, {left: 0, duration: 0.5, ease: 'power2.inOut'});
+    });
+    tefloHanderMobilePopupCloseSvg.addEventListener('click', function() {
+        tefloHanderMobilePopup.classList.remove('mobile-popup-active');
+        enableScroll();
+        gsap.to(tefloHanderMobilePopup, {left: '-100%', duration: 0.5, ease: 'power2.inOut'});
+    });
+    // teflo-hander-mobile-popup-content-a click
+    let tefloHanderMobilePopupContentA = document.querySelectorAll('.teflo-hander-mobile-popup-content-a');
+    tefloHanderMobilePopupContentA.forEach(function(item) {
+        item.addEventListener('click', function(e) {
+            var has = this.getAttribute('data-has');
+            if(has*1){
+                e.preventDefault();
+            var idx = this.getAttribute('data-idx');
+            if(this.classList.contains('mobile-popup-active')){
+                this.classList.remove('mobile-popup-active');
+                
+                document.querySelector('.teflo-hander-mobile-popup-content-box-two'+idx).style.overflow = 'hidden';
+               
+                gsap.to(document.querySelector('.teflo-hander-mobile-popup-content-box-two'+idx), {height: 0+'px', duration: 0.5, ease: 'power2.inOut'});
+
+                gsap.to(this.querySelector('.teflo-hander-mobile-popup-content-item-svgbox-svg1'), {display: 'block', duration: 0.5, ease: 'power2.inOut'});
+                gsap.to(this.querySelector('.teflo-hander-mobile-popup-content-item-svgbox-svg2'), {display: 'none', duration: 0.5, ease: 'power2.inOut'});
+                gsap.to(this.querySelector('.teflo-hander-mobile-popup-content-num'), {color: 'rgba(255, 255, 255, 0.5)', duration: 0.5, ease: 'power2.inOut'});
+                gsap.to(this.querySelector('.teflo-hander-mobile-popup-content-item-svgbox'), {borderColor: 'rgba(255, 255, 255, 0.5)', background: '#000', duration: 0.5, ease: 'power2.inOut'});
+                
+            }else{
+                console.log('111');
+                this.classList.add('mobile-popup-active');
+              
+                gsap.to(document.querySelector('.teflo-hander-mobile-popup-content-box-two'+idx), {height: 'auto', duration: 0.5, ease: 'power2.inOut'});
+              
+                document.querySelector('.teflo-hander-mobile-popup-content-box-two'+idx).style.overflow = 'auto';
+                gsap.to(this.querySelector('.teflo-hander-mobile-popup-content-item-svgbox-svg2'), {display: 'block', duration: 0.5, ease: 'power2.inOut'});
+                gsap.to(this.querySelector('.teflo-hander-mobile-popup-content-item-svgbox-svg1'), {display: 'none', duration: 0.5, ease: 'power2.inOut'});
+                gsap.to(this.querySelector('.teflo-hander-mobile-popup-content-num'), {color: '#FFF', duration: 0.5, ease: 'power2.inOut'});
+                gsap.to(this.querySelector('.teflo-hander-mobile-popup-content-item-svgbox'), {borderColor: 'transparent', background: '#FFF', duration: 0.5, ease: 'power2.inOut'});
+            }
+        }
+        });
+    });
+
+
+    // sticky header
+    let lastScrollTop = 0;
+    const navbar = document.querySelector('.teflo-header-navbar');
+    const handleScroll  = function() {
+        var scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+        if (scrollTop == 0) {
+            {% comment %} if (that.background != 'transparent') {
+              navbarbox.style.backgroundColor = that.background;
+            } else { {% endcomment %}
+            navbar.style.backgroundColor = 'transparent';
+            {% comment %} } {% endcomment %}
+          } else {
+            navbar.style.backgroundColor = '#0D0D0D';
+          }
+            // 20 is an arbitrary number here, just to make you think if you need the prevScrollpos variable:
+            if (scrollTop > lastScrollTop && scrollTop > 0) {
+                // I am using 'display' instead of 'top':
+                gsap.to(navbar, { y: -150, duration: 0.5, ease: "power2.out" });
+            } else {
+                gsap.to(navbar, { y: 0, duration: 0.5, ease: "power2.out" });
+            }
+            lastScrollTop = scrollTop;
+        }
+    window.addEventListener('scroll', handleScroll);
+});
+</script>
+
+{% schema %}
+{
+    "name": "Teflo Header",
+    "settings": [
+        {
+            "type": "header",
+            "content": "Teflo Header"
+        },
+        {
+            "type": "image_picker",
+            "id": "logo",
+            "label": "Logo"
+        },
+        {
+            "type": "text",
+            "id": "logo_alt",
+            "label": "Logo alt text"
+        },
+        {
+            "type": "text",
+            "id": "logo_link",
+            "label": "Logo link"
+        },
+        //按钮文字，link
+        {
+            "type": "color",
+            "id": "button_border_color",
+            "label": "Button border color"
+        },
+        // hover 的颜色
+        {
+            "type": "color",
+            "id": "button_hover_border_color",
+            "label": "Button hover border color"
+        },
+        {
+            "type": "checkbox",
+            "id": "button_border",
+            "label": "Button border",
+            "default": true
+        },
+        {
+            "type": "text",
+            "id": "button_text",
+            "label": "Button text"
+        },
+        {
+            "type": "text",
+            "id": "button_link",
+            "label": "Button link, enter a URL or popup"
+        },
+        {
+            "type": "text",
+            "id": "button_text_color",
+            "label": "Button text color",
+            "default": "#000000"
+        },
+        {
+            "type": "text",
+            "id": "button_bg_color",
+            "label": "Button background color",
+            "default": "#FFFFFF"
+        },
+        {
+            "type": "text",
+            "id": "button_hover_text_color",
+            "label": "Button hover text color",
+            "default": "#FFFFFF"
+        },
+        {
+            "type": "text",
+            "id": "button_hover_bg_color",
+            "label": "Button hover background color",
+            "default": "#000000"
+        }
+    ],
+    "presets": [
+        {
+            "category": "Header",
+            "name": "Teflo Header"
+        }
+    ]
+}
+{% endschema %}

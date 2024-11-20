@@ -1,0 +1,87 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "breadcrumbs": {
+      "type": "breadcrumbs",
+      "settings": {}
+    },
+    "template-header": {
+      "type": "template-header",
+      "settings": {
+        "show_collection_description": true,
+        "show_subcollections": true,
+        "color_subcollection_bg": "#ffffff",
+        "color_subcollection_text": "#2c2d2e",
+        "display_description": true
+      }
+    },
+    "2d069af4-09a1-41c9-9acd-ebe6af0120b5": {
+      "type": "spacer",
+      "settings": {
+        "spacer_mobile": 0,
+        "spacer_desktop": 0,
+        "border_separator": true,
+        "border_separator_full": false
+      }
+    },
+    "c891bb6f-e801-4e8b-8cf6-000d80e079ce": {
+      "type": "spacer",
+      "settings": {
+        "spacer_mobile": 40,
+        "spacer_desktop": 50,
+        "border_separator": false,
+        "border_separator_full": false
+      }
+    },
+    "5594af96-165f-4553-9a68-209c7b2d02cc": {
+      "type": "multi-page-with-navigation",
+      "blocks": {
+        "2b0c443e-42f0-4f0a-bc32-c1ed57bbb6a8": {
+          "type": "page",
+          "settings": {
+            "page": ""
+          }
+        },
+        "b23bdf26-fa77-43fc-92ba-e8778bc2ec51": {
+          "type": "page",
+          "settings": {
+            "page": ""
+          }
+        },
+        "adcd3cc4-1c22-459f-9ea3-de32ad5a529a": {
+          "type": "page",
+          "settings": {
+            "page": ""
+          }
+        }
+      },
+      "block_order": [
+        "2b0c443e-42f0-4f0a-bc32-c1ed57bbb6a8",
+        "b23bdf26-fa77-43fc-92ba-e8778bc2ec51",
+        "adcd3cc4-1c22-459f-9ea3-de32ad5a529a"
+      ],
+      "settings": {
+        "heading": "",
+        "description": "",
+        "show_page_title": true,
+        "disable_top_spacing": true,
+        "disable_bottom_spacing": false
+      }
+    }
+  },
+  "order": [
+    "breadcrumbs",
+    "template-header",
+    "2d069af4-09a1-41c9-9acd-ebe6af0120b5",
+    "c891bb6f-e801-4e8b-8cf6-000d80e079ce",
+    "5594af96-165f-4553-9a68-209c7b2d02cc"
+  ]
+}

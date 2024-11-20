@@ -1,0 +1,44 @@
+<table class="product-specification-table">
+  <tbody>
+    {%- assign metafields = block.settings.content | newline_to_br | strip_newlines | split: '<br />' -%}
+    {%- for key_value in metafields -%}
+      <tr>
+      {%- liquid
+        assign parts = key_value | split: ':'
+        assign label = parts.first | strip | replace: '"', ''
+        assign metafield_key = parts.last | strip | downcase
+        assign metafield_key_parts = metafield_key | split: "."
+        assign metafield_namespace_index = metafield_key_parts | size | minus: 2
+        assign metafield_key = metafield_key_parts | last
+        assign metafield_namespace = metafield_key_parts[metafield_namespace_index]
+        assign metafield = product.metafields[metafield_namespace][metafield_key]
+
+        capture metafield_value_output
+          if metafield.type contains "list."
+            for sub_metafield in metafield.value
+              assign metafield_type = metafield.type | replace: "list.", ""
+              unless forloop.last
+              assign comma =  ', '
+              endunless
+              render 'product-specification-metafield', metafield: metafield, metafield_type: metafield_type, metafield_value: sub_metafield, comma: comma
+              
+            endfor
+          elsif metafield.value
+            render 'product-specification-metafield', metafield: metafield, metafield_type: metafield.type, metafield_value: metafield.value
+          endif
+        endcapture
+      -%}
+        <th>{{ label }}</th>
+        <td>
+          {%- liquid
+            if metafield_value_output == blank
+              echo block.settings.empty_field_label
+            else
+              echo metafield_value_output
+            endif
+          -%}
+        </td>
+      </tr>
+    {%- endfor -%}
+  </tbody>
+</table>

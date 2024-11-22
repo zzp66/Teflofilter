@@ -1,0 +1,348 @@
+<style>
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  .pop-up-v1 label {
+    display: block;
+    margin-bottom: calc(100vw * 10 / var(--base-width));
+    font-size: calc(100vw * 14 / var(--base-width));
+    line-height: calc(100vw * 16 / var(--base-width));
+  }
+
+  .form-line input,
+  .form-line select,
+  .form-line textarea {
+    font-size: calc(100vw * 14 / var(--base-width));
+    line-height: calc(100vw * 16 / var(--base-width));
+    width: 100%;
+    height: auto;
+    margin: 0;
+    padding: calc(100vw * 17 / var(--base-width)) calc(100vw * 8 / var(--base-width));
+    border: 0.4px solid #ccc;
+    border-radius: 5px;
+  }
+  .pop-up-v1 {
+    background-color: #000;
+  }
+
+  .pop-up-v1-content {
+    max-width: fit-content;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    column-gap: calc(100vw * 10 / var(--base-width));
+    color: #0d0d0d;
+  }
+  .pop-up-left {
+    width: calc(100vw * 350 / var(--base-width));
+  }
+  .pop-up-left-top {
+    height: 695px;
+    background-color: #fff;
+    border-radius: 10px;
+    overflow: hidden;
+    padding: calc(100vw * 28 / var(--base-width)) calc(100vw * 24 / var(--base-width)) 0;
+  }
+  .pop-up-left-top h2 {
+    font-size: calc(100vw * 40 / var(--base-width));
+    line-height: calc(100vw * 46 / var(--base-width));
+    margin-bottom: calc(100vw * 10 / var(--base-width));
+  }
+  .pop-up-left-top p {
+    font-size: calc(100vw * 18 / var(--base-width));
+    line-height: calc(100vw * 24 / var(--base-width));
+  }
+  .pop-up-left-bottom {
+    margin-top: calc(100vw * 10 / var(--base-width));
+  }
+  .bottom-icons {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+  }
+  .icon-item {
+    padding: calc(100vw * 30 / var(--base-width));
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #fff;
+    border-radius: 10px;
+    overflow: hidden;
+  }
+  .icon-item:hover {
+    background-color: #0522cb;
+  }
+  .icon-item img {
+    max-width: calc(100vw * 20 / var(--base-width));
+  }
+  .pop-up-middle {
+    width: calc(100vw * 786 / var(--base-width));
+    background-color: #fff;
+    border-radius: 10px;
+    overflow: hidden;
+    padding: calc(100vw * 28 / var(--base-width)) calc(100vw * 43 / var(--base-width))
+      calc(100vw * 39 / var(--base-width));
+  }
+
+  .form-line {
+    display: flex;
+    column-gap: 6px;
+    margin-bottom: calc(100vw * 25 / var(--base-width));
+  }
+  .form-group {
+    width: 100%;
+    flex-grow: 1;
+  }
+  .form-checkout {
+    max-width: calc(100vw * 573 / var(--base-width));
+    display: flex;
+    align-items: flex-start;
+    cursor: pointer;
+  }
+  .form-checkout label {
+    margin: 0;
+  }
+  .form-submit {
+    margin-top: calc(100vw * 30 / var(--base-width));
+    display: flex;
+    column-gap: 5px;
+  }
+  .form-submit-btn button {
+    background-color: #fff;
+    color: #0d0d0d;
+    border: 0.4px solid #0d0d0d;
+    padding: calc(100vw * 12 / var(--base-width)) calc(100vw * 40 / var(--base-width));
+    border-radius: 5px;
+    overflow: hidden;
+  }
+  .form-isbtn {
+    cursor: pointer;
+    border: 0.4px solid #0d0d0d;
+    border-radius: 5px;
+    overflow: hidden;
+    display: flex;
+    padding: calc(100vw * 12 / var(--base-width));
+  }
+  .form-isbtn img {
+    max-width: calc(100vw * 15 / var(--base-width));
+  }
+  .model-close {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: calc(100vw * 32 / var(--base-width));
+    background-color: #fff;
+    border-radius: 8px;
+    overflow: hidden;
+    cursor: pointer;
+  }
+  .model-close img {
+    max-width: calc(100vw * 16 / var(--base-width));
+  }
+  @media screen and (max-width: 750px) {
+    .pop-up-v1-content {
+      flex-wrap: wrap;
+      padding: 0 calc(100vw * 18 / var(--base-width));
+    }
+    .pop-up-left {
+      width: 100%;
+    }
+    .pop-up-left-top {
+      height: calc(100vw * 500 / var(--base-width));
+      overflow: hidden;
+      padding: calc(100vw * 60 / var(--base-width)) calc(100vw * 66 / var(--base-width)) 0;
+    }
+    .pop-up-left-top h2 {
+      font-size: calc(100vw * 70 / var(--base-width));
+      line-height: calc(100vw * 76 / var(--base-width));
+      margin-bottom: calc(100vw * 30 / var(--base-width));
+    }
+    .pop-up-left-top p {
+      font-size: calc(100vw * 30 / var(--base-width));
+      line-height: calc(100vw * 36 / var(--base-width));
+    }
+    .icon-item {
+      padding: calc(100vw * 64 / var(--base-width));
+    }
+    .icon-item img {
+      max-width: calc(100vw * 40 / var(--base-width));
+    }
+    .pop-up-left-bottom {
+      margin-top: calc(100vw * 11 / var(--base-width));
+      margin-bottom: calc(100vw * 20 / var(--base-width));
+    }
+    .pop-up-v1 label {
+      margin-bottom: calc(100vw * 20 / var(--base-width));
+      font-size: calc(100vw * 30 / var(--base-width));
+      line-height: calc(100vw * 26 / var(--base-width));
+    }
+    .form-line input,
+    .form-line select,
+    .form-line textarea {
+      font-size: calc(100vw * 30 / var(--base-width));
+      line-height: calc(100vw * 30 / var(--base-width));
+      padding: calc(100vw * 32 / var(--base-width)) calc(100vw * 20 / var(--base-width));
+    }
+    .form-line {
+      display: flex;
+      column-gap: calc(100vw * 15 / var(--base-width));
+      margin-bottom: calc(100vw * 50 / var(--base-width));
+    }
+    .pop-up-middle {
+      width: 100%;
+      border-radius: 10px;
+      overflow: hidden;
+      padding: calc(100vw * 50 / var(--base-width)) calc(100vw * 34 / var(--base-width))
+        calc(100vw * 63 / var(--base-width));
+    }
+    .form-checkout {
+      max-width: 100%;
+      align-items: flex-start;
+    }
+    .form-checkout label {
+      font-size: calc(100vw * 20 / var(--base-width));
+      line-height: calc(100vw * 26 / var(--base-width));
+      color: #0d0d0d;
+    }
+    .form-submit-btn button {
+      padding: calc(100vw * 31 / var(--base-width)) calc(100vw * 90 / var(--base-width));
+      font-size: calc(100vw * 26 / var(--base-width));
+      line-height: calc(100vw * 22 / var(--base-width));
+    }
+    .form-isbtn {
+      padding: calc(100vw * 23 / var(--base-width));
+    }
+    .form-isbtn img {
+      max-width: 100%;
+    }
+    .pop-up-right {
+      width: 100%;
+      margin-top: calc(100vw * 10 / var(--base-width));
+    }
+    .model-close {
+      padding: calc(100vw * 38 / var(--base-width)) 0;
+    }
+    .model-close img {
+      max-width: calc(100vw * 24 / var(--base-width));
+    }
+  }
+</style>
+<div class="pop-up-v1">
+  <div class="pop-up-v1-content">
+    <div class="pop-up-left">
+      <div class="pop-up-left-top">
+        <h2>Get in touch with the team</h2>
+        <p>Contact us for filter bag solutions, expert consultations and partnership opportunities.</p>
+      </div>
+      <div class="pop-up-left-bottom">
+        <div class="bottom-icons">
+          <div class="icon-item">
+            <img src="https://cdn.shopify.com/s/files/1/0902/1122/1797/files/Group.png?v=1732242447" alt="">
+          </div>
+          <div class="icon-item">
+            <img src="https://cdn.shopify.com/s/files/1/0902/1122/1797/files/Group.png?v=1732242447" alt="">
+          </div>
+          <div class="icon-item">
+            <img src="https://cdn.shopify.com/s/files/1/0902/1122/1797/files/Group.png?v=1732242447" alt="">
+          </div>
+          <div class="icon-item">
+            <img src="https://cdn.shopify.com/s/files/1/0902/1122/1797/files/Group.png?v=1732242447" alt="">
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="pop-up-middle">
+      <form class="pop-up-form">
+        <div class="form-line">
+          <div class="form-group">
+            <label for="industry">Industry *</label>
+            <select id="industry" required>
+              <option value="Agriculture">Agriculture</option>
+              <option value="Agriculture">Agriculture</option>
+              <option value="Agriculture">Agriculture</option>
+              <option value="Agriculture">Agriculture</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="request-type">Request Type *</label>
+            <select id="request-type" required>
+              <option value="Careers">Careers</option>
+              <option value="Careers">Careers</option>
+              <option value="Careers">Careers</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-line">
+          <div class="form-group">
+            <label for="first-name">First Name *</label>
+            <input type="text" id="first-name" required>
+          </div>
+          <div class="form-group">
+            <label for="last-name">Last Name *</label>
+            <input type="text" id="last-name" required>
+          </div>
+        </div>
+        <div class="form-line">
+          <div class="form-group">
+            <label for="company">Company *</label>
+            <input type="text" id="company" required>
+          </div>
+          <div class="form-group">
+            <label for="job-title">Job Title</label>
+            <input type="text" id="job-title">
+          </div>
+        </div>
+        <div class="form-line">
+          <div class="form-group">
+            <label for="city">City</label>
+            <input type="text" id="city">
+          </div>
+          <div class="form-group">
+            <label for="country">Country *</label>
+            <input type="text" id="country" required>
+          </div>
+        </div>
+        <div class="form-line">
+          <div class="form-group">
+            <label for="email">Email *</label>
+            <input type="email" id="email" required>
+          </div>
+          <div class="form-group">
+            <label for="phone">Phone *</label>
+            <input type="text" id="phone" required>
+          </div>
+        </div>
+        <div class="form-line">
+          <div class="form-group">
+            <label for="message">YOUR MESSAGE</label>
+            <textarea id="message"></textarea>
+          </div>
+        </div>
+        <div class="form-checkout">
+          <input type="checkbox" id="marketing-checkbox">
+          <label for="marketing-checkbox"
+            >By clicking here, you agree to receive marketing emails and other promotional communications from [Company
+            Name] from time to time.</label
+          >
+        </div>
+        <div class="form-submit">
+          <div class="form-submit-btn">
+            <button type="submit">Send Your request</button>
+          </div>
+          <div class="form-isbtn">
+            <img src="https://cdn.shopify.com/s/files/1/0902/1122/1797/files/Vector_14.png?v=1732244908" alt="">
+          </div>
+        </div>
+      </form>
+    </div>
+    <div class="pop-up-right">
+      <div class="model-close">
+        <img src="https://cdn.shopify.com/s/files/1/0902/1122/1797/files/Group_9401.png?v=1732245756" alt="">
+      </div>
+    </div>
+  </div>
+</div>

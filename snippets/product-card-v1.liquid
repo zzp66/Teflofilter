@@ -1,0 +1,29 @@
+<div class="teflo-our-product-list-item">
+  <a class="teflo-our-product-list-item-img" href="{{ product.url }}">
+    <img
+      loading="lazy"
+      src="{{ product.featured_image.src | img_url: 'master' }}"
+      alt="{{ product.title }}"
+    >
+  </a>
+  <div class="teflo-our-product-list-item-info">
+    <div class="teflo-our-product-list-item-info-lt">
+      <a href="{{ product.url }}">
+        <h3 class="teflo-our-product-list-item-info-lt-h3">{{ product.title }}</h3>
+      </a>
+      {% if product.metafields.custom.pdf != blank %}
+        <a
+          href="{{ product.custom.pdf }}"
+          target="_blank"
+          class="teflo-our-product-list-item-info-lt-btn"
+          >DATASHEET.PDF</a
+        >
+      {% endif %}
+    </div>
+    <a class="teflo-our-product-list-item-rt" href="{{ product.url }}">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 19 17" fill="none">
+        <path d="M10.6 3.3567L17 9.67249M17 9.67249L10.6 15.9883M17 9.67249H1V0.988281" stroke="#191919" stroke-width="2"/>
+      </svg>
+    </a>
+  </div>
+</div>

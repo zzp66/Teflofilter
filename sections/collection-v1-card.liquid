@@ -1,0 +1,187 @@
+<style>
+  .v1-card {
+    padding: 0 calc(100vw * 20 / var(--base-width));
+    background-color: #fff;
+  }
+  .v1-card-content {
+    margin: 0 auto;
+    padding-top: calc(100vw * 120 / var(--base-width));
+    padding-bottom: calc(100vw * 140 / var(--base-width));
+  }
+  .card-box {
+    margin-bottom: calc(100vw * 120 / var(--base-width));
+  }
+  .v1-card-content .card-box:last-child {
+    margin-bottom: 0;
+  }
+  .card-title-box {
+    width: 100%;
+    border-bottom: 0.4px solid #191919;
+    padding-bottom: calc(100vw * 30 / var(--base-width));
+  }
+  .card-title {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+  }
+  .card-title span {
+    min-width: calc(100vw * 278 / var(--base-width));
+    font-size: calc(100vw * 16 / var(--base-width));
+    line-height: 1;
+    color: #0d0d0d;
+    /* flex-grow: 1; */
+  }
+  .card-title p {
+    width: calc(100vw * 816 / var(--base-width));
+    font-size: calc(100vw * 40 / var(--base-width));
+    line-height: calc(100vw * 46 / var(--base-width));
+    color: #191919;
+  }
+  .card-info-box {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-top: calc(100vw * 30 / var(--base-width));
+  }
+  .card-img-mb {
+    display: none;
+  }
+  .card-info-img {
+    max-width: calc(100vw * 278 / var(--base-width));
+    border-radius: 8px;
+    overflow: hidden;
+  }
+  .card-info-info {
+    width: calc(100vw * 816 / var(--base-width));
+  }
+  p.card-info-p {
+    font-size: calc(100vw * 18 / var(--base-width));
+    line-height: calc(100vw * 24 / var(--base-width));
+    color: #191919;
+  }
+  .info-p-1,
+  .card-info-ul {
+    margin-bottom: calc(100vw * 35 / var(--base-width));
+  }
+  .card-info-ul li {
+    font-size: calc(100vw * 18 / var(--base-width));
+    line-height: calc(100vw * 24 / var(--base-width));
+    color: #191919;
+    padding-left: calc(100vw * 20 / var(--base-width));
+    position: relative;
+  }
+  .card-info-ul li::before {
+    content: '';
+    width: 8px;
+    height: 8px;
+    color: #0522cb;
+    background-color: #0522cb;
+    border-radius: 8px;
+    position: absolute;
+    top: 50%;
+    left: 0;
+    transform: translateY(-50%);
+  }
+  p.info-p-2 span {
+    color: #324eef;
+    text-decoration: underline;
+  }
+  @media screen and (max-width: 750px) {
+    .card-info {
+      display: none;
+    }
+    .card-img-mb {
+      display: block;
+      margin-bottom: calc(100vw * 50 / var(--base-width));
+    }
+    .card-title {
+      align-items: flex-start;
+      position: relative;
+    }
+    .card-title span {
+      font-size: calc(100vw * 20 / var(--base-width));
+      line-height: 1;
+      position: absolute;
+    }
+    .card-title p {
+      font-size: calc(100vw * 50 / var(--base-width));
+      line-height: calc(100vw * 50 / var(--base-width));
+      text-align: center;
+    }
+    .info-p-1,
+    .card-info-ul {
+      margin-bottom: calc(100vw * 70 / var(--base-width));
+    }
+    p.card-info-p {
+      font-size: calc(100vw * 26 / var(--base-width));
+      line-height: calc(100vw * 30 / var(--base-width));
+    }
+    .card-info-ul li {
+      font-size: calc(100vw * 26 / var(--base-width));
+      line-height: calc(100vw * 32 / var(--base-width));
+      padding-left: calc(100vw * 28 / var(--base-width));
+      position: relative;
+    }
+    .card-info-ul li::before {
+      content: '';
+      width: calc(100vw * 12 / var(--base-width));
+      height: calc(100vw * 12 / var(--base-width));
+      border-radius: 50%;
+      top: calc(100vw * 16 / var(--base-width));
+      left: 0;
+      transform: translateY(-50%);
+    }
+  }
+</style>
+<div class="v1-card">
+  <div class="v1-card-content">
+    <div class="card-box">
+      <div class="card-img-mb">
+        <img src="https://cdn.shopify.com/s/files/1/0902/1122/1797/files/image-filter.png?v=1732211885" alt="">
+      </div>
+      <div class="card-title-box">
+        <div class="card-title">
+          <span>A01</span>
+          <p>Selecting a Filter Bag</p>
+        </div>
+      </div>
+      <div class="card-info-box">
+        <div class="card-info">
+          <div class="card-info-img">
+            <img src="https://cdn.shopify.com/s/files/1/0902/1122/1797/files/image-filter.png?v=1732211885" alt="">
+          </div>
+        </div>
+        <div class="card-info-info">
+          <p class="card-info-p info-p-1">
+            Choosing the right filter bag is crucial for optimal filtration performance. Consider these key factors:
+          </p>
+          <ul class="card-info-ul">
+            <li>Choosing the right filter bag is crucial for optimal filtration performance.</li>
+            <li>Choosing the right filter bag is crucial for optimal filtration performance. Consider</li>
+            <li>Choosing the right filter bag is crucial for optimal filtration</li>
+            <li>Choosing the right filter bag is crucial for optimal filtration performance.</li>
+            <li>Choosing the right filter bag is crucial for optimal filtration performance.</li>
+            <li>Choosing the right filter bag is crucial for optimal filtration performance.</li>
+            <li>Choosing the right filter bag is crucial for optimal filtration performance.</li>
+          </ul>
+          <p class="card-info-p info-p-2">
+            Our filtration experts can guide you through this selection process, ensuring you get the ideal filter bag
+            for your <span>specific needs.</span>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "V1 Card",
+  "settings": [],
+  "presets": [
+    {
+      "name": "V1 Card"
+    }
+  ]
+}
+{% endschema %}

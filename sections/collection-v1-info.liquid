@@ -1,0 +1,192 @@
+<style>
+  p {
+    margin: 0;
+    padding: 0;
+    line-height: 1;
+  }
+  ul {
+    margin: 0;
+    padding: 0;
+  }
+  li {
+    list-style: none;
+  }
+  .v1-info {
+    background-color: #fff;
+  }
+  .v1-info-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    padding: 0 calc(100vw * 20 / var(--base-width));
+    padding-top: calc(100vw * 100 / var(--base-width));
+    padding-bottom: calc(100vw * 126 / var(--base-width));
+  }
+  .info-img {
+    max-width: calc(100vw * 435 / var(--base-width));
+    border-radius: 8px;
+    overflow: hidden;
+  }
+  .info-wrapper {
+    max-width: calc(100vw * 805 / var(--base-width));
+  }
+  p.info-text {
+    color: #0d0d0d;
+    font-size: calc(100vw * 18 / var(--base-width));
+    line-height: calc(100vw * 24 / var(--base-width));
+    font-weight: 400;
+  }
+  .info-text-1,
+  .info-text-2,
+  .info-text-3,
+  .info-ul-box {
+    margin-bottom: calc(100vw * 30 / var(--base-width));
+  }
+  li.li-item {
+    padding: calc(100vw * 15 / var(--base-width)) 0;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    border-bottom: 0.4px solid rgba(13, 13, 13, 0.3);
+    position: relative;
+  }
+
+  li.li-item span {
+    position: relative;
+    white-space: nowrap;
+    color: #3d3d3d;
+    font-size: calc(100vw * 14 / var(--base-width));
+    line-height: calc(100vw * 12 / var(--base-width));
+    margin-right: calc(100vw * 65 / var(--base-width));
+    padding-left: calc(100vw * 15 / var(--base-width));
+  }
+  li.li-item span::before {
+    content: '';
+    width: 9px;
+    height: 9px;
+    color: #0522cb;
+    background-color: #0522cb;
+    border-radius: 9px;
+    position: absolute;
+    top: 50%;
+    left: 0;
+    transform: translateY(-50%);
+  }
+  li.li-item p {
+    color: #0d0d0d;
+    font-size: calc(100vw * 16 / var(--base-width));
+    line-height: calc(100vw * 22 / var(--base-width));
+  }
+  @media screen and (max-width: 1200px) {
+    .v1-info-content{
+      column-gap: calc(100vw * 15 / var(--base-width));
+    }
+    .info-img {
+      max-width: calc(100vw * 300 / var(--base-width));
+    }
+    .info-wrapper {
+      max-width: calc(100vw * 700 / var(--base-width));
+    }
+  }
+  @media screen and (max-width: 1024px) {
+  }
+  @media screen and (max-width: 750px) {
+    .v1-info-content {
+      flex-direction: column;
+    }
+    .info-wrapper {
+      margin-top: calc(100vw * 70 / var(--base-width));
+    }
+    .info-img {
+        max-width: 100%;
+    }
+    p.info-text {
+      font-size: calc(100vw * 30 / var(--base-width));
+      line-height: calc(100vw * 36 / var(--base-width));
+    }
+    li.li-item {
+      align-items: flex-start;
+    }
+    li.li-item span {
+      font-size: calc(100vw * 24 / var(--base-width));
+      line-height: calc(100vw * 24 / var(--base-width));
+      margin-right: calc(100vw * 20 / var(--base-width));
+      padding-left: calc(100vw * 22 / var(--base-width));
+    }
+    li.li-item span::before {
+      width: calc(100vw * 12 / var(--base-width));
+      height: calc(100vw * 12 / var(--base-width));
+    }
+    li.li-item p {
+      font-size: calc(100vw * 30 / var(--base-width));
+      line-height: calc(100vw * 32 / var(--base-width));
+    }
+    .info-ul-box {
+      margin-bottom: calc(100vw * 70 / var(--base-width));
+    }
+  }
+</style>
+<div class="v1-info">
+  <div class="v1-info-content">
+    <div class="info-img">
+      <img src="https://cdn.shopify.com/s/files/1/0902/1122/1797/files/Rectangle_1267.png?v=1732211749" alt="">
+    </div>
+    <div class="info-wrapper">
+      <p class="info-text info-text-1">
+        Filtration systems use filter bags to remove contaminants in industrial operations. We have filter bags for
+        industrial filtration systems to suit your needs.
+      </p>
+      <p class="info-text info-text-2">
+        Contaminants pose significant challenges, impacting product quality, equipment efficiency, and operational
+        costs. Filter bags offer a versatile and cost-effective solution for a wide range of industrial filtration
+        needs, providing efficient particle removal while maintaining process flow rates.
+      </p>
+      <p class="info-text info-text-3">
+        Our comprehensive line of filter bags is engineered to address diverse filtration requirements across multiple
+        industries. We offer:
+      </p>
+      <div class="info-ul-box">
+        <ul class="info-ul">
+          <li class="li-item">
+            <span>A01</span>
+            <p>High-efficiency filter bags for critical applications demanding superior particle retention</p>
+          </li>
+          <li class="li-item">
+            <span>A01</span>
+            <p>High-efficiency filter bags for critical applications demanding superior particle retention</p>
+          </li>
+          <li class="li-item">
+            <span>A01</span>
+            <p>High-efficiency filter bags for critical applications demanding superior particle retention</p>
+          </li>
+          <li class="li-item">
+            <span>A01</span>
+            <p>High-efficiency filter bags for critical applications demanding superior particle retention</p>
+          </li>
+          <li class="li-item">
+            <span>A01</span>
+            <p>High-efficiency filter bags for critical applications demanding superior particle retention</p>
+          </li>
+        </ul>
+      </div>
+      <p class="info-text info-text-4">
+        With micron ratings from 1 to 1000, our filter bags meet diverse particulate filtration requirements. Our
+        optimized production and distribution processes allow standard order delivery within 3-5 business days. Contact
+        our filtration experts to find the ideal filter bag solution for your specific application, enhancing your
+        process efficiency and product quality.
+      </p>
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "V1 Info",
+  "settings": [],
+  "presets": [
+    {
+      "name": "V1 Info"
+    }
+  ]
+}
+{% endschema %}

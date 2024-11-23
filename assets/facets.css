@@ -83,7 +83,17 @@
     align-items: center;
     white-space: nowrap; }
     .facets--bar .thb-filter-sort-count .thb-filter-sort {
-      margin-right: 25px; }
+      margin-right: 0; }
+      .facets--bar .thb-filter-sort-count .thb-filter-sort .custom-select--text{
+        color: #191919;
+        font-size: calc(100vw* 18 / var(--base-width));
+        font-style: normal;
+        font-weight: 400;
+        line-height: calc(100vw* 18 / var(--base-width));
+      }
+      .facets--bar .thb-filter-sort-count .thb-filter-sort .custom-select--arrow{
+        margin-left: calc(100vw* 40 / var(--base-width));
+      }
     .facets--bar .thb-filter-sort-count .select {
       display: none;
       margin: 0; }
@@ -114,7 +124,7 @@
       .facets--bar .facets__form {
         grid-template-columns: auto 1fr;
         align-items: center;
-        gap: 20px; }
+        gap: 0; }
         [dir="rtl"] .facets--bar .facets__form {
           grid-template-columns: 1fr auto; } }
   .facets--bar-sticky {
@@ -170,35 +180,53 @@
   margin: 0 0 0 30px; }
   .facets .thb-filter-count .facets__label {
     margin: 0; }
+    .thb-filter-count{
+      margin-right: calc(100vw* 40 / var(--base-width));;
+    }
 
 .facets .thb-filter {
   width: 100%;
   position: relative;
   border-bottom: 1px solid var(--color-border, #dadce0); }
   .facets .thb-filter-title {
-    letter-spacing: -0.02em;
     position: relative;
-    font-size: 0.9375rem;
-    font-weight: var(--font-body-medium-weight, 500);
-    line-height: 1;
+    font-size: calc(100vw* 14 / var(--base-width));
+    font-weight: 400;
+    line-height: calc(100vw* 24 / var(--base-width));
     display: flex;
-    padding: 20px 0;
     justify-content: space-between;
     align-items: center;
     cursor: pointer;
-    color: var(--color-heading, #1a1c1d); }
+    color: #262626;
+    margin-bottom: calc(100vw* 23 / var(--base-width));
+   }
+  @media only screen and (max-width: 750px) {
+    .facets .thb-filter-title {
+      font-size: calc(100vw* 30 / var(--base-width));
+      line-height: calc(100vw* 32 / var(--base-width));
+      padding: 20px 0;
+      margin-bottom: 0;
+    }
+    .facets .thb-filter[open]{
+      padding-bottom: 20px;
+    }
+  }
     .facets .thb-filter-title span {
       display: inline-flex;
       margin-left: 15px;
       transform: rotateX(180deg); }
     .facets .thb-filter-title::marker, .facets .thb-filter-title::-webkit-details-marker {
       display: none; }
-  .facets .thb-filter[open] .thb-filter-content {
+  .thb-filter-content {
     display: block; }
+    .thb-filter-availability label{
+      font-size: calc(100vw* 16 / var(--base-width));
+      line-height: calc(100vw* 20 / var(--base-width));
+    }
   .facets .thb-filter[open] .thb-filter-title span {
     transform: rotateX(0deg); }
   .facets .thb-filter-content {
-    padding-bottom: 22px; }
+    padding-bottom: 0; }
     .facets .thb-filter-content scroll-shadow {
       display: block;
       width: 100%; }
@@ -209,8 +237,8 @@
     .facets .thb-filter-content input[type="checkbox"],
     .facets .thb-filter-content input[type="radio"] {
       margin-right: 7px;
-      width: 14px;
-      height: 14px; }
+      width: calc(100vw* 20 / var(--base-width));
+      height: calc(100vw* 20 / var(--base-width)); }
       [dir="rtl"] .facets .thb-filter-content input[type="checkbox"], [dir="rtl"]
       .facets .thb-filter-content input[type="radio"] {
         margin-right: 0;
@@ -271,7 +299,8 @@
 
 .price_range .price-highest {
   display: block;
-  font-size: 0.8125rem;
+  font-size: calc(100vw* 16 / var(--base-width));
+  line-height: calc(100vw* 20 / var(--base-width));
   margin-bottom: 15px; }
 
 .price_range .price_slider_amount {
@@ -401,7 +430,12 @@
   margin: 0; }
 
 .thb-filter-count .facets__label {
-  font-size: 0.75rem;
+  font-size: calc(100vw * 18 / var(--base-width));
+  line-height: calc(100vw * 24 / var(--base-width));
+  color: #191919;
+  opacity: 0.5;
+  font-style: normal;
+  font-weight: 400;
   margin-top: 10px; }
 
 .thb-filter-count .loading-overlay {
@@ -469,7 +503,8 @@
       display: none; }
 
 .thb-filter ul label {
-  font-size: 0.9375rem;
+  font-size: calc(100vw* 16 / var(--base-width));
+  line-height: calc(100vw* 20 / var(--base-width));
   word-break: break-all; }
 
 .thb-filter ul .filter-color {

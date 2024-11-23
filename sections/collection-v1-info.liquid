@@ -78,14 +78,28 @@
     line-height: calc(100vw * 22 / var(--base-width));
   }
   @media screen and (max-width: 1200px) {
-    .v1-info-content{
-      column-gap: calc(100vw * 15 / var(--base-width));
+    .info-text-1,
+    .info-text-2,
+    .info-text-3,
+    .info-ul-box {
+      margin-bottom: calc(100vw * 15 / var(--base-width));
+    }
+    p.info-text {
+      font-size: calc(100vw * 16 / var(--base-width));
+      line-height: calc(100vw * 18 / var(--base-width));
+    }
+    li.li-item p {
+      font-size: calc(100vw * 16 / var(--base-width));
+      line-height: calc(100vw * 18 / var(--base-width));
+    }
+    .v1-info-content {
+      column-gap: calc(100vw * 40 / var(--base-width));
     }
     .info-img {
-      max-width: calc(100vw * 300 / var(--base-width));
+      max-width: calc(100vw * 380 / var(--base-width));
     }
     .info-wrapper {
-      max-width: calc(100vw * 700 / var(--base-width));
+      max-width: calc(100vw * 630 / var(--base-width));
     }
   }
   @media screen and (max-width: 1024px) {
@@ -93,12 +107,20 @@
   @media screen and (max-width: 750px) {
     .v1-info-content {
       flex-direction: column;
+      column-gap: 0;
     }
     .info-wrapper {
       margin-top: calc(100vw * 70 / var(--base-width));
+      max-width: 100%;
     }
     .info-img {
-        max-width: 100%;
+      max-width: 100%;
+    }
+    .info-text-1,
+    .info-text-2,
+    .info-text-3,
+    .info-ul-box {
+      margin-bottom: calc(100vw * 30 / var(--base-width));
     }
     p.info-text {
       font-size: calc(100vw * 30 / var(--base-width));
@@ -122,6 +144,7 @@
       line-height: calc(100vw * 32 / var(--base-width));
     }
     .info-ul-box {
+      margin-top: calc(100vw * 90 / var(--base-width));
       margin-bottom: calc(100vw * 70 / var(--base-width));
     }
   }
@@ -129,52 +152,27 @@
 <div class="v1-info">
   <div class="v1-info-content">
     <div class="info-img">
-      <img src="https://cdn.shopify.com/s/files/1/0902/1122/1797/files/Rectangle_1267.png?v=1732211749" alt="">
+      <picture>
+        <source media="(max-width: 767px)" srcset="{{ section.settings.info_img_mb | image_url: width: master }}">
+        <source media="(min-width: 768px)" srcset="{{ section.settings.info_img | image_url: width: master }}">
+        <img src="{{ section.settings.info_img | image_url: width: master }}" alt="">
+      </picture>
     </div>
     <div class="info-wrapper">
-      <p class="info-text info-text-1">
-        Filtration systems use filter bags to remove contaminants in industrial operations. We have filter bags for
-        industrial filtration systems to suit your needs.
-      </p>
-      <p class="info-text info-text-2">
-        Contaminants pose significant challenges, impacting product quality, equipment efficiency, and operational
-        costs. Filter bags offer a versatile and cost-effective solution for a wide range of industrial filtration
-        needs, providing efficient particle removal while maintaining process flow rates.
-      </p>
-      <p class="info-text info-text-3">
-        Our comprehensive line of filter bags is engineered to address diverse filtration requirements across multiple
-        industries. We offer:
-      </p>
+      <p class="info-text info-text-1">{{ section.settings.info_text_1 }}</p>
+      <p class="info-text info-text-2">{{ section.settings.info_text_2 }}</p>
+      <p class="info-text info-text-3">{{ section.settings.info_text_3 }}</p>
       <div class="info-ul-box">
         <ul class="info-ul">
-          <li class="li-item">
-            <span>A01</span>
-            <p>High-efficiency filter bags for critical applications demanding superior particle retention</p>
-          </li>
-          <li class="li-item">
-            <span>A01</span>
-            <p>High-efficiency filter bags for critical applications demanding superior particle retention</p>
-          </li>
-          <li class="li-item">
-            <span>A01</span>
-            <p>High-efficiency filter bags for critical applications demanding superior particle retention</p>
-          </li>
-          <li class="li-item">
-            <span>A01</span>
-            <p>High-efficiency filter bags for critical applications demanding superior particle retention</p>
-          </li>
-          <li class="li-item">
-            <span>A01</span>
-            <p>High-efficiency filter bags for critical applications demanding superior particle retention</p>
-          </li>
+          {% for block in section.blocks %}
+            <li class="li-item">
+              <span>{{ block.settings.desc_num }}</span>
+              <p>{{ block.settings.desc_text }}</p>
+            </li>
+          {% endfor %}
         </ul>
       </div>
-      <p class="info-text info-text-4">
-        With micron ratings from 1 to 1000, our filter bags meet diverse particulate filtration requirements. Our
-        optimized production and distribution processes allow standard order delivery within 3-5 business days. Contact
-        our filtration experts to find the ideal filter bag solution for your specific application, enhancing your
-        process efficiency and product quality.
-      </p>
+      <p class="info-text info-text-4">{{ section.settings.info_text_4 }}</p>
     </div>
   </div>
 </div>
@@ -182,7 +180,57 @@
 {% schema %}
 {
   "name": "V1 Info",
-  "settings": [],
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "info_img",
+      "label": "PC Image"
+    },
+    {
+      "type": "image_picker",
+      "id": "info_img_mb",
+      "label": "Mobile Image"
+    },
+    {
+      "type": "textarea",
+      "id": "info_text_1",
+      "label": "Info 1"
+    },
+    {
+      "type": "textarea",
+      "id": "info_text_2",
+      "label": "Info 2"
+    },
+    {
+      "type": "textarea",
+      "id": "info_text_3",
+      "label": "Info 3"
+    },
+    {
+      "type": "textarea",
+      "id": "info_text_4",
+      "label": "Info 4"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "desc",
+      "name": "Desc",
+      "settings": [
+        {
+          "type": "text",
+          "id": "desc_num",
+          "label": "Desc No.",
+          "default": "A01"
+        },
+        {
+          "type": "textarea",
+          "id": "desc_text",
+          "label": "Desc Text"
+        }
+      ]
+    }
+  ],
   "presets": [
     {
       "name": "V1 Info"

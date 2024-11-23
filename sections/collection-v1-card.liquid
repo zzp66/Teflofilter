@@ -23,25 +23,28 @@
     display: flex;
     justify-content: space-between;
     align-items: flex-end;
+    column-gap: calc(100vw * 20 / var(--base-width));
   }
   .card-title span {
     min-width: calc(100vw * 278 / var(--base-width));
     font-size: calc(100vw * 16 / var(--base-width));
     line-height: 1;
     color: #0d0d0d;
-    /* flex-grow: 1; */
   }
   .card-title h2 {
     width: calc(100vw * 816 / var(--base-width));
     font-size: calc(100vw * 40 / var(--base-width));
+    font-weight: 400;
     line-height: calc(100vw * 46 / var(--base-width));
     color: #191919;
+    margin: 0;
   }
   .card-info-box {
     display: flex;
     justify-content: space-between;
     align-items: flex-end;
     margin-top: calc(100vw * 30 / var(--base-width));
+    column-gap: calc(100vw * 20 / var(--base-width));
   }
   .card-img-mb {
     display: none;
@@ -87,6 +90,13 @@
     text-decoration: underline;
   }
   @media screen and (max-width: 750px) {
+    .v1-card-content {
+      padding-top: calc(100vw * 170 / var(--base-width));
+      padding-bottom: calc(100vw * 100 / var(--base-width));
+    }
+    .card-box {
+      margin-bottom: calc(100vw * 100 / var(--base-width));
+    }
     .card-info {
       display: none;
     }
@@ -107,6 +117,9 @@
       font-size: calc(100vw * 50 / var(--base-width));
       line-height: calc(100vw * 50 / var(--base-width));
       text-align: center;
+    }
+    .card-info-img {
+      display: none;
     }
     .info-p-1,
     .card-info-ul {
@@ -135,42 +148,57 @@
 </style>
 <div class="v1-card">
   <div class="v1-card-content">
-    <div class="card-box">
-      <div class="card-img-mb">
-        <img src="https://cdn.shopify.com/s/files/1/0902/1122/1797/files/image-filter.png?v=1732211885" alt="">
-      </div>
-      <div class="card-title-box">
-        <div class="card-title">
-          <span>A01</span>
-          <h2>Selecting a Filter Bag</h2>
+    {% for block in section.blocks %}
+      <div class="card-box">
+        <div class="card-img-mb">
+          <img src="{{ block.settings.item_img_mb | image_url: width: master }}" alt="">
         </div>
-      </div>
-      <div class="card-info-box">
-        <div class="card-info">
-          <div class="card-info-img">
-            <img src="https://cdn.shopify.com/s/files/1/0902/1122/1797/files/image-filter.png?v=1732211885" alt="">
+        <div class="card-title-box">
+          <div class="card-title">
+            <span>{{ block.settings.item_num }}</span>
+            <h2>{{ block.settings.item_title }}</h2>
           </div>
         </div>
-        <div class="card-info-info">
-          <p class="card-info-p info-p-1">
-            Choosing the right filter bag is crucial for optimal filtration performance. Consider these key factors:
-          </p>
-          <ul class="card-info-ul">
-            <li>Choosing the right filter bag is crucial for optimal filtration performance.</li>
-            <li>Choosing the right filter bag is crucial for optimal filtration performance. Consider</li>
-            <li>Choosing the right filter bag is crucial for optimal filtration</li>
-            <li>Choosing the right filter bag is crucial for optimal filtration performance.</li>
-            <li>Choosing the right filter bag is crucial for optimal filtration performance.</li>
-            <li>Choosing the right filter bag is crucial for optimal filtration performance.</li>
-            <li>Choosing the right filter bag is crucial for optimal filtration performance.</li>
-          </ul>
-          <p class="card-info-p info-p-2">
-            Our filtration experts can guide you through this selection process, ensuring you get the ideal filter bag
-            for your <span>specific needs.</span>
-          </p>
+        <div class="card-info-box">
+          <div class="card-info-img">
+            <img src="{{ block.settings.item_img | image_url: width: master }}" alt="">
+          </div>
+          <div class="card-info-info">
+            <p class="card-info-p info-p-1">{{ block.settings.item_info_1 }}</p>
+            <ul class="card-info-ul">
+              {% if block.settings.item_info_li_1 != blank %}
+                <li>{{ block.settings.item_info_li_1 }}</li>
+              {% endif %}
+              {% if block.settings.item_info_li_2 != blank %}
+                <li>{{ block.settings.item_info_li_2 }}</li>
+              {% endif %}
+              {% if block.settings.item_info_li_3 != blank %}
+                <li>{{ block.settings.item_info_li_3 }}</li>
+              {% endif %}
+              {% if block.settings.item_info_li_4 != blank %}
+                <li>{{ block.settings.item_info_li_4 }}</li>
+              {% endif %}
+              {% if block.settings.item_info_li_5 != blank %}
+                <li>{{ block.settings.item_info_li_5 }}</li>
+              {% endif %}
+              {% if block.settings.item_info_li_6 != blank %}
+                <li>{{ block.settings.item_info_li_6 }}</li>
+              {% endif %}
+              {% if block.settings.item_info_li_7 != blank %}
+                <li>{{ block.settings.item_info_li_7 }}</li>
+              {% endif %}
+              {% if block.settings.item_info_li_8 != blank %}
+                <li>{{ block.settings.item_info_li_8 }}</li>
+              {% endif %}
+            </ul>
+            <p class="card-info-p info-p-2">
+              {{ block.settings.item_info_2 }}
+              <span> {{ block.settings.item_info_span }}</span>
+            </p>
+          </div>
         </div>
       </div>
-    </div>
+    {% endfor %}
   </div>
 </div>
 
@@ -178,6 +206,97 @@
 {
   "name": "V1 Card",
   "settings": [],
+  "blocks": [
+    {
+      "type": "card_item",
+      "name": "Card Item",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "item_img",
+          "label": "PC Image"
+        },
+        {
+          "type": "image_picker",
+          "id": "item_img_mb",
+          "label": "Mobile Image"
+        },
+        {
+          "type": "text",
+          "id": "item_num",
+          "label": "Item No.",
+          "default": "A01"
+        },
+        {
+          "type": "text",
+          "id": "item_title",
+          "label": "Item Title",
+          "default": "Selecting a Filter Bag"
+        },
+        {
+          "type": "textarea",
+          "id": "item_info_1",
+          "label": "Info 1"
+        },
+        {
+          "type": "textarea",
+          "id": "item_info_2",
+          "label": "Info 2"
+        },
+        {
+          "type": "textarea",
+          "id": "item_info_span",
+          "label": "Info 2-Special",
+          "default": "specific needs."
+        },
+        {
+          "type": "header",
+          "content": "Desc",
+          "info": "预留了8个Desc的位置，不填则不会显示"
+        },
+        {
+          "type": "textarea",
+          "id": "item_info_li_1",
+          "label": "Desc 1"
+        },
+        {
+          "type": "textarea",
+          "id": "item_info_li_2",
+          "label": "Desc 2"
+        },
+        {
+          "type": "textarea",
+          "id": "item_info_li_3",
+          "label": "Desc 3"
+        },
+        {
+          "type": "textarea",
+          "id": "item_info_li_4",
+          "label": "Desc 4"
+        },
+        {
+          "type": "textarea",
+          "id": "item_info_li_5",
+          "label": "Desc 5"
+        },
+        {
+          "type": "textarea",
+          "id": "item_info_li_6",
+          "label": "Desc 6"
+        },
+        {
+          "type": "textarea",
+          "id": "item_info_li_7",
+          "label": "Desc 7"
+        },
+        {
+          "type": "textarea",
+          "id": "item_info_li_8",
+          "label": "Desc 8"
+        }
+      ]
+    }
+  ],
   "presets": [
     {
       "name": "V1 Card"

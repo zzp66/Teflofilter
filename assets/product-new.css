@@ -1,0 +1,146 @@
+.product-v1.thb-product-detail {
+    background-color: #F7F8FA;
+    margin-top: 120px;
+}
+
+.product-v1 .row {
+    max-width: 100%;
+    padding: 0 calc(100vw * 20 / var(--base-width));
+}
+
+.product-v1 .row .columns {
+    padding: 0;
+}
+
+.product-v1 .product-grid-container {
+    gap: 0;
+    grid-template-columns: 1fr max-content;
+}
+
+.product-information {
+    width: calc(100vw * 675 / var(--base-width));
+}
+
+.product-v1 .product-gallery-container .product-image-container {
+    padding-left: calc(100vw * 10 / var(--base-width));
+    padding-right: calc(100vw * 35 / var(--base-width));
+}
+
+.product-v1 .product-gallery-container .product-image-container .product-images {
+    margin: 0;
+    max-width: calc(100vw * 600 / var(--base-width));
+}
+
+.product-v1 .product-gallery-container {
+    padding-left: calc(100vw * 88 / var(--base-width));
+}
+
+.product-v1 .product-gallery-container scroll-shadow {
+    width: calc(100vw * 88 / var(--base-width));
+}
+
+.product-v1.thb-product-detail .product-title {
+    color: #1A1A1A;
+    font-family: "OPPO Sans";
+    font-size: calc(100vw * 50 / var(--base-width));
+    font-style: normal;
+    font-weight: 400;
+    line-height: calc(100vw * 56 / var(--base-width));
+    margin: 0;
+}
+
+.product-v1 .product-price-container {
+    display: none;
+}
+
+.product-v1 max-height.max-height {
+    font-size: calc(100vw * 16 / var(--base-width));
+    line-height: calc(100vw * 22 / var(--base-width));
+    color: #141414;
+    font-family: Matter;
+    font-style: normal;
+    font-weight: 400;
+}
+
+.product-v1 .max-height--toggle {
+    background-color: transparent;
+}
+
+.product-v1 .max-height--toggle {
+    text-align: center;
+    padding: 0;
+}
+
+.product-v1 .max-height--toggle .text-button {
+    color: #141414;
+    text-align: center;
+    font-family: Matter;
+    font-size: calc(100vw * 12 / var(--base-width));
+    font-style: normal;
+    font-weight: 400;
+    line-height: calc(100vw * 12 / var(--base-width));
+    letter-spacing: calc(100vw * -0.6 / var(--base-width));
+    text-transform: capitalize;
+    text-decoration: none;
+    padding: calc(100vw * 7 / var(--base-width)) calc(100vw * 23 / var(--base-width));
+    border: 0.5px solid #141414;
+    border-radius: 3px;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    -ms-border-radius: 3px;
+    -o-border-radius: 3px;
+}
+
+.product-v1 .max-height--toggle:after {
+    height: calc(100vw * 24 / var(--base-width));
+    background: linear-gradient(180deg, rgba(247, 248, 250, 0.00) 0%, #F7F8FA 96%);
+}
+
+max-height.max-height--enabled .max-height--inner-content {
+    margin-bottom: calc(100vw * 20 / var(--base-width));
+}
+
+.product-v1 .max-height--no-background.max-height--active {
+    margin-bottom: calc(100vw * 40 / var(--base-width));
+}
+
+.product-v1 .max-height--no-background.max-height--active {
+    padding-bottom: calc(100vw * 30 / var(--base-width));
+}
+
+.product-v1 .accordion {
+    border-top: 0.3px solid rgba(20, 20, 20, 0.5);
+    border-bottom: 0.3px solid rgba(20, 20, 20, 0.5);
+    margin-bottom: calc(100vw * 20 / var(--base-width));
+}
+
+.product-v1 .accordion summary {
+    padding: calc(100vw * 20 / var(--base-width)) calc(100vw * 40 / var(--base-width)) calc(100vw * 20 / var(--base-width)) 0;
+    color: #141414;
+    font-family: Matter;
+    font-size: calc(100vw * 16 / var(--base-width));
+    font-style: normal;
+    font-weight: 400;
+    line-height: calc(100vw * 20 / var(--base-width));
+    text-transform: capitalize;
+}
+
+.product-v1 .accordion .accordion__content {
+    padding: 0 0 calc(100vw * 15 / var(--base-width)) 0;
+}
+
+.product-v1 .product-v1-variant {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    column-gap: calc(100vw * 10 / var(--base-width));
+}
+
+.product-v1 .product-v1-variant .form__label {
+    color: #191919;
+    font-family: Matter;
+    font-size: calc(100vw * 14 / var(--base-width));
+    font-style: normal;
+    font-weight: 400;
+    line-height: calc(100vw * 16 / var(--base-width));
+    text-transform: capitalize;
+}

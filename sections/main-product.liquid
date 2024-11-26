@@ -1,4 +1,5 @@
 {{- 'product.css' | asset_url | stylesheet_tag -}}
+{{- 'product-new.css' | asset_url | stylesheet_tag -}}
 {%- liquid
   assign first_3d_model = product.media | where: 'media_type', 'model' | first
   assign thumbnail_position = section.settings.thumbnail_position
@@ -42,7 +43,7 @@
   >
 {%- endif -%}
 
-<div class="thb-product-detail product" data-handle="{{ product.handle }}">
+<div class="thb-product-detail product product-v1" data-handle="{{ product.handle }}">
   <div class="row">
     <div class="small-12 columns">
       <div class="product-grid-container">

@@ -1,0 +1,197 @@
+{%- liquid
+  assign button_link = section.settings.button_link
+  assign button_text = section.settings.button_text
+  assign button_text_color = section.settings.button_text_color
+  assign button_hover_text_color = section.settings.button_hover_text_color
+  assign button_bg_color = section.settings.button_bg_color
+  assign button_hover_bg_color = section.settings.button_hover_bg_color
+  assign button_border_color = section.settings.button_border_color
+  assign button_border = section.settings.button_border
+  assign button_hover_border_color = section.settings.button_hover_border_color
+-%}
+<style>
+  .v1-richtext-info p {
+    margin: 0;
+    padding: 0;
+    line-height: 1;
+  }
+  .v1-richtext-info {
+    background-color: #fff;
+    padding: 0 calc(100vw * 20 / var(--base-width));
+    padding-top: calc(100vw * 100 / var(--base-width));
+    padding-bottom: calc(100vw * 100 / var(--base-width));
+  }
+  .v1-richtext-info-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    column-gap: calc(100vw * 40 / var(--base-width));
+  }
+  .richtext-info-left {
+    max-width: calc(100vw * 660 / var(--base-width));
+  }
+  .richtext-info-right {
+    max-width: calc(100vw * 630 / var(--base-width));
+  }
+  .richtext-info-h2 {
+    color: #1a1a1a;
+    font-family: 'OPPO Sans';
+    font-size: calc(100vw * 60 / var(--base-width));
+    font-style: normal;
+    font-weight: 400;
+    line-height: calc(100vw * 66 / var(--base-width));
+    letter-spacing: calc(100vw * -1.8 / var(--base-width));
+    text-transform: capitalize;
+    margin: 0;
+  }
+  p.richtext-info-p1,
+  p.richtext-info-p2 {
+    color: #1a1a1a;
+    font-family: Matter;
+    font-size: calc(100vw * 20 / var(--base-width));
+    font-style: normal;
+    font-weight: 400;
+    line-height: calc(100vw * 26 / var(--base-width));
+  }
+  p.richtext-info-p2 {
+    margin-top: calc(100vw * 30 / var(--base-width));
+  }
+  .richtext-info-btn {
+    margin-top: calc(100vw * 48 / var(--base-width));
+  }
+  .v1-richtext-info .teflo_custom_button_text {
+    padding: 12px 36px;
+  }
+  @media screen and (max-width: 750px) {
+    .v1-richtext-info-content {
+      flex-direction: column;
+    }
+    .richtext-info-left {
+      max-width: 100%;
+      text-align: center;
+    }
+    .richtext-info-h2 {
+      font-size: calc(100vw * 70 / var(--base-width));
+      line-height: calc(100vw * 76 / var(--base-width));
+      letter-spacing: calc(100vw * -2.1 / var(--base-width));
+    }
+    .richtext-info-right {
+      max-width: 100%;
+      text-align: center;
+    }
+    p.richtext-info-p1,
+    p.richtext-info-p2 {
+      font-size: calc(100vw * 30 / var(--base-width));
+      line-height: calc(100vw * 36 / var(--base-width));
+    }
+    p.richtext-info-p1 {
+      margin-top: calc(100vw * 30 / var(--base-width));
+    }
+    p.richtext-info-p2 {
+      margin-top: calc(100vw * 20 / var(--base-width));
+    }
+    .richtext-info-btn {
+      margin-top: calc(100vw * 70 / var(--base-width));
+    }
+  }
+</style>
+<div class="v1-richtext-info" id="v1-richtext-info-{{ section.id }}">
+  <div class="v1-richtext-info-content">
+    <div class="richtext-info-left">
+      <h2 class="richtext-info-h2">Finding the Right Nylon Mesh Filter Bags for Your Needs</h2>
+    </div>
+    <div class="richtext-info-right">
+      <p class="richtext-info-p1">
+        We offer a comprehensive range of high-quality nylon mesh filter bags to meet diverse filtration requirements.
+        Our bags are available in various package sizes to accommodate different operational scales and budgets. To find
+        the nylon mesh filter bags that match your specifications, browse our product catalog or contact our filtration
+        experts for personalized assistance.
+      </p>
+      <p class="richtext-info-p2">
+        Our team is ready to help you select the ideal nylon mesh filter bags for your specific application, ensuring
+        optimal filtration performance for your processes.
+      </p>
+      <div class="richtext-info-btn">
+        {% render 'teflo-button',
+          button_link: button_link,
+          button_text: button_text,
+          button_text_color: button_text_color,
+          button_hover_text_color: button_hover_text_color,
+          button_bg_color: button_bg_color,
+          button_hover_bg_color: button_hover_bg_color,
+          button_border_color: button_border_color,
+          button_border: button_border,
+          button_hover_border_color: button_hover_border_color
+        %}
+      </div>
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "V1 RichText Info",
+  "settings": [
+    {
+      "type": "header",
+      "content": "按钮样式"
+    },
+    {
+      "type": "color",
+      "id": "button_border_color",
+      "label": "Button border color",
+      "default": "#191919"
+    },
+    {
+      "type": "color",
+      "id": "button_hover_border_color",
+      "label": "Button hover border color"
+    },
+    {
+      "type": "checkbox",
+      "id": "button_border",
+      "label": "Button border",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "button_text",
+      "label": "Button text"
+    },
+    {
+      "type": "text",
+      "id": "button_link",
+      "label": "Button link, enter a URL or popup"
+    },
+    {
+      "type": "text",
+      "id": "button_text_color",
+      "label": "Button text color",
+      "default": "#1A1A1A"
+    },
+    {
+      "type": "text",
+      "id": "button_bg_color",
+      "label": "Button background color",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "text",
+      "id": "button_hover_text_color",
+      "label": "Button hover text color",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "text",
+      "id": "button_hover_bg_color",
+      "label": "Button hover background color",
+      "default": "#0522CB"
+    }
+  ],
+  "presets": [
+    {
+      "name": "V1 RichText Info"
+    }
+  ]
+}
+{% endschema %}

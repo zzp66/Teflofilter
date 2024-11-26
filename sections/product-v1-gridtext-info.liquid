@@ -1,0 +1,231 @@
+<style>
+  .v1-gridtext-info p {
+    margin: 0;
+    padding: 0;
+    line-height: 1;
+  }
+  .v1-gridtext-info {
+    padding: 0 calc(100vw * 20 / var(--base-width));
+    padding-top: 70px;
+    padding-bottom: 70px;
+    background-color: #fff;
+    overflow: hidden;
+  }
+  .v1-gridtext-info-content {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: calc(100vw * 24 / var(--base-width)) calc(100vw * 30 / var(--base-width));
+  }
+  .gridtext-item-title {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: calc(100vw * 18 / var(--base-width));
+    border-bottom: 0.3px solid rgba(26, 26, 26, 0.3);
+  }
+  .gridtext-item p.title {
+    max-width: calc(100vw * 300 / var(--base-width));
+    color: #1a1a1a;
+    font-family: Matter;
+    font-size: calc(100vw * 30 / var(--base-width));
+    font-style: normal;
+    font-weight: 400;
+    line-height: calc(100vw * 34 / var(--base-width));
+    letter-spacing: calc(100vw * -0.9 / var(--base-width));
+    text-transform: capitalize;
+  }
+  .gridtext-item span.desc {
+    color: #0d0d0d;
+    font-family: 'Fusion Pixel';
+    font-size: calc(100vw * 16 / var(--base-width));
+    font-style: normal;
+    font-weight: 400;
+    line-height: 1;
+    letter-spacing: calc(100vw * -0.48 / var(--base-width));
+    text-transform: capitalize;
+  }
+  .gridtext-item p.gridtext-item-info-p {
+    color: #1a1a1a;
+    font-family: Matter;
+    font-size: calc(100vw * 18 / var(--base-width));
+    font-style: normal;
+    font-weight: 400;
+    line-height: calc(100vw * 22 / var(--base-width));
+    letter-spacing: calc(100vw * -0.54 / var(--base-width));
+    opacity: 0.6;
+    margin-top: calc(100vw * 18 / var(--base-width));
+    max-width: calc(100vw * 300 / var(--base-width));
+  }
+  .gridtext-item-img {
+    margin-top: calc(100vw * 25 / var(--base-width));
+    max-width: calc(100vw * 70 / var(--base-width));
+    overflow: hidden;
+  }
+  .gridtext-item-img-mb {
+    display: none;
+  }
+  .gridtext-item-info-mb-img {
+    display: none;
+  }
+  @media screen and (max-width: 750px) {
+    .v1-gridtext-info-content {
+      grid-template-columns: repeat(2, 1fr);
+      gap: calc(100vw * 20 / var(--base-width)) calc(100vw * 50 / var(--base-width));
+    }
+    .gridtext-item span.desc {
+      display: none;
+    }
+    .gridtext-item p.title {
+      font-size: calc(100vw * 36 / var(--base-width));
+      line-height: 1;
+      letter-spacing: calc(100vw * -1.08 / var(--base-width));
+      margin-left: calc(100vw * 12 / var(--base-width));
+    }
+    .gridtext-item-info {
+      margin-top: calc(100vw * 20 / var(--base-width));
+    }
+    .gridtext-item-img-mb,
+    .gridtext-item-info-mb-img {
+      display: block;
+      max-width: calc(100vw * 70 / var(--base-width));
+    }
+    .gridtext-item-info-mb-img {
+      opacity: 0;
+    }
+    .gridtext-item-img {
+      display: none;
+    }
+    .gridtext-item-info-mb {
+      display: flex;
+      justify-content: space-between;
+    }
+    .gridtext-item p.gridtext-item-info-p {
+      max-width: 100%;
+      margin: 0 auto;
+      font-size: calc(100vw * 26 / var(--base-width));
+      line-height: calc(100vw * 32 / var(--base-width));
+      letter-spacing: calc(100vw * -0.78 / var(--base-width));
+      margin-left: calc(100vw * 12 / var(--base-width));
+    }
+  }
+</style>
+<div class="v1-gridtext-info">
+  <div class="v1-gridtext-info-content">
+    <div class="gridtext-item">
+      <div class="gridtext-item-title">
+        <div class="gridtext-item-img-mb">
+          <img src="https://cdn.shopify.com/s/files/1/0902/1122/1797/files/Group_9741.png?v=1732598325" alt="">
+        </div>
+        <p class="title">Micron Options</p>
+        <span class="desc">A01</span>
+      </div>
+      <div class="gridtext-item-info">
+        <div class="gridtext-item-info-mb">
+          <div class="gridtext-item-info-mb-img">
+            <img
+              src="https://cdn.shopify.com/s/files/1/0902/1122/1797/files/Group_9741.png?v=1732598325"
+              alt=""
+            >
+          </div>
+          <p class="gridtext-item-info-p">Durable construction for extended use</p>
+        </div>
+      </div>
+      <div class="gridtext-item-img">
+        <img
+          src="https://cdn.shopify.com/s/files/1/0902/1122/1797/files/Group_9741.png?v=1732598325"
+          alt=""
+        >
+      </div>
+    </div>
+    <div class="gridtext-item">
+      <div class="gridtext-item-title">
+        <div class="gridtext-item-img-mb">
+          <img src="https://cdn.shopify.com/s/files/1/0902/1122/1797/files/Group_9741.png?v=1732598325" alt="">
+        </div>
+        <p class="title">Micron Options</p>
+        <span class="desc">A01</span>
+      </div>
+      <div class="gridtext-item-info">
+        <div class="gridtext-item-info-mb">
+          <div class="gridtext-item-info-mb-img">
+            <img
+              src="https://cdn.shopify.com/s/files/1/0902/1122/1797/files/Group_9741.png?v=1732598325"
+              alt=""
+            >
+          </div>
+          <p class="gridtext-item-info-p">Durable construction for extended use</p>
+        </div>
+      </div>
+      <div class="gridtext-item-img">
+        <img
+          src="https://cdn.shopify.com/s/files/1/0902/1122/1797/files/Group_9741.png?v=1732598325"
+          alt=""
+        >
+      </div>
+    </div>
+    <div class="gridtext-item">
+      <div class="gridtext-item-title">
+        <div class="gridtext-item-img-mb">
+          <img src="https://cdn.shopify.com/s/files/1/0902/1122/1797/files/Group_9741.png?v=1732598325" alt="">
+        </div>
+        <p class="title">Micron Options</p>
+        <span class="desc">A01</span>
+      </div>
+      <div class="gridtext-item-info">
+        <div class="gridtext-item-info-mb">
+          <div class="gridtext-item-info-mb-img">
+            <img
+              src="https://cdn.shopify.com/s/files/1/0902/1122/1797/files/Group_9741.png?v=1732598325"
+              alt=""
+            >
+          </div>
+          <p class="gridtext-item-info-p">Durable construction for extended use</p>
+        </div>
+      </div>
+      <div class="gridtext-item-img">
+        <img
+          src="https://cdn.shopify.com/s/files/1/0902/1122/1797/files/Group_9741.png?v=1732598325"
+          alt=""
+        >
+      </div>
+    </div>
+    <div class="gridtext-item">
+      <div class="gridtext-item-title">
+        <div class="gridtext-item-img-mb">
+          <img src="https://cdn.shopify.com/s/files/1/0902/1122/1797/files/Group_9741.png?v=1732598325" alt="">
+        </div>
+        <p class="title">Micron Options</p>
+        <span class="desc">A01</span>
+      </div>
+      <div class="gridtext-item-info">
+        <div class="gridtext-item-info-mb">
+          <div class="gridtext-item-info-mb-img">
+            <img
+              src="https://cdn.shopify.com/s/files/1/0902/1122/1797/files/Group_9741.png?v=1732598325"
+              alt=""
+            >
+          </div>
+          <p class="gridtext-item-info-p">Durable construction for extended use</p>
+        </div>
+      </div>
+      <div class="gridtext-item-img">
+        <img
+          src="https://cdn.shopify.com/s/files/1/0902/1122/1797/files/Group_9741.png?v=1732598325"
+          alt=""
+        >
+      </div>
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "V1 GridText Info",
+  "settings": [],
+  "presets": [
+    {
+      "name": "V1 GridText Info"
+    }
+  ]
+}
+{% endschema %}

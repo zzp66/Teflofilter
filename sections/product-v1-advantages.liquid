@@ -17,7 +17,6 @@
   }
   .advantages-title {
     padding-bottom: calc(100vw * 50 / var(--base-width));
-    margin-bottom: calc(100vw * 40 / var(--base-width));
     border-bottom: 0.3px solid rgba(13, 13, 13, 0.5);
   }
   .advantages-title .title-desc {
@@ -40,8 +39,10 @@
     line-height: calc(100vw * 66 / var(--base-width));
     letter-spacing: calc(100vw * -1.8 / var(--base-width));
     text-transform: capitalize;
+    margin: 0;
   }
   .advantage-item-box {
+    padding-top: calc(100vw * 40 / var(--base-width));
     position: sticky;
     top: 60px;
     background-color: #fff;
@@ -52,44 +53,51 @@
     column-gap: calc(100vw * 50 / var(--base-width));
     align-items: flex-start;
   }
+  .advantage-left {
+    flex: 1;
+  }
   .advantage-title {
     color: #1a1a1a;
     font-family: 'OPPO Sans';
-    font-size: 40px;
+    font-size: calc(100vw * 40 / var(--base-width));
     font-style: normal;
     font-weight: 400;
-    line-height: 44px; /* 110% */
-    letter-spacing: -1.2px;
+    line-height: calc(100vw * 44 / var(--base-width));
+    letter-spacing: calc(100vw * -1.2 / var(--base-width));
     text-transform: capitalize;
-    padding-bottom: 30px;
+    padding-bottom: calc(100vw * 30 / var(--base-width));
     border-bottom: 0.3px solid rgba(26, 26, 26, 0.3);
   }
   .advantage-desc {
-    margin-top: 30px;
+    margin-top: calc(100vw * 30 / var(--base-width));
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
-    column-gap: 90px;
+    column-gap: calc(100vw * 90 / var(--base-width));
   }
   .advantage-desc-num {
     color: #1a1a1a;
     font-family: 'Fusion Pixel';
-    font-size: 16px;
+    font-size: calc(100vw * 16 / var(--base-width));
     font-style: normal;
     font-weight: 400;
-    line-height: 26px; /* 100% */
+    line-height: calc(100vw * 26 / var(--base-width));
     text-transform: uppercase;
+    word-wrap: break-word;
   }
-  .advantage-desc-ul li {
+  .advantage-desc-richtext ul {
+    padding-left: calc(100vw * 20 / var(--base-width));
+  }
+  .advantage-desc-richtext li {
     position: relative;
     color: #1a1a1a;
     font-family: Matter;
-    font-size: 20px;
+    font-size: calc(100vw * 20 / var(--base-width));
     font-style: normal;
     font-weight: 400;
-    line-height: 26px; /* 130% */
+    line-height: calc(100vw * 26 / var(--base-width));
   }
-  .advantage-desc-ul li::marker {
+  .advantage-desc-richtext li::marker {
     color: #0522cb;
     font-size: 20px;
   }
@@ -98,85 +106,119 @@
     border-radius: 10px;
     overflow: hidden;
   }
+  @media screen and (max-width: 1200px) {
+    .advantage-item-box {
+      top: 30px;
+    }
+    .advantages-title {
+      padding-bottom: calc(100vw * 30 / var(--base-width));
+      margin-bottom: calc(100vw * 30 / var(--base-width));
+    }
+    .advantages-title .advantages-h2 {
+      font-size: calc(100vw * 50 / var(--base-width));
+      line-height: calc(100vw * 56 / var(--base-width));
+    }
+    .advantage-right {
+      max-width: calc(100vw * 320 / var(--base-width));
+    }
+    .advantage-title {
+      font-size: calc(100vw * 30 / var(--base-width));
+      line-height: calc(100vw * 36 / var(--base-width));
+      padding-bottom: calc(100vw * 20 / var(--base-width));
+    }
+    .advantage-desc-num {
+      font-size: calc(100vw * 12 / var(--base-width));
+      line-height: calc(100vw * 16 / var(--base-width));
+    }
+  }
   @media screen and (max-width: 750px) {
+    .advantages-title {
+      display: none;
+    }
+    .advantages-title .title-desc {
+      display: none;
+    }
+    .advantages-title .advantages-h2 {
+      font-size: calc(100vw * 50 / var(--base-width));
+      line-height: calc(100vw * 44 / var(--base-width));
+    }
+    .advantage-item {
+      flex-direction: column;
+      margin-bottom: calc(100vw * 70 / var(--base-width));
+    }
+    .advantage-left,
+    .advantage-right {
+      width: 100%;
+      max-width: none;
+    }
+    .advantage-right {
+      margin-top: calc(100vw * 70 / var(--base-width));
+    }
+    .advantage-title {
+      font-size: calc(100vw * 50 / var(--base-width));
+      line-height: calc(100vw * 44 / var(--base-width));
+      padding-bottom: calc(100vw * 30 / var(--base-width));
+    }
+    .advantage-desc {
+      margin-top: calc(100vw * 30 / var(--base-width));
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      align-items: flex-start;
+      column-gap: auto;
+    }
+    .advantage-desc-num {
+      font-size: calc(100vw * 20 / var(--base-width));
+      line-height: calc(100vw * 26 / var(--base-width));
+      margin-bottom: calc(100vw * 20 / var(--base-width));
+    }
+    .advantage-img {
+      max-width: 100%;
+    }
+    .advantage-desc-richtext ul {
+      padding-left: calc(100vw * 30 / var(--base-width));
+    }
+    .advantage-desc-richtext li {
+      font-size: calc(100vw * 30 / var(--base-width));
+      line-height: calc(100vw * 36 / var(--base-width));
+    }
   }
 </style>
 <div class="v1-advantages">
   <div class="v1-advantages-content">
     <div class="advantages-title">
-      <span class="title-desc">[ thispower ]</span>
-      <h2 class="advantages-h2">Our Advantages</h2>
+      <span class="title-desc">{{ section.settings.advantages_title_desc }}</span>
+      <h2 class="advantages-h2">{{ section.settings.advantages_title }}</h2>
     </div>
     <div class="advantages-box">
-      <div class="advantage-item-box">
-        <div class="advantage-item">
-          <div class="advantage-left">
-            <div class="advantage-title">Over Other Synthetic Winch Ropes</div>
-            <div class="advantage-desc">
-              <span class="advantage-desc-num">001/002</span>
-              <ul class="advantage-desc-ul">
-                <li>Highest strength synthetic winch rope</li>
-                <li>
-                  Use smaller diameter line without sacrificing strength - either gain winch efficiency or gain winch
-                  rope length
-                </li>
-                <li>Spliced by our engineers</li>
-              </ul>
+      {% for block in section.blocks %}
+        <div class="advantage-item-box">
+          <div class="advantage-item">
+            <div class="advantage-left">
+              <div class="advantage-title">{{ block.settings.advantage_title }}</div>
+              <div class="advantage-desc">
+                <span class="advantage-desc-num">{{ block.settings.advantage_desc_num }}</span>
+                <div class="advantage-desc-richtext">{{ block.settings.advantage_desc_richtext }}</div>
+              </div>
             </div>
-          </div>
-          <div class="advantage-right">
-            <div class="advantage-img">
-              <img src="https://cdn.shopify.com/s/files/1/0902/1122/1797/files/image.png?v=1732548561" alt="">
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="advantage-item-box">
-        <div class="advantage-item">
-          <div class="advantage-left">
-            <div class="advantage-title">Over Other Synthetic Winch Ropes</div>
-            <div class="advantage-desc">
-              <span class="advantage-desc-num">001/002</span>
-              <ul class="advantage-desc-ul">
-                <li>Highest strength synthetic winch rope</li>
-                <li>
-                  Use smaller diameter line without sacrificing strength - either gain winch efficiency or gain winch
-                  rope length
-                </li>
-                <li>Spliced by our engineers</li>
-              </ul>
-            </div>
-          </div>
-          <div class="advantage-right">
-            <div class="advantage-img">
-              <img src="https://cdn.shopify.com/s/files/1/0902/1122/1797/files/image.png?v=1732548561" alt="">
+            <div class="advantage-right">
+              <div class="advantage-img">
+                <picture>
+                  <source
+                    media="(max-width: 767px)"
+                    srcset="{{ block.settings.advantage_img_mb | image_url: width: master }}"
+                  >
+                  <source
+                    media="(min-width: 768px)"
+                    srcset="{{ block.settings.advantage_img | image_url: width: master }}"
+                  >
+                  <img src="{{ block.settings.advantage_img | image_url: width: master }}" alt="">
+                </picture>
+              </div>
             </div>
           </div>
         </div>
-      </div>
-      <div class="advantage-item-box">
-        <div class="advantage-item">
-          <div class="advantage-left">
-            <div class="advantage-title">Over Other Synthetic Winch Ropes</div>
-            <div class="advantage-desc">
-              <span class="advantage-desc-num">001/002</span>
-              <ul class="advantage-desc-ul">
-                <li>Highest strength synthetic winch rope</li>
-                <li>
-                  Use smaller diameter line without sacrificing strength - either gain winch efficiency or gain winch
-                  rope length
-                </li>
-                <li>Spliced by our engineers</li>
-              </ul>
-            </div>
-          </div>
-          <div class="advantage-right">
-            <div class="advantage-img">
-              <img src="https://cdn.shopify.com/s/files/1/0902/1122/1797/files/image.png?v=1732548561" alt="">
-            </div>
-          </div>
-        </div>
-      </div>
+      {% endfor %}
     </div>
   </div>
 </div>
@@ -184,7 +226,55 @@
 {% schema %}
 {
   "name": "V1 Advantages",
-  "settings": [],
+  "settings": [
+    {
+      "type": "text",
+      "id": "advantages_title",
+      "label": "Title",
+      "default": "Our Advantages"
+    },
+    {
+      "type": "text",
+      "id": "advantages_title_desc",
+      "label": "Title Desc",
+      "default": "[ thispower ]"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "advantage",
+      "name": "advantage",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "advantage_img",
+          "label": "PC Image"
+        },
+        {
+          "type": "image_picker",
+          "id": "advantage_img_mb",
+          "label": "Mobile Image"
+        },
+        {
+          "type": "text",
+          "id": "advantage_title",
+          "label": "Advantage Title",
+          "default": "Over Other Synthetic Winch Ropes"
+        },
+        {
+          "type": "text",
+          "id": "advantage_desc_num",
+          "label": "Num",
+          "default": "001/002"
+        },
+        {
+          "type": "richtext",
+          "id": "advantage_desc_richtext",
+          "label": "富文本"
+        }
+      ]
+    }
+  ],
   "presets": [
     {
       "name": "V1 Advantages"

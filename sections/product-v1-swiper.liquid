@@ -17,75 +17,79 @@
   .v1-swiper-top {
     position: relative;
     display: flex;
+    flex-direction: column;
     justify-content: center;
-    padding: 30px 0;
+    padding: calc(100vw * 30 / var(--base-width)) 0;
   }
   .v1-swiper-info {
-    max-width: 770px;
+    max-width: calc(100vw * 770 / var(--base-width));
     text-align: left;
   }
   .v1-swiper-desc {
     color: #1a1a1a;
     font-family: 'Fusion Pixel';
-    font-size: 16px;
+    font-size: calc(100vw * 16 / var(--base-width));
     font-style: normal;
     font-weight: 400;
-    line-height: 16px; /* 100% */
+    line-height: 1;
     text-transform: uppercase;
-    position: absolute;
-    top: 30px;
-    left: 0;
+    margin-bottom: calc(100vw * 10 / var(--base-width));
   }
   .v1-swiper-info .v1-swiper-info-1 {
     color: #1a1a1a;
     font-family: 'OPPO Sans';
-    font-size: 20px;
+    font-size: calc(100vw * 20 / var(--base-width));
     font-style: normal;
     font-weight: 400;
-    line-height: 26px; /* 130% */
-    letter-spacing: -0.6px;
+    line-height: calc(100vw * 26 / var(--base-width));
+    letter-spacing: calc(100vw * -0.6 / var(--base-width));
     text-transform: capitalize;
-    margin-bottom: 20px;
+    margin-bottom: calc(100vw * 20 / var(--base-width));
   }
   .v1-swiper-info .v1-swiper-h2 {
     color: #1a1a1a;
     font-family: 'OPPO Sans';
-    font-size: 60px;
+    font-size: calc(100vw * 60 / var(--base-width));
     font-style: normal;
     font-weight: 400;
-    line-height: 66px; /* 110% */
-    letter-spacing: -1.8px;
+    line-height: calc(100vw * 66 / var(--base-width));
+    letter-spacing: calc(100vw * -1.8 / var(--base-width));
     text-transform: capitalize;
+    margin: 0;
   }
   .v1-swiper-info .v1-swiper-info-2 {
     color: #1a1a1a;
     font-family: Matter;
-    font-size: 16px;
+    font-size: calc(100vw * 16 / var(--base-width));
     font-style: normal;
     font-weight: 400;
-    line-height: 22px; /* 137.5% */
-    margin-top: 20px;
+    line-height: calc(100vw * 22 / var(--base-width));
+    margin-top: calc(100vw * 20 / var(--base-width));
   }
   .swiper-slide-item {
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
   }
+  .swiper-slide-item img {
+    border-radius: 4px;
+    overflow: hidden;
+  }
   .v1-swiper p.swiper-slide-item-info {
     color: #1a1a1a;
     font-family: Matter;
-    font-size: 20px;
+    font-size: calc(100vw * 20 / var(--base-width));
     font-style: normal;
     font-weight: 400;
-    line-height: 24px; /* 120% */
-    letter-spacing: -0.6px;
+    line-height: calc(100vw * 24 / var(--base-width));
+    letter-spacing: calc(100vw * -0.6 / var(--base-width));
     text-transform: capitalize;
-    margin-top: 15px;
+    margin-top: calc(100vw * 15 / var(--base-width));
   }
   .swiper-button-next,
   .swiper-button-prev {
-    width: 40px;
-    height: 40px;
+    width: calc(100vw * 40 / var(--base-width));
+    height: calc(100vw * 40 / var(--base-width));
     color: #1a1a1a;
     background-color: #fff;
     border-radius: 6px;
@@ -97,7 +101,11 @@
   .swiper-button-next:hover,
   .swiper-button-prev:hover {
     color: #fff;
-    background-color: #0522CB;
+    background-color: #0522cb;
+  }
+  .swiper-button-next:hover svg path,
+  .swiper-button-prev:hover svg path {
+    stroke: #fff;
   }
   .swiper-button-prev:after,
   .swiper-rtl .swiper-button-next:after {
@@ -108,50 +116,66 @@
     content: '';
   }
   @media screen and (max-width: 750px) {
+    .v1-swiper-desc {
+      font-size: calc(100vw * 26 / var(--base-width));
+      line-height: calc(100vw * 22 / var(--base-width));
+      margin-bottom: calc(100vw * 15 / var(--base-width));
+    }
+    .v1-swiper-info .v1-swiper-h2 {
+      font-size: calc(100vw * 56 / var(--base-width));
+      line-height: calc(100vw * 60 / var(--base-width));
+    }
+    .v1-swiper-info .v1-swiper-info-1 {
+      font-size: calc(100vw * 28 / var(--base-width));
+      line-height: calc(100vw * 34 / var(--base-width));
+    }
+    .v1-swiper-info .v1-swiper-info-2 {
+      font-size: calc(100vw * 26 / var(--base-width));
+      line-height: calc(100vw * 32 / var(--base-width));
+    }
+    .swiper-button-next,
+    .swiper-button-prev {
+      width: calc(100vw * 70 / var(--base-width));
+      height: calc(100vw * 70 / var(--base-width));
+    }
+    .v1-swiper p.swiper-slide-item-info {
+      font-size: calc(100vw * 26 / var(--base-width));
+      line-height: calc(100vw * 32 / var(--base-width));
+      margin-top: calc(100vw * 20 / var(--base-width));
+    }
   }
 </style>
 <div class="v1-swiper">
   <div class="v1-swiper-content">
     <div class="v1-swiper-top">
-      <span class="v1-swiper-desc">[ thispower ]</span>
+      <span class="v1-swiper-desc">{{ section.settings.swiper_desc }}</span>
       <div class="v1-swiper-info">
-        <p class="v1-swiper-info-1">Applications Of Winch Rope</p>
-        <h2 class="v1-swiper-h2">Versatile Applications of Classic Winch Rope</h2>
-        <p class="v1-swiper-info-2">
-          Winch ropes are very useful on farms and in other agricultural areas. They help with tasks like pulling logs,
-          clearing debris, and moving equipment. You can find them on machines that drag fallen trees or pull out stuck
-          equipment, like a wire rope pulling machine or winch. Knowing which ropes to use is important to get the job
-          done safely and efficiently.
-        </p>
+        <p class="v1-swiper-info-1">{{ section.settings.swiper_info_1 }}</p>
+        <h2 class="v1-swiper-h2">{{ section.settings.swiper_title }}</h2>
+        <p class="v1-swiper-info-2">{{ section.settings.swiper_info_2 }}</p>
       </div>
     </div>
     <div class="v1-swiper-bottom">
       <div class="swiper v1-swiper-box">
         <div class="swiper-wrapper">
-          <div class="swiper-slide">
-            <div class="swiper-slide-item">
-              <img src="https://cdn.shopify.com/s/files/1/0902/1122/1797/files/off-road.jpg?v=1732553464" alt="">
-              <p class="swiper-slide-item-info">Off-Road</p>
+          {% for block in section.blocks %}
+            <div class="swiper-slide">
+              <div class="swiper-slide-item">
+                <picture>
+                  <source
+                    media="(max-width: 767px)"
+                    srcset="{{ block.settings.slide_img_mb | image_url: width: master }}"
+                  >
+                  <source
+                    media="(min-width: 768px)"
+                    srcset="{{ block.settings.slide_img | image_url: width: master }}"
+                  >
+                  <img src="{{ block.settings.slide_img | image_url: width: master }}" alt="">
+                </picture>
+                <p class="swiper-slide-item-info">{{ block.settings.slide_info }}</p>
+              </div>
             </div>
-          </div>
-          <div class="swiper-slide">
-            <div class="swiper-slide-item">
-              <img src="https://cdn.shopify.com/s/files/1/0902/1122/1797/files/off-road.jpg?v=1732553464" alt="">
-              <p class="swiper-slide-item-info">Off-Road</p>
-            </div>
-          </div>
-          <div class="swiper-slide">
-            <div class="swiper-slide-item">
-              <img src="https://cdn.shopify.com/s/files/1/0902/1122/1797/files/off-road.jpg?v=1732553464" alt="">
-              <p class="swiper-slide-item-info">Off-Road</p>
-            </div>
-          </div>
-          <div class="swiper-slide">
-            <div class="swiper-slide-item">
-              <img src="https://cdn.shopify.com/s/files/1/0902/1122/1797/files/off-road.jpg?v=1732553464" alt="">
-              <p class="swiper-slide-item-info">Off-Road</p>
-            </div>
-          </div>
+          {% endfor %}
         </div>
 
         <!-- 如果需要导航按钮 -->
@@ -171,9 +195,19 @@
 </div>
 <script>
   var mySwiper = new Swiper('.v1-swiper-box', {
-    slidesPerView: '3',
-    spaceBetween: 30,
+    slidesPerView: 1,
+    spaceBetween: 15,
     grabCursor: true,
+    breakpoints: {
+      750: {
+        slidesPerView: 2,
+        spaceBetween: 15,
+      },
+      1024: {
+        slidesPerView: 3,
+        spaceBetween: 30,
+      },
+    },
     // 如果需要前进后退按钮
     navigation: {
       nextEl: '.swiper-button-next',
@@ -185,7 +219,55 @@
 {% schema %}
 {
   "name": "V1 Swiper",
-  "settings": [],
+  "settings": [
+    {
+      "type": "text",
+      "id": "swiper_title",
+      "label": "Title",
+      "default": "Versatile Applications of Classic Winch Rope"
+    },
+    {
+      "type": "text",
+      "id": "swiper_desc",
+      "label": "Title Desc",
+      "default": "[ thispower ]"
+    },
+    {
+      "type": "textarea",
+      "id": "swiper_info_1",
+      "label": "Info 1",
+      "default": "Applications Of Winch Rope"
+    },
+    {
+      "type": "textarea",
+      "id": "swiper_info_2",
+      "label": "Info 2"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "slide",
+      "name": "Slide",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "slide_img",
+          "label": "PC Image"
+        },
+        {
+          "type": "image_picker",
+          "id": "slide_img_mb",
+          "label": "Mobile Image"
+        },
+        {
+          "type": "text",
+          "id": "slide_info",
+          "label": "Slide Info",
+          "default": "Off-Road"
+        }
+      ]
+    }
+  ],
   "presets": [
     {
       "name": "V1 Swiper"

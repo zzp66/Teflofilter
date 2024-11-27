@@ -1,0 +1,92 @@
+<style>
+  .v1-table {
+    background-color: #fff;
+    padding: 0 calc(100vw * 20 / var(--base-width));
+    padding-bottom: 100px;
+  }
+  .v1-table-title {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .v1-table-title .title-desc {
+    color: #1a1a1a;
+    font-family: 'Fusion Pixel';
+    font-size: calc(100vw * 16 / var(--base-width));
+    font-style: normal;
+    font-weight: 400;
+    line-height: 1;
+    text-transform: uppercase;
+    margin-bottom: calc(100vw * 10 / var(--base-width));
+  }
+  .v1-table-title .v1-table-h2 {
+    color: #1a1a1a;
+    font-family: 'OPPO Sans';
+    font-size: calc(100vw * 60 / var(--base-width));
+    font-style: normal;
+    font-weight: 400;
+    line-height: calc(100vw * 66 / var(--base-width));
+    letter-spacing: calc(100vw * -1.8 / var(--base-width));
+    text-transform: capitalize;
+  }
+  .v1-table table {
+    margin: 0;
+    border-spacing: 5px;
+    border-collapse: separate;
+    border: none;
+    overflow: hidden;
+    word-wrap: break-word;
+    width: 100%;
+  }
+  .v1-table th,
+  .v1-table td {
+    text-align: center;
+    font-family: Matter;
+    font-size: calc(100vw * 20 / var(--base-width));
+    font-style: normal;
+    font-weight: 400;
+    line-height: calc(100vw * 22 / var(--base-width));
+    padding: calc(100vw * 20 / var(--base-width)) calc(100vw * 50 / var(--base-width));
+    border-radius: 3px;
+    border: none;
+  }
+  @media screen and (max-width: 1280px) {
+    .v1-table th,
+    .v1-table td {
+      font-size: calc(100vw * 24 / var(--base-width));
+      line-height: calc(100vw * 30 / var(--base-width));
+      padding: calc(100vw * 10 / var(--base-width)) calc(100vw * 12 / var(--base-width));
+    }
+  }
+  @media screen and (max-width: 750px) {
+    .v1-table th,
+    .v1-table td {
+      font-size: calc(100vw * 20 / var(--base-width));
+      line-height: calc(100vw * 26 / var(--base-width));
+      padding: calc(100vw * 10 / var(--base-width)) calc(100vw * 12 / var(--base-width));
+    }
+  }
+</style>
+<div class="v1-table">
+  <div class="v1-table-content">
+    <div class="v1-table-title">
+      <span class="title-desc">[ thispower ]</span>
+      <h2 class="v1-table-h2">Product Parameters</h2>
+    </div>
+    <div class="v1-table-box">
+      {{ product.description }}
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "V1 Table",
+  "settings": [],
+  "presets": [
+    {
+      "name": "V1 Table"
+    }
+  ]
+}
+{% endschema %}

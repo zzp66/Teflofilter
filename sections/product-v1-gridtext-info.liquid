@@ -111,110 +111,34 @@
 </style>
 <div class="v1-gridtext-info">
   <div class="v1-gridtext-info-content">
-    <div class="gridtext-item">
-      <div class="gridtext-item-title">
-        <div class="gridtext-item-img-mb">
-          <img src="https://cdn.shopify.com/s/files/1/0902/1122/1797/files/Group_9741.png?v=1732598325" alt="">
-        </div>
-        <p class="title">Micron Options</p>
-        <span class="desc">A01</span>
-      </div>
-      <div class="gridtext-item-info">
-        <div class="gridtext-item-info-mb">
-          <div class="gridtext-item-info-mb-img">
-            <img
-              src="https://cdn.shopify.com/s/files/1/0902/1122/1797/files/Group_9741.png?v=1732598325"
-              alt=""
-            >
+    {% for block in section.blocks %}
+      <div class="gridtext-item">
+        <div class="gridtext-item-title">
+          <div class="gridtext-item-img-mb">
+            <img src="{{ block.settings.item_img | image_url: width: master }}" alt="">
           </div>
-          <p class="gridtext-item-info-p">Durable construction for extended use</p>
+          <p class="title">{{ block.settings.item_title }}</p>
+          <span class="desc">{{ block.settings.item_num }}</span>
         </div>
-      </div>
-      <div class="gridtext-item-img">
-        <img
-          src="https://cdn.shopify.com/s/files/1/0902/1122/1797/files/Group_9741.png?v=1732598325"
-          alt=""
-        >
-      </div>
-    </div>
-    <div class="gridtext-item">
-      <div class="gridtext-item-title">
-        <div class="gridtext-item-img-mb">
-          <img src="https://cdn.shopify.com/s/files/1/0902/1122/1797/files/Group_9741.png?v=1732598325" alt="">
-        </div>
-        <p class="title">Micron Options</p>
-        <span class="desc">A01</span>
-      </div>
-      <div class="gridtext-item-info">
-        <div class="gridtext-item-info-mb">
-          <div class="gridtext-item-info-mb-img">
-            <img
-              src="https://cdn.shopify.com/s/files/1/0902/1122/1797/files/Group_9741.png?v=1732598325"
-              alt=""
-            >
+        <div class="gridtext-item-info">
+          <div class="gridtext-item-info-mb">
+            <div class="gridtext-item-info-mb-img">
+              <img
+                src="{{ block.settings.item_img | image_url: width: master }}"
+                alt=""
+              >
+            </div>
+            <p class="gridtext-item-info-p">{{ block.settings.item_info }}</p>
           </div>
-          <p class="gridtext-item-info-p">Durable construction for extended use</p>
+        </div>
+        <div class="gridtext-item-img">
+          <img
+            src="{{ block.settings.item_img | image_url: width: master }}"
+            alt=""
+          >
         </div>
       </div>
-      <div class="gridtext-item-img">
-        <img
-          src="https://cdn.shopify.com/s/files/1/0902/1122/1797/files/Group_9741.png?v=1732598325"
-          alt=""
-        >
-      </div>
-    </div>
-    <div class="gridtext-item">
-      <div class="gridtext-item-title">
-        <div class="gridtext-item-img-mb">
-          <img src="https://cdn.shopify.com/s/files/1/0902/1122/1797/files/Group_9741.png?v=1732598325" alt="">
-        </div>
-        <p class="title">Micron Options</p>
-        <span class="desc">A01</span>
-      </div>
-      <div class="gridtext-item-info">
-        <div class="gridtext-item-info-mb">
-          <div class="gridtext-item-info-mb-img">
-            <img
-              src="https://cdn.shopify.com/s/files/1/0902/1122/1797/files/Group_9741.png?v=1732598325"
-              alt=""
-            >
-          </div>
-          <p class="gridtext-item-info-p">Durable construction for extended use</p>
-        </div>
-      </div>
-      <div class="gridtext-item-img">
-        <img
-          src="https://cdn.shopify.com/s/files/1/0902/1122/1797/files/Group_9741.png?v=1732598325"
-          alt=""
-        >
-      </div>
-    </div>
-    <div class="gridtext-item">
-      <div class="gridtext-item-title">
-        <div class="gridtext-item-img-mb">
-          <img src="https://cdn.shopify.com/s/files/1/0902/1122/1797/files/Group_9741.png?v=1732598325" alt="">
-        </div>
-        <p class="title">Micron Options</p>
-        <span class="desc">A01</span>
-      </div>
-      <div class="gridtext-item-info">
-        <div class="gridtext-item-info-mb">
-          <div class="gridtext-item-info-mb-img">
-            <img
-              src="https://cdn.shopify.com/s/files/1/0902/1122/1797/files/Group_9741.png?v=1732598325"
-              alt=""
-            >
-          </div>
-          <p class="gridtext-item-info-p">Durable construction for extended use</p>
-        </div>
-      </div>
-      <div class="gridtext-item-img">
-        <img
-          src="https://cdn.shopify.com/s/files/1/0902/1122/1797/files/Group_9741.png?v=1732598325"
-          alt=""
-        >
-      </div>
-    </div>
+    {% endfor %}
   </div>
 </div>
 
@@ -222,6 +146,37 @@
 {
   "name": "V1 GridText Info",
   "settings": [],
+  "blocks": [
+    {
+      "type": "item",
+      "name": "item",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "item_img",
+          "label": "Icon"
+        },
+        {
+          "type": "text",
+          "id": "item_title",
+          "label": "Title",
+          "default": "Durability"
+        },
+        {
+          "type": "text",
+          "id": "item_num",
+          "label": "Num",
+          "default": "A01"
+        },
+        {
+          "type": "text",
+          "id": "item_info",
+          "label": "Info",
+          "default": "Durable construction for extended use"
+        }
+      ]
+    }
+  ],
   "presets": [
     {
       "name": "V1 GridText Info"

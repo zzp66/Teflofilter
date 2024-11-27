@@ -98,32 +98,30 @@
 <div class="v1-richtext-info" id="v1-richtext-info-{{ section.id }}">
   <div class="v1-richtext-info-content">
     <div class="richtext-info-left">
-      <h2 class="richtext-info-h2">Finding the Right Nylon Mesh Filter Bags for Your Needs</h2>
+      <h2 class="richtext-info-h2">{{ section.settings.richtext_title }}</h2>
     </div>
     <div class="richtext-info-right">
-      <p class="richtext-info-p1">
-        We offer a comprehensive range of high-quality nylon mesh filter bags to meet diverse filtration requirements.
-        Our bags are available in various package sizes to accommodate different operational scales and budgets. To find
-        the nylon mesh filter bags that match your specifications, browse our product catalog or contact our filtration
-        experts for personalized assistance.
-      </p>
-      <p class="richtext-info-p2">
-        Our team is ready to help you select the ideal nylon mesh filter bags for your specific application, ensuring
-        optimal filtration performance for your processes.
-      </p>
-      <div class="richtext-info-btn">
-        {% render 'teflo-button',
-          button_link: button_link,
-          button_text: button_text,
-          button_text_color: button_text_color,
-          button_hover_text_color: button_hover_text_color,
-          button_bg_color: button_bg_color,
-          button_hover_bg_color: button_hover_bg_color,
-          button_border_color: button_border_color,
-          button_border: button_border,
-          button_hover_border_color: button_hover_border_color
-        %}
-      </div>
+      {% if section.settings.richtext_info_1 != blank %}
+        <p class="richtext-info-p1">{{- section.settings.richtext_info_1 -}}</p>
+      {% endif %}
+      {% if section.settings.richtext_info_2 != blank %}
+        <p class="richtext-info-p2">{{- section.settings.richtext_info_2 -}}</p>
+      {% endif %}
+      {% if section.settings.button_text != blank %}
+        <div class="richtext-info-btn">
+          {% render 'teflo-button',
+            button_link: button_link,
+            button_text: button_text,
+            button_text_color: button_text_color,
+            button_hover_text_color: button_hover_text_color,
+            button_bg_color: button_bg_color,
+            button_hover_bg_color: button_hover_bg_color,
+            button_border_color: button_border_color,
+            button_border: button_border,
+            button_hover_border_color: button_hover_border_color
+          %}
+        </div>
+      {% endif %}
     </div>
   </div>
 </div>
@@ -132,6 +130,22 @@
 {
   "name": "V1 RichText Info",
   "settings": [
+    {
+      "type": "textarea",
+      "id": "richtext_title",
+      "label": "Title",
+      "default": "Can't Find the Ideal Nylon Mesh Filter Bags for Your Application?"
+    },
+    {
+      "type": "textarea",
+      "id": "richtext_info_1",
+      "label": "Info 1"
+    },
+    {
+      "type": "textarea",
+      "id": "richtext_info_2",
+      "label": "Info 2"
+    },
     {
       "type": "header",
       "content": "按钮样式"
@@ -156,7 +170,8 @@
     {
       "type": "text",
       "id": "button_text",
-      "label": "Button text"
+      "label": "Button text",
+      "info": "此项不填则不会显示按钮"
     },
     {
       "type": "text",

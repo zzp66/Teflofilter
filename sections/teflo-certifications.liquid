@@ -28,12 +28,13 @@
   .teflo-certifications-items {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: calc(100vw * 12 / var(--base-width)) calc(100vw * 50 / var(--base-width));
+    gap: calc(100vw * 50 / var(--base-width)) calc(100vw * 12 / var(--base-width));
   }
   .teflo-certifications-item {
     max-width: calc(100vw * 340 / var(--base-width));
   }
   .teflo-certifications-item-img {
+    padding: calc(100vw * 50 / var(--base-width));
     border: 1px solid rgba(13, 13, 13, 0.3);
     border-radius: 5px;
     overflow: hidden;
@@ -41,7 +42,7 @@
   .teflo-certifications-item-desc {
     display: none;
   }
-  .teflo-certifications-item-info {
+  .teflo-certifications .teflo-certifications-item-info {
     color: #0d0d0d;
     font-family: Matter;
     font-size: calc(100vw * 16 / var(--base-width));
@@ -88,7 +89,7 @@
       left: 0;
       transform: translateY(-50%);
     }
-    .teflo-certifications-item-info {
+    .teflo-certifications .teflo-certifications-item-info {
       font-size: calc(100vw * 30 / var(--base-width));
       line-height: calc(100vw * 36 / var(--base-width));
       margin-top: 0;

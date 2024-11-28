@@ -15,11 +15,11 @@
     padding: 0;
     line-height: 1;
   }
-  .v1-richtext-info {
+  .v1-{{ section.id }} {
     background-color: #fff;
     padding: 0 calc(100vw * 20 / var(--base-width));
-    padding-top: calc(100vw * 100 / var(--base-width));
-    padding-bottom: calc(100vw * 100 / var(--base-width));
+    padding-top: {{ section.settings.padding_top_pc }}px;
+    padding-bottom: {{ section.settings.padding_bottom_pc }}px;
   }
   .v1-richtext-info-content {
     display: flex;
@@ -63,6 +63,10 @@
     padding: 12px 36px;
   }
   @media screen and (max-width: 750px) {
+    .v1-{{ section.id }}{
+    padding-top: {{ section.settings.padding_top_mb }}px;
+    padding-bottom: {{ section.settings.padding_bottom_mb }}px;
+  }
     .v1-richtext-info-content {
       flex-direction: column;
     }
@@ -95,7 +99,7 @@
     }
   }
 </style>
-<div class="v1-richtext-info" id="v1-richtext-info-{{ section.id }}">
+<div class="v1-richtext-info v1-{{ section.id }}" id="v1-richtext-info-{{ section.id }}">
   <div class="v1-richtext-info-content">
     <div class="richtext-info-left">
       <h2 class="richtext-info-h2">{{ section.settings.richtext_title }}</h2>
@@ -201,6 +205,46 @@
       "id": "button_hover_bg_color",
       "label": "Button hover background color",
       "default": "#0522CB"
+    },
+    {
+      "type": "range",
+      "id": "padding_top_pc",
+      "min": 0,
+      "max": 150,
+      "step": 5,
+      "unit": "px",
+      "label": "PC端上边距",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_pc",
+      "min": 0,
+      "max": 150,
+      "step": 5,
+      "unit": "px",
+      "label": "PC端下边距",
+      "default": 70
+    },
+    {
+      "type": "range",
+      "id": "padding_top_mb",
+      "min": 0,
+      "max": 150,
+      "step": 5,
+      "unit": "px",
+      "label": "移动端上边距",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_mb",
+      "min": 0,
+      "max": 150,
+      "step": 5,
+      "unit": "px",
+      "label": "移动端下边距",
+      "default": 40
     }
   ],
   "presets": [

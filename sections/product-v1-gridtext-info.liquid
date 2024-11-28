@@ -16,6 +16,11 @@
     grid-template-columns: repeat(3, 1fr);
     gap: calc(100vw * 24 / var(--base-width)) calc(100vw * 30 / var(--base-width));
   }
+  .gridtext-item {
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+    align-items: start;
+  }
   .gridtext-item-title {
     display: flex;
     justify-content: space-between;
@@ -43,6 +48,7 @@
     line-height: 1;
     letter-spacing: calc(100vw * -0.48 / var(--base-width));
     text-transform: capitalize;
+    opacity: 0.5;
   }
   .gridtext-item p.gridtext-item-info-p {
     color: #1a1a1a;

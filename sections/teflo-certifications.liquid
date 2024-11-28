@@ -1,0 +1,150 @@
+<style>
+  .teflo-certifications p,
+  .teflo-certifications h2 {
+    margin: 0;
+  }
+  .teflo-certifications {
+    padding: 0 calc(100vw * 20 / var(--base-width));
+    padding-top: calc(100vw * 100 / var(--base-width));
+    padding-bottom: calc(100vw * 140 / var(--base-width));
+  }
+  .teflo-certifications-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    column-gap: calc(100vw * 40 / var(--base-width));
+  }
+  .teflo-certifications-h2 {
+    color: #0d0d0d;
+    font-family: Matter;
+    font-size: calc(100vw * 60 / var(--base-width));
+    font-style: normal;
+    font-weight: 400;
+    line-height: calc(100vw * 66 / var(--base-width));
+    letter-spacing: calc(100vw * -1.8 / var(--base-width));
+    text-transform: uppercase;
+    max-width: calc(100vw * 530 / var(--base-width));
+  }
+  .teflo-certifications-items {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: calc(100vw * 12 / var(--base-width)) calc(100vw * 50 / var(--base-width));
+  }
+  .teflo-certifications-item {
+    max-width: calc(100vw * 340 / var(--base-width));
+  }
+  .teflo-certifications-item-img {
+    border: 1px solid rgba(13, 13, 13, 0.3);
+    border-radius: 5px;
+    overflow: hidden;
+  }
+  .teflo-certifications-item-desc {
+    display: none;
+  }
+  .teflo-certifications-item-info {
+    color: #0d0d0d;
+    font-family: Matter;
+    font-size: calc(100vw * 16 / var(--base-width));
+    font-style: normal;
+    font-weight: 400;
+    line-height: calc(100vw * 20 / var(--base-width));
+    text-transform: capitalize;
+    margin-top: calc(100vw * 15 / var(--base-width));
+  }
+  @media screen and (max-width: 750px) {
+    .teflo-certifications-content {
+      flex-direction: column;
+      column-gap: normal;
+    }
+    .teflo-certifications-h2 {
+      font-size: calc(100vw * 70 / var(--base-width));
+      line-height: calc(100vw * 76 / var(--base-width));
+      letter-spacing: calc(100vw * -2.1 / var(--base-width));
+      margin-bottom: calc(100vw * 70 / var(--base-width));
+    }
+    .teflo-certifications-item-desc {
+      display: block;
+      position: relative;
+      padding-left: 20px;
+      color: #0d0d0d;
+      font-family: 'Fusion Pixel';
+      font-size: calc(100vw * 20 / var(--base-width));
+      font-style: normal;
+      font-weight: 400;
+      line-height: calc(100vw * 26 / var(--base-width));
+      text-transform: capitalize;
+      opacity: 0.5;
+      margin: calc(100vw * 10 / var(--base-width));
+    }
+    .teflo-certifications-item-desc::before {
+      content: '';
+      width: 7px;
+      height: 7px;
+      border-radius: 7px;
+      color: #0d0d0d;
+      opacity: 0.5;
+      position: absolute;
+      top: 50%;
+      left: 0;
+      transform: translateY(-50%);
+    }
+    .teflo-certifications-item-info {
+      font-size: calc(100vw * 30 / var(--base-width));
+      line-height: calc(100vw * 36 / var(--base-width));
+      margin-top: 0;
+    }
+  }
+</style>
+<div class="teflo-certifications">
+  <div class="teflo-certifications-content">
+    <h2 class="teflo-certifications-h2">Certifications & Accolades</h2>
+    <div class="teflo-certifications-items">
+      {% for block in section.blocks %}
+        <div class="teflo-certifications-item">
+          <div class="teflo-certifications-item-img">
+            <img src="{{ block.settings.img | image_url: width: master }}" alt="">
+          </div>
+          <p class="teflo-certifications-item-desc">{{ block.settings.desc }}</p>
+          <p class="teflo-certifications-item-info">{{ block.settings.info }}</p>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Teflo Certifications",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title",
+      "default": "Certifications & Accolades"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "certification",
+      "name": "certification",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "img",
+          "label": "Image"
+        },
+        {
+          "type": "text",
+          "id": "info",
+          "label": "Info"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Teflo Certifications"
+    }
+  ]
+}
+{% endschema %}

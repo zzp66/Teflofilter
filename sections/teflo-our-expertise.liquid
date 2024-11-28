@@ -1,0 +1,248 @@
+<style>
+  .teflo-our-expertise p,
+  .teflo-our-expertise h2 {
+    margin: 0;
+  }
+  .teflo-our-expertise-content {
+    padding: 0 calc(100vw * 20 / var(--base-width));
+    padding-top: calc(100vw * 40 / var(--base-width));
+    padding-bottom: calc(100vw * 210 / var(--base-width));
+  }
+  .teflo-our-expertise-top {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    column-gap: calc(100vw * 40 / var(--base-width));
+    margin-bottom: calc(100vw * 100 / var(--base-width));
+  }
+  h2.teflo-our-expertise-h2 {
+    color: #0d0d0d;
+    font-family: 'OPPO Sans';
+    font-size: calc(100vw * 60 / var(--base-width));
+    font-style: normal;
+    font-weight: 400;
+    line-height: calc(100vw * 66 / var(--base-width));
+    letter-spacing: calc(100vw * -1.8 / var(--base-width));
+    text-transform: uppercase;
+    white-space: nowrap;
+  }
+  div.teflo-our-expertise-info {
+    color: #0d0d0d;
+    font-family: Matter;
+    font-size: calc(100vw * 16 / var(--base-width));
+    font-style: normal;
+    font-weight: 400;
+    line-height: calc(100vw * 22 / var(--base-width));
+    opacity: 0.8;
+    max-width: calc(100vw * 780 / var(--base-width));
+  }
+  .teflo-our-expertise-bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    column-gap: calc(100vw * 40 / var(--base-width));
+  }
+  .teflo-our-expertise-img {
+    max-width: calc(100vw * 750 / var(--base-width));
+  }
+  .teflo-our-expertise-infos {
+    width: calc(100vw * 544 / var(--base-width));
+    display: flex;
+    flex-direction: column;
+    row-gap: calc(100vw * 50 / var(--base-width));
+  }
+  .teflo-our-expertise-infos .info-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding-top: calc(100vw * 15 / var(--base-width));
+    border-top: 0.3px solid rgba(0, 0, 0, 0.5);
+  }
+  .info-item p.info-item-desc {
+    color: #0d0d0d;
+    font-family: 'Fusion Pixel';
+    font-size: calc(100vw * 16 / var(--base-width));
+    font-style: normal;
+    font-weight: 400;
+    line-height: calc(100vw * 22 / var(--base-width));
+  }
+  .info-item p.info-item-num {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-end;
+  }
+  .info-item p.info-item-num .num {
+    color: #0d0d0d;
+    font-family: Matter;
+    font-size: calc(100vw * 60 / var(--base-width));
+    font-style: normal;
+    font-weight: 400;
+    line-height: calc(100vw * 66 / var(--base-width));
+  }
+  .info-item p.info-item-num .num-desc {
+    color: #0d0d0d;
+    text-align: right;
+    font-family: Matter;
+    font-size: calc(100vw * 16 / var(--base-width));
+    font-style: normal;
+    font-weight: 400;
+    line-height: calc(100vw * 22 / var(--base-width));
+    opacity: 0.8;
+  }
+  @media screen and (max-width: 1200px) {
+    h2.teflo-our-expertise-h2 {
+      font-size: calc(100vw * 40 / var(--base-width));
+      line-height: calc(100vw * 44 / var(--base-width));
+    }
+    .teflo-our-expertise-top {
+      margin-bottom: calc(100vw * 50 / var(--base-width));
+    }
+    div.teflo-our-expertise-info {
+      max-width: calc(100vw * 550 / var(--base-width));
+    }
+    .teflo-our-expertise-img {
+      max-width: calc(100vw * 450 / var(--base-width));
+    }
+    .info-item p.info-item-num .num {
+      font-size: calc(100vw * 40 / var(--base-width));
+      line-height: calc(100vw * 42 / var(--base-width));
+    }
+    .teflo-our-expertise-infos {
+      row-gap: calc(100vw * 25 / var(--base-width));
+    }
+  }
+  @media screen and (max-width: 750px) {
+    h2.teflo-our-expertise-h2 {
+      font-size: calc(100vw * 70 / var(--base-width));
+      line-height: calc(100vw * 76 / var(--base-width));
+    }
+    .teflo-our-expertise-top {
+      flex-direction: column;
+      margin-bottom: calc(100vw * 70 / var(--base-width));
+    }
+    div.teflo-our-expertise-info {
+      max-width: 100%;
+      font-size: calc(100vw * 30 / var(--base-width));
+      line-height: calc(100vw * 36 / var(--base-width));
+      margin-top: calc(100vw * 30 / var(--base-width));
+    }
+    .teflo-our-expertise-bottom {
+      flex-direction: column;
+    }
+    .teflo-our-expertise-img {
+      max-width: 100%;
+    }
+    .teflo-our-expertise-infos {
+      width: 100%;
+      margin-top: calc(100vw * 70 / var(--base-width));
+    }
+    .teflo-our-expertise-infos .info-item {
+      padding-top: calc(100vw * 20 / var(--base-width));
+    }
+    .info-item p.info-item-desc {
+      font-size: calc(100vw * 30 / var(--base-width));
+      line-height: calc(100vw * 36 / var(--base-width));
+    }
+    .info-item p.info-item-num .num {
+      font-size: calc(100vw * 70 / var(--base-width));
+      line-height: calc(100vw * 76 / var(--base-width));
+    }
+    .info-item p.info-item-num .num-desc {
+      font-size: calc(100vw * 26 / var(--base-width));
+      line-height: calc(100vw * 22 / var(--base-width));
+    }
+    .teflo-our-expertise-infos {
+      row-gap: calc(100vw * 60 / var(--base-width));
+    }
+  }
+</style>
+<div class="teflo-our-expertise">
+  <div class="teflo-our-expertise-content">
+    <div class="teflo-our-expertise-top">
+      <h2 class="teflo-our-expertise-h2">{{ section.settings.title }}</h2>
+      <div class="teflo-our-expertise-info">{{ section.settings.info }}</div>
+    </div>
+    <div class="teflo-our-expertise-bottom">
+      <div class="teflo-our-expertise-img">
+        <picture>
+          <source media="(max-width: 750px)" srcset="{{ section.settings.img_mb | image_url: width: master }}">
+          <source media="(min-width: 751px)" srcset="{{ section.settings.img | image_url: width: master }}">
+          <img src="{{ section.settings.img | image_url: width: master }}">
+        </picture>
+      </div>
+      <div class="teflo-our-expertise-infos">
+        {% for block in section.blocks %}
+          <div class="info-item">
+            <p class="info-item-desc">{{ block.settings.info_desc_l }}</p>
+            <p class="info-item-num">
+              <span class="num">{{ block.settings.info_desc_r }}</span>
+              {% if block.settings.info_desc_r_desc != blank %}
+                <span class="num-desc">{{ block.settings.info_desc_r_desc }}</span>
+              {% endif %}
+            </p>
+          </div>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Teflo Our Expertise",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "img",
+      "label": "PC Image"
+    },
+    {
+      "type": "image_picker",
+      "id": "img_mb",
+      "label": "Mobile Image"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title",
+      "default": "Our Expertise"
+    },
+    {
+      "type": "richtext",
+      "id": "info",
+      "label": "Info"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "info",
+      "name": "Info",
+      "settings": [
+        {
+          "type": "text",
+          "id": "info_desc_l",
+          "label": "Desc Left",
+          "default": "Years in Industry"
+        },
+        {
+          "type": "text",
+          "id": "info_desc_r",
+          "label": "Desc Right",
+          "default": "25+"
+        },
+        {
+          "type": "text",
+          "id": "info_desc_r_desc",
+          "label": "Desc Right Info"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Teflo Our Expertise"
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,153 @@
+<style>
+  .v1-single-img-content {
+    padding: 0 calc(100vw * 20 / var(--base-width));
+  }
+  .v1-{{ section.id }}{
+    padding-top: {{ section.settings.padding_top_pc }}px;
+    padding-bottom: {{ section.settings.padding_bottom_pc }}px;
+    background-color: {{ section.settings.single_img_bg_color }};
+  }
+  .single-img-info{
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-top: calc(100vw * 40 / var(--base-width));
+    column-gap: calc(100vw * 40 / var(--base-width));
+  }
+  .single-img-info.border-bottom{
+    border-bottom: {{ section.settings.border }};
+    padding-bottom: calc(100vw * 50 / var(--base-width));
+  }
+  .v1-{{ section.id }} h2.single-img-h2{
+    color: {{ section.settings.single_img_text_color }};
+  font-family: Matter;
+  font-size: calc(100vw * 60 / var(--base-width));
+  font-style: normal;
+  font-weight: 400;
+  line-height: calc(100vw * 66 / var(--base-width));
+  letter-spacing: calc(100vw * -1.8 / var(--base-width));
+  text-transform: uppercase;
+  margin: 0;
+  }
+  .v1-{{ section.id }} .single-img-desc{
+    color: {{ section.settings.single_img_text_color }};
+    font-family: Matter;
+  font-size: calc(100vw * 26 / var(--base-width));
+  font-style: normal;
+  font-weight: 400;
+  line-height: calc(100vw * 32 / var(--base-width));
+  opacity: 0.8;
+  margin: 0;
+  max-width: calc(100vw * 806 / var(--base-width));
+  }
+  @media screen and (max-width: 750px) {
+    .{{ section.id }}{
+    padding-top: {{ section.settings.padding_top_mb }}px;
+    padding-bottom: {{ section.settings.padding_bottom_mb }}px;
+  }
+  }
+</style>
+<div class="v1-single-img v1-{{ section.id }}">
+  <div class="v1-single-img-content">
+    <div class="img-box">
+      <picture>
+        <source media="(max-width: 750px)" srcset="{{ section.settings.single_img_mb | image_url: width: master }}">
+        <source media="(min-width: 751px)" srcset="{{ section.settings.single_img | image_url: width: master }}">
+        <img src="{{ section.settings.single_img | image_url: width: master }}">
+      </picture>
+    </div>
+
+    <div class="single-img-info {% if section.settings.border != blank %}border-bottom{% endif %}">
+      <h2 class="single-img-h2">Sustainability Commitment</h2>
+      <p class="single-img-desc">
+        Since 2021, we've cut water usage by 30% and now recycle 70% of production waste. Our energy-efficient processes
+        have reduced power consumption by 10% per unit produced.
+      </p>
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "V1 Single Img",
+  "settings": [
+    {
+      "type": "paragraph",
+      "content": "跟single image对比，该版块可以控制上下边距，但是左右边距无法控制，且有左右默认边距"
+    },
+    {
+      "type": "image_picker",
+      "id": "single_img",
+      "label": "PC Image"
+    },
+    {
+      "type": "image_picker",
+      "id": "single_img_mb",
+      "label": "Mobile Image"
+    },
+    {
+      "type": "color",
+      "id": "single_img_bg_color",
+      "label": "Background Color",
+      "default": "#fff"
+    },
+    {
+      "type": "color",
+      "id": "single_img_text_color",
+      "label": "Text Color",
+      "default": "#0D0D0D"
+    },
+    {
+      "type": "text",
+      "id": "border",
+      "label": "Bottom Border",
+      "default": "0.3px solid rgba(255, 255, 255, 1)"
+    },
+    {
+      "type": "range",
+      "id": "padding_top_pc",
+      "min": 0,
+      "max": 150,
+      "step": 5,
+      "unit": "px",
+      "label": "PC端上边距",
+      "default": 120
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_pc",
+      "min": 0,
+      "max": 150,
+      "step": 5,
+      "unit": "px",
+      "label": "PC端下边距",
+      "default": 120
+    },
+    {
+      "type": "range",
+      "id": "padding_top_mb",
+      "min": 0,
+      "max": 150,
+      "step": 5,
+      "unit": "px",
+      "label": "移动端上边距",
+      "default": 70
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_mb",
+      "min": 0,
+      "max": 150,
+      "step": 5,
+      "unit": "px",
+      "label": "移动端下边距",
+      "default": 70
+    }
+  ],
+  "presets": [
+    {
+      "name": "V1 Single Img"
+    }
+  ]
+}
+{% endschema %}

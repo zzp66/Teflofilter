@@ -1,0 +1,106 @@
+<style>
+  .v1-img-with-text {
+    background-color: #fff;
+    padding: 0 calc(100vw * 20 / var(--base-width));
+    padding-top: calc(100vw * 100 / var(--base-width));
+    padding-bottom: calc(100vw * 140 / var(--base-width));
+  }
+  .v1-img-with-text-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    column-gap: calc(100vw * 40 / var(--base-width));
+  }
+  .img-with-text-img {
+    border-radius: 5px;
+    overflow: hidden;
+    max-width: calc(100vw * 314 / var(--base-width));
+  }
+  .img-with-text-text {
+    max-width: calc(100vw * 804 / var(--base-width));
+    min-width: 55%;
+    color: #0d0d0d;
+    font-family: Matter;
+    font-size: calc(100vw * 18 / var(--base-width));
+    font-style: normal;
+    font-weight: 400;
+    line-height: calc(100vw * 24 / var(--base-width));
+  }
+  .img-with-text-text p {
+    margin: 0;
+  }
+  .img-with-text-text .text-2 {
+    margin-top: calc(100vw * 40 / var(--base-width));
+  }
+  @media screen and (max-width: 1024px) {
+    .img-with-text-text {
+      max-width: calc(100vw * 650 / var(--base-width));
+    }
+  }
+  @media screen and (max-width: 750px) {
+    .v1-img-with-text-content {
+      flex-direction: column;
+    }
+    .img-with-text-img {
+      max-width: 100%;
+    }
+    .img-with-text-text {
+      max-width: 100%;
+      margin-top: calc(100vw * 70 / var(--base-width));
+      font-size: calc(100vw * 30 / var(--base-width));
+      line-height: calc(100vw * 36 / var(--base-width));
+    }
+  }
+</style>
+<div class="v1-img-with-text">
+  <div class="v1-img-with-text-content">
+    <div class="img-with-text-img">
+      <picture>
+        <source media="(max-width: 767px)" srcset="{{ section.settings.img_mb | image_url: width: master }}">
+        <source media="(min-width: 768px)" srcset="{{ section.settings.img | image_url: width: master }}">
+        <img src="{{ section.settings.img | image_url: width: master }}">
+      </picture>
+    </div>
+    <div class="img-with-text-text">
+      {% if section.settings.info_1 != blank %}
+        <div class="text-1">{{ section.settings.info_1 }}</div>
+      {% endif %}
+      {% if section.settings.info_2 != blank %}
+        <div class="text-2">{{ section.settings.info_2 }}</div>
+      {% endif %}
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "V1 Img With Text",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "img",
+      "label": "PC Image"
+    },
+    {
+      "type": "image_picker",
+      "id": "img_mb",
+      "label": "Mobile Image"
+    },
+    {
+      "type": "richtext",
+      "id": "info_1",
+      "label": "Info 1"
+    },
+    {
+      "type": "richtext",
+      "id": "info_2",
+      "label": "Info 2"
+    }
+  ],
+  "presets": [
+    {
+      "name": "V1 Img With Text"
+    }
+  ]
+}
+{% endschema %}

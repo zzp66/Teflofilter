@@ -6,10 +6,12 @@
   }
   .v1-gridtext-info {
     padding: 0 calc(100vw * 20 / var(--base-width));
-    padding-top: 70px;
-    padding-bottom: 70px;
     background-color: #fff;
     overflow: hidden;
+  }
+  .v1-{{ section.id }} {
+    padding-top: {{ section.settings.padding_top_pc }}px;
+    padding-bottom: {{ section.settings.padding_bottom_pc }}px;
   }
   .v1-gridtext-info-content {
     display: grid;
@@ -74,6 +76,12 @@
     display: none;
   }
   @media screen and (max-width: 750px) {
+    .v1-{{ section.id }}{
+    padding-top: {{ section.settings.padding_top_mb }}px;
+    padding-bottom: {{ section.settings.padding_bottom_mb }}px;
+  }
+  }
+  @media screen and (max-width: 750px) {
     .v1-gridtext-info-content {
       grid-template-columns: repeat(2, 1fr);
       gap: calc(100vw * 20 / var(--base-width)) calc(100vw * 50 / var(--base-width));
@@ -115,7 +123,7 @@
     }
   }
 </style>
-<div class="v1-gridtext-info">
+<div class="v1-gridtext-info v1-{{ section.id }}">
   <div class="v1-gridtext-info-content">
     {% for block in section.blocks %}
       <div class="gridtext-item">
@@ -151,7 +159,48 @@
 {% schema %}
 {
   "name": "V1 GridText Info",
-  "settings": [],
+  "settings": [
+    {
+      "type": "range",
+      "id": "padding_top_pc",
+      "min": 0,
+      "max": 150,
+      "step": 5,
+      "unit": "px",
+      "label": "PC端上边距",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_pc",
+      "min": 0,
+      "max": 150,
+      "step": 5,
+      "unit": "px",
+      "label": "PC端下边距",
+      "default": 70
+    },
+    {
+      "type": "range",
+      "id": "padding_top_mb",
+      "min": 0,
+      "max": 150,
+      "step": 5,
+      "unit": "px",
+      "label": "移动端上边距",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_mb",
+      "min": 0,
+      "max": 150,
+      "step": 5,
+      "unit": "px",
+      "label": "移动端下边距",
+      "default": 40
+    }
+  ],
   "blocks": [
     {
       "type": "item",

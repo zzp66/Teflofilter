@@ -11,9 +11,12 @@
   }
   .v1-advantages {
     padding: 0 calc(100vw * 20 / var(--base-width));
-    padding-top: calc(100vw * 55 / var(--base-width));
-    padding-bottom: calc(100vw * 100 / var(--base-width));
     background-color: #fff;
+  }
+
+  .v1-{{ section.id }} {
+    padding-top: {{ section.settings.padding_top_pc }}px;
+    padding-bottom: {{ section.settings.padding_bottom_pc }}px;
   }
   .advantages-title {
     padding-bottom: calc(100vw * 50 / var(--base-width));
@@ -107,6 +110,11 @@
     overflow: hidden;
   }
   @media screen and (max-width: 1200px) {
+
+  .v1-{{ section.id }}{
+    padding-top: {{ section.settings.padding_top_mb }}px;
+    padding-bottom: {{ section.settings.padding_bottom_mb }}px;
+  }
     .advantage-item-box {
       top: 30px;
     }
@@ -184,7 +192,7 @@
     }
   }
 </style>
-<div class="v1-advantages">
+<div class="v1-advantages v1-{{ section.id }}">
   <div class="v1-advantages-content">
     <div class="advantages-title">
       <span class="title-desc">{{ section.settings.advantages_title_desc }}</span>
@@ -238,6 +246,46 @@
       "id": "advantages_title_desc",
       "label": "Title Desc",
       "default": "[ thispower ]"
+    },
+    {
+      "type": "range",
+      "id": "padding_top_pc",
+      "min": 0,
+      "max": 150,
+      "step": 5,
+      "unit": "px",
+      "label": "PC端上边距",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_pc",
+      "min": 0,
+      "max": 150,
+      "step": 5,
+      "unit": "px",
+      "label": "PC端下边距",
+      "default": 70
+    },
+    {
+      "type": "range",
+      "id": "padding_top_mb",
+      "min": 0,
+      "max": 150,
+      "step": 5,
+      "unit": "px",
+      "label": "移动端上边距",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_mb",
+      "min": 0,
+      "max": 150,
+      "step": 5,
+      "unit": "px",
+      "label": "移动端下边距",
+      "default": 40
     }
   ],
   "blocks": [

@@ -115,6 +115,12 @@
   .swiper-rtl .swiper-button-prev:after {
     content: '';
   }
+  @media screen and (max-width: 1200px) {
+    .v1-swiper-info .v1-swiper-h2 {
+      font-size: calc(100vw * 56 / var(--base-width));
+      line-height: calc(100vw * 60 / var(--base-width));
+    }
+  }
   @media screen and (max-width: 750px) {
     .v1-swiper-desc {
       font-size: calc(100vw * 26 / var(--base-width));
@@ -122,8 +128,8 @@
       margin-bottom: calc(100vw * 15 / var(--base-width));
     }
     .v1-swiper-info .v1-swiper-h2 {
-      font-size: calc(100vw * 56 / var(--base-width));
-      line-height: calc(100vw * 60 / var(--base-width));
+      font-size: calc(100vw * 70 / var(--base-width));
+      line-height: calc(100vw * 76 / var(--base-width));
     }
     .v1-swiper-info .v1-swiper-info-1 {
       font-size: calc(100vw * 28 / var(--base-width));

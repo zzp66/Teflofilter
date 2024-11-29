@@ -40,6 +40,18 @@
   margin: 0;
   max-width: calc(100vw * 806 / var(--base-width));
   }
+  @media screen and (max-width: 1200px) {
+    .v1-{{ section.id }} h2.single-img-h2{
+    font-size: calc(100vw* 40 / var(--base-width));
+    line-height: calc(100vw* 46 / var(--base-width));
+    letter-spacing: calc(100vw* -1.8 / var(--base-width));
+  }
+  .v1-{{ section.id }} .single-img-desc{
+    max-width: calc(100vw* 500 / var(--base-width));
+    font-size: calc(100vw* 20 / var(--base-width));
+    line-height: calc(100vw* 22 / var(--base-width));
+  }
+  }
   @media screen and (max-width: 750px) {
     .v1-{{ section.id }}{
     padding-top: {{ section.settings.padding_top_mb }}px;

@@ -5,8 +5,10 @@
   }
   .teflo-our-expertise-content {
     padding: 0 calc(100vw * 20 / var(--base-width));
-    padding-top: calc(100vw * 40 / var(--base-width));
-    padding-bottom: calc(100vw * 210 / var(--base-width));
+  }
+  .v1-{{ section.id }} {
+    padding-top: {{ section.settings.padding_top_pc }}px;
+    padding-bottom: {{ section.settings.padding_bottom_pc }}px;
   }
   .teflo-our-expertise-top {
     display: flex;
@@ -91,6 +93,10 @@
     opacity: 0.8;
   }
   @media screen and (max-width: 1200px) {
+    .v1-{{ section.id }}{
+    padding-top: {{ section.settings.padding_top_mb }}px;
+    padding-bottom: {{ section.settings.padding_bottom_mb }}px;
+  }
     h2.teflo-our-expertise-h2 {
       font-size: calc(100vw * 40 / var(--base-width));
       line-height: calc(100vw * 44 / var(--base-width));
@@ -157,7 +163,7 @@
     }
   }
 </style>
-<div class="teflo-our-expertise">
+<div class="teflo-our-expertise v1-{{ section.id }}">
   <div class="teflo-our-expertise-content">
     <div class="teflo-our-expertise-top">
       <h2 class="teflo-our-expertise-h2">{{ section.settings.title }}</h2>
@@ -212,6 +218,46 @@
       "type": "richtext",
       "id": "info",
       "label": "Info"
+    },
+    {
+      "type": "range",
+      "id": "padding_top_pc",
+      "min": 0,
+      "max": 150,
+      "step": 5,
+      "unit": "px",
+      "label": "PC端上边距",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_pc",
+      "min": 0,
+      "max": 150,
+      "step": 5,
+      "unit": "px",
+      "label": "PC端下边距",
+      "default": 70
+    },
+    {
+      "type": "range",
+      "id": "padding_top_mb",
+      "min": 0,
+      "max": 150,
+      "step": 5,
+      "unit": "px",
+      "label": "移动端上边距",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_mb",
+      "min": 0,
+      "max": 150,
+      "step": 5,
+      "unit": "px",
+      "label": "移动端下边距",
+      "default": 40
     }
   ],
   "blocks": [

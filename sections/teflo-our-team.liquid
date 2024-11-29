@@ -1,0 +1,433 @@
+<link rel="stylesheet" href="https://unpkg.com/swiper@11/swiper-bundle.min.css">
+<script src="https://unpkg.com/swiper@11/swiper-bundle.min.js"></script>
+<style>
+      .teflo-our-team p,
+      .teflo-our-team h2 {
+        margin: 0;
+      }
+      .teflo-our-team ul {
+        margin-bottom: 0;
+      }
+      .v1-{{ section.id }} {
+        padding-top: {{ section.settings.padding_top_pc }}px;
+        padding-bottom: {{ section.settings.padding_bottom_pc }}px;
+        background-color: {{ section.settings.bg_color }};
+      }
+      .teflo-our-team-title{
+        padding: 0 calc(100vw * 20 / var(--base-width));;
+      }
+      p.teflo-our-team-desc {
+        color: #fff;
+        font-size: calc(100vw * 16 / var(--base-width));
+        font-style: normal;
+        font-weight: 400;
+        line-height: 1;
+        text-transform: uppercase;
+        opacity: 0.5;
+        margin-bottom: calc(100vw * 20 / var(--base-width));
+      }
+      h2.teflo-our-team-h2 {
+        color: #fff;
+        font-size: calc(100vw * 60 / var(--base-width));
+        font-style: normal;
+        font-weight: 400;
+        line-height: calc(100vw * 66 / var(--base-width));
+        letter-spacing: calc(100vw * -1.8 / var(--base-width));
+        text-transform: uppercase;
+        margin-bottom: calc(100vw * 40 / var(--base-width));
+      }
+      .teflo-our-team .swiper-slide {
+        width: auto;
+      }
+      .slide-item {
+        max-width: calc(100vw * 360 / var(--base-width));
+        cursor: pointer;
+      }
+      .slide-item:hover .item-info {
+        background-color: #0522cb;
+      }
+      .slide-item:hover .item-info svg circle {
+        fill: #fff;
+      }
+      .slide-item:hover .item-info svg rect {
+        fill: #0d0d0d;
+      }
+      .item-img {
+        border-radius: 8px;
+        overflow: hidden;
+      }
+      .item-info {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background-color: #262626;
+        border-radius: 8px;
+        overflow: hidden;
+        padding: calc(100vw * 14 / var(--base-width)) calc(100vw * 15 / var(--base-width));
+        margin-top: calc(100vw * 8 / var(--base-width));
+      }
+      .info-l .info-title {
+        color: #fff;
+        font-size: calc(100vw * 20 / var(--base-width));
+        font-style: normal;
+        font-weight: 600;
+        line-height: calc(100vw * 24 / var(--base-width));
+      }
+      .info-desc {
+        color: #fff;
+        font-size: calc(100vw * 20 / var(--base-width));
+        font-style: normal;
+        font-weight: 400;
+        line-height: calc(100vw * 16 / var(--base-width));
+        text-transform: capitalize;
+        opacity: 0.5;
+        margin-top: calc(100vw * 5 / var(--base-width));
+      }
+      .info-r {
+        display: flex;
+      }
+      .model-item {
+        display: none;
+        position: fixed;
+        z-index: 1000;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.5);
+        align-items: center;
+        justify-content: center;
+      }
+      .model-item-content {
+        background-color: #f4f4f4;
+        border-radius: calc(100vw * 15 / var(--base-width));
+        overflow-y: auto;
+        position: relative;
+        box-sizing: border-box;
+        width: calc(100vw * 930 / var(--base-width));
+      }
+      .model-item-content .close-btn {
+        position: absolute;
+        top: 30px;
+        right: 40px;
+        cursor: pointer;
+      }
+      .model-item-content .close-btn:hover circle {
+        fill: #0522cb;
+      }
+      .model-item-content .close-btn:hover rect {
+        fill: #f4f4f4;
+      }
+      .model-item-content-top {
+        border-bottom: 1px solid rgba(182, 182, 182, 0.2);
+      }
+      .top-box {
+        padding: calc(100vw * 40 / var(--base-width));
+      }
+      .bottom-box {
+        padding: calc(100vw * 30 / var(--base-width)) calc(100vw * 40 / var(--base-width))
+          calc(100vw * 80 / var(--base-width));
+        display: flex;
+        align-items: flex-start;
+      }
+      .model-item-content-top .model-item-title {
+        color: #262626;
+        font-family: Matter;
+        font-size: calc(100vw * 50 / var(--base-width));
+        font-style: normal;
+        font-weight: 500;
+        line-height: calc(100vw * 55 / var(--base-width));
+      }
+      .model-item-content-top .model-item-desc {
+        color: #262626;
+        font-size: calc(100vw * 20 / var(--base-width));
+        font-style: normal;
+        font-weight: 400;
+        line-height: calc(100vw * 24 / var(--base-width));
+        margin-top: calc(100vw * 20 / var(--base-width));
+      }
+      .model-item-img {
+        max-width: calc(100vw * 174 / var(--base-width));
+        border-radius: 10px;
+        overflow: hidden;
+      }
+      .teflo-our-team .model-item-infos {
+        margin-left: calc(100vw * 35 / var(--base-width));
+        color: #262626;
+        font-size: calc(100vw * 16 / var(--base-width));
+        font-style: normal;
+        font-weight: 400;
+        line-height: calc(100vw * 20 / var(--base-width));
+        text-transform: capitalize;
+      }
+      @media screen and (max-width: 1024px) {
+        .v1-{{ section.id }} {
+        padding-top: {{ section.settings.padding_top_mb }}px;
+        padding-bottom: {{ section.settings.padding_bottom_mb }}px;
+      }
+      .model-item-content{
+        width: calc(100vw* 750 / var(--base-width));
+      }
+      .model-item-content-top .model-item-title{
+        font-size: calc(100vw* 30 / var(--base-width));
+        line-height: calc(100vw* 36 / var(--base-width));
+      }
+      }
+      @media screen and (max-width: 750px) {
+        .model-item-content {
+            width: 95%;
+        }
+        .top-box {
+        padding: calc(100vw* 30 / var(--base-width));
+    }
+    .model-item-content-top .model-item-title {
+        font-size: calc(100vw* 50 / var(--base-width));
+        line-height: calc(100vw* 56 / var(--base-width));
+    }
+    .model-item-content .close-btn {
+      max-width: 40px;
+      top: 15px;
+      right: 15px;
+  }
+  .bottom-box{
+      flex-direction: column;
+      padding: calc(100vw* 30 / var(--base-width));
+  }
+  .model-item-img{
+      max-width: 100%;
+  }
+  .teflo-our-team .model-item-infos{
+    margin-left: 0;
+    margin-top: calc(100vw* 15 / var(--base-width));
+    font-size: calc(100vw* 20 / var(--base-width));
+        line-height: calc(100vw* 26 / var(--base-width));
+  }
+        p.teflo-our-team-desc{
+            font-size: calc(100vw* 20 / var(--base-width));
+        line-height: calc(100vw* 26 / var(--base-width));
+        margin-bottom: calc(100vw* 30 / var(--base-width));
+        }
+        h2.teflo-our-team-h2{
+            font-size: calc(100vw* 70 / var(--base-width));
+        line-height: calc(100vw* 76 / var(--base-width));
+        letter-spacing: calc(100vw* -2.1 / var(--base-width));
+        }
+      }
+</style>
+<div class="teflo-our-team v1-{{ section.id }}">
+  <div class="teflo-our-team-content">
+    <div class="teflo-our-team-title">
+      <p class="teflo-our-team-desc">{{ section.settings.title_desc }}</p>
+      <h2 class="teflo-our-team-h2">{{ section.settings.title }}</h2>
+    </div>
+    <div class="teflo-our-team-content">
+      <div class="swiper v1-teflo-our-team-swiper">
+        <div class="swiper-wrapper" id="clickableItems">
+          {% for block in section.blocks %}
+            <div class="swiper-slide" data-index="{{ forloop.index }}">
+              <div class="slide-item">
+                <div class="item-img">
+                  <img
+                    src="{{ block.settings.slide_img | image_url: width: master }}"
+                    alt=""
+                  >
+                </div>
+                <div class="item-info">
+                  <div class="info-l">
+                    <p class="info-title">{{ block.settings.slide_name }}</p>
+                    <p class="info-desc">{{ block.settings.slide_job }}</p>
+                  </div>
+                  <div class="info-r">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="47" height="47" viewBox="0 0 47 47" fill="none">
+                      <circle cx="23.5" cy="23.5" r="23.5" fill="#454545"/>
+                      <rect x="12" y="23" width="24" height="2" fill="white"/>
+                      <rect x="25" y="12" width="24" height="2" transform="rotate(90 25 12)" fill="white"/>
+                    </svg>
+                  </div>
+                </div>
+              </div>
+            </div>
+          {% endfor %}
+        </div>
+      </div>
+      <div class="v1-teflo-our-team-models" id="contentItems">
+        {% for block in section.blocks %}
+          <div class="model-item" data-index="{{ forloop.index }}">
+            <div class="model-item-content">
+              <svg
+                class="close-btn"
+                xmlns="http://www.w3.org/2000/svg"
+                width="57"
+                height="56"
+                viewBox="0 0 57 56"
+                fill="none"
+              >
+                <circle cx="28.2109" cy="27.8984" r="27.8984" fill="white"/>
+                <rect x="17.3906" y="37.4805" width="28.492" height="2.37434" transform="rotate(-45 17.3906 37.4805)" fill="#333333"/>
+                <rect x="19.0703" y="17.334" width="28.492" height="2.37434" transform="rotate(45 19.0703 17.334)" fill="#333333"/>
+              </svg>
+              <div class="model-item-content-top">
+                <div class="top-box">
+                  <p class="model-item-title">{{ block.settings.slide_name }}</p>
+                  <p class="model-item-desc">{{ block.settings.slide_officer }}</p>
+                </div>
+              </div>
+              <div class="model-item-content-bottom">
+                <div class="bottom-box">
+                  <div class="model-item-img">
+                    <img
+                      src="{{ block.settings.slide_img | image_url: width: master }}"
+                      alt=""
+                    >
+                  </div>
+                  <div class="model-item-infos">{{ block.settings.slide_infos }}</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+<script>
+  var mySwiper = new Swiper('.v1-teflo-our-team-swiper', {
+    slidesPerView: 'auto',
+    spaceBetween: 15,
+    grabCursor: true,
+    autoplay: {
+      pauseOnMouseEnter: true,
+      delay: 0,
+    },
+    touchRatio: 1,
+    speed: 3000, //匀速时间
+    loop: true,
+    freeMode: true,
+    slidesPerGroup: 1,
+  });
+
+  $(document).ready(function () {
+    $('.swiper-slide').click(function () {
+      var index = $(this).data('index');
+      $('#contentItems .model-item').css('display', 'none');
+      $('#contentItems .model-item[data-index="' + index + '"]').css('display', 'flex');
+    });
+    $('.close-btn').click(function () {
+      $(this).parent().parent().css('display', 'none');
+    });
+  });
+</script>
+
+{% schema %}
+{
+  "name": "Teflo Our Team",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title_desc",
+      "label": "Title Desc",
+      "default": "[ The Filtration Experts ]"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title",
+      "default": "Our Team"
+    },
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Background Color",
+      "default": "#0D0D0D"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text Color",
+      "default": "#fff"
+    },
+    {
+      "type": "range",
+      "id": "padding_top_pc",
+      "min": 0,
+      "max": 150,
+      "step": 5,
+      "unit": "px",
+      "label": "PC端上边距",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_pc",
+      "min": 0,
+      "max": 150,
+      "step": 5,
+      "unit": "px",
+      "label": "PC端下边距",
+      "default": 70
+    },
+    {
+      "type": "range",
+      "id": "padding_top_mb",
+      "min": 0,
+      "max": 150,
+      "step": 5,
+      "unit": "px",
+      "label": "移动端上边距",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_mb",
+      "min": 0,
+      "max": 150,
+      "step": 5,
+      "unit": "px",
+      "label": "移动端下边距",
+      "default": 40
+    }
+  ],
+  "blocks": [
+    {
+      "type": "slide",
+      "name": "slide",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "slide_img",
+          "label": "Image"
+        },
+        {
+          "type": "text",
+          "id": "slide_name",
+          "label": "Name",
+          "default": "John Smith"
+        },
+        {
+          "type": "text",
+          "id": "slide_officer",
+          "label": "Officer",
+          "default": "[Chief Technology Officer]"
+        },
+        {
+          "type": "text",
+          "id": "slide_job",
+          "label": "Job",
+          "default": "[CEO and Founder]"
+        },
+        {
+          "type": "richtext",
+          "id": "slide_infos",
+          "label": "Infos"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Teflo Our Team"
+    }
+  ]
+}
+{% endschema %}

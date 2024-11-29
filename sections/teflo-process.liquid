@@ -121,12 +121,12 @@
     justify-content: flex-end;
     margin-top: calc(100vw * 64 / var(--base-width));
   }
-  @media (max-width: 1400px) {
+  @media screen and (max-width: 1400px) {
     .teflo-process-rt-list-item-desc {
       padding-right: calc(100vw * 30 / var(--base-width));
     }
   }
-  @media (max-width: 1024px) {
+  @media screen and (max-width: 1024px) {
     .teflo-process {
       padding: 0 calc(100vw * 25 / var(--base-width));
       padding-top: {{ section.settings.padding_top_mb }}px;
@@ -145,9 +145,9 @@
       line-height: calc(100vw * 26 / var(--base-width));
     }
     .teflo-process-rt-h2 {
-      font-size: calc(100vw * 70 / var(--base-width));
-      line-height: calc(100vw * 76 / var(--base-width));
-      letter-spacing: calc(100vw * -2.1 / var(--base-width));
+      font-size: calc(100vw * 50 / var(--base-width));
+      line-height: calc(100vw * 56 / var(--base-width));
+      letter-spacing: calc(100vw * -1.2 / var(--base-width));
       margin-bottom: calc(100vw * 70 / var(--base-width));
     }
 
@@ -191,6 +191,14 @@
     }
     .teflo-process-rt-btn {
       margin-top: calc(100vw * 70 / var(--base-width));
+    }
+  }
+  @media screen and (max-width:750px) {
+    .teflo-process-rt-h2 {
+      font-size: calc(100vw * 70 / var(--base-width));
+      line-height: calc(100vw * 76 / var(--base-width));
+      letter-spacing: calc(100vw * -2.1 / var(--base-width));
+      margin-bottom: calc(100vw * 50 / var(--base-width));
     }
   }
 </style>

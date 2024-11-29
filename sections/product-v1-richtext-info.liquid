@@ -62,6 +62,16 @@
   .v1-richtext-info .teflo_custom_button_text {
     padding: 12px 36px;
   }
+  @media screen and (max-width: 1200px) {
+    .richtext-info-h2 {
+      font-size: calc(100vw * 50 / var(--base-width));
+      line-height: calc(100vw * 56 / var(--base-width));
+      letter-spacing: calc(100vw * -1.2 / var(--base-width));
+    }
+    .richtext-info-right{
+      max-width: calc(100vw * 550 / var(--base-width));
+    }
+  }
   @media screen and (max-width: 750px) {
     .v1-{{ section.id }}{
     padding-top: {{ section.settings.padding_top_mb }}px;

@@ -1,0 +1,412 @@
+<link rel="stylesheet" href="https://unpkg.com/swiper@11/swiper-bundle.min.css">
+<script src="https://unpkg.com/swiper@11/swiper-bundle.min.js"></script>
+<style>
+  .v1-customer-reviews p,
+  .v1-customer-reviews h2 {
+    margin: 0;
+  }
+  .v1-{{ section.id }} {
+    background-color: {{ section.settings.color_bg }};
+    padding: 0 calc(100vw * 20 / var(--base-width));
+    padding-top: {{ section.settings.padding_top_pc }}px;
+    padding-bottom: {{ section.settings.padding_bottom_pc }}px;
+  }
+  .v1-customer-reviews-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: calc(100vw * 40 / var(--base-width));
+  }
+  h2.v1-customer-reviews-h2 {
+    color: #0d0d0d;
+    font-family: 'OPPO Sans';
+    font-size: calc(100vw * 60 / var(--base-width));
+    font-style: normal;
+    font-weight: 400;
+    line-height: calc(100vw * 66 / var(--base-width));
+    letter-spacing: calc(100vw * -1.8 / var(--base-width));
+    text-transform: uppercase;
+  }
+  .v1-customer-reviews-btns {
+    display: flex;
+    column-gap: 20px;
+    box-sizing: border-box;
+  }
+  .v1-customer-reviews-btns-mb {
+    display: none;
+  }
+  .swiper-button-next,
+  .swiper-button-prev {
+    position: relative;
+    width: calc(100vw * 40 / var(--base-width));
+    height: calc(100vw * 40 / var(--base-width));
+    color: #1a1a1a;
+    background-color: #fff;
+    border: 1px solid rgba(13, 13, 13, 1);
+    border-radius: 6px;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    top: auto;
+    margin-top: 0;
+    right: auto;
+    left: auto;
+  }
+  .swiper-button-prev:after,
+  .swiper-rtl .swiper-button-next:after {
+    content: '';
+  }
+  .swiper-button-next:after,
+  .swiper-rtl .swiper-button-prev:after {
+    content: '';
+  }
+  .swiper-button-next:hover,
+  .swiper-button-prev:hover {
+    color: #fff;
+    background-color: {{ section.settings.color_btn_hover }};
+    border-color: transparent;
+  }
+  .swiper-button-next:hover svg path,
+  .swiper-button-prev:hover svg path {
+    stroke: {{ section.settings.color_btn_icon_hover }};
+  }
+  .v1-customer-reviews .swiper-wrapper {
+    display: grid;
+    grid-auto-flow: column;
+    align-items: stretch;
+  }
+  .v1-customer-reviews .swiper-slide {
+    display: grid;
+    grid-template-rows: auto 1fr auto auto;
+    align-items: stretch;
+    padding: 30px 18px;
+    background-color: {{ section.settings.color_card_bg_pc }};
+    border-radius: 8px;
+    overflow: hidden;
+  }
+  .review-num {
+    display: none;
+  }
+  .review-richtext {
+    margin-top: 15px;
+    margin-bottom: 60px;
+    color: #0d0d0d;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 26px;
+    text-transform: capitalize;
+  }
+  .review-author {
+    color: #0d0d0d;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 20px;
+    text-transform: capitalize;
+  }
+  .review-author-info {
+    color: #0d0d0d;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 20px;
+    text-transform: capitalize;
+    opacity: 0.5;
+    margin-top: 10px;
+  }
+  @media screen and (max-width: 1200px) {
+    h2.v1-customer-reviews-h2 {
+      font-size: calc(100vw * 50 / var(--base-width));
+      line-height: calc(100vw * 56 / var(--base-width));
+    }
+  }
+  @media screen and (max-width: 750px) {
+    .v1-{{ section.id }}{
+        padding-top: {{ section.settings.padding_top_mb }}px;
+        padding-bottom: {{ section.settings.padding_bottom_mb }}px;
+        background-color: {{ section.settings.color_bg_mb }};
+    }
+    .v1-customer-reviews-top {
+      margin-bottom: calc(100vw * 50 / var(--base-width));
+    }
+    h2.v1-customer-reviews-h2 {
+      font-size: calc(100vw * 70 / var(--base-width));
+      line-height: calc(100vw * 76 / var(--base-width));
+    }
+    .v1-customer-reviews .swiper-slide {
+      background-color: transparent;
+      padding: 0;
+    }
+    .v1-customer-reviews-btns {
+      display: none;
+    }
+    .v1-customer-reviews-btns-mb {
+      display: flex;
+      justify-content: flex-end;
+      column-gap: calc(100vw * 20 / var(--base-width));
+      margin-top: calc(100vw * 70 / var(--base-width));
+    }
+    .review-rating.star-rating {
+      display: none;
+    }
+    .review-num {
+      display: block;
+      color: #0d0d0d;
+      font-size: calc(100vw * 50 / var(--base-width));
+      font-style: normal;
+      font-weight: 400;
+      line-height: calc(100vw * 56 / var(--base-width));
+      text-transform: capitalize;
+      opacity: 0.5;
+    }
+    .review-richtext {
+      font-size: calc(100vw * 36 / var(--base-width));
+      line-height: calc(100vw * 42 / var(--base-width));
+      margin-top: calc(100vw * 30 / var(--base-width));
+      margin-bottom: calc(100vw * 50 / var(--base-width));
+    }
+    .review-author {
+      font-size: calc(100vw * 30 / var(--base-width));
+      line-height: calc(100vw * 36 / var(--base-width));
+    }
+    .review-author-info {
+      font-size: calc(100vw * 26 / var(--base-width));
+      line-height: calc(100vw * 32 / var(--base-width));
+      margin-top: 0;
+    }
+    .swiper-button-next,
+    .swiper-button-prev {
+      width: calc(100vw * 95 / var(--base-width));
+      height: calc(100vw * 95 / var(--base-width));
+    }
+  }
+</style>
+<div class="v1-customer-reviews v1-{{ section.id }}">
+  <div class="v1-customer-reviews-content">
+    <div class="v1-customer-reviews-top">
+      <h2 class="v1-customer-reviews-h2">{{ section.settings.heading }}</h2>
+      <div class="v1-customer-reviews-btns">
+        <div class="swiper-button-prev">
+          <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 40 40" fill="none">
+            <path d="M18.5 14L12.5 20M12.5 20L18.5 26M12.5 20L25 20" stroke="#191919"/>
+          </svg>
+        </div>
+        <div class="swiper-button-next">
+          <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 40 40" fill="none">
+            <path d="M21.5 26L27.5 20M27.5 20L21.5 14M27.5 20L15 20" stroke="#191919"/>
+          </svg>
+        </div>
+      </div>
+    </div>
+    <div class="v1-customer-reviews-bottom">
+      <div class="swiper v1-customer-reviews-swiper">
+        <div class="swiper-wrapper">
+          {% for block in section.blocks %}
+            <div class="swiper-slide">
+              {%- if block.settings.stars and block.settings.stars != '' -%}
+                <div class="review-rating star-rating" style="--star-rating: {{ block.settings.stars }};"></div>
+              {%- endif -%}
+              <div class="review-num">01/05</div>
+              <div class="review-richtext">{{ block.settings.review_info }}</div>
+              <div class="review-author">{{ block.settings.author }}</div>
+              <div class="review-author-info">{{ block.settings.author_info }}</div>
+            </div>
+          {% endfor %}
+        </div>
+      </div>
+      <div class="v1-customer-reviews-btns-mb">
+        <div class="swiper-button-prev">
+          <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 40 40" fill="none">
+            <path d="M18.5 14L12.5 20M12.5 20L18.5 26M12.5 20L25 20" stroke="#191919"/>
+          </svg>
+        </div>
+        <div class="swiper-button-next">
+          <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 40 40" fill="none">
+            <path d="M21.5 26L27.5 20M27.5 20L21.5 14M27.5 20L15 20" stroke="#191919"/>
+          </svg>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  var mySwiper = new Swiper('.v1-customer-reviews-swiper', {
+    slidesPerView: 1,
+    spaceBetween: 20,
+    grabCursor: true,
+    grid: {
+      fill: 'row',
+      rows: 1,
+    },
+    breakpoints: {
+      750: {
+        slidesPerView: 3,
+        spaceBetween: 15,
+      },
+      1024: {
+        slidesPerView: 4,
+        spaceBetween: 20,
+      },
+    },
+    // 如果需要前进后退按钮
+    navigation: {
+      nextEl: '.swiper-button-next',
+      prevEl: '.swiper-button-prev',
+    },
+  });
+</script>
+
+{% schema %}
+{
+  "name": "V1 Customer reviews",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Client Testimonials"
+    },
+    {
+      "type": "header",
+      "content": "Colors"
+    },
+    {
+      "type": "color",
+      "id": "color_bg",
+      "label": "Background",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "color_bg_mb",
+      "label": "Mobile Background",
+      "default": "#f6f9fc"
+    },
+    {
+      "type": "color",
+      "id": "color_card_bg_pc",
+      "label": "Card Background Color",
+      "default": "#fafafa"
+    },
+    {
+      "type": "color",
+      "id": "color_btn_hover",
+      "label": "Button Hover Color",
+      "default": "#0522CB"
+    },
+    {
+      "type": "color",
+      "id": "color_btn_icon_hover",
+      "label": "Button Icon Hover Color",
+      "default": "#fff"
+    },
+    {
+      "type": "range",
+      "id": "padding_top_pc",
+      "min": 0,
+      "max": 150,
+      "step": 5,
+      "unit": "px",
+      "label": "PC端上边距",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_pc",
+      "min": 0,
+      "max": 150,
+      "step": 5,
+      "unit": "px",
+      "label": "PC端下边距",
+      "default": 70
+    },
+    {
+      "type": "range",
+      "id": "padding_top_mb",
+      "min": 0,
+      "max": 150,
+      "step": 5,
+      "unit": "px",
+      "label": "移动端上边距",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_mb",
+      "min": 0,
+      "max": 150,
+      "step": 5,
+      "unit": "px",
+      "label": "移动端下边距",
+      "default": 40
+    }
+  ],
+  "blocks": [
+    {
+      "type": "review",
+      "name": "Review",
+      "settings": [
+        {
+          "type": "select",
+          "id": "stars",
+          "options": [
+            { "value": "", "label": "None" },
+            { "value": "3", "label": "3 out of 5" },
+            { "value": "3.5", "label": "3.5 out of 5" },
+            { "value": "4", "label": "4 out of 5" },
+            { "value": "4.5", "label": "4.5 out of 5" },
+            { "value": "5", "label": "5 out of 5" }
+          ],
+          "default": "",
+          "label": "Star rating"
+        },
+        {
+          "type": "richtext",
+          "id": "review_info",
+          "label": "Review"
+        },
+        {
+          "id": "author",
+          "type": "text",
+          "label": "Name",
+          "default": "Review author"
+        },
+        {
+          "type": "text",
+          "id": "author_info",
+          "label": "Author Info"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "V1 Customer reviews",
+      "blocks": [
+        {
+          "type": "review"
+        },
+        {
+          "type": "review"
+        },
+        {
+          "type": "review"
+        },
+        {
+          "type": "review"
+        },
+        {
+          "type": "review"
+        }
+      ]
+    }
+  ],
+  "enabled_on": {
+    "templates": ["*"],
+    "groups": ["header", "footer"]
+  }
+}
+{% endschema %}

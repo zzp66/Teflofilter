@@ -45,6 +45,21 @@
     padding-top: {{ section.settings.padding_top_mb }}px;
     padding-bottom: {{ section.settings.padding_bottom_mb }}px;
   }
+  .single-img-info{
+    margin-top: calc(100vw * 50 / var(--base-width));
+    flex-direction: column;
+  }
+  .v1-{{ section.id }} h2.single-img-h2{
+    font-size: calc(100vw* 70 / var(--base-width));
+    line-height: calc(100vw* 76 / var(--base-width));
+    letter-spacing: calc(100vw* -2.1 / var(--base-width));
+  }
+  .v1-{{ section.id }} .single-img-desc{
+    font-size: calc(100vw* 30 / var(--base-width));
+    line-height: calc(100vw* 36 / var(--base-width));
+    max-width: none;
+    margin: calc(100vw* 30 / var(--base-width)) 0 0 0;
+  }
   }
 </style>
 <div class="v1-single-img v1-{{ section.id }}">

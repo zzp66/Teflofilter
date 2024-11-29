@@ -63,7 +63,14 @@
       letter-spacing: calc(100vw * -2.1 / var(--base-width));
       margin-bottom: calc(100vw * 70 / var(--base-width));
     }
-    .teflo-certifications-item-desc {
+    .teflo-certifications-items {
+      margin-top: calc(100vw * 70 / var(--base-width));
+      gap: calc(100vw * 50 / var(--base-width)) calc(100vw * 18 / var(--base-width));
+    }
+    .teflo-certifications-item {
+      max-width: none;
+    }
+    p.teflo-certifications-item-desc {
       display: block;
       position: relative;
       padding-left: 20px;
@@ -83,6 +90,7 @@
       height: 7px;
       border-radius: 7px;
       color: #0d0d0d;
+      background-color: #0d0d0d;
       opacity: 0.5;
       position: absolute;
       top: 50%;
@@ -92,7 +100,7 @@
     .teflo-certifications .teflo-certifications-item-info {
       font-size: calc(100vw * 30 / var(--base-width));
       line-height: calc(100vw * 36 / var(--base-width));
-      margin-top: 0;
+      margin-top: calc(100vw * 20 / var(--base-width));
     }
   }
 </style>
@@ -105,7 +113,9 @@
           <div class="teflo-certifications-item-img">
             <img src="{{ block.settings.img | image_url: width: master }}" alt="">
           </div>
-          <p class="teflo-certifications-item-desc">{{ block.settings.desc }}</p>
+          {% if block.settings.desc != blank %}
+            <p class="teflo-certifications-item-desc">{{ block.settings.desc }}</p>
+          {% endif %}
           <p class="teflo-certifications-item-info">{{ block.settings.info }}</p>
         </div>
       {% endfor %}
@@ -133,6 +143,11 @@
           "type": "image_picker",
           "id": "img",
           "label": "Image"
+        },
+        {
+          "type": "text",
+          "id": "desc",
+          "label": "Desc"
         },
         {
           "type": "text",

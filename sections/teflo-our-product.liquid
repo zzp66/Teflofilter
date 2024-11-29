@@ -48,6 +48,27 @@
     column-gap: calc(100vw * 20 / var(--base-width));
     row-gap: calc(100vw * 60 / var(--base-width));
   }
+  .teflo-our-product-list-item{
+    position: relative;
+  }
+  .teflo-our-product-list-item-icon{
+    position: absolute;
+    top: calc(100vw * 15 / var(--base-width));
+    right: calc(100vw * 15 / var(--base-width));
+  }
+  .teflo-our-product-list-item-icon .item-icon-box{
+    width: calc(100vw * 30 / var(--base-width));
+    height: calc(100vw * 30 / var(--base-width));
+    border-radius: 100%;
+    background-color: #000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .teflo-our-product-list-item:hover .teflo-our-product-list-item-icon .item-icon-box{
+    background-color: #0522cb;
+    transform: rotate(45deg);
+  }
   .teflo-our-product-list-item-img {
     width: 100%;
     height: calc(100vw * 430 / var(--base-width));
@@ -231,6 +252,16 @@
               <path d="M10.6 3.3567L17 9.67249M17 9.67249L10.6 15.9883M17 9.67249H1V0.988281" stroke="#191919" stroke-width="2"/>
             </svg>
           </a>
+        </div>
+        <div class="teflo-our-product-list-item-icon">
+          <div class="item-icon-box">
+            <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 12 12" fill="none">
+              <path d="M0.619764 10.6198L4.57956 6.65997L5.23953 7.31993L1.27973 11.2797L0.619764 10.6198Z" fill="white"/>
+              <path d="M6.55946 4.68007L10.5193 0.720269L11.1792 1.38024L7.21943 5.34003L6.55946 4.68007Z" fill="white"/>
+              <path d="M1.27973 0.720269L5.23953 4.68007L4.57956 5.34003L0.619764 1.38024L1.27973 0.720269Z" fill="white"/>
+              <path d="M7.21943 6.65997L11.1792 10.6198L10.5193 11.2797L6.55946 7.31993L7.21943 6.65997Z" fill="white"/>
+            </svg>
+          </div>
         </div>
       </div>
     {% endfor %}

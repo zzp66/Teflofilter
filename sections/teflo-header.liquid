@@ -344,7 +344,7 @@
   <div class="pc-show">
     <div class="teflo-hander">
       <div class="teflo-hander-box">
-        <a href="" class="teflo-hander-log">
+        <a href="{{ section.settings.logo_link }}" class="teflo-hander-log">
           <img class="teflo-hander-log-img" src="{{ logo | image_url:  width:'139' }}" alt="{{ logo_alt }}">
         </a>
         <div class="teflo-hander-nav flex-center-start">
@@ -613,7 +613,7 @@
       "label": "Logo alt text"
     },
     {
-      "type": "text",
+      "type": "url",
       "id": "logo_link",
       "label": "Logo link"
     },

@@ -1,356 +1,373 @@
 <style>
-    .teflo-bannerbox{
-        background: {{ section.settings.bg_color }}
-    }
-    .teflo-banner{
-        position: relative;
-        height: 100vh;
-       
-    }
-    .teflo-banner-bg{
-        width: 100%;
-        height:100vh;
-        object-fit: cover;
-    }
-    .teflo-banner-content{
-        position: absolute;
-        bottom: 0;
-        left: 0;
-        width: 100%;
-        padding:0 calc(100vw * 20 / var(--base-width));
-        box-sizing: border-box;
-    }
-    .teflo-banner-content-box1{
-        display: flex;
-        justify-content: space-between;
-        margin-bottom: calc(100vw * 25 / var(--base-width));
-    }
-    .teflo-banner-content-box1-h1{
-        color: {{ section.settings.pc_title_color }};
-        font-size: calc(100vw * {{ section.settings.pc_title_size }} / var(--base-width));
-        font-style: normal;
-        font-weight: 400;
-        line-height: calc(100vw * 56 / var(--base-width));
-        max-width: calc(100vw * 539 / var(--base-width));
-    }
-    .teflo-banner-content-box1-rt{
-        max-width: calc(100vw * 516 / var(--base-width));
-    }
-    .teflo-banner-content-box1-rt-desc{
-        color: #FFF;
-        font-size:  calc(100vw * 20 / var(--base-width));
-        font-style: normal;
-        font-weight: 400;
-        line-height: calc(100vw * 26 / var(--base-width));
-        opacity: 0.7;
-        margin-bottom: calc(100vw * 44 / var(--base-width));
-    }
-    .teflo-banner-content-btm{
-        display: grid;
-        grid-template-columns: repeat({{ section.blocks.size }}, 1fr); 
-        border-top: 0.3px solid rgba(255, 255, 255, 0.3);
-        height: calc(100vw * 115 / var(--base-width));
-    }
-    .teflo-banner-content-btm-item{
-        border-right: 0.3px solid rgba(255, 255, 255, 0.3);
-        padding-left: calc(100vw * 20 / var(--base-width));
-        padding-right: calc(100vw * 10 / var(--base-width));
-        display: flex;
-        align-items: center;
-    }
-    .teflo-banner-content-btm-item:last-child{
-        border-right:0px;
-    }
-    .teflo-banner-content-btm-item-img{
-        flex-shrink: 0;
-        margin-right: calc(100vw * 15 / var(--base-width));
-        width: calc(100vw * 35 / var(--base-width));
-    }
-    .teflo-banner-content-btm-item-p *{
-        color: #FFF;
-        font-size: calc(100vw * 14 / var(--base-width));
-        font-style: normal;
-        font-weight: 400;
-        line-height: calc(100vw * 16 / var(--base-width));
-        flex: 1;
-        opacity: 0.7; 
-        margin-bottom:0px;
+  .teflo-bannerbox{
+      background: {{ section.settings.bg_color }}
+  }
+  .teflo-banner{
+      position: relative;
+      height: 100vh;
 
-    }
-    .teflo-banner-content-btm-h5{
-        display: none;
-    }
+  }
+  .teflo-banner-bg{
+      width: 100%;
+      height:100vh;
+      object-fit: cover;
+  }
+  .teflo-banner-content{
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      padding:0 calc(100vw * 20 / var(--base-width));
+      box-sizing: border-box;
+  }
+  .teflo-banner-content-box1{
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: calc(100vw * 25 / var(--base-width));
+  }
+  .teflo-banner-content-box1-h1{
+      color: {{ section.settings.title_color }};
+      font-size: calc(100vw * {{ section.settings.pc_title_size }} / var(--base-width));
+      font-style: normal;
+      font-weight: 400;
+      line-height: calc(100vw * 56 / var(--base-width));
+      max-width: calc(100vw * 539 / var(--base-width));
+  }
+  .teflo-banner-content-box1-rt{
+      max-width: calc(100vw * 516 / var(--base-width));
+  }
+  .teflo-banner-content-box1-rt-desc{
+      color: #FFF;
+      font-size:  calc(100vw * 20 / var(--base-width));
+      font-style: normal;
+      font-weight: 400;
+      line-height: calc(100vw * 26 / var(--base-width));
+      opacity: 0.7;
+      margin-bottom: calc(100vw * 44 / var(--base-width));
+  }
+  .teflo-banner-content-btm{
+      display: grid;
+      grid-template-columns: repeat({{ section.blocks.size }}, 1fr);
+      border-top: 0.3px solid rgba(255, 255, 255, 0.3);
+      height: calc(100vw * 115 / var(--base-width));
+  }
+  .teflo-banner-content-btm-item{
+      border-right: 0.3px solid rgba(255, 255, 255, 0.3);
+      padding-left: calc(100vw * 20 / var(--base-width));
+      padding-right: calc(100vw * 10 / var(--base-width));
+      display: flex;
+      align-items: center;
+  }
+  .teflo-banner-content-btm-item:last-child{
+      border-right:0px;
+  }
+  .teflo-banner-content-btm-item-img{
+      flex-shrink: 0;
+      margin-right: calc(100vw * 15 / var(--base-width));
+      width: calc(100vw * 35 / var(--base-width));
+  }
+  .teflo-banner-content-btm-item-p *{
+      color: #FFF;
+      font-size: calc(100vw * 14 / var(--base-width));
+      font-style: normal;
+      font-weight: 400;
+      line-height: calc(100vw * 16 / var(--base-width));
+      flex: 1;
+      opacity: 0.7;
+      margin-bottom:0px;
 
-    @media(max-width:1024px){
-        .teflo-banner-bg{
-            width: 100%;
-            max-height: 100vh;
-           
-        }
-        .teflo-banner-content-btm-pc{
-            display: none;
-        }
-        .teflo-banner-content-btm{
-            padding-top: calc(100vw * 40 / var(--base-width));
-           
-        }
-        .teflo-banner-content-btm-item-p *{
-            font-size: calc(100vw * 24 / var(--base-width));
-            line-height: calc(100vw * 30 / var(--base-width));
-            opacity: 0.7;
-            color: #191919;
-        }
-        .teflo-banner-content-btm-item{
-            border-right: 0.3px solid rgba(25, 25, 25, 0.3);
-            position: relative;
-            padding-bottom: calc(100vw * 10 / var(--base-width));
-            margin-bottom: calc(100vw * 32 / var(--base-width));
-            align-items: flex-start;
-        }
-        .teflo-banner-content-btm-item:nth-child(2n+2){
-            border-right: none;
-        }
-        //.teflo-banner-content-btm-item 最后俩个元素 border-bottom: none;
-      
-        .teflo-banner-content-btm-item-img{
-            width: calc(100vw * 40 / var(--base-width));
-        }
-        .teflo-banner-content-btm-h5{
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            height:auto;
-            overflow: hidden;
-            width: 100%;
-            box-sizing: border-box;
-        }
-        .teflo-banner-content{
-            bottom: calc(100vw * 122 / var(--base-width));
-            padding:0 calc(100vw * 25 / var(--base-width));
-        }
-        .teflo-banner-content-box1{
-            display: block;
-        }
-        .teflo-banner-content-box1-h1{
-            font-size: calc(100vw * 70 / var(--base-width));
-            line-height: calc(100vw * 70 / var(--base-width));
-            margin-bottom:  calc(100vw * 20 / var(--base-width));
-            max-width: 100%;
-        }
-        .teflo-banner-content-box1-rt-desc p{
-            font-size: calc(100vw * 30 / var(--base-width));
-            line-height: calc(100vw * 36 / var(--base-width));
-            margin-bottom:  calc(100vw * 64 / var(--base-width));
-            max-width: 100%;
-        }
-        .teflo-banner-content-btm-item-line{
-            position: absolute;
-            width: 100%;
-            height: 0.3px;
-            background: rgba(25, 25, 25, 0.3);
-            bottom: calc(100vw * -16 / var(--base-width));
+  }
+  .teflo-banner-content-btm-h5{
+      display: none;
+  }
 
-        }
-        .teflo-banner-content-btm-item:last-child .teflo-banner-content-btm-item-line{
-            display: none;
-        }
-        .teflo-banner-content-btm-item:nth-last-child(2) .teflo-banner-content-btm-item-line{
-            display: none;
-        }
-        .teflo-banner-content-box1-rt{
-            width: 100%;
-            max-width: 100%;
-        }
-    }
+  @media(max-width:1024px){
+      .teflo-banner-bg{
+          width: 100%;
+          max-height: 100vh;
+
+      }
+      .teflo-banner-content-btm-pc{
+          display: none;
+      }
+      .teflo-banner-content-btm{
+          padding-top: calc(100vw * 40 / var(--base-width));
+
+      }
+      .teflo-banner-content-btm-item-p *{
+          font-size: calc(100vw * 24 / var(--base-width));
+          line-height: calc(100vw * 30 / var(--base-width));
+          opacity: 0.7;
+          color: #191919;
+      }
+      .teflo-banner-content-btm-item{
+          border-right: 0.3px solid rgba(25, 25, 25, 0.3);
+          position: relative;
+          padding-bottom: calc(100vw * 10 / var(--base-width));
+          margin-bottom: calc(100vw * 32 / var(--base-width));
+          align-items: flex-start;
+      }
+      .teflo-banner-content-btm-item:nth-child(2n+2){
+          border-right: none;
+      }
+      //.teflo-banner-content-btm-item 最后俩个元素 border-bottom: none;
+
+      .teflo-banner-content-btm-item-img{
+          width: calc(100vw * 40 / var(--base-width));
+      }
+      .teflo-banner-content-btm-h5{
+          display: grid;
+          grid-template-columns: repeat(2, 1fr);
+          height:auto;
+          overflow: hidden;
+          width: 100%;
+          box-sizing: border-box;
+      }
+      .teflo-banner-content{
+          bottom: calc(100vw * 122 / var(--base-width));
+          padding:0 calc(100vw * 25 / var(--base-width));
+      }
+      .teflo-banner-content-box1{
+          display: block;
+      }
+      .teflo-banner-content-box1-h1{
+          font-size: calc(100vw * 70 / var(--base-width));
+          line-height: calc(100vw * 70 / var(--base-width));
+          margin-bottom:  calc(100vw * 20 / var(--base-width));
+          max-width: 100%;
+      }
+      .teflo-banner-content-box1-rt-desc p{
+          font-size: calc(100vw * 30 / var(--base-width));
+          line-height: calc(100vw * 36 / var(--base-width));
+          margin-bottom:  calc(100vw * 64 / var(--base-width));
+          max-width: 100%;
+      }
+      .teflo-banner-content-btm-item-line{
+          position: absolute;
+          width: 100%;
+          height: 0.3px;
+          background: rgba(25, 25, 25, 0.3);
+          bottom: calc(100vw * -16 / var(--base-width));
+
+      }
+      .teflo-banner-content-btm-item:last-child .teflo-banner-content-btm-item-line{
+          display: none;
+      }
+      .teflo-banner-content-btm-item:nth-last-child(2) .teflo-banner-content-btm-item-line{
+          display: none;
+      }
+      .teflo-banner-content-box1-rt{
+          width: 100%;
+          max-width: 100%;
+      }
+  }
 </style>
 {%- liquid
-    assign logo = section.settings.logo
-    assign logo_alt = section.settings.logo_alt
-    assign logo_link = section.settings.logo_link
-    assign button_text = section.settings.button_text
-    assign button_link = section.settings.button_link
-    assign button_text_color = section.settings.button_text_color
-    assign button_bg_color = section.settings.button_bg_color
-    assign button_hover_text_color = section.settings.button_hover_text_color
-    assign button_hover_bg_color = section.settings.button_hover_bg_color
-    assign button_border_color = section.settings.button_border_color
-    assign button_border = section.settings.button_border
-    assign button_hover_border_color = section.settings.button_hover_border_color
+  assign logo = section.settings.logo
+  assign logo_alt = section.settings.logo_alt
+  assign logo_link = section.settings.logo_link
+  assign button_text = section.settings.button_text
+  assign button_link = section.settings.button_link
+  assign button_text_color = section.settings.button_text_color
+  assign button_bg_color = section.settings.button_bg_color
+  assign button_hover_text_color = section.settings.button_hover_text_color
+  assign button_hover_bg_color = section.settings.button_hover_bg_color
+  assign button_border_color = section.settings.button_border_color
+  assign button_border = section.settings.button_border
+  assign button_hover_border_color = section.settings.button_hover_border_color
 -%}
 <div class="teflo-bannerbox">
-    <div class="teflo-banner">
-        <picture>
-            <source media="(max-width: 1024px)" srcset="{{ section.settings.image_h5 | image_url: width: '750' }}">
-            <img class="teflo-banner-bg" src="{{ section.settings.image_pc | image_url: width: '1920' }}" alt="{{  section.settings.image_alt }}">
-        </picture>
-        <div class="teflo-banner-content">
-            <div class="teflo-banner-content-box1">
-                <h1 class="teflo-banner-content-box1-h1">{{ section.settings.title }}</h1>
-                <div class="teflo-banner-content-box1-rt">
-                    <div class="teflo-banner-content-box1-rt-desc">
-                        {{ section.settings.description }} 
-                    </div>
-                    <div class="teflo-banner-content-box1-rt-button">
-     
-                        {% render 'teflo-button',
-                            button_link:button_link,
-                             button_text:button_text,
-                              button_text_color:button_text_color,
-                             button_bg_color:button_bg_color,
-                             button_hover_text_color:button_hover_text_color,
-                             button_hover_bg_color:button_hover_bg_color,
-                             button_border_color:button_border_color, 
-                             button_border:button_border,
-                             button_hover_border_color:button_hover_border_color
-                             
-                        %}
-                    </div>
-                </div>
-            </div>
-            <div class="teflo-banner-content-btm teflo-banner-content-btm-pc">
-                {% for block in section.blocks %}
-                    <div class="teflo-banner-content-btm-item">
-                        {% comment %} <picture>
-                            <source media="(max-width: 1024px)" srcset="{{ block.settings.image_h5 | image_url: width: '40' }}">
-                            <img class="teflo-banner-content-btm-item-img" src="{{ block.settings.image | image_url: width: '40' }}" alt="{{  block.settings.image_alt }}">
-                        </picture> {% endcomment %}
-                        <img class="teflo-banner-content-btm-item-img" src="{{ block.settings.image | image_url: width: '40' }}" alt="{{ block.settings.image_alt }}" />
-                        <div class="teflo-banner-content-btm-item-p">{{ block.settings.text }}</div>
-                    </div>
-                {% endfor %}
-            </div>
+  <div class="teflo-banner">
+    <picture>
+      <source media="(max-width: 1024px)" srcset="{{ section.settings.image_h5 | image_url: width: '750' }}">
+      <img
+        class="teflo-banner-bg"
+        src="{{ section.settings.image_pc | image_url: width: '1920' }}"
+        alt="{{  section.settings.image_alt }}"
+      >
+    </picture>
+    <div class="teflo-banner-content">
+      <div class="teflo-banner-content-box1">
+        <h1 class="teflo-banner-content-box1-h1">{{ section.settings.title }}</h1>
+        <div class="teflo-banner-content-box1-rt">
+          <div class="teflo-banner-content-box1-rt-desc">
+            {{ section.settings.description }}
+          </div>
+          <div class="teflo-banner-content-box1-rt-button">
+            {% render 'teflo-button',
+              button_link: button_link,
+              button_text: button_text,
+              button_text_color: button_text_color,
+              button_bg_color: button_bg_color,
+              button_hover_text_color: button_hover_text_color,
+              button_hover_bg_color: button_hover_bg_color,
+              button_border_color: button_border_color,
+              button_border: button_border,
+              button_hover_border_color: button_hover_border_color
+            %}
+          </div>
         </div>
-        
-    </div>
-    <div class="teflo-banner-content-btm teflo-banner-content-btm-h5">
+      </div>
+      <div class="teflo-banner-content-btm teflo-banner-content-btm-pc">
         {% for block in section.blocks %}
-            <div class="teflo-banner-content-btm-item teflo-banner-content-btm-item-h5"> 
-                <img class="teflo-banner-content-btm-item-img" src="{{ block.settings.image_h5 | image_url: width: '40' }}" alt="{{ block.settings.image_alt }}" />
-                <div class="teflo-banner-content-btm-item-p">{{ block.settings.text }}</div>
-                <div class="teflo-banner-content-btm-item-line"></div>
-            </div>
+          <div class="teflo-banner-content-btm-item">
+            {% comment %}
+              <picture>
+                  <source media="(max-width: 1024px)" srcset="{{ block.settings.image_h5 | image_url: width: '40' }}">
+                  <img class="teflo-banner-content-btm-item-img" src="{{ block.settings.image | image_url: width: '40' }}" alt="{{  block.settings.image_alt }}">
+              </picture>
+            {% endcomment %}
+            <img
+              class="teflo-banner-content-btm-item-img"
+              src="{{ block.settings.image | image_url: width: '40' }}"
+              alt="{{ block.settings.image_alt }}"
+            >
+            <div class="teflo-banner-content-btm-item-p">{{ block.settings.text }}</div>
+          </div>
         {% endfor %}
+      </div>
     </div>
+  </div>
+  <div class="teflo-banner-content-btm teflo-banner-content-btm-h5">
+    {% for block in section.blocks %}
+      <div class="teflo-banner-content-btm-item teflo-banner-content-btm-item-h5">
+        <img
+          class="teflo-banner-content-btm-item-img"
+          src="{{ block.settings.image_h5 | image_url: width: '40' }}"
+          alt="{{ block.settings.image_alt }}"
+        >
+        <div class="teflo-banner-content-btm-item-p">{{ block.settings.text }}</div>
+        <div class="teflo-banner-content-btm-item-line"></div>
+      </div>
+    {% endfor %}
+  </div>
 </div>
 {% schema %}
 {
   "name": "Teflo Banner",
   "settings": [
     {
-        "type": "color",
-        "id": "text_color",
-        "label": "Text color"
-      },
-      {
-          "type": "color",
-          "id": "bg_color",
-          "label": "Background color"
-      },
-      {
-          "type": "range",
-          "id": "pc_title_size",
-          "label": "PC title font size",
-          "min": 0,
-          "max": 100,
-          "step": 1,
-          "default": 50 
-      },
-      {
-          "type": "range",
-          "id": "ipa_title_size",
-          "label": "ipad title font size",
-          "min": 0,
-          "max": 100,
-          "step": 1,
-          "default": 50 
-      },
-      {
-          "type": "range",
-          "id": "h5_title_size",
-          "label": "mobile title font size",
-          "min": 0,
-          "max": 100,
-          "step": 1,
-          "default": 50 
-      },
+      "type": "color",
+      "id": "title_color",
+      "label": "Title color",
+      "default": "#fff"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text color"
+    },
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Background color"
+    },
+    {
+      "type": "range",
+      "id": "pc_title_size",
+      "label": "PC title font size",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "default": 50
+    },
+    {
+      "type": "range",
+      "id": "ipa_title_size",
+      "label": "ipad title font size",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "default": 50
+    },
+    {
+      "type": "range",
+      "id": "h5_title_size",
+      "label": "mobile title font size",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "default": 50
+    },
 
-      {
-        "type": "range",
-        "id": "pc_desc_size",
-        "label": "PC desc font size",
-        "min": 0,
-        "max": 100,
-        "step": 1,
-        "default": 20 
+    {
+      "type": "range",
+      "id": "pc_desc_size",
+      "label": "PC desc font size",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "default": 20
     },
     {
-        "type": "range",
-        "id": "ipa_desc_size",
-        "label": "ipad desc font size",
-        "min": 0,
-        "max": 100,
-        "step": 1,
-        "default": 20 
+      "type": "range",
+      "id": "ipa_desc_size",
+      "label": "ipad desc font size",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "default": 20
     },
     {
-        "type": "range",
-        "id": "h5_desc_size",
-        "label": "mobile desc font size",
-        "min": 0,
-        "max": 100,
-        "step": 1,
-        "default": 30 
+      "type": "range",
+      "id": "h5_desc_size",
+      "label": "mobile desc font size",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "default": 30
     },
     {
-        "type": "range",
-        "id": "pc_icon_size",
-        "label": "pc bottom icon text font size",
-        "min": 0,
-        "max": 100,
-        "step": 1,
-        "default": 20 
+      "type": "range",
+      "id": "pc_icon_size",
+      "label": "pc bottom icon text font size",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "default": 20
     },
     {
-        "type": "range",
-        "id": "ipa_icon_size",
-        "label": "ipad bottom icon text font size",
-        "min": 0,
-        "max": 100,
-        "step": 1,
-        "default": 20 
+      "type": "range",
+      "id": "ipa_icon_size",
+      "label": "ipad bottom icon text font size",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "default": 20
     },
     {
-        "type": "range",
-        "id": "h5_icon_size",
-        "label": "mobile bottom icon text font size",
-        "min": 0,
-        "max": 100,
-        "step": 1,
-        "default": 30 
+      "type": "range",
+      "id": "h5_icon_size",
+      "label": "mobile bottom icon text font size",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "default": 30
     },
-      {
-          "type": "range",
-          "id": "opacity",
-          "label": "text Opacity",
-          "min": 0,
-          "max": 1,
-          "step": 0.1,
-          "default": 1
-      },
+    {
+      "type": "range",
+      "id": "opacity",
+      "label": "text Opacity",
+      "min": 0,
+      "max": 1,
+      "step": 0.1,
+      "default": 1
+    },
     {
       "type": "image_picker",
       "id": "image_pc",
       "label": "Image"
     },
     {
-        "type": "image_picker",
-        "id": "image_h5",
-        "label": "h5 Image"
-      },
-      {
-        "type": "text",
-        "id": "image_alt",
-        "label": "Image alt text"
-      },
+      "type": "image_picker",
+      "id": "image_h5",
+      "label": "h5 Image"
+    },
+    {
+      "type": "text",
+      "id": "image_alt",
+      "label": "Image alt text"
+    },
     {
       "type": "text",
       "id": "title",
@@ -361,92 +378,91 @@
       "id": "description",
       "label": "Description"
     },
-      {
-        "type": "color",
-        "id": "button_border_color",
-        "label": "Button border color"
+    {
+      "type": "color",
+      "id": "button_border_color",
+      "label": "Button border color"
     },
     {
-        "type": "color",
-        "id": "button_hover_border_color",
-        "label": "Button hover border color"
+      "type": "color",
+      "id": "button_hover_border_color",
+      "label": "Button hover border color"
     },
     {
-        "type": "checkbox",
-        "id": "button_border",
-        "label": "Button border",
-        "default": false
+      "type": "checkbox",
+      "id": "button_border",
+      "label": "Button border",
+      "default": false
     },
     {
-        "type": "text",
-        "id": "button_text",
-        "label": "Button text"
+      "type": "text",
+      "id": "button_text",
+      "label": "Button text"
     },
     {
-        "type": "text",
-        "id": "button_link",
-        "label": "Button link, enter a URL or popup"
+      "type": "text",
+      "id": "button_link",
+      "label": "Button link, enter a URL or popup"
     },
     {
-        "type": "text",
-        "id": "button_text_color",
-        "label": "Button text color",
-        "default": "#000000"
+      "type": "text",
+      "id": "button_text_color",
+      "label": "Button text color",
+      "default": "#000000"
     },
     {
-        "type": "text",
-        "id": "button_bg_color",
-        "label": "Button background color",
-        "default": "#FFFFFF"
+      "type": "text",
+      "id": "button_bg_color",
+      "label": "Button background color",
+      "default": "#FFFFFF"
     },
     {
-        "type": "text",
-        "id": "button_hover_text_color",
-        "label": "Button hover text color",
-        "default": "#FFFFFF"
+      "type": "text",
+      "id": "button_hover_text_color",
+      "label": "Button hover text color",
+      "default": "#FFFFFF"
     },
     {
-        "type": "text",
-        "id": "button_hover_bg_color",
-        "label": "Button hover background color",
-        "default": "#000000"
-    },
+      "type": "text",
+      "id": "button_hover_bg_color",
+      "label": "Button hover background color",
+      "default": "#000000"
+    }
   ],
   "blocks": [
     {
-        "type": "list",
-        "name": "list info",
-        "settings": [
-            {
-            "type": "richtext",
-            "id": "text",
-            "label": "Content",
-            },
-            {
-                "type": "image_picker",
-                "id": "image",
-                "label": "Image"
-            },
-            {
-                "type": "image_picker",
-                "id": "image_h5",
-                "label": "h5 Image"
-            },
-            {
-                "type": "text",
-                "id": "image_alt",
-                "label": "Image alt text"
-            }
-            
-        ]
-    }], 
-
-    "presets": [
+      "type": "list",
+      "name": "list info",
+      "settings": [
         {
-        "name": "Teflo Banner",
-        "category": "Banner"
+          "type": "richtext",
+          "id": "text",
+          "label": "Content"
+        },
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image"
+        },
+        {
+          "type": "image_picker",
+          "id": "image_h5",
+          "label": "h5 Image"
+        },
+        {
+          "type": "text",
+          "id": "image_alt",
+          "label": "Image alt text"
         }
-    ]
-}
+      ]
+    }
+  ],
 
+  "presets": [
+    {
+      "name": "Teflo Banner",
+      "category": "Banner"
+    }
+  ]
+}
 {% endschema %}

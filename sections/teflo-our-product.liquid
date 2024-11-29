@@ -1,269 +1,314 @@
-
 <style>
-    .teflo-our-product{
-        padding:0 calc(100vw * 20 / var(--base-width));
-        padding-top: calc(100vw * 140 / var(--base-width));
-        background:#fff;
-        position:relative;
-        z-index: 2;
-    }
-    .teflo-our-product-h2{
-        color: #191919;
-        text-align: center;
-        font-size: calc(100vw * 60 / var(--base-width));
-        font-style: normal;
-        font-weight: 400;
-        line-height: calc(100vw * 66 / var(--base-width));
-        letter-spacing: calc(100vw * -1.8 / var(--base-width));
-        margin-bottom: calc(100vw * 27 / var(--base-width));
-    }
-    .teflo-our-product-desc{
-        margin: 0 auto;
-        margin-bottom: calc(100vw * 47 / var(--base-width));
-        max-width: calc(100vw * 1045 / var(--base-width));
-    }
-    .teflo-our-product-desc *{
-        font-size: calc(100vw * 20 / var(--base-width));
-        font-style: normal;
-        font-weight: 400;
-        margin-bottom: 0;
-        display: inline-block;
-        text-align: center;
-    }
-    .teflo-our-product-desc strong{
-        color: rgba(25, 25, 25, 1);
-        font-weight: 400;
-        font-size: calc(100vw * 18 / var(--base-width));
-    }
-    .teflo-our-product-desc p{
-        color: rgba(25, 25, 25, 0.70);
-       
-        line-height: calc(100vw * 26 / var(--base-width));
-       
-    }
-    .teflo-our-product-list{
-        display: grid;
-        grid-template-columns: repeat(4,1fr);
-        column-gap: calc(100vw * 20 / var(--base-width));
-        row-gap: calc(100vw * 60 / var(--base-width));
-    }
-    .teflo-our-product-list-item-img{
-        width: 100%;
-        height: calc(100vw * 430 / var(--base-width));
-        border-radius: calc(100vw * 3 / var(--base-width));
-        background: #EDF1F3;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        overflow: hidden;
-        margin-bottom: calc(100vw * 20 / var(--base-width));
-    }
-    .teflo-our-product-list-item-info{
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        padding-bottom: calc(100vw * 14 / var(--base-width));
-        border-bottom: 1px solid rgba(25, 25, 25, 0.30);
-        position: relative;
-    }
-    .teflo-our-product-list-item-info::before{
-        content: '';
-        position: absolute;
-        bottom: 0;
-        left: 0;
-        width: 0;
-        height: 1px;
-        background: #0522CB;
-        transition: width 0.3s ease;
-        z-index: 2;
-    }
-   .teflo-our-product-list-item:hover .teflo-our-product-list-item-info::before{
-        width: 100%;
-       
-    }
-    .teflo-our-product-list-item-info-lt{
-        display: flex;
-        flex:1;
-    }
-    .teflo-our-product-list-item-rt{
-        flex-shrink: 0;
-    }
-    .teflo-our-product-list-item-info-lt-h3{
-        color: #191919;
-        font-size: calc(100vw * 20 / var(--base-width));
-        font-style: normal;
-        font-weight: 500;
-        line-height: calc(100vw * 26 / var(--base-width));
-        margin-bottom:0px;
-    }
-    .teflo-our-product-list-item-info-lt-btn{
-        display:inline-block;
-        color: #191919;
-        font-size: calc(100vw * 12 / var(--base-width));
-        font-style: normal;
-        font-weight: 400;
-        line-height: calc(100vw * 14 / var(--base-width));
-        padding: calc(100vw * 3 / var(--base-width)) calc(100vw * 8 / var(--base-width));
-        margin-left: calc(100vw * 18 / var(--base-width));
-        border-radius: calc(100vw * 3 / var(--base-width));
-        border: 0.3px solid #191919;
-        height: fit-content;
-        cursor: pointer;
-        width: fit-content;
-    }
-    .teflo-our-product-list-item-info-lt-btn:hover{
-        background: #0522CB;
-        color: #fff;
-        border: 0.3px solid transparent;
-    }
-    .teflo-our-product-list-item-rt svg{
-        width: calc(100vw * 12 / var(--base-width));
-        height: calc(100vw * 10 / var(--base-width));
-    }
-    @media(max-width:1300px){
-        .teflo-our-product-list{
-            grid-template-columns: repeat(3,1fr);
-        }
-        .teflo-our-product-desc strong{
-            font-size: calc(100vw * 20 / var(--base-width));
-        }
-    }
-    @media(max-width:1024px){
-        .teflo-our-product{
-            padding:0 calc(100vw * 25 / var(--base-width));
-            padding-top: calc(100vw * 170 / var(--base-width));
-        }
-        .teflo-our-product-h2{
-            font-size: calc(100vw * 70 / var(--base-width));
-            line-height: calc(100vw * 76 / var(--base-width));
-            letter-spacing: calc(100vw * -2.1 / var(--base-width));
-            margin-bottom: calc(100vw * 30 / var(--base-width));
-        }
-        .teflo-our-product-desc{
-            margin-bottom: calc(100vw * 70 / var(--base-width));
-            max-width: 100%;
-        }
-        .teflo-our-product-desc *{
-            font-size: calc(100vw * 30 / var(--base-width));
-            line-height: calc(100vw * 36 / var(--base-width));
-        }
-        .teflo-our-product-desc p{
-            line-height: calc(100vw * 36 / var(--base-width));
-        }
-        .teflo-our-product-desc strong{
-            font-size: calc(100vw * 27 / var(--base-width));
-        }
-        .teflo-our-product-list-item-info{
-            padding-bottom: calc(100vw * 20 / var(--base-width));
-            align-items: end;
-            position: relative;
-        }
-       
+  .teflo-our-product {
+    padding: 0 calc(100vw * 20 / var(--base-width));
+    background: #fff;
+    position: relative;
+    z-index: 2;
+  }
+  .v1-{{ section.id }} {
+    padding-top: {{ section.settings.padding_top_pc }}px;
+    padding-bottom: {{ section.settings.padding_bottom_pc }}px;
+  }
+  .teflo-our-product-h2 {
+    color: #191919;
+    text-align: center;
+    font-size: calc(100vw * 60 / var(--base-width));
+    font-style: normal;
+    font-weight: 400;
+    line-height: calc(100vw * 66 / var(--base-width));
+    letter-spacing: calc(100vw * -1.8 / var(--base-width));
+    margin-bottom: calc(100vw * 27 / var(--base-width));
+  }
+  .teflo-our-product-desc {
+    margin: 0 auto;
+    margin-bottom: calc(100vw * 47 / var(--base-width));
+    max-width: calc(100vw * 1045 / var(--base-width));
+  }
+  .teflo-our-product-desc * {
+    font-size: calc(100vw * 20 / var(--base-width));
+    font-style: normal;
+    font-weight: 400;
+    margin-bottom: 0;
+    display: inline-block;
+    text-align: center;
+  }
+  .teflo-our-product-desc strong {
+    color: rgba(25, 25, 25, 1);
+    font-weight: 400;
+    font-size: calc(100vw * 18 / var(--base-width));
+  }
+  .teflo-our-product-desc p {
+    color: rgba(25, 25, 25, 0.7);
 
-        .teflo-our-product-list{
-            grid-template-columns: repeat(2,1fr);
-            column-gap: calc(100vw * 20 / var(--base-width));
-            row-gap: calc(100vw * 60 / var(--base-width));
-        }
-        .teflo-our-product-list-item-img{
-            height: calc(100vw * 437 / var(--base-width));
-        }
-        .teflo-our-product-list-item-info-lt{
-            display: flex;
-            flex-direction: column-reverse;
-
-        }
-        .teflo-our-product-list-item-info-lt a{
-            display: flex;
-            align-items: center;
-        }
-        .teflo-our-product-list-item-info-lt-btn{
-            
-            margin-left: 0;
-            margin-bottom: calc(100vw * 15 / var(--base-width));
-            padding: calc(100vw * 8 / var(--base-width)) calc(100vw * 11 / var(--base-width));
-            font-size: calc(100vw * 14 / var(--base-width));
-            
-        }
-        .teflo-our-product-list-item-info-lt-h3{
-            font-size: calc(100vw * 26 / var(--base-width));
-            line-height: calc(100vw * 32 / var(--base-width));
-            margin-bottom:0;
-        }
-        .teflo-our-product-list-item-rt{
-            display: flex;
-            align-items: end;
-        }
-        .teflo-our-product-list-item-rt svg{
-            width: calc(100vw * 19 / var(--base-width));
-            height: calc(100vw * 17 / var(--base-width));
-          
-        }
+    line-height: calc(100vw * 26 / var(--base-width));
+  }
+  .teflo-our-product-list {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    column-gap: calc(100vw * 20 / var(--base-width));
+    row-gap: calc(100vw * 60 / var(--base-width));
+  }
+  .teflo-our-product-list-item-img {
+    width: 100%;
+    height: calc(100vw * 430 / var(--base-width));
+    border-radius: calc(100vw * 3 / var(--base-width));
+    background: #edf1f3;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    margin-bottom: calc(100vw * 20 / var(--base-width));
+  }
+  .teflo-our-product-list-item-info {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-bottom: calc(100vw * 14 / var(--base-width));
+    border-bottom: 1px solid rgba(25, 25, 25, 0.3);
+    position: relative;
+  }
+  .teflo-our-product-list-item-info::before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 1px;
+    background: #0522cb;
+    transition: width 0.3s ease;
+    z-index: 2;
+  }
+  .teflo-our-product-list-item:hover .teflo-our-product-list-item-info::before {
+    width: 100%;
+  }
+  .teflo-our-product-list-item-info-lt {
+    display: flex;
+    flex: 1;
+  }
+  .teflo-our-product-list-item-rt {
+    flex-shrink: 0;
+  }
+  .teflo-our-product-list-item-info-lt-h3 {
+    color: #191919;
+    font-size: calc(100vw * 20 / var(--base-width));
+    font-style: normal;
+    font-weight: 500;
+    line-height: calc(100vw * 26 / var(--base-width));
+    margin-bottom: 0px;
+  }
+  .teflo-our-product-list-item-info-lt-btn {
+    display: inline-block;
+    color: #191919;
+    font-size: calc(100vw * 12 / var(--base-width));
+    font-style: normal;
+    font-weight: 400;
+    line-height: calc(100vw * 14 / var(--base-width));
+    padding: calc(100vw * 3 / var(--base-width)) calc(100vw * 8 / var(--base-width));
+    margin-left: calc(100vw * 18 / var(--base-width));
+    border-radius: calc(100vw * 3 / var(--base-width));
+    border: 0.3px solid #191919;
+    height: fit-content;
+    cursor: pointer;
+    width: fit-content;
+  }
+  .teflo-our-product-list-item-info-lt-btn:hover {
+    background: #0522cb;
+    color: #fff;
+    border: 0.3px solid transparent;
+  }
+  .teflo-our-product-list-item-rt svg {
+    width: calc(100vw * 12 / var(--base-width));
+    height: calc(100vw * 10 / var(--base-width));
+  }
+  @media (max-width: 1300px) {
+    .teflo-our-product-list {
+      grid-template-columns: repeat(3, 1fr);
+    }
+    .teflo-our-product-desc strong {
+      font-size: calc(100vw * 20 / var(--base-width));
+    }
+  }
+  @media (max-width: 1024px) {
+    .teflo-our-product {
+      padding: 0 calc(100vw * 25 / var(--base-width));
+    }
+    .v1-{{ section.id }}{
+    padding-top: {{ section.settings.padding_top_mb }}px;
+    padding-bottom: {{ section.settings.padding_bottom_mb }}px;
+  }
+    .teflo-our-product-h2 {
+      font-size: calc(100vw * 70 / var(--base-width));
+      line-height: calc(100vw * 76 / var(--base-width));
+      letter-spacing: calc(100vw * -2.1 / var(--base-width));
+      margin-bottom: calc(100vw * 30 / var(--base-width));
+    }
+    .teflo-our-product-desc {
+      margin-bottom: calc(100vw * 70 / var(--base-width));
+      max-width: 100%;
+    }
+    .teflo-our-product-desc * {
+      font-size: calc(100vw * 30 / var(--base-width));
+      line-height: calc(100vw * 36 / var(--base-width));
+    }
+    .teflo-our-product-desc p {
+      line-height: calc(100vw * 36 / var(--base-width));
+    }
+    .teflo-our-product-desc strong {
+      font-size: calc(100vw * 27 / var(--base-width));
+    }
+    .teflo-our-product-list-item-info {
+      padding-bottom: calc(100vw * 20 / var(--base-width));
+      align-items: end;
+      position: relative;
     }
 
-
+    .teflo-our-product-list {
+      grid-template-columns: repeat(2, 1fr);
+      column-gap: calc(100vw * 20 / var(--base-width));
+      row-gap: calc(100vw * 60 / var(--base-width));
+    }
+    .teflo-our-product-list-item-img {
+      height: calc(100vw * 437 / var(--base-width));
+    }
+    .teflo-our-product-list-item-info-lt {
+      display: flex;
+      flex-direction: column-reverse;
+    }
+    .teflo-our-product-list-item-info-lt a {
+      display: flex;
+      align-items: center;
+    }
+    .teflo-our-product-list-item-info-lt-btn {
+      margin-left: 0;
+      margin-bottom: calc(100vw * 15 / var(--base-width));
+      padding: calc(100vw * 8 / var(--base-width)) calc(100vw * 11 / var(--base-width));
+      font-size: calc(100vw * 14 / var(--base-width));
+    }
+    .teflo-our-product-list-item-info-lt-h3 {
+      font-size: calc(100vw * 26 / var(--base-width));
+      line-height: calc(100vw * 32 / var(--base-width));
+      margin-bottom: 0;
+    }
+    .teflo-our-product-list-item-rt {
+      display: flex;
+      align-items: end;
+    }
+    .teflo-our-product-list-item-rt svg {
+      width: calc(100vw * 19 / var(--base-width));
+      height: calc(100vw * 17 / var(--base-width));
+    }
+  }
 </style>
-<div class="teflo-our-product">
-    <h2 class="teflo-our-product-h2">{{ section.settings.title }}</h2>
-    <div class="teflo-our-product-desc">{{ section.settings.desc }}</div>
-    <div class="teflo-our-product-list">
-       {% for block in section.blocks %}
-        <div class="teflo-our-product-list-item">
-            <a class="teflo-our-product-list-item-img" href="{{ block.settings.product.url }}">
-                <img loading="lazy" src="{{ block.settings.product.featured_image.src | img_url: 'master' }}" alt="{{ block.settings.product.title }}">
+<div class="teflo-our-product v1-{{ section.id }}">
+  <h2 class="teflo-our-product-h2">{{ section.settings.title }}</h2>
+  <div class="teflo-our-product-desc">{{ section.settings.desc }}</div>
+  <div class="teflo-our-product-list">
+    {% for block in section.blocks %}
+      <div class="teflo-our-product-list-item">
+        <a class="teflo-our-product-list-item-img" href="{{ block.settings.product.url }}">
+          <img
+            loading="lazy"
+            src="{{ block.settings.product.featured_image.src | img_url: 'master' }}"
+            alt="{{ block.settings.product.title }}"
+          >
+        </a>
+        <div class="teflo-our-product-list-item-info">
+          <div class="teflo-our-product-list-item-info-lt">
+            <a href="{{ block.settings.product.url }}">
+              <h3 class="teflo-our-product-list-item-info-lt-h3">{{ block.settings.product.title }}</h3>
             </a>
-            <div class="teflo-our-product-list-item-info">
-                <div class="teflo-our-product-list-item-info-lt">
-                   <a href="{{ block.settings.product.url }}"> <h3 class="teflo-our-product-list-item-info-lt-h3">{{ block.settings.product.title }}</h3></a>
-                   {% if block.settings.product.metafields.custom.pdf != blank %}
-                        <a href="{{ block.settings.product.custom.pdf }}" target="_blank" class="teflo-our-product-list-item-info-lt-btn">DATASHEET.PDF</a>
-                    {% endif %}
-                </div>
-                <a class="teflo-our-product-list-item-rt" href="{{ block.settings.product.url }}">
-                    <svg xmlns="http://www.w3.org/2000/svg"  viewBox="0 0 19 17" fill="none">
-                        <path d="M10.6 3.3567L17 9.67249M17 9.67249L10.6 15.9883M17 9.67249H1V0.988281" stroke="#191919" stroke-width="2"/>
-                    </svg>
-                </a>
-            </div>
+            {% if block.settings.product.metafields.custom.pdf != blank %}
+              <a
+                href="{{ block.settings.product.custom.pdf }}"
+                target="_blank"
+                class="teflo-our-product-list-item-info-lt-btn"
+                >DATASHEET.PDF</a
+              >
+            {% endif %}
+          </div>
+          <a class="teflo-our-product-list-item-rt" href="{{ block.settings.product.url }}">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 19 17" fill="none">
+              <path d="M10.6 3.3567L17 9.67249M17 9.67249L10.6 15.9883M17 9.67249H1V0.988281" stroke="#191919" stroke-width="2"/>
+            </svg>
+          </a>
         </div>
-        {% endfor %}
-
-    </div>
+      </div>
+    {% endfor %}
+  </div>
 </div>
 
 {% schema %}
 {
-    "name": "Teflo Our Product",
-    "settings": [
+  "name": "Teflo Our Product",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title"
+    },
+    {
+      "type": "richtext",
+      "id": "desc",
+      "label": "Description"
+    },
+    {
+      "type": "range",
+      "id": "padding_top_pc",
+      "min": 0,
+      "max": 150,
+      "step": 5,
+      "unit": "px",
+      "label": "PC端上边距",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_pc",
+      "min": 0,
+      "max": 150,
+      "step": 5,
+      "unit": "px",
+      "label": "PC端下边距",
+      "default": 70
+    },
+    {
+      "type": "range",
+      "id": "padding_top_mb",
+      "min": 0,
+      "max": 150,
+      "step": 5,
+      "unit": "px",
+      "label": "移动端上边距",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_mb",
+      "min": 0,
+      "max": 150,
+      "step": 5,
+      "unit": "px",
+      "label": "移动端下边距",
+      "default": 40
+    }
+  ],
+  "blocks": [
+    {
+      "type": "list",
+      "name": "Product item",
+      "settings": [
         {
-            "type": "text",
-            "id": "title",
-            "label": "Title",
-        },
-        {
-            "type": "richtext",
-            "id": "desc",
-            "label": "Description"
+          "type": "product",
+          "id": "product",
+          "label": "Product"
         }
-    ],
-    "blocks": [
-        {
-            "type": "list",
-            "name": "Product item",
-            "settings": [
-                {
-                    "type": "product",
-                    "id": "product",
-                    "label": "Product"
-                }
-            ]
-        }
-    ],
-    "presets": [
-        {
-            "name": "Our Product"
-        }
-    ]
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Our Product"
+    }
+  ]
 }
-
 {% endschema %}

@@ -1,306 +1,358 @@
 <style>
-    .teflo-choose{
-        padding-top:calc(100vw * 140 / var(--base-width));
-        background: #0D0D0D;
-        width: 100%;
-        overflow: hidden;
-    }
-    .teflo-choose-img{
-        position: relative;
-    }
-    .teflo-choose-img img{
-        width: 100%;
-    }
-    .teflo-choose-top{
-        display: flex;
-        justify-content: space-between;
-        align-items: end;
-        position: absolute;
-        bottom: calc(100vw * 36 / var(--base-width));
-        width:100%;
-        left: 0;
-        padding:0 calc(100vw * 20 / var(--base-width));
-        box-sizing: border-box;
-    }
-    .teflo-choose-top-subtitle{
-        color: #FFF;
-        font-size: calc(100vw * 16 / var(--base-width));
-        font-style: normal;
-        font-weight: 400;
-        line-height: calc(100vw * 16 / var(--base-width));
-        margin-bottom: calc(100vw * 14 / var(--base-width));
-    }
-    .teflo-choose-top-title{
-        color: #FFF;
-        font-size: calc(100vw * 60 / var(--base-width));
-        font-style: normal;
-        font-weight: 400;
-        line-height: calc(100vw * 66 / var(--base-width));
-        letter-spacing: calc(100vw * -1.8 / var(--base-width));
-    }
-    .teflo-choose-top-desc{
-        max-width: calc(100vw * 443 / var(--base-width));
-    }
-    .teflo-choose-top-desc *{
-        color: #FFF;
-        font-size: calc(100vw * 20 / var(--base-width));
-        font-style: normal;
-        font-weight: 400;
-        line-height: calc(100vw * 26 / var(--base-width));
-        margin-bottom: 0;
-        display: inline-block;
-        opacity: 0.7;
-    }
-    .teflo-choose-top-desc strong{
-        opacity: 1;
-        
-    }
-    .teflo-choose-list{
-        padding:calc(100vw * 80 / var(--base-width)) calc(100vw * 118 / var(--base-width));
-        {% comment %} padding-top: calc(100vw * 80 / var(--base-width)); {% endcomment %}
-        display: grid;
-        grid-template-columns: repeat(3,1fr);
-        row-gap: calc(100vw * 80 / var(--base-width));
-        column-gap: calc(100vw * 26 / var(--base-width));
-    }
-    .teflo-choose-list-item-top{
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        padding-bottom: calc(100vw * 20 / var(--base-width));
-        border-bottom: 0.4px solid rgba(255, 255, 255, 0.30);
-    }
-    .teflo-choose-list-item-top-title{
-        color: #FFF;
-        font-size: calc(100vw * 21 / var(--base-width));
-        font-style: normal;
-        font-weight: 300;
-        line-height: calc(100vw * 28 / var(--base-width));
-        letter-spacing: calc(100vw * -0.63 / var(--base-width));
-        max-width: 80%;
-        min-height: calc(100vw * 56 / var(--base-width));
-        margin-bottom:0px;
-    }
-    .teflo-choose-list-item-top-num{
-        color: #FFF;
-        font-size: calc(100vw * 16 / var(--base-width));
-        font-style: normal;
-        font-weight: 400;
-        line-height: calc(100vw * 22 / var(--base-width));
-        letter-spacing: calc(100vw * -0.48 / var(--base-width));
-        opacity: 0.5;
-    }
-    .teflo-choose-list-item-content{
-        padding-top: calc(100vw * 40 / var(--base-width));
-    }
-    .teflo-choose-list-item-content-desc{
-        min-height:calc(100vw * 70 / var(--base-width));
-        margin-bottom: calc(100vw * 48 / var(--base-width));
-        max-width: 95%;
-    }
-    .teflo-choose-list-item-content-desc *{
-        color: #FFF;
-        font-size: calc(100vw * 14 / var(--base-width));
-        font-style: normal;
-        font-weight: 400;
-        line-height: calc(100vw * 18 / var(--base-width));
-        letter-spacing: calc(100vw * -0.42 / var(--base-width));
-        opacity: 0.7;
-        margin-bottom:0;
-        display: inline-block;
-    }
-    .teflo-choose-list-item-content-desc strong{
-        opacity: 1;
-    }
-    .teflo-choose-list-item-content-img{
-        width:calc(100vw * 70 / var(--base-width));
-    }
-    .teflo-choose-list-item-content-img img{
-        width:100%;
-    }
+  .teflo-choose{
+      background: #0D0D0D;
+      width: 100%;
+      overflow: hidden;
+  }
+  .v1-{{ section.id }} {
+    padding-top: {{ section.settings.padding_top_pc }}px;
+    padding-bottom: {{ section.settings.padding_bottom_pc }}px;
+  }
+  .teflo-choose-img{
+      position: relative;
+  }
+  .teflo-choose-img img{
+      width: 100%;
+  }
+  .teflo-choose-top{
+      display: flex;
+      justify-content: space-between;
+      align-items: end;
+      position: absolute;
+      bottom: calc(100vw * 36 / var(--base-width));
+      width:100%;
+      left: 0;
+      padding:0 calc(100vw * 20 / var(--base-width));
+      box-sizing: border-box;
+  }
+  .teflo-choose-top-subtitle{
+      color: #FFF;
+      font-size: calc(100vw * 16 / var(--base-width));
+      font-style: normal;
+      font-weight: 400;
+      line-height: calc(100vw * 16 / var(--base-width));
+      margin-bottom: calc(100vw * 14 / var(--base-width));
+  }
+  .teflo-choose-top-title{
+      color: #FFF;
+      font-size: calc(100vw * 60 / var(--base-width));
+      font-style: normal;
+      font-weight: 400;
+      line-height: calc(100vw * 66 / var(--base-width));
+      letter-spacing: calc(100vw * -1.8 / var(--base-width));
+  }
+  .teflo-choose-top-desc{
+      max-width: calc(100vw * 443 / var(--base-width));
+  }
+  .teflo-choose-top-desc *{
+      color: #FFF;
+      font-size: calc(100vw * 20 / var(--base-width));
+      font-style: normal;
+      font-weight: 400;
+      line-height: calc(100vw * 26 / var(--base-width));
+      margin-bottom: 0;
+      display: inline-block;
+      opacity: 0.7;
+  }
+  .teflo-choose-top-desc strong{
+      opacity: 1;
 
-    @media (max-width:1300px){
-        .teflo-choose-list{
-            padding-left: calc(100vw * 20 / var(--base-width));
-            padding-right: calc(100vw * 20 / var(--base-width));
-            box-sizing: border-box;
-        }
-    }
-    @media(max-width:1024px){
-        .teflo-choose{
-            padding-top:calc(100vw * 170 / var(--base-width));
-            box-sizing: border-box;
-        }
-        .teflo-choose-top{
-            bottom: calc(100vw * 40 / var(--base-width));
-            display: block;
-            left: calc(100vw * 25 / var(--base-width));
-            box-sizing: border-box;
-        }
-        .teflo-choose-top-subtitle{
-            margin-bottom: calc(100vw * 30 / var(--base-width));
-            font-size: calc(100vw * 20 / var(--base-width));
-        }
-        .teflo-choose-top-title{
-            font-size: calc(100vw * 70 / var(--base-width));
-            line-height: calc(100vw * 76 / var(--base-width));
-            letter-spacing: calc(100vw * -2.1 / var(--base-width));
-            margin-bottom: calc(100vw * 30 / var(--base-width));
-        }
-        .teflo-choose-top-desc *{
-            font-size: calc(100vw * 30 / var(--base-width));
-            line-height: calc(100vw * 36 / var(--base-width));
-        }
-        .teflo-choose-list-item-top{
-            align-items: end;
-        }
-        .teflo-choose-list{
-            padding:calc(100vw * 70 / var(--base-width)) calc(100vw * 25 / var(--base-width));
-            padding-top: calc(100vw * 70 / var(--base-width));
-            grid-template-columns: repeat(2,1fr);
-            row-gap: calc(100vw * 70 / var(--base-width));
-            column-gap: calc(100vw * 20 / var(--base-width));
-        }
-        .teflo-choose-list-item-top-title{
-            font-size: calc(100vw * 36 / var(--base-width));
-            line-height: calc(100vw * 42 / var(--base-width));
-            letter-spacing: calc(100vw * -1.08 / var(--base-width));
-        }
-        .teflo-choose-list-item-top-num{
-            font-size: calc(100vw * 20 / var(--base-width));
-            line-height: calc(100vw * 26 / var(--base-width));
-            letter-spacing: calc(100vw * -0.6 / var(--base-width));
-        }
-        .teflo-choose-list-item-content{
-            padding-top: calc(100vw * 20 / var(--base-width));
-        }
-        .teflo-choose-list-item-content-desc{
-            min-height: calc(100vw * 170 / var(--base-width));
-        }
-        .teflo-choose-list-item-content-desc *{
-            font-size: calc(100vw * 26 / var(--base-width));
-            line-height: calc(100vw * 32 / var(--base-width));
-            letter-spacing: calc(100vw * -0.6 / var(--base-width));
-        }
-        .teflo-choose-list-item-content-img{
-            width: calc(100vw * 120 / var(--base-width));
-        }
-    }
-    @media(max-width:768px){
-        .teflo-choose-list-item-content-desc{
-            min-height: calc(100vw * 270 / var(--base-width));
-        }
-        .teflo-choose-list{
-            row-gap: calc(100vw * 140 / var(--base-width));
-        }
-    }
+  }
+  .teflo-choose-list{
+      padding:calc(100vw * 80 / var(--base-width)) calc(100vw * 118 / var(--base-width));
+      {% comment %} padding-top: calc(100vw * 80 / var(--base-width)); {% endcomment %}
+      display: grid;
+      grid-template-columns: repeat(3,1fr);
+      row-gap: calc(100vw * 80 / var(--base-width));
+      column-gap: calc(100vw * 26 / var(--base-width));
+  }
+  .teflo-choose-list-item-top{
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-bottom: calc(100vw * 20 / var(--base-width));
+      border-bottom: 0.4px solid rgba(255, 255, 255, 0.30);
+  }
+  .teflo-choose-list-item-top-title{
+      color: #FFF;
+      font-size: calc(100vw * 21 / var(--base-width));
+      font-style: normal;
+      font-weight: 300;
+      line-height: calc(100vw * 28 / var(--base-width));
+      letter-spacing: calc(100vw * -0.63 / var(--base-width));
+      max-width: 80%;
+      min-height: calc(100vw * 56 / var(--base-width));
+      margin-bottom:0px;
+  }
+  .teflo-choose-list-item-top-num{
+      color: #FFF;
+      font-size: calc(100vw * 16 / var(--base-width));
+      font-style: normal;
+      font-weight: 400;
+      line-height: calc(100vw * 22 / var(--base-width));
+      letter-spacing: calc(100vw * -0.48 / var(--base-width));
+      opacity: 0.5;
+  }
+  .teflo-choose-list-item-content{
+      padding-top: calc(100vw * 40 / var(--base-width));
+  }
+  .teflo-choose-list-item-content-desc{
+      min-height:calc(100vw * 70 / var(--base-width));
+      margin-bottom: calc(100vw * 48 / var(--base-width));
+      max-width: 95%;
+  }
+  .teflo-choose-list-item-content-desc *{
+      color: #FFF;
+      font-size: calc(100vw * 14 / var(--base-width));
+      font-style: normal;
+      font-weight: 400;
+      line-height: calc(100vw * 18 / var(--base-width));
+      letter-spacing: calc(100vw * -0.42 / var(--base-width));
+      opacity: 0.7;
+      margin-bottom:0;
+      display: inline-block;
+  }
+  .teflo-choose-list-item-content-desc strong{
+      opacity: 1;
+  }
+  .teflo-choose-list-item-content-img{
+      width:calc(100vw * 70 / var(--base-width));
+  }
+  .teflo-choose-list-item-content-img img{
+      width:100%;
+  }
+
+  @media (max-width:1300px){
+      .teflo-choose-list{
+          padding-left: calc(100vw * 20 / var(--base-width));
+          padding-right: calc(100vw * 20 / var(--base-width));
+          box-sizing: border-box;
+      }
+  }
+  @media(max-width:1024px){
+      .teflo-choose{
+          box-sizing: border-box;
+      }
+      .v1-{{ section.id }}{
+    padding-top: {{ section.settings.padding_top_mb }}px;
+    padding-bottom: {{ section.settings.padding_bottom_mb }}px;
+  }
+      .teflo-choose-top{
+          bottom: calc(100vw * 40 / var(--base-width));
+          display: block;
+          left: calc(100vw * 25 / var(--base-width));
+          box-sizing: border-box;
+      }
+      .teflo-choose-top-subtitle{
+          margin-bottom: calc(100vw * 30 / var(--base-width));
+          font-size: calc(100vw * 20 / var(--base-width));
+      }
+      .teflo-choose-top-title{
+          font-size: calc(100vw * 70 / var(--base-width));
+          line-height: calc(100vw * 76 / var(--base-width));
+          letter-spacing: calc(100vw * -2.1 / var(--base-width));
+          margin-bottom: calc(100vw * 30 / var(--base-width));
+      }
+      .teflo-choose-top-desc *{
+          font-size: calc(100vw * 30 / var(--base-width));
+          line-height: calc(100vw * 36 / var(--base-width));
+      }
+      .teflo-choose-list-item-top{
+          align-items: end;
+      }
+      .teflo-choose-list{
+          padding:calc(100vw * 70 / var(--base-width)) calc(100vw * 25 / var(--base-width));
+          padding-top: calc(100vw * 70 / var(--base-width));
+          grid-template-columns: repeat(2,1fr);
+          row-gap: calc(100vw * 70 / var(--base-width));
+          column-gap: calc(100vw * 20 / var(--base-width));
+      }
+      .teflo-choose-list-item-top-title{
+          font-size: calc(100vw * 36 / var(--base-width));
+          line-height: calc(100vw * 42 / var(--base-width));
+          letter-spacing: calc(100vw * -1.08 / var(--base-width));
+      }
+      .teflo-choose-list-item-top-num{
+          font-size: calc(100vw * 20 / var(--base-width));
+          line-height: calc(100vw * 26 / var(--base-width));
+          letter-spacing: calc(100vw * -0.6 / var(--base-width));
+      }
+      .teflo-choose-list-item-content{
+          padding-top: calc(100vw * 20 / var(--base-width));
+      }
+      .teflo-choose-list-item-content-desc{
+          min-height: calc(100vw * 170 / var(--base-width));
+      }
+      .teflo-choose-list-item-content-desc *{
+          font-size: calc(100vw * 26 / var(--base-width));
+          line-height: calc(100vw * 32 / var(--base-width));
+          letter-spacing: calc(100vw * -0.6 / var(--base-width));
+      }
+      .teflo-choose-list-item-content-img{
+          width: calc(100vw * 120 / var(--base-width));
+      }
+  }
+  @media(max-width:768px){
+      .teflo-choose-list-item-content-desc{
+          min-height: calc(100vw * 270 / var(--base-width));
+      }
+      .teflo-choose-list{
+          row-gap: calc(100vw * 140 / var(--base-width));
+      }
+  }
 </style>
 
-
-
-<div class="teflo-choose">
-    <div class="teflo-choose-img">
-        <picture>
-            <source media="(max-width: 1024px)" srcset="{{ section.settings.image_h5 | image_url: width: '750' }}">
-            <img loading="lazy"  src="{{ section.settings.image_pc | image_url: width: '1920' }}" alt="{{  section.settings.image_alt }}">
-        </picture>
-        <div class="teflo-choose-top">
-            <div class="teflo-choose-top-lt">
-                <p class="teflo-choose-top-subtitle">{{ section.settings.subtitle }}</p>
-                <h2 class="teflo-choose-top-title">{{ section.settings.title }}</h2>
-            </div>
-            <div class="teflo-choose-top-desc">
-                {{ section.settings.desc }}
-            </div>
-        </div>
+<div class="teflo-choose v1-{{ section.id }}">
+  <div class="teflo-choose-img">
+    <picture>
+      <source media="(max-width: 1024px)" srcset="{{ section.settings.image_h5 | image_url: width: '750' }}">
+      <img
+        loading="lazy"
+        src="{{ section.settings.image_pc | image_url: width: '1920' }}"
+        alt="{{  section.settings.image_alt }}"
+      >
+    </picture>
+    <div class="teflo-choose-top">
+      <div class="teflo-choose-top-lt">
+        <p class="teflo-choose-top-subtitle">{{ section.settings.subtitle }}</p>
+        <h2 class="teflo-choose-top-title">{{ section.settings.title }}</h2>
+      </div>
+      <div class="teflo-choose-top-desc">
+        {{ section.settings.desc }}
+      </div>
     </div>
-    <div class="teflo-choose-list">
-        {% for block in section.blocks %}
-        <div class="teflo-choose-list-item">
-            <div class="teflo-choose-list-item-top">
-                <h3 class="teflo-choose-list-item-top-title">{{ block.settings.title }}</h3>
-                <div class="teflo-choose-list-item-top-num">A0{{ forloop.index }}</div>
-            </div>
-            <div class="teflo-choose-list-item-content">
-                <div class="teflo-choose-list-item-content-desc">{{ block.settings.desc }}</div>
-                <div class="teflo-choose-list-item-content-img">
-                    <img loading="lazy" src="{{ block.settings.image | img_url: 'master' }}" alt="{{ block.settings.image_alt }}">
-                </div>
-            </div>
+  </div>
+  <div class="teflo-choose-list">
+    {% for block in section.blocks %}
+      <div class="teflo-choose-list-item">
+        <div class="teflo-choose-list-item-top">
+          <h3 class="teflo-choose-list-item-top-title">{{ block.settings.title }}</h3>
+          <div class="teflo-choose-list-item-top-num">A0{{ forloop.index }}</div>
         </div>
-        {% endfor %}
-    </div>
+        <div class="teflo-choose-list-item-content">
+          <div class="teflo-choose-list-item-content-desc">{{ block.settings.desc }}</div>
+          <div class="teflo-choose-list-item-content-img">
+            <img
+              loading="lazy"
+              src="{{ block.settings.image | img_url: 'master' }}"
+              alt="{{ block.settings.image_alt }}"
+            >
+          </div>
+        </div>
+      </div>
+    {% endfor %}
+  </div>
 </div>
 
 {% schema %}
 {
-    "name": "Choose",
-    "settings": [
+  "name": "Choose",
+  "settings": [
+    {
+      "type": "text",
+      "id": "subtitle",
+      "label": "Subtitle"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title",
+      "default": "Title"
+    },
+    {
+      "type": "richtext",
+      "id": "desc",
+      "label": "Description"
+    },
+    {
+      "type": "image_picker",
+      "id": "image_pc",
+      "label": "pc Image"
+    },
+    {
+      "type": "image_picker",
+      "id": "image_h5",
+      "label": "h5 Image"
+    },
+    {
+      "type": "text",
+      "id": "image_alt",
+      "label": "Image Alt"
+    },
+    {
+      "type": "range",
+      "id": "padding_top_pc",
+      "min": 0,
+      "max": 150,
+      "step": 5,
+      "unit": "px",
+      "label": "PC端上边距",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_pc",
+      "min": 0,
+      "max": 150,
+      "step": 5,
+      "unit": "px",
+      "label": "PC端下边距",
+      "default": 70
+    },
+    {
+      "type": "range",
+      "id": "padding_top_mb",
+      "min": 0,
+      "max": 150,
+      "step": 5,
+      "unit": "px",
+      "label": "移动端上边距",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_mb",
+      "min": 0,
+      "max": 150,
+      "step": 5,
+      "unit": "px",
+      "label": "移动端下边距",
+      "default": 40
+    }
+  ],
+  "blocks": [
+    {
+      "type": "choose",
+      "name": "Choose",
+      "settings": [
         {
-            "type": "text",
-            "id": "subtitle",
-            "label": "Subtitle"
+          "type": "text",
+          "id": "title",
+          "label": "Title",
+          "default": "Title"
         },
         {
-            "type": "text",
-            "id": "title",
-            "label": "Title",
-            "default": "Title"
+          "type": "richtext",
+          "id": "desc",
+          "label": "Description"
         },
         {
-            "type": "richtext",
-            "id": "desc",
-            "label": "Description"
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image"
         },
         {
-            "type": "image_picker",
-            "id": "image_pc",
-            "label": "pc Image"
-        },
-        {
-            "type": "image_picker",
-            "id": "image_h5",
-            "label": "h5 Image"
-        },
-        {
-            "type": "text",
-            "id": "image_alt",
-            "label": "Image Alt"
+          "type": "text",
+          "id": "image_alt",
+          "label": "Image Alt"
         }
-    ],
-    "blocks": [
-        {
-            "type": "choose",
-            "name": "Choose",
-            "settings": [
-                {
-                    "type": "text",
-                    "id": "title",
-                    "label": "Title",
-                    "default": "Title"
-                },
-                {
-                    "type": "richtext",
-                    "id": "desc",
-                    "label": "Description"
-                },
-                {
-                    "type": "image_picker",
-                    "id": "image",
-                    "label": "Image"
-                },
-                {
-                    "type": "text",
-                    "id": "image_alt",
-                    "label": "Image Alt"
-                }
-            ]
-        }
-    ],
-    "presets": [
-        {
-            "name": "teflo Choose"
-        }
-    ]
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "teflo Choose"
+    }
+  ]
 }
 {% endschema %}

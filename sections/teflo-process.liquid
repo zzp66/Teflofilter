@@ -24,6 +24,8 @@
   }
   .process-{{ section.id }}{
     background: {{ section.settings.teflo_process_bg_color }};
+    padding-top: {{ section.settings.padding_top_pc }}px;
+    padding-bottom: {{ section.settings.padding_bottom_pc }}px;
   }
   .teflo-process-content {
     display: flex;
@@ -127,7 +129,8 @@
   @media (max-width: 1024px) {
     .teflo-process {
       padding: 0 calc(100vw * 25 / var(--base-width));
-      padding-top: calc(100vw * 170 / var(--base-width));
+      padding-top: {{ section.settings.padding_top_mb }}px;
+      padding-bottom: {{ section.settings.padding_bottom_mb }}px;
       display: block;
     }
     .teflo-process-content{
@@ -322,6 +325,46 @@
       "id": "teflo_process_content_color",
       "label": "Teflo Process content color",
       "default": "#0D0D0D"
+    },
+    {
+      "type": "range",
+      "id": "padding_top_pc",
+      "min": 0,
+      "max": 150,
+      "step": 5,
+      "unit": "px",
+      "label": "PC端上边距",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_pc",
+      "min": 0,
+      "max": 150,
+      "step": 5,
+      "unit": "px",
+      "label": "PC端下边距",
+      "default": 70
+    },
+    {
+      "type": "range",
+      "id": "padding_top_mb",
+      "min": 0,
+      "max": 150,
+      "step": 5,
+      "unit": "px",
+      "label": "移动端上边距",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_mb",
+      "min": 0,
+      "max": 150,
+      "step": 5,
+      "unit": "px",
+      "label": "移动端下边距",
+      "default": 40
     }
   ],
   "blocks": [

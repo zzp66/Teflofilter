@@ -1,305 +1,351 @@
 {%- liquid
-    assign button_text = section.settings.button_text
-    assign button_link = section.settings.button_link
-    assign button_text_color = section.settings.button_text_color
-    assign button_bg_color = section.settings.button_bg_color
-    assign button_hover_text_color = section.settings.button_hover_text_color
-    assign button_hover_bg_color = section.settings.button_hover_bg_color
-    assign button_border_color = section.settings.button_border_color
-    assign button_border = section.settings.button_border
-    assign button_hover_border_color = section.settings.button_hover_border_color
+  assign button_text = section.settings.button_text
+  assign button_link = section.settings.button_link
+  assign button_text_color = section.settings.button_text_color
+  assign button_bg_color = section.settings.button_bg_color
+  assign button_hover_text_color = section.settings.button_hover_text_color
+  assign button_hover_bg_color = section.settings.button_hover_bg_color
+  assign button_border_color = section.settings.button_border_color
+  assign button_border = section.settings.button_border
+  assign button_hover_border_color = section.settings.button_hover_border_color
 -%}
 
 <style>
-    .teflo-case{
-        background: #0D0D0D;
-        padding: 0 calc(100vw * 20 / var(--base-width));
-        padding-top: calc(100vw * 73 / var(--base-width));
+  .teflo-case {
+    background: #0d0d0d;
+    padding: 0 calc(100vw * 20 / var(--base-width));
+  }
+  .v1-{{ section.id }} {
+    padding-top: {{ section.settings.padding_top_pc }}px;
+    padding-bottom: {{ section.settings.padding_bottom_pc }}px;
+  }
+  .teflo-case-top {
+    display: flex;
+    align-items: end;
+    margin-bottom: calc(100vw * 60 / var(--base-width));
+  }
+  .teflo-case-top-h2 {
+    color: #fff;
+    font-size: calc(100vw * 80 / var(--base-width));
+    font-style: normal;
+    font-weight: 400;
+    line-height: calc(100vw * 88 / var(--base-width));
+    letter-spacing: calc(100vw * -2.4 / var(--base-width));
+  }
+  .teflo-case-top-btn {
+    flex-shrink: 0;
+  }
+  .teflo-case-list {
+    padding: 0 calc(100vw * 100 / var(--base-width));
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    column-gap: calc(100vw * 22 / var(--base-width));
+    row-gap: calc(100vw * 35 / var(--base-width));
+  }
+  .teflo-case-list-item-dot {
+    width: calc(100vw * 8 / var(--base-width));
+    height: calc(100vw * 8 / var(--base-width));
+    border-radius: 50%;
+    flex-shrink: 0;
+    background: #0522cb;
+  }
+  .teflo-case-list-item-num {
+    color: #fff;
+    font-size: calc(100vw * 12 / var(--base-width));
+    font-style: normal;
+    font-weight: 400;
+    line-height: calc(100vw * 12 / var(--base-width));
+    margin-left: calc(100vw * 8 / var(--base-width));
+    margin-bottom: 0;
+    opacity: 0.5;
+  }
+  .teflo-case-list-item-top {
+    display: flex;
+    align-items: center;
+    padding-bottom: calc(100vw * 7 / var(--base-width));
+    border-bottom: 0.4px solid rgba(255, 255, 255, 0.3);
+    margin-bottom: calc(100vw * 28 / var(--base-width));
+  }
+  .teflo-case-list-item-content {
+    display: flex;
+    padding-right: calc(100vw * 20 / var(--base-width));
+  }
+  .teflo-case-list-item-content-info {
+    flex: 1;
+  }
+  .teflo-case-list-item-content-img {
+    width: calc(100vw * 231 / var(--base-width));
+    flex-shrink: 0;
+    margin-right: calc(100vw * 43 / var(--base-width));
+  }
+  .teflo-case-list-item-content-img img {
+    width: 100%;
+  }
+  .teflo-case-list-item-content-info-h3 {
+    color: #fff;
+    font-size: calc(100vw * 30 / var(--base-width));
+    font-style: normal;
+    font-weight: 400;
+    line-height: calc(100vw * 36 / var(--base-width));
+    letter-spacing: calc(100vw * -0.9 / var(--base-width));
+    margin-bottom: calc(100vw * 15 / var(--base-width));
+    padding-top: calc(100vw * 15 / var(--base-width));
+  }
+  .teflo-case-list-item-content-info-desc * {
+    color: #fff;
+    font-size: calc(100vw * 16 / var(--base-width));
+    font-style: normal;
+    font-weight: 400;
+    line-height: calc(100vw * 20 / var(--base-width));
+    letter-spacing: calc(100vw * -0.48 / var(--base-width));
+    margin-bottom: 0;
+    display: inline-block;
+  }
+  .teflo-case-list-item-content-info-desc p {
+    opacity: 0.6;
+  }
+  @media (max-width: 1300px) {
+    .teflo-case-list {
+      padding-left: calc(100vw * 20 / var(--base-width));
+      padding-right: calc(100vw * 20 / var(--base-width));
     }
-    .teflo-case-top{
-        display: flex;
-        align-items: end;
-        margin-bottom: calc(100vw * 60 / var(--base-width));
-    }
-    .teflo-case-top-h2{
-        color: #FFF;
-        font-size: calc(100vw * 80 / var(--base-width));
-        font-style: normal;
-        font-weight: 400;
-        line-height: calc(100vw * 88 / var(--base-width));
-        letter-spacing: calc(100vw * -2.4 / var(--base-width));
-        
-    }
-    .teflo-case-top-btn{
-        flex-shrink: 0;
-    }
-    .teflo-case-list{
-        padding: 0 calc(100vw * 100 / var(--base-width));
-        display: grid;
-        grid-template-columns: repeat(2,1fr);
-        column-gap: calc(100vw * 22 / var(--base-width));
-        row-gap: calc(100vw * 35 / var(--base-width));
-    }
-    .teflo-case-list-item-dot{
-        width: calc(100vw * 8 / var(--base-width));
-        height: calc(100vw * 8 / var(--base-width));
-        border-radius: 50%;
-        flex-shrink: 0;
-        background:#0522CB;
-    }
-    .teflo-case-list-item-num{
-        color: #FFF;
-        font-size: calc(100vw * 12 / var(--base-width));
-        font-style: normal;
-        font-weight: 400;
-        line-height: calc(100vw * 12 / var(--base-width));
-        margin-left: calc(100vw * 8 / var(--base-width));
-        margin-bottom: 0;
-        opacity: 0.5;
-    }
-    .teflo-case-list-item-top{
-        display:flex;
-        align-items: center;
-        padding-bottom: calc(100vw * 7 / var(--base-width));
-        border-bottom: 0.4px solid rgba(255, 255, 255, 0.30);
-        margin-bottom: calc(100vw * 28 / var(--base-width));
-    }
-    .teflo-case-list-item-content{
-        display: flex;
-        padding-right: calc(100vw * 20 / var(--base-width));
-    }
-    .teflo-case-list-item-content-info{
-        flex:1;
-    }
-    .teflo-case-list-item-content-img{
-        width: calc(100vw * 231 / var(--base-width));
-        flex-shrink: 0;
-        margin-right: calc(100vw * 43 / var(--base-width));
-    }
-    .teflo-case-list-item-content-img img{
-        width: 100%;
-    }
-    .teflo-case-list-item-content-info-h3{
-        color: #FFF;
-        font-size: calc(100vw * 30 / var(--base-width));
-        font-style: normal;
-        font-weight: 400;
-        line-height: calc(100vw * 36 / var(--base-width));
-        letter-spacing: calc(100vw * -0.9 / var(--base-width));
-        margin-bottom: calc(100vw * 15 / var(--base-width));
-        padding-top: calc(100vw * 15 / var(--base-width));
-    }
-    .teflo-case-list-item-content-info-desc *{
-        color: #FFF;
-        font-size: calc(100vw * 16 / var(--base-width));
-        font-style: normal;
-        font-weight: 400;
-        line-height: calc(100vw * 20 / var(--base-width));
-        letter-spacing: calc(100vw * -0.48 / var(--base-width));
-        margin-bottom: 0;
-        display: inline-block;
-    }
-    .teflo-case-list-item-content-info-desc p{
-        opacity: 0.6;
-    }
-    @media(max-width:1300px){
-        .teflo-case-list{
-            padding-left: calc(100vw * 20 / var(--base-width));
-            padding-right: calc(100vw * 20 / var(--base-width)); 
-        }
-    }
+  }
 
-    @media(max-width:1024px){
-        .teflo-case{
-            padding: 0 calc(100vw * 25 / var(--base-width));
-            padding-top: calc(100vw * 76 / var(--base-width));
-        }
-        .teflo-case-top{
-            display: block;
-        }
-        .teflo-case-top-h2{
-            font-size: calc(100vw * 70 / var(--base-width));
-            line-height: calc(100vw * 76 / var(--base-width));
-            letter-spacing: calc(100vw * -2.1 / var(--base-width));
-            margin-bottom: calc(100vw * 70 / var(--base-width));
-        }
-        .teflo-case-list{
-            column-gap: calc(100vw * 20 / var(--base-width));
-            row-gap: calc(100vw * 70 / var(--base-width));
-            padding: 0;
-        }
-        .teflo-case-list-item-dot{
-            width: calc(100vw * 13 / var(--base-width));
-            height: calc(100vw * 13 / var(--base-width));
-        }
-        .teflo-case-list-item-num{
-            font-size: calc(100vw * 20 / var(--base-width));
-            opacity: 0.4;
-        }
-        .teflo-case-list-item-top{
-            padding-bottom: calc(100vw * 15 / var(--base-width));
-        }
-        .teflo-case-list-item-content{
-            display: block;
-            marign-right: 0;
-            padding-right: 0;
-        }
-        .teflo-case-list-item-content-img{
-            width: 100%;
-        }
-        .teflo-case-list-item-content-info-h3{
-            font-size: calc(100vw * 36 / var(--base-width));
-            line-height: calc(100vw * 42 / var(--base-width));
-            letter-spacing: calc(100vw * -1.08 / var(--base-width));
-            margin-bottom: 0;
-            padding-top: calc(100vw * 35 / var(--base-width));
-            margin-bottom: calc(100vw * 20 / var(--base-width));
-        }
-        .teflo-case-list-item-content-info-desc{
-        }
-        .teflo-case-list-item-content-info-desc *{
-            font-size: calc(100vw * 26 / var(--base-width));
-            line-height: calc(100vw * 32 / var(--base-width));
-        }
-        .teflo-case-top-btn{
-            display: flex;
-            justify-content: end;
-        }
+  @media (max-width: 1024px) {
+    .teflo-case {
+      padding: 0 calc(100vw * 25 / var(--base-width));
     }
+    .v1-{{ section.id }}{
+    padding-top: {{ section.settings.padding_top_mb }}px;
+    padding-bottom: {{ section.settings.padding_bottom_mb }}px;
+  }
+    .teflo-case-top {
+      display: block;
+    }
+    .teflo-case-top-h2 {
+      font-size: calc(100vw * 70 / var(--base-width));
+      line-height: calc(100vw * 76 / var(--base-width));
+      letter-spacing: calc(100vw * -2.1 / var(--base-width));
+      margin-bottom: calc(100vw * 70 / var(--base-width));
+    }
+    .teflo-case-list {
+      column-gap: calc(100vw * 20 / var(--base-width));
+      row-gap: calc(100vw * 70 / var(--base-width));
+      padding: 0;
+    }
+    .teflo-case-list-item-dot {
+      width: calc(100vw * 13 / var(--base-width));
+      height: calc(100vw * 13 / var(--base-width));
+    }
+    .teflo-case-list-item-num {
+      font-size: calc(100vw * 20 / var(--base-width));
+      opacity: 0.4;
+    }
+    .teflo-case-list-item-top {
+      padding-bottom: calc(100vw * 15 / var(--base-width));
+    }
+    .teflo-case-list-item-content {
+      display: block;
+      marign-right: 0;
+      padding-right: 0;
+    }
+    .teflo-case-list-item-content-img {
+      width: 100%;
+    }
+    .teflo-case-list-item-content-info-h3 {
+      font-size: calc(100vw * 36 / var(--base-width));
+      line-height: calc(100vw * 42 / var(--base-width));
+      letter-spacing: calc(100vw * -1.08 / var(--base-width));
+      margin-bottom: 0;
+      padding-top: calc(100vw * 35 / var(--base-width));
+      margin-bottom: calc(100vw * 20 / var(--base-width));
+    }
+    .teflo-case-list-item-content-info-desc {
+    }
+    .teflo-case-list-item-content-info-desc * {
+      font-size: calc(100vw * 26 / var(--base-width));
+      line-height: calc(100vw * 32 / var(--base-width));
+    }
+    .teflo-case-top-btn {
+      display: flex;
+      justify-content: end;
+    }
+  }
 </style>
-<div class="teflo-case">
-    <div class="teflo-case-top">
-        <h2 class="teflo-case-top-h2">{{ section.settings.title }}</h2>
-        <div class="teflo-case-top-btn">
-            {% render 'teflo-button',
-                button_link:button_link,
-                 button_text:button_text,
-                  button_text_color:button_text_color,
-                 button_bg_color:button_bg_color,
-                 button_hover_text_color:button_hover_text_color,
-                 button_hover_bg_color:button_hover_bg_color,
-                 button_border_color:button_border_color, 
-                 button_border:button_border,
-                     button_hover_border_color:button_hover_border_color
-                 
-            %}
+<div class="teflo-case v1-{{ section.id }}">
+  <div class="teflo-case-top">
+    <h2 class="teflo-case-top-h2">{{ section.settings.title }}</h2>
+    <div class="teflo-case-top-btn">
+      {% render 'teflo-button',
+        button_link: button_link,
+        button_text: button_text,
+        button_text_color: button_text_color,
+        button_bg_color: button_bg_color,
+        button_hover_text_color: button_hover_text_color,
+        button_hover_bg_color: button_hover_bg_color,
+        button_border_color: button_border_color,
+        button_border: button_border,
+        button_hover_border_color: button_hover_border_color
+      %}
+    </div>
+  </div>
+  <div class="teflo-case-list">
+    {% for block in section.blocks %}
+      <div class="teflo-case-list-item">
+        <div class="teflo-case-list-item-top">
+          <div class="teflo-case-list-item-dot"></div>
+          <p class="teflo-case-list-item-num">A0{{ forloop.index }}</p>
         </div>
-    </div>
-    <div class="teflo-case-list">
-        {% for block in section.blocks %}
-            <div class="teflo-case-list-item">
-                <div class="teflo-case-list-item-top">
-                    <div class="teflo-case-list-item-dot"></div>
-                    <p class="teflo-case-list-item-num">A0{{ forloop.index }}</p>
-                </div>
-                <div class="teflo-case-list-item-content">
-                    <div class="teflo-case-list-item-content-img">
-                        <img loading="lazy" src="{{ block.settings.image | img_url: 'master' }}" alt="{{ block.settings.image_alt }}">
-                    </div>
-                    <div class="teflo-case-list-item-content-info">
-                        <h3 class="teflo-case-list-item-content-info-h3">{{ block.settings.title }}</h3>
-                        <div class="teflo-case-list-item-content-info-desc">{{ block.settings.desc }}</div>
-                    </div>
-                </div>
-            </div>
-
-        {% endfor %}
-     
-    </div>
+        <div class="teflo-case-list-item-content">
+          <div class="teflo-case-list-item-content-img">
+            <img
+              loading="lazy"
+              src="{{ block.settings.image | img_url: 'master' }}"
+              alt="{{ block.settings.image_alt }}"
+            >
+          </div>
+          <div class="teflo-case-list-item-content-info">
+            <h3 class="teflo-case-list-item-content-info-h3">{{ block.settings.title }}</h3>
+            <div class="teflo-case-list-item-content-info-desc">{{ block.settings.desc }}</div>
+          </div>
+        </div>
+      </div>
+    {% endfor %}
+  </div>
 </div>
 
 {% schema %}
 {
-    "name": "Teflo Case",
-    "settings": [
+  "name": "Teflo Case",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title"
+    },
+    {
+      "type": "color",
+      "id": "button_border_color",
+      "label": "Button border color"
+    },
+    {
+      "type": "color",
+      "id": "button_hover_border_color",
+      "label": "Button hover border color"
+    },
+    {
+      "type": "checkbox",
+      "id": "button_border",
+      "label": "Button border",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "button_text",
+      "label": "Button text"
+    },
+    {
+      "type": "text",
+      "id": "button_link",
+      "label": "Button link, enter a URL or popup"
+    },
+    {
+      "type": "text",
+      "id": "button_text_color",
+      "label": "Button text color",
+      "default": "#000000"
+    },
+    {
+      "type": "text",
+      "id": "button_bg_color",
+      "label": "Button background color",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "text",
+      "id": "button_hover_text_color",
+      "label": "Button hover text color",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "text",
+      "id": "button_hover_bg_color",
+      "label": "Button hover background color",
+      "default": "#000000"
+    },
+    {
+      "type": "range",
+      "id": "padding_top_pc",
+      "min": 0,
+      "max": 150,
+      "step": 5,
+      "unit": "px",
+      "label": "PC端上边距",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_pc",
+      "min": 0,
+      "max": 150,
+      "step": 5,
+      "unit": "px",
+      "label": "PC端下边距",
+      "default": 70
+    },
+    {
+      "type": "range",
+      "id": "padding_top_mb",
+      "min": 0,
+      "max": 150,
+      "step": 5,
+      "unit": "px",
+      "label": "移动端上边距",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_mb",
+      "min": 0,
+      "max": 150,
+      "step": 5,
+      "unit": "px",
+      "label": "移动端下边距",
+      "default": 40
+    }
+  ],
+  "blocks": [
+    {
+      "type": "case",
+      "name": "Case",
+      "settings": [
         {
-            "type": "text",
-            "id": "title",
-            "label": "Title"
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image"
         },
-            {
-                "type": "color",
-                "id": "button_border_color",
-                "label": "Button border color",
-            },
-            {
-                "type": "color",
-                "id": "button_hover_border_color",
-                "label": "Button hover border color",
-            },
-            {
-                "type": "checkbox",
-                "id": "button_border",
-                "label": "Button border",
-                "default": true
-            },
-            {
-                "type": "text",
-                "id": "button_text",
-                "label": "Button text"
-            },
-            {
-                "type": "text",
-                "id": "button_link",
-                "label": "Button link, enter a URL or popup"
-            },
-            {
-                "type": "text",
-                "id": "button_text_color",
-                "label": "Button text color",
-                "default": "#000000"
-            },
-            {
-                "type": "text",
-                "id": "button_bg_color",
-                "label": "Button background color",
-                "default": "#FFFFFF"
-            },
-            {
-                "type": "text",
-                "id": "button_hover_text_color",
-                "label": "Button hover text color",
-                "default": "#FFFFFF"
-            },
-            {
-                "type": "text",
-                "id": "button_hover_bg_color",
-                "label": "Button hover background color",
-                "default": "#000000"
-            }
-    ],
-    "blocks": [
         {
-            "type": "case",
-            "name": "Case",
-            "settings": [
-                {
-                    "type": "image_picker",
-                    "id": "image",
-                    "label": "Image"
-                },
-                {
-                    "type": "text",
-                    "id": "image_alt",
-                    "label": "Image Alt"
-                },
-                {
-                    "type": "text",
-                    "id": "title",
-                    "label": "Title"
-                },
-                {
-                    "type": "richtext",
-                    "id": "desc",
-                    "label": "Description"
-                }
-            ]
-        }
-    ],
-    "presets": [
+          "type": "text",
+          "id": "image_alt",
+          "label": "Image Alt"
+        },
         {
-            "name": "Teflo Case"
+          "type": "text",
+          "id": "title",
+          "label": "Title"
+        },
+        {
+          "type": "richtext",
+          "id": "desc",
+          "label": "Description"
         }
-    ]
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Teflo Case"
+    }
+  ]
 }
 {% endschema %}

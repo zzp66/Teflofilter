@@ -1,7 +1,24 @@
+{%- liquid
+  assign logo = section.settings.logo
+  assign logo_alt = section.settings.logo_alt
+  assign logo_link = section.settings.logo_link
+  assign button_text = section.settings.button_text
+  assign button_link = section.settings.button_link
+  assign button_text_color = section.settings.button_text_color
+  assign button_bg_color = section.settings.button_bg_color
+  assign button_hover_text_color = section.settings.button_hover_text_color
+  assign button_hover_bg_color = section.settings.button_hover_bg_color
+  assign button_border_color = section.settings.button_border_color
+  assign button_border = section.settings.button_border
+  assign button_hover_border_color = section.settings.button_hover_border_color
+-%}
 <style>
   .teflo-our-goals {
-    padding-top: calc(100vw * 140 / var(--base-width));
     background: #fff;
+  }
+  .v1-{{ section.id }} {
+    padding-top: {{ section.settings.padding_top_pc }}px;
+    padding-bottom: {{ section.settings.padding_bottom_pc }}px;
   }
   .teflo-our-goals-subtitle {
     color: #1a1a1a;
@@ -63,9 +80,10 @@
   }
 
   @media (max-width: 1024px) {
-    .teflo-our-goals {
-      padding-top: calc(100vw * 170 / var(--base-width));
-    }
+    .v1-{{ section.id }}{
+    padding-top: {{ section.settings.padding_top_mb }}px;
+    padding-bottom: {{ section.settings.padding_bottom_mb }}px;
+  }
     .teflo-our-goals-subtitle {
       font-size: calc(100vw * 20 / var(--base-width));
       line-height: calc(100vw * 26 / var(--base-width));
@@ -105,20 +123,41 @@
     }
   }
 </style>
-{%- liquid
-  assign logo = section.settings.logo
-  assign logo_alt = section.settings.logo_alt
-  assign logo_link = section.settings.logo_link
-  assign button_text = section.settings.button_text
-  assign button_link = section.settings.button_link
-  assign button_text_color = section.settings.button_text_color
-  assign button_bg_color = section.settings.button_bg_color
-  assign button_hover_text_color = section.settings.button_hover_text_color
-  assign button_hover_bg_color = section.settings.button_hover_bg_color
-  assign button_border_color = section.settings.button_border_color
-  assign button_border = section.settings.button_border
-  assign button_hover_border_color = section.settings.button_hover_border_color
--%}
+
+<div class="teflo-our-goals v1-{{ section.id }}">
+  {% if section.settings.subtitle != blank %}
+    <p class="teflo-our-goals-subtitle">{{ section.settings.subtitle }}</p>
+  {% endif %}
+  <div class="teflo-our-goals-list">
+    {% for block in section.blocks %}
+      <div class="teflo-our-goals-list-item">
+        <div class="teflo-our-goals-list-item-lt">
+          <span class="teflo-our-goals-list-item-lt-span">{{ block.settings.num }}</span>
+          <h3 class="teflo-our-goals-list-item-lt-title">{{ block.settings.title }}</h3>
+        </div>
+        <div class="teflo-our-goals-list-item-rt">
+          {{ block.settings.desc }}
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+  {% if button_text != blank %}
+    <div class="teflo-our-goals-button">
+      {% render 'teflo-button',
+        button_link: button_link,
+        button_text: button_text,
+        button_text_color: button_text_color,
+        button_bg_color: button_bg_color,
+        button_hover_text_color: button_hover_text_color,
+        button_hover_bg_color: button_hover_bg_color,
+        button_border_color: button_border_color,
+        button_border: button_border,
+        button_hover_border_color: button_hover_border_color
+      %}
+    </div>
+  {% endif %}
+</div>
+
 {% schema %}
 {
   "name": "Our goals",
@@ -178,6 +217,46 @@
       "id": "button_hover_bg_color",
       "label": "Button hover background color",
       "default": "#000000"
+    },
+    {
+      "type": "range",
+      "id": "padding_top_pc",
+      "min": 0,
+      "max": 150,
+      "step": 5,
+      "unit": "px",
+      "label": "PC端上边距",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_pc",
+      "min": 0,
+      "max": 150,
+      "step": 5,
+      "unit": "px",
+      "label": "PC端下边距",
+      "default": 70
+    },
+    {
+      "type": "range",
+      "id": "padding_top_mb",
+      "min": 0,
+      "max": 150,
+      "step": 5,
+      "unit": "px",
+      "label": "移动端上边距",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_mb",
+      "min": 0,
+      "max": 150,
+      "step": 5,
+      "unit": "px",
+      "label": "移动端下边距",
+      "default": 40
     }
   ],
   "blocks": [
@@ -210,36 +289,3 @@
   ]
 }
 {% endschema %}
-<div class="teflo-our-goals">
-  {% if section.settings.subtitle != blank %}
-    <p class="teflo-our-goals-subtitle">{{ section.settings.subtitle }}</p>
-  {% endif %}
-  <div class="teflo-our-goals-list">
-    {% for block in section.blocks %}
-      <div class="teflo-our-goals-list-item">
-        <div class="teflo-our-goals-list-item-lt">
-          <span class="teflo-our-goals-list-item-lt-span">{{ block.settings.num }}</span>
-          <h3 class="teflo-our-goals-list-item-lt-title">{{ block.settings.title }}</h3>
-        </div>
-        <div class="teflo-our-goals-list-item-rt">
-          {{ block.settings.desc }}
-        </div>
-      </div>
-    {% endfor %}
-  </div>
-  {% if button_text != blank %}
-    <div class="teflo-our-goals-button">
-      {% render 'teflo-button',
-        button_link: button_link,
-        button_text: button_text,
-        button_text_color: button_text_color,
-        button_bg_color: button_bg_color,
-        button_hover_text_color: button_hover_text_color,
-        button_hover_bg_color: button_hover_bg_color,
-        button_border_color: button_border_color,
-        button_border: button_border,
-        button_hover_border_color: button_hover_border_color
-      %}
-    </div>
-  {% endif %}
-</div>

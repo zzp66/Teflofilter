@@ -2,7 +2,10 @@
   .v1-table {
     background-color: #fff;
     padding: 0 calc(100vw * 20 / var(--base-width));
-    padding-bottom: 100px;
+  }
+  .v1-{{ section.id }} {
+    padding-top: {{ section.settings.padding_top_pc }}px;
+    padding-bottom: {{ section.settings.padding_bottom_pc }}px;
   }
   .v1-table-title {
     display: flex;
@@ -18,6 +21,7 @@
     line-height: 1;
     text-transform: uppercase;
     margin-bottom: calc(100vw * 10 / var(--base-width));
+    opacity: 0.5;
   }
   .v1-table-title .v1-table-h2 {
     color: #1a1a1a;
@@ -29,52 +33,39 @@
     letter-spacing: calc(100vw * -1.8 / var(--base-width));
     text-transform: capitalize;
   }
-  .v1-table table {
-    margin: 0;
-    border-spacing: 5px;
-    border-collapse: separate;
-    border: none;
-    overflow: hidden;
-    word-wrap: break-word;
-    width: 100%;
-  }
-  .v1-table th,
-  .v1-table td {
-    text-align: center;
-    font-family: Matter;
-    font-size: calc(100vw * 20 / var(--base-width));
-    font-style: normal;
-    font-weight: 400;
-    line-height: calc(100vw * 22 / var(--base-width));
-    padding: calc(100vw * 20 / var(--base-width)) calc(100vw * 50 / var(--base-width));
-    border-radius: 3px;
-    border: none;
+  .v1-table-box{
+    margin-top: calc(100vw * 50 / var(--base-width));
   }
   @media screen and (max-width: 1280px) {
-    .v1-table th,
-    .v1-table td {
-      font-size: calc(100vw * 24 / var(--base-width));
-      line-height: calc(100vw * 30 / var(--base-width));
-      padding: calc(100vw * 10 / var(--base-width)) calc(100vw * 12 / var(--base-width));
-    }
+    .v1-{{ section.id }}{
+    padding-top: {{ section.settings.padding_top_mb }}px;
+    padding-bottom: {{ section.settings.padding_bottom_mb }}px;
+  }
+  .v1-table-title .v1-table-h2 {
+    font-size: calc(100vw * 50 / var(--base-width));
+    line-height: calc(100vw * 56 / var(--base-width));
+  }
   }
   @media screen and (max-width: 750px) {
-    .v1-table th,
-    .v1-table td {
-      font-size: calc(100vw * 20 / var(--base-width));
-      line-height: calc(100vw * 26 / var(--base-width));
-      padding: calc(100vw * 10 / var(--base-width)) calc(100vw * 12 / var(--base-width));
-    }
+    .v1-table-title .v1-table-h2 {
+    font-size: calc(100vw * 70 / var(--base-width));
+    line-height: calc(100vw * 76 / var(--base-width));
+    letter-spacing: calc(100vw * -2.1 / var(--base-width));
+  }
   }
 </style>
-<div class="v1-table">
+<div class="v1-table v1-{{ section.id }}">
   <div class="v1-table-content">
     <div class="v1-table-title">
-      <span class="title-desc">[ thispower ]</span>
-      <h2 class="v1-table-h2">Product Parameters</h2>
+      <span class="title-desc">{{ section.settings.title_desc }}</span>
+      <h2 class="v1-table-h2">{{ section.settings.title }}</h2>
     </div>
     <div class="v1-table-box">
-      {{ product.description }}
+      <picture>
+        <source media="(max-width: 750px)" srcset="{{ section.settings.table_img_mb | image_url: width: master }}">
+        <source media="(min-width: 751px)" srcset="{{ section.settings.table_img | image_url: width: master }}">
+        <img src="{{ section.settings.table_img | image_url: width: master }}">
+      </picture>
     </div>
   </div>
 </div>
@@ -82,7 +73,70 @@
 {% schema %}
 {
   "name": "V1 Table",
-  "settings": [],
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "table_img",
+      "label": "PC Image"
+    },
+    {
+      "type": "image_picker",
+      "id": "table_img_mb",
+      "label": "Mobile Image"
+    },
+    {
+      "type": "text",
+      "id": "title_desc",
+      "label": "Title Desc",
+      "default": "[ thispower ]"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title",
+      "default": "Product Parameters"
+    },
+    {
+      "type": "range",
+      "id": "padding_top_pc",
+      "min": 0,
+      "max": 150,
+      "step": 5,
+      "unit": "px",
+      "label": "PC端上边距",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_pc",
+      "min": 0,
+      "max": 150,
+      "step": 5,
+      "unit": "px",
+      "label": "PC端下边距",
+      "default": 70
+    },
+    {
+      "type": "range",
+      "id": "padding_top_mb",
+      "min": 0,
+      "max": 150,
+      "step": 5,
+      "unit": "px",
+      "label": "移动端上边距",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_mb",
+      "min": 0,
+      "max": 150,
+      "step": 5,
+      "unit": "px",
+      "label": "移动端下边距",
+      "default": 40
+    }
+  ],
   "presets": [
     {
       "name": "V1 Table"

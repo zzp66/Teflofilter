@@ -12,7 +12,10 @@
   }
   .v1-swiper-content {
     padding: 0 calc(100vw * 20 / var(--base-width));
-    padding-bottom: calc(100vw * 130 / var(--base-width));
+  }
+  .v1-{{ section.id }} {
+    padding-top: {{ section.settings.padding_top_pc }}px;
+    padding-bottom: {{ section.settings.padding_bottom_pc }}px;
   }
   .v1-swiper-top {
     position: relative;
@@ -120,6 +123,10 @@
       font-size: calc(100vw * 56 / var(--base-width));
       line-height: calc(100vw * 60 / var(--base-width));
     }
+    .v1-{{ section.id }}{
+    padding-top: {{ section.settings.padding_top_mb }}px;
+    padding-bottom: {{ section.settings.padding_bottom_mb }}px;
+  }
   }
   @media screen and (max-width: 750px) {
     .v1-swiper-desc {
@@ -152,7 +159,7 @@
   }
 </style>
 <div class="v1-swiper">
-  <div class="v1-swiper-content">
+  <div class="v1-swiper-content v1-{{ section.id }}">
     <div class="v1-swiper-top">
       <span class="v1-swiper-desc">{{ section.settings.swiper_desc }}</span>
       <div class="v1-swiper-info">
@@ -248,6 +255,46 @@
       "type": "textarea",
       "id": "swiper_info_2",
       "label": "Info 2"
+    },
+    {
+      "type": "range",
+      "id": "padding_top_pc",
+      "min": 0,
+      "max": 150,
+      "step": 5,
+      "unit": "px",
+      "label": "PC端上边距",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_pc",
+      "min": 0,
+      "max": 150,
+      "step": 5,
+      "unit": "px",
+      "label": "PC端下边距",
+      "default": 70
+    },
+    {
+      "type": "range",
+      "id": "padding_top_mb",
+      "min": 0,
+      "max": 150,
+      "step": 5,
+      "unit": "px",
+      "label": "移动端上边距",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_mb",
+      "min": 0,
+      "max": 150,
+      "step": 5,
+      "unit": "px",
+      "label": "移动端下边距",
+      "default": 40
     }
   ],
   "blocks": [

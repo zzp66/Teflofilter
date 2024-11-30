@@ -12,6 +12,7 @@
   assign button_border = section.settings.button_border
   assign button_hover_border_color = section.settings.button_hover_border_color
 -%}
+{% assign main_menu = linklists['main-menu'] %}
 
 <style>
   .teflo-header-navbar{
@@ -61,6 +62,9 @@
   	margin-left: calc(100vw * 6 / var(--base-width));
       transition: transform 0.3s ease;
   }
+  .teflo-header-navbar.product-header .teflo-hander-nav-a-dwonsvg path{
+    stroke: #1A1A1A;
+  }
   .teflo-hander-nav-a{
   	display: flex;
       align-items: center;
@@ -77,6 +81,9 @@
       background: #fff;
       transition: width 0.3s ease;
   }
+  .product-header .teflo-hander-nav-a::before{
+    background: #1A1A1A;
+  }
 
   .teflo-hander-nav-a:hover::before{
       width: 100%;
@@ -85,6 +92,9 @@
 
   .teflo-hander-nav-a:hover .teflo-hander-nav-a-span{
       color:#fff;
+  }
+  .product-header .teflo-hander-nav-a:hover .teflo-hander-nav-a-span{
+      color:#1A1A1A;
   }
   .teflo-hander-nav-a:last-child{
       margin-right: 0;
@@ -98,13 +108,35 @@
   	line-height: calc(100vw * 22 / var(--base-width));
   	letter-spacing: -0.48px;
   }
+  .product-header .teflo-hander-nav-a-span{
+    color: #1A1A1A;
+  }
+  .teflo-header-navbar .header-btn-1{
+    display: block;
+  }
+  .teflo-header-navbar .header-btn-2{
+    display: none;
+  }
+  .teflo-header-navbar.product-header .header-btn-1{
+    display: none;
+  }
+  .teflo-header-navbar.product-header .header-btn-2{
+    display: block;
+  }
   .teflo-hander-log .teflo-hander-log-img{
   	width: calc(100vw * 139 / var(--base-width));
   	height: calc(100vw * 31 / var(--base-width));
   	flex-shrink: 0;
   }
-  .teflo-hander-nav{
 
+  .teflo-header-navbar img.logo-2{
+    display: none;
+  }
+  .teflo-header-navbar.product-header img.logo-2{
+    display: block;
+  }
+  .teflo-header-navbar.product-header img.logo-1{
+    display: none;
   }
   .teflo-hander-droMuen-fixedHeight{
       height:calc(100vw * 37 / var(--base-width));
@@ -178,10 +210,22 @@
    .teflo-hander-mobile-logo-img{
       width: 100%;
   }
+  .teflo-header-navbar img.logo-mb-2{
+    display: none;
+  }
+  .teflo-header-navbar.product-header img.logo-mb-2{
+    display: block;
+  }
+  .teflo-header-navbar.product-header img.logo-mb-1{
+    display: none;
+  }
   .teflo-hander-mobile-btn-svg{
       width: calc(100vw * 86 / var(--base-width));
       height: calc(100vw * 23 / var(--base-width));
   	cursor: pointer;
+  }
+  .teflo-header-navbar.product-header .teflo-hander-mobile-btn-svg line{
+    stroke: #1A1A1A;
   }
   .teflo-hander-mobile{
       display: flex;
@@ -338,14 +382,15 @@
       padding-top: calc(100vw * 80 / var(--base-width));
   }
 </style>
-{% assign main_menu = linklists['main-menu'] %}
+
 <div class="fixed-teflo-header-navbar"></div>
-<div class="teflo-header-navbar">
+<div class="teflo-header-navbar {% if template.name contains 'product' %}product-header{% endif %}">
   <div class="pc-show">
     <div class="teflo-hander">
       <div class="teflo-hander-box">
         <a href="{{ section.settings.logo_link }}" class="teflo-hander-log">
-          <img class="teflo-hander-log-img" src="{{ logo | image_url:  width:'139' }}" alt="{{ logo_alt }}">
+          <img class="teflo-hander-log-img logo-1" src="{{ logo | image_url:  width:'139' }}" alt="{{ logo_alt }}">
+          <img class="teflo-hander-log-img logo-2" src="{{ logo_1 | image_url:  width:'139' }}" alt="{{ logo_alt }}">
         </a>
         <div class="teflo-hander-nav flex-center-start">
           {% for link in main_menu.links %}
@@ -373,17 +418,42 @@
               {% endif %}
             </div>
           {% endfor %}
-          {% render 'teflo-button',
-            button_link: button_link,
-            button_text: button_text,
-            button_text_color: button_text_color,
-            button_bg_color: button_bg_color,
-            button_hover_text_color: button_hover_text_color,
-            button_hover_bg_color: button_hover_bg_color,
-            button_border_color: button_border_color,
-            button_border: button_border,
-            button_hover_border_color: button_hover_border_color
-          %}
+          <div class="header-btn-1">
+            {% render 'teflo-button',
+              button_link: button_link,
+              button_text: button_text,
+              button_text_color: button_text_color,
+              button_bg_color: button_bg_color,
+              button_hover_text_color: button_hover_text_color,
+              button_hover_bg_color: button_hover_bg_color,
+              button_border_color: button_border_color,
+              button_border: button_border,
+              button_hover_border_color: button_hover_border_color
+            %}
+          </div>
+          <div class="header-btn-2">
+            <a
+              class="teflo_custom_button"
+              href="https://google.cn"
+              data-text-color="#1A1A1A"
+              data-text-hover-color="#FFFFFF"
+              data-default-bg="transparent"
+              data-hover-bg="#0522CB"
+              data-button_border="true"
+              data-button_border_color="#1A1A1A"
+            >
+              <div class="teflo_custom_button_text" style="border:0.4px solid #1A1A1A">
+                <span class="teflo_custom_button_text_span" style="color:#1A1A1A">Request a Quote</span>
+                <div class="teflo_bg_gress teflo_bg_gress1" style="background: transparent;"></div>
+              </div>
+              <div class="teflo_custom_button_icon flex-center-center" style="border:0.4px solid #1A1A1A">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 22 22" fill="none">
+                  <path d="M1.55429 0.961331L20.9229 0.961331M20.9229 0.961331L20.9229 20.3299M20.9229 0.961331L2.19991 19.6843" style="stroke:#1A1A1A" stroke-width="1.5" stroke-linecap="round"></path>
+                </svg>
+                <div class="teflo_bg_gress teflo_bg_gress2" style="background: transparent;"></div>
+              </div>
+            </a>
+          </div>
         </div>
       </div>
     </div>
@@ -391,8 +461,17 @@
   </div>
   <div class="h5-show">
     <div class="teflo-hander-mobile">
-      <a href="" class="teflo-hander-mobile-logo">
-        <img class="teflo-hander-mobile-logo-img" src="{{ logo | image_url:  width:'192' }}" alt="{{ logo_alt }}">
+      <a href="{{ section.settings.logo_link }}" class="teflo-hander-mobile-logo">
+        <img
+          class="teflo-hander-mobile-logo-img logo-mb-1"
+          src="{{ logo | image_url:  width:'192' }}"
+          alt="{{ logo_alt }}"
+        >
+        <img
+          class="teflo-hander-mobile-logo-img logo-mb-2"
+          src="{{ logo_1 | image_url:  width:'192' }}"
+          alt="{{ logo_alt }}"
+        >
       </a>
 
       <svg xmlns="http://www.w3.org/2000/svg" class="teflo-hander-mobile-btn-svg" viewBox="0 0 86 23" fill="none">
@@ -573,13 +652,16 @@
       const handleScroll  = function() {
           var scrollTop = window.pageYOffset || document.documentElement.scrollTop;
           if (scrollTop == 0) {
-              {% comment %} if (that.background != 'transparent') {
-                navbarbox.style.backgroundColor = that.background;
-              } else { {% endcomment %}
               navbar.style.backgroundColor = 'transparent';
-              {% comment %} } {% endcomment %}
+              {%  if template.name contains 'product'  %}
+                navbar.classList.add('product-header');
+              {% endif %}
+
             } else {
               navbar.style.backgroundColor = '#0D0D0D';
+              {%  if template.name contains 'product'  %}
+              navbar.classList.remove('product-header');
+            {% endif %}
             }
               // 20 is an arbitrary number here, just to make you think if you need the prevScrollpos variable:
               if (scrollTop > lastScrollTop && scrollTop > 0) {
@@ -605,7 +687,12 @@
     {
       "type": "image_picker",
       "id": "logo",
-      "label": "Logo"
+      "label": "Logo 深色版本"
+    },
+    {
+      "type": "image_picker",
+      "id": "logo_1",
+      "label": "Logo 浅色版本"
     },
     {
       "type": "text",

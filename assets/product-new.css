@@ -1,9 +1,3 @@
-.product-v1.thb-product-detail {
-    background-color: #F7F8FA;
-    padding-top: calc(100vw * 100 / var(--base-width));
-    margin-top: 0;
-}
-
 .product-v1 .row {
     max-width: 100%;
     padding: 0 calc(100vw * 20 / var(--base-width));

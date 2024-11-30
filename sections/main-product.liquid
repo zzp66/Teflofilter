@@ -43,6 +43,19 @@
   >
 {%- endif -%}
 
+<style>
+  .product-v1.thb-product-detail {
+    background-color: #f7f8fa;
+    padding-top: calc(100vw * {{section.settings.padding_top_pc}} / var(--base-width));
+    margin-top: 0;
+  }
+  @media screen and (max-width: 1024px) {
+    .product-v1.thb-product-detail {
+      padding-top: calc(100vw * {{section.settings.padding_top_mb}} / var(--base-width));
+    }
+  }
+</style>
+
 <div class="thb-product-detail product product-v1" data-handle="{{ product.handle }}">
   <div class="row">
     <div class="small-12 columns">
@@ -350,6 +363,26 @@
       "id": "media_show_prevnext_mobile",
       "default": true,
       "label": "Show previous & next media"
+    },
+    {
+      "type": "range",
+      "id": "padding_top_pc",
+      "min": 0,
+      "max": 200,
+      "step": 5,
+      "unit": "px",
+      "label": "PC端上边距",
+      "default": 130
+    },
+    {
+      "type": "range",
+      "id": "padding_top_mb",
+      "min": 0,
+      "max": 200,
+      "step": 5,
+      "unit": "px",
+      "label": "移动端上边距",
+      "default": 130
     }
   ],
   "blocks": [

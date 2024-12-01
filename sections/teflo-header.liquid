@@ -65,6 +65,9 @@
   .teflo-header-navbar.product-header .teflo-hander-nav-a-dwonsvg path{
     stroke: #1A1A1A;
   }
+  .teflo-header-navbar.product-header.hover-header .teflo-hander-nav-a-dwonsvg path{
+    stroke: #fff;
+  }
   .teflo-hander-nav-a{
   	display: flex;
       align-items: center;
@@ -81,8 +84,11 @@
       background: #fff;
       transition: width 0.3s ease;
   }
-  .product-header .teflo-hander-nav-a::before{
+  .product-header .teflo-hander-nav-a:hover::before{
     background: #1A1A1A;
+  }
+  .product-header.hover-header .teflo-hander-nav-a:hover::before{
+    background: #fff;
   }
 
   .teflo-hander-nav-a:hover::before{
@@ -95,6 +101,9 @@
   }
   .product-header .teflo-hander-nav-a:hover .teflo-hander-nav-a-span{
       color:#1A1A1A;
+  }
+  .product-header.hover-header .teflo-hander-nav-a:hover .teflo-hander-nav-a-span{
+      color:#fff;
   }
   .teflo-hander-nav-a:last-child{
       margin-right: 0;
@@ -111,6 +120,9 @@
   .product-header .teflo-hander-nav-a-span{
     color: #1A1A1A;
   }
+  .product-header.hover-header .teflo-hander-nav-a-span{
+    color: #fff;
+  }
   .teflo-header-navbar .header-btn-1{
     display: block;
   }
@@ -120,8 +132,14 @@
   .teflo-header-navbar.product-header .header-btn-1{
     display: none;
   }
+  .teflo-header-navbar.product-header.hover-header .header-btn-1{
+    display: block;
+  }
   .teflo-header-navbar.product-header .header-btn-2{
     display: block;
+  }
+  .teflo-header-navbar.product-header.hover-header .header-btn-2{
+    display: none;
   }
   .teflo-hander-log .teflo-hander-log-img{
   	width: calc(100vw * 139 / var(--base-width));
@@ -135,8 +153,14 @@
   .teflo-header-navbar.product-header img.logo-2{
     display: block;
   }
+  .teflo-header-navbar.product-header.hover-header img.logo-2{
+    display: none;
+  }
   .teflo-header-navbar.product-header img.logo-1{
     display: none;
+  }
+  .teflo-header-navbar.product-header.hover-header img.logo-1{
+    display: block;
   }
   .teflo-hander-droMuen-fixedHeight{
       height:calc(100vw * 37 / var(--base-width));
@@ -569,6 +593,7 @@
 <script>
       document.addEventListener('DOMContentLoaded', function() {
          let tefloHanderNavA =  document.querySelectorAll('.teflo-hander-nav-a');
+         var navHeader = document.querySelector('.teflo-header-navbar');
          tefloHanderNavA.forEach(function(item) {
              item.addEventListener('mouseover', function() {
                   if(this.querySelector('.teflo-hander-droMuen')){
@@ -580,6 +605,7 @@
                       this.querySelector('.teflo-hander-droMuen').style.top = offsetHeight + 'px';
                       this.querySelector('.teflo-hander-droMuen').style.left = '-'+offsetLeft + 'px';
                       this.querySelector('.teflo-hander-nav-a-dwonsvg').style.transform = 'rotate(180deg)';
+                      navHeader.classList.add('hover-header');
 
 
                       gsap.to(document.querySelector('.teflo-hander-height-fixed'), {height: '457px', duration: 0.5, ease: 'power2.inOut'});
@@ -589,7 +615,7 @@
           item.addEventListener('mouseout', function() {
               if(this.querySelector('.teflo-hander-droMuen')){
                   this.querySelector('.teflo-hander-nav-a-dwonsvg').style.transform = 'rotate(0deg)';
-
+                  navHeader.classList.remove('hover-header');
                   gsap.to(document.querySelector('.teflo-hander-height-fixed'), {height: 0+'px', duration: 0.5, ease: 'power2.inOut'});
                   gsap.to(this.querySelector('.teflo-hander-droMuen'), {height: 0+'px', duration: 0.5, ease: 'power2.inOut'});
               }

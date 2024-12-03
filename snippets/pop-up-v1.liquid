@@ -1,12 +1,23 @@
 <style>
   .pop-up-v1 {
-    /* background-color: #000; */
-    max-width: 95%;
-    max-height: 95%;
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    align-items: flex-start;
+    justify-content: center;
+    overflow: auto;
+  }
+  .pop-up-v1-wrapper {
+    padding-top: calc(100vw * 80 / var(--base-width));
+    padding-bottom: calc(100vw * 40 / var(--base-width));
   }
 
   .pop-up-v1-content {
-    max-width: fit-content;
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
@@ -60,8 +71,6 @@
     width: calc(100vw * 786 / var(--base-width));
     background-color: #fff;
     border-radius: 10px;
-    overflow-x: hidden;
-    overflow-y: scroll;
     padding: calc(100vw * 28 / var(--base-width)) calc(100vw * 43 / var(--base-width))
       calc(100vw * 39 / var(--base-width));
   }
@@ -74,6 +83,12 @@
     border-radius: 8px;
     overflow: hidden;
     cursor: pointer;
+  }
+  .model-close:hover {
+    background-color: #0522cb;
+  }
+  .model-close:hover svg path {
+    stroke: #fff;
   }
   .model-close img {
     max-width: calc(100vw * 16 / var(--base-width));
@@ -130,35 +145,40 @@
   }
 </style>
 <div class="pop-up-v1">
-  <div class="pop-up-v1-content">
-    <div class="pop-up-left">
-      <div class="pop-up-left-top">
-        <h2>Get in touch with the team</h2>
-        <p>Contact us for filter bag solutions, expert consultations and partnership opportunities.</p>
-      </div>
-      <div class="pop-up-left-bottom">
-        <div class="bottom-icons">
-          <div class="icon-item">
-            <img src="https://cdn.shopify.com/s/files/1/0902/1122/1797/files/Group.png?v=1732242447" alt="">
-          </div>
-          <div class="icon-item">
-            <img src="https://cdn.shopify.com/s/files/1/0902/1122/1797/files/Group.png?v=1732242447" alt="">
-          </div>
-          <div class="icon-item">
-            <img src="https://cdn.shopify.com/s/files/1/0902/1122/1797/files/Group.png?v=1732242447" alt="">
-          </div>
-          <div class="icon-item">
-            <img src="https://cdn.shopify.com/s/files/1/0902/1122/1797/files/Group.png?v=1732242447" alt="">
+  <div class="pop-up-v1-wrapper">
+    <div class="pop-up-v1-content">
+      <div class="pop-up-left">
+        <div class="pop-up-left-top">
+          <h2>Get in touch with the team</h2>
+          <p>Contact us for filter bag solutions, expert consultations and partnership opportunities.</p>
+        </div>
+        <div class="pop-up-left-bottom">
+          <div class="bottom-icons">
+            <div class="icon-item">
+              <img src="https://cdn.shopify.com/s/files/1/0902/1122/1797/files/Group.png?v=1732242447" alt="">
+            </div>
+            <div class="icon-item">
+              <img src="https://cdn.shopify.com/s/files/1/0902/1122/1797/files/Group.png?v=1732242447" alt="">
+            </div>
+            <div class="icon-item">
+              <img src="https://cdn.shopify.com/s/files/1/0902/1122/1797/files/Group.png?v=1732242447" alt="">
+            </div>
+            <div class="icon-item">
+              <img src="https://cdn.shopify.com/s/files/1/0902/1122/1797/files/Group.png?v=1732242447" alt="">
+            </div>
           </div>
         </div>
       </div>
-    </div>
-    <div class="pop-up-middle">
-      {% render 'teflo-form-v1' %}
-    </div>
-    <div class="pop-up-right">
-      <div class="model-close">
-        <img src="https://cdn.shopify.com/s/files/1/0902/1122/1797/files/Group_9401.png?v=1732245756" alt="">
+      <div class="pop-up-middle">
+        {% render 'teflo-form-v1' %}
+      </div>
+      <div class="pop-up-right">
+        <div class="model-close">
+          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18" fill="none">
+            <path d="M1 1L17.5 17.5" stroke="#1A1A1A"/>
+            <path d="M1 17.5L17.5 0.999999" stroke="#1A1A1A"/>
+          </svg>
+        </div>
       </div>
     </div>
   </div>

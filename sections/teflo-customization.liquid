@@ -174,7 +174,7 @@
   <h2 class="teflo-customization-h2">{{ section.settings.title }}</h2>
   <div class="teflo-customization-list">
     {% for block in section.blocks %}
-      <div class="teflo-customization-list-item" style="z-index:{{ loop.index }}">
+      <div class="teflo-customization-list-item" style="z-index:{{ forloop.index }}">
         <h3 class="teflo-customization-list-item-h3">{{ block.settings.title }}</h3>
         <div class="teflo-customization-list-item-content">
           <p class="teflo-customization-list-item-content-time">{{ block.settings.time }}</p>

@@ -61,11 +61,19 @@
       <h2 class="v1-table-h2">{{ section.settings.title }}</h2>
     </div>
     <div class="v1-table-box">
-      <picture>
-        <source media="(max-width: 750px)" srcset="{{ section.settings.table_img_mb | image_url: width: master }}">
-        <source media="(min-width: 751px)" srcset="{{ section.settings.table_img | image_url: width: master }}">
-        <img src="{{ section.settings.table_img | image_url: width: master }}">
-      </picture>
+      {% if product.description != blank %}
+        {{ product.description }}
+      {% else %}
+        <picture>
+          <source media="(max-width: 750px)" srcset="{{ section.settings.table_img_mb | image_url: width: master }}">
+          <source
+            media="(min-width: 751px) and (max-width:1199px)"
+            srcset="{{ section.settings.table_img_pad | image_url: width: master }}"
+          >
+          <source media="(min-width: 1201px)" srcset="{{ section.settings.table_img | image_url: width: master }}">
+          <img src="{{ section.settings.table_img | image_url: width: master }}">
+        </picture>
+      {% endif %}
     </div>
   </div>
 </div>
@@ -83,6 +91,11 @@
       "type": "image_picker",
       "id": "table_img_mb",
       "label": "Mobile Image"
+    },
+    {
+      "type": "image_picker",
+      "id": "table_img_pad",
+      "label": "Pad Image"
     },
     {
       "type": "text",

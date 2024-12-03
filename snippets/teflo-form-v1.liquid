@@ -1,0 +1,181 @@
+<style>
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  .teflo-form-v1 label {
+    display: block;
+    margin-bottom: calc(100vw * 10 / var(--base-width));
+    font-size: calc(100vw * 14 / var(--base-width));
+    line-height: calc(100vw * 20 / var(--base-width));
+  }
+
+  .form-line input,
+  .form-line select,
+  .form-line textarea {
+    font-size: calc(100vw * 14 / var(--base-width));
+    line-height: calc(100vw * 20 / var(--base-width));
+    width: 100%;
+    height: auto;
+    margin: 0;
+    padding: calc(100vw * 17 / var(--base-width)) calc(100vw * 8 / var(--base-width));
+    border: 0.4px solid #ccc;
+    border-radius: 5px;
+  }
+  .form-line {
+    display: flex;
+    column-gap: calc(100vw * 6 / var(--base-width));
+    margin-bottom: calc(100vw * 25 / var(--base-width));
+  }
+  .form-group {
+    width: 100%;
+    flex-grow: 1;
+  }
+  .form-checkout label {
+    max-width: calc(100vw * 573 / var(--base-width));
+    font-size: calc(100vw * 20 / var(--base-width));
+    line-height: calc(100vw * 26 / var(--base-width));
+    color: #0d0d0d;
+    margin: 0;
+    cursor: pointer;
+  }
+  .form-checkout {
+    display: flex;
+    align-items: flex-start;
+    cursor: pointer;
+    margin-top: calc(100vw * -5 / var(--base-width));
+  }
+  .form-submit {
+    margin-top: calc(100vw * 30 / var(--base-width));
+  }
+  @media screen and (max-width: 750px) {
+    .teflo-form-v1 label {
+      margin-bottom: calc(100vw * 20 / var(--base-width));
+      font-size: calc(100vw * 30 / var(--base-width));
+      line-height: calc(100vw * 26 / var(--base-width));
+    }
+    .form-line input,
+    .form-line select,
+    .form-line textarea {
+      font-size: calc(100vw * 30 / var(--base-width));
+      line-height: calc(100vw * 30 / var(--base-width));
+      padding: calc(100vw * 32 / var(--base-width)) calc(100vw * 20 / var(--base-width));
+    }
+    .form-line {
+      display: flex;
+      column-gap: calc(100vw * 15 / var(--base-width));
+      margin-bottom: calc(100vw * 50 / var(--base-width));
+    }
+  }
+</style>
+<div class="teflo-form-v1">
+  {% form 'contact', class: 'contact-form' %}
+    {% if form.posted_successfully? %}
+      <div class="form-notification success">
+        {% render 'svg-icons' with 'thb-success' %}
+        {{ 'sections.contact.form.post_success' | t }}
+      </div>
+    {%- elsif form.errors %}
+      <div class="form-notification error">
+        {% render 'svg-icons' with 'thb-error' %}
+        {{ 'sections.contact.form.error_heading' | t }}
+        {{ form.errors | default_errors }}
+      </div>
+    {% endif %}
+    <div class="form-line">
+      <div class="form-group">
+        <label for="ContactFormIndustry">Industry *</label>
+        <select id="ContactFormIndustry" name="contact[industry]" required>
+          <option value="Agriculture1">Agriculture1</option>
+          <option value="Agriculture2">Agriculture2</option>
+          <option value="Agriculture3">Agriculture3</option>
+          <option value="Agriculture4">Agriculture4</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="ContactFormRequestType">Request Type *</label>
+        <select id="ContactFormRequestType" name="contact[requestType]" required>
+          <option value="Careers1">Careers1</option>
+          <option value="Careers2">Careers2</option>
+          <option value="Careers3">Careers3</option>
+        </select>
+      </div>
+    </div>
+    <div class="form-line">
+      <div class="form-group">
+        <label for="ContactFormEquipment">Equipment</label>
+        <input type="text" id="ContactFormEquipment" name="contact[equipment]" required>
+      </div>
+    </div>
+    <div class="form-line">
+      <div class="form-group">
+        <label for="ContactFormFirstName">First Name *</label>
+        <input type="text" id="ContactFormFirstName" name="contact[firstName]" required>
+      </div>
+      <div class="form-group">
+        <label for="ContactFormLastName">Last Name *</label>
+        <input type="text" id="ContactFormLastName" name="contact[lastName]" required>
+      </div>
+    </div>
+    <div class="form-line">
+      <div class="form-group">
+        <label for="ContactFormCompany">Company *</label>
+        <input type="text" id="ContactFormCompany" name="contact[company]" required>
+      </div>
+      <div class="form-group">
+        <label for="ContactFormJobTitle">Job Title</label>
+        <input type="text" id="ContactFormJobTitle" name="contact[jobTitle]">
+      </div>
+    </div>
+    <div class="form-line">
+      <div class="form-group">
+        <label for="ContactFormCity">City</label>
+        <input type="text" id="ContactFormCity" name="contact[city]">
+      </div>
+      <div class="form-group">
+        <label for="ContactFormCountry">Country *</label>
+        <input type="text" id="ContactFormCountry" name="contact[country]" required>
+      </div>
+    </div>
+    <div class="form-line">
+      <div class="form-group">
+        <label for="ContactFormEmail">Email *</label>
+        <input type="email" id="ContactFormEmail" name="contact[email]" required>
+      </div>
+      <div class="form-group">
+        <label for="phone">Phone *</label>
+        <input type="text" id="ContactFormPhone" name="contact[phone]" required>
+      </div>
+    </div>
+    <div class="form-line">
+      <div class="form-group">
+        <label for="ContactFormMessage">YOUR MESSAGE</label>
+        <textarea id="ContactFormMessage" name="contact[message]"></textarea>
+      </div>
+    </div>
+    <div class="form-checkout">
+      <input type="checkbox" id="ContactFormPrivacyPolicy" name="contact[privacy_policy]" required>
+      <label for="ContactFormPrivacyPolicy">
+        By clicking here, you agree to receive marketing emails and other promotional communications from Teflo from
+        time to time.
+      </label>
+    </div>
+    <div class="form-submit">
+      <button class="btn-submit-v1" type="submit" value="submit">
+        {% render 'teflo-button',
+          button_link: button_link,
+          button_text: button_text,
+          button_text_color: button_text_color,
+          button_bg_color: button_bg_color,
+          button_hover_text_color: button_hover_text_color,
+          button_hover_bg_color: button_hover_bg_color,
+          button_border_color: button_border_color,
+          button_border: button_border,
+          button_hover_border_color: button_hover_border_color
+        %}
+      </button>
+    </div>
+  {% endform %}
+</div>

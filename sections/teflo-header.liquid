@@ -405,6 +405,19 @@
       padding-left: calc(100vw * 25 / var(--base-width));
       padding-top: calc(100vw * 80 / var(--base-width));
   }
+
+  .teflo-pop-up-v1{
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    align-items: center;
+    justify-content: center;
+  }
 </style>
 
 <div class="fixed-teflo-header-navbar"></div>
@@ -456,27 +469,17 @@
             %}
           </div>
           <div class="header-btn-2">
-            <a
-              class="teflo_custom_button"
-              href="https://google.cn"
-              data-text-color="#1A1A1A"
-              data-text-hover-color="#FFFFFF"
-              data-default-bg="transparent"
-              data-hover-bg="#0522CB"
-              data-button_border="true"
-              data-button_border_color="#1A1A1A"
-            >
-              <div class="teflo_custom_button_text" style="border:0.4px solid #1A1A1A">
-                <span class="teflo_custom_button_text_span" style="color:#1A1A1A">Request a Quote</span>
-                <div class="teflo_bg_gress teflo_bg_gress1" style="background: transparent;"></div>
-              </div>
-              <div class="teflo_custom_button_icon flex-center-center" style="border:0.4px solid #1A1A1A">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 22 22" fill="none">
-                  <path d="M1.55429 0.961331L20.9229 0.961331M20.9229 0.961331L20.9229 20.3299M20.9229 0.961331L2.19991 19.6843" style="stroke:#1A1A1A" stroke-width="1.5" stroke-linecap="round"></path>
-                </svg>
-                <div class="teflo_bg_gress teflo_bg_gress2" style="background: transparent;"></div>
-              </div>
-            </a>
+            {% render 'teflo-button',
+              button_link: button_link,
+              button_text: button_text,
+              button_text_color: '#1A1A1A',
+              button_bg_color: button_bg_color,
+              button_hover_text_color: button_hover_text_color,
+              button_hover_bg_color: button_hover_bg_color,
+              button_border_color: '#1A1A1A',
+              button_border: '#1A1A1A',
+              button_hover_border_color: button_hover_border_color
+            %}
           </div>
         </div>
       </div>
@@ -589,7 +592,11 @@
     </div>
   </div>
 </div>
+<div class="teflo-pop-up-v1">
+  {% render 'pop-up-v1' %}
+</div>
 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 <script>
       document.addEventListener('DOMContentLoaded', function() {
          let tefloHanderNavA =  document.querySelectorAll('.teflo-hander-nav-a');
@@ -699,6 +706,15 @@
               lastScrollTop = scrollTop;
           }
       window.addEventListener('scroll', handleScroll);
+  });
+
+  $(document).ready(function () {
+    $('.teflo_custom_button').click(function () {
+      $('.teflo-pop-up-v1').css('display', 'flex');
+    });
+    $('.model-close').click(function () {
+      $('.teflo-pop-up-v1').css('display', 'none');
+    });
   });
 </script>
 

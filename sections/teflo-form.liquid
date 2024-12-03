@@ -50,6 +50,8 @@
     line-height: calc(100vw * 26 / var(--base-width));
     margin-bottom: 0;
   }
+
+  /* 右边表单部分样式 */
   .messagebox-label,
   .teflo-form-contact-item-label {
     color: #0d0d0d;
@@ -185,7 +187,6 @@
     letter-spacing: calc(100vw * -0.42 / var(--base-width));
     cursor: pointer;
   }
-
   @media (max-width: 1024px) {
     .teflo-form-select-optionbox {
       top: calc(100vw * 100 / var(--base-width));
@@ -277,164 +278,9 @@
     </div>
   </div>
   <div class="teflo-form-rt">
-    <div class="teflo-form-contact">
-      <div class="teflo-form-contactbox">
-        {% for block in section.blocks %}
-          {% assign parent_index = forloop.index0 %}
-          {% if block.type != 'type_options' and block.type != 'industry_options' %}
-            <div class="teflo-form-contact-item">
-              <div class="teflo-form-contact-item-label">{{ block.settings.label }}</div>
-
-              <div class="teflo-form-contact-item-input">
-                {% if block.type == 'text' %}
-                  <input
-                    type="text"
-                    clas
-                    name="contact[{{ block.settings.name }}]"
-                    class="full"
-                    value=""
-                    placeholder="{{ block.settings.placeholder }}"
-                  >
-                {% elsif block.type == 'email' %}
-                  <input
-                    type="email"
-                    name="contact[{{ block.settings.name }}]"
-                    class="full"
-                    value=""
-                    placeholder="{{ block.settings.placeholder }}"
-                  >
-                {% elsif block.type == 'phone' %}
-                  <input
-                    type="tel"
-                    name="contact[{{ block.settings.name }}]"
-                    class="full"
-                    value=""
-                    placeholder="{{ block.settings.placeholder }}"
-                  >
-                {% elsif block.type == 'industry_select' %}
-                  <input
-                    type="hidden"
-                    class="teflo-form-select-hidden-input teflo-form-select-hidden-input{{ parent_index }}"
-                    name="contact[{{ block.settings.name }}]"
-                    value=""
-                  >
-                  <div class="teflo-form-select">
-                    <div class="full teflo-form-select-input">
-                      <p class="teflo-form-select-input-value teflo-form-select-input-value{{ parent_index }}">
-                        {{ block.settings.placeholder }}
-                      </p>
-                      <div class="teflo-form-select-input-svg">
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 18 10" fill="none">
-                          <path d="M1 1L9 9L17 1" stroke="#0D0D0D" stroke-linecap="round"/>
-                        </svg>
-                      </div>
-                    </div>
-
-                    <div class="teflo-form-select-optionbox teflo-form-select-optionbox{{ parent_index }}">
-                      <div class="teflo-form-select-optionbox-content">
-                        <div style="height:10px"></div>
-                        {% for option in section.blocks %}
-                          {% if option.type == 'industry_options' %}
-                            <p
-                              class="teflo-form-select-option"
-                              data-parent-ele="teflo-form-select-optionbox{{ parent_index }}"
-                              data-value-hidden-input="teflo-form-select-hidden-input{{ parent_index }}"
-                              data-value-placeholder="teflo-form-select-input-value{{ parent_index }}"
-                              data-value="{{ option.settings.value }}"
-                            >
-                              {{ option.settings.label }}
-                            </p>
-                          {% endif %}
-                        {% endfor %}
-                        <div style="height:10px"></div>
-                      </div>
-                    </div>
-                  </div>
-                {% elsif block.type == 'type_select' %}
-                  <input
-                    type="hidden"
-                    class="teflo-form-select-hidden-input teflo-form-select-hidden-input{{ parent_index }}"
-                    name="contact[{{ block.settings.name }}]"
-                    value=""
-                  >
-                  <div class="teflo-form-select">
-                    <div class="full teflo-form-select-input">
-                      <p class="teflo-form-select-input-value teflo-form-select-input-value{{ parent_index }}">
-                        {{ block.settings.placeholder }}
-                      </p>
-                      <div class="teflo-form-select-input-svg">
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 18 10" fill="none">
-                          <path d="M1 1L9 9L17 1" stroke="#0D0D0D" stroke-linecap="round"/>
-                        </svg>
-                      </div>
-                    </div>
-
-                    <div class="teflo-form-select-optionbox teflo-form-select-optionbox{{ parent_index }}">
-                      <div class="teflo-form-select-optionbox-content">
-                        <div style="height:10px"></div>
-                        {% for option in section.blocks %}
-                          {% if option.type == 'type_options' %}
-                            <p
-                              class="teflo-form-select-option"
-                              data-parent-ele="teflo-form-select-optionbox{{ parent_index }}"
-                              data-value-hidden-input="teflo-form-select-hidden-input{{ parent_index }}"
-                              data-value-placeholder="teflo-form-select-input-value{{ parent_index }}"
-                              data-value="{{ option.settings.value }}"
-                            >
-                              {{ option.settings.label }}
-                            </p>
-                          {% endif %}
-                        {% endfor %}
-                        <div style="height:10px"></div>
-                      </div>
-                    </div>
-                  </div>
-                {% endif %}
-              </div>
-            </div>
-          {% endif %}
-        {% endfor %}
-      </div>
-      <div class="messagebox">
-        <div class="messagebox-label">{{ section.settings.message_label }}</div>
-        <div class="messagebox-inputbox">
-          <textarea
-            name="contact[{{ section.settings.message_name }}]"
-            class="full"
-            value=""
-            placeholder="{{ section.settings.message_placeholder }}"
-          ></textarea>
-        </div>
-      </div>
-      <div class="teflo-form-agreenbox">
-        <input
-          class="teflo-form-agreenbox-input"
-          type="checkbox"
-          id="agree_name"
-          name="{{ section.settings.agree_name }}"
-          value=""
-        >
-        <label class="teflo-form-agreenbox-label" for="agree_name">{{ section.settings.agree_placeholder }}</label>
-      </div>
-      <div class="teflo-form-submit">
-        <button type="submit">
-          {% render 'teflo-button',
-            button_link: button_link,
-            button_text: button_text,
-            button_text_color: button_text_color,
-            button_bg_color: button_bg_color,
-            button_hover_text_color: button_hover_text_color,
-            button_hover_bg_color: button_hover_bg_color,
-            button_border_color: button_border_color,
-            button_border: button_border,
-            button_hover_border_color: button_hover_border_color
-          %}
-        </button>
-      </div>
-    </div>
+    {% render 'teflo-form-v1' %}
   </div>
 </div>
-
 {% schema %}
 {
   "name": "Teflo Form",

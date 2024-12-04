@@ -66,6 +66,11 @@
       row-gap: calc(100vw * 80 / var(--base-width));
       column-gap: calc(100vw * 26 / var(--base-width));
   }
+  .teflo-choose-list-item{
+    display: grid;
+    align-items: stretch;
+    grid-auto-rows: 1fr auto;
+  }
   .teflo-choose-list-item-top{
       display: flex;
       justify-content: space-between;
@@ -81,7 +86,6 @@
       line-height: calc(100vw * 28 / var(--base-width));
       letter-spacing: calc(100vw * -0.63 / var(--base-width));
       max-width: 80%;
-      min-height: calc(100vw * 56 / var(--base-width));
       margin-bottom:0px;
   }
   .teflo-choose-list-item-top-num{

@@ -33,7 +33,8 @@
   }
   .teflo-process-content.show-border {
     padding-top: calc(100vw * 20 / var(--base-width));
-    border-top: 0.3px solid rgba(0, 0, 0, 0.5);
+    border-top: 0.3px solid;
+    border-color: {{ section.settings.teflo_process_border_color }};
   }
   .teflo-process-lt {
     width: calc(100vw * 360 / var(--base-width));
@@ -71,7 +72,8 @@
     align-items: flex-start;
     grid-template-columns: 1fr 2fr 3fr;
     grid-column-gap: calc(100vw * 20 / var(--base-width));
-    border-top: 0.4px dashed rgba(25, 25, 25, 0.3);
+    border-top: 0.4px dashed;
+    border-color: {{ section.settings.teflo_process_border_color }};
     padding-top: calc(100vw * 14 / var(--base-width));
     padding-bottom: calc(100vw * 40 / var(--base-width));
   }
@@ -95,6 +97,7 @@
     font-weight: 400;
     line-height: calc(100vw * 24 / var(--base-width));
     letter-spacing: calc(100vw * -0.6 / var(--base-width));
+    margin: 0;
   }
   .process-{{ section.id }} .teflo-process-rt-list-item-h3{
     color: {{ section.settings.teflo_process_content_color }};
@@ -333,6 +336,12 @@
       "type": "color",
       "id": "teflo_process_content_color",
       "label": "Teflo Process content color",
+      "default": "#0D0D0D"
+    },
+    {
+      "type": "color",
+      "id": "teflo_process_border_color",
+      "label": "Teflo Process border color",
       "default": "#0D0D0D"
     },
     {

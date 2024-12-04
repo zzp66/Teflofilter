@@ -696,7 +696,8 @@
   });
 
   $(document).ready(function () {
-    $('.teflo_custom_button').click(function () {
+    $('.pop-up-v1 .teflo_custom_button').removeClass('teflo_custom_button1');
+    $('.teflo_custom_button1').click(function () {
       $('.pop-up-v1').css('display', 'flex');
       $('body').css('overflow-y', 'hidden');
     });

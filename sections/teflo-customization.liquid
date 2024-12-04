@@ -2,172 +2,180 @@
   assign half_blocks = section.blocks.size | divided_by: 2
 -%}
 <style>
-    .teflo-customization ul li::marker {
-    color: #324eef;
-    font-size: calc(100vw * 16 / var(--base-width));
-  }
-  .teflo-customization {
-    padding: 0 calc(100vw * 40 / var(--base-width));
-    background: #fff;
-  }
-  .v1-{{ section.id }} {
-    padding-top: {{ section.settings.padding_top_pc }}px;
-    padding-bottom: {{ section.settings.padding_bottom_pc }}px;
-  }
-  .teflo-customization-subtitle {
-    color: #191919;
-    font-size: calc(100vw * 16 / var(--base-width));
-    font-style: normal;
-    font-weight: 400;
-    line-height: calc(100vw * 16 / var(--base-width));
-    margin-bottom: calc(100vw * 27 / var(--base-width));
-    text-align: center;
-    opacity: 0.5;
-  }
-  .teflo-customization-h2 {
-    color: #191919;
-    text-align: center;
-    font-size: calc(100vw * 60 / var(--base-width));
-    font-style: normal;
-    font-weight: 400;
-    line-height: calc(100vw * 66 / var(--base-width));
-    letter-spacing: calc(100vw * -1.8 / var(--base-width));
-    max-width: calc(100vw * 853 / var(--base-width));
-    margin: 0 auto;
-  }
-  .teflo-customization-list {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    column-gap: calc(100vw * 44 / var(--base-width));
-  }
-  .teflo-customization-list-item {
-    position: sticky;
-    top: 0;
-    background: #ffffff;
-    padding-top: calc(100vw * 70 / var(--base-width));
-  }
-  .teflo-customization-list-item-h3 {
-    color: #0d0d0d;
-    font-size: calc(100vw * 40 / var(--base-width));
-    font-style: normal;
-    font-weight: 400;
-    line-height: calc(100vw * 44 / var(--base-width));
-    letter-spacing: calc(100vw * -1.2 / var(--base-width));
-    padding-bottom: calc(100vw * 30 / var(--base-width));
-    border-bottom: 0.4px solid rgba(13, 13, 13, 0.3);
-  }
-  .teflo-customization-list-item-content {
-    display: flex;
-    padding-top: calc(100vw * 30 / var(--base-width));
-    padding-bottom: calc(100vw * 70 / var(--base-width));
-  }
-  .teflo-customization-list-item-content-time {
-    width: calc(100vw * 130 / var(--base-width));
-    color: #0d0d0d;
-    font-size: calc(100vw * 16 / var(--base-width));
-    font-style: normal;
-    font-weight: 400;
-    line-height: calc(100vw * 16 / var(--base-width));
-    flex-shrink: 0;
-    padding-top: calc(100vw * 10 / var(--base-width));
-  }
-  .teflo-customization-list-item-content-rt-item {
-    display: flex;
-    align-items: center;
-    margin-bottom: calc(100vw * 10 / var(--base-width));
-  }
-  .teflo-customization-list-item-content-rt-item * {
-    font-size: calc(100vw * 20 / var(--base-width));
-  }
-  .teflo-customization-list-item-content-rt-item-dot {
-    width: calc(100vw * 8 / var(--base-width));
-    height: calc(100vw * 8 / var(--base-width));
-    border-radius: 50%;
-    background: #324eef;
-    margin-right: calc(100vw * 15 / var(--base-width));
-    flex-shrink: 0;
-  }
-  .teflo-customization-list-item-content-rt-item-h3 {
-    color: #0d0d0d;
-    font-size: calc(100vw * 16 / var(--base-width));
-    font-style: normal;
-    font-weight: 400;
-    line-height: calc(100vw * 20 / var(--base-width));
-  }
-  .teflo-customization-list-item-content-rt {
-    display: grid;
-    flex-direction: column;
-    justify-content: space-between;
-    grid-template-rows: 1fr 1fr;
-  }
-  .teflo-customization-list-item-content-rt-img img {
-    width: 100%;
-  }
-
-  @media (max-width: 1024px) {
-    .teflo-customization {
-      padding: 0 calc(100vw * 25 / var(--base-width));
+      .teflo-customization ul li::marker {
+      color: #324eef;
+      font-size: inherit;
     }
-    .v1-{{ section.id }}{
-    padding-top: {{ section.settings.padding_top_mb }}px;
-    padding-bottom: {{ section.settings.padding_bottom_mb }}px;
-  }
+    .teflo-customization {
+      padding: 0 calc(100vw * 40 / var(--base-width));
+      background: #fff;
+    }
+    .v1-{{ section.id }} {
+      padding-top: {{ section.settings.padding_top_pc }}px;
+      padding-bottom: {{ section.settings.padding_bottom_pc }}px;
+    }
     .teflo-customization-subtitle {
-      font-size: calc(100vw * 20 / var(--base-width));
-      line-height: calc(100vw * 26 / var(--base-width));
-      margin-bottom: calc(100vw * 30 / var(--base-width));
+      color: #191919;
+      font-size: calc(100vw * 16 / var(--base-width));
+      font-style: normal;
+      font-weight: 400;
+      line-height: calc(100vw * 16 / var(--base-width));
+      margin-bottom: calc(100vw * 27 / var(--base-width));
+      text-align: center;
+      opacity: 0.5;
     }
     .teflo-customization-h2 {
-      font-size: calc(100vw * 70 / var(--base-width));
-      line-height: calc(100vw * 76 / var(--base-width));
-      letter-spacing: calc(100vw * -2.1 / var(--base-width));
-      margin-bottom: calc(100vw * 130 / var(--base-width));
-      max-width: 100%;
+      color: #191919;
+      text-align: center;
+      font-size: calc(100vw * 60 / var(--base-width));
+      font-style: normal;
+      font-weight: 400;
+      line-height: calc(100vw * 66 / var(--base-width));
+      letter-spacing: calc(100vw * -1.8 / var(--base-width));
+      max-width: calc(100vw * 853 / var(--base-width));
+      margin: 0 auto;
     }
     .teflo-customization-list {
-      display: block;
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      column-gap: calc(100vw * 44 / var(--base-width));
     }
     .teflo-customization-list-item {
-      position: static;
-      padding-top: 0;
+      position: sticky;
+      top: 0;
+      background: #ffffff;
+      padding-top: calc(100vw * 70 / var(--base-width));
     }
     .teflo-customization-list-item-h3 {
-      font-size: calc(100vw * 50 / var(--base-width));
+      color: #0d0d0d;
+      font-size: calc(100vw * 40 / var(--base-width));
+      font-style: normal;
+      font-weight: 400;
       line-height: calc(100vw * 44 / var(--base-width));
-      letter-spacing: calc(100vw * -1.5 / var(--base-width));
+      letter-spacing: calc(100vw * -1.2 / var(--base-width));
       padding-bottom: calc(100vw * 30 / var(--base-width));
+      border-bottom: 0.4px solid rgba(13, 13, 13, 0.3);
+      margin: 0;
     }
     .teflo-customization-list-item-content {
-      display: block;
-      padding-top: 0;
-      padding-bottom: calc(100vw * 93 / var(--base-width));
-      border-bottom: 0;
-      height: auto;
+      display: flex;
+      padding-top: calc(100vw * 30 / var(--base-width));
+      padding-bottom: calc(100vw * 70 / var(--base-width));
     }
     .teflo-customization-list-item-content-time {
-      font-size: calc(100vw * 20 / var(--base-width));
-      line-height: calc(100vw * 26 / var(--base-width));
-      opacity: 0.4;
-      width: 100%;
-      margin-bottom: calc(100vw * 50 / var(--base-width));
-    }
-    .teflo-customization-list-item-content-rt {
-      display: block;
+      width: calc(100vw * 130 / var(--base-width));
+      color: #0d0d0d;
+      font-size: calc(100vw * 16 / var(--base-width));
+      font-style: normal;
+      font-weight: 400;
+      line-height: calc(100vw * 16 / var(--base-width));
+      flex-shrink: 0;
+      padding-top: calc(100vw * 10 / var(--base-width));
     }
     .teflo-customization-list-item-content-rt-item {
+      display: flex;
+      align-items: center;
       margin-bottom: calc(100vw * 10 / var(--base-width));
     }
-
-    .teflo-customization-list-item-content-rt-item-h3 {
-      font-size: calc(100vw * 30 / var(--base-width));
-      line-height: calc(100vw * 36 / var(--base-width));
+    .teflo-customization-list-item-content-rt-item * {
+      font-size: calc(100vw * 20 / var(--base-width));
+      color: #191919;
     }
-    .teflo-customization-list-item-content-rt-img {
-      margin-top: calc(100vw * 30 / var(--base-width));
+    .teflo-customization-list-item-content-rt-item-dot {
+      width: calc(100vw * 8 / var(--base-width));
+      height: calc(100vw * 8 / var(--base-width));
+      border-radius: 50%;
+      background: #324eef;
+      margin-right: calc(100vw * 15 / var(--base-width));
+      flex-shrink: 0;
+    }
+    .teflo-customization-list-item-content-rt-item-h3 {
+      color: #0d0d0d;
+      font-size: calc(100vw * 16 / var(--base-width));
+      font-style: normal;
+      font-weight: 400;
+      line-height: calc(100vw * 20 / var(--base-width));
+    }
+    .teflo-customization-list-item-content-rt {
+      display: grid;
+      flex-direction: column;
+      justify-content: space-between;
+      grid-template-rows: 1fr 1fr;
     }
     .teflo-customization-list-item-content-rt-img img {
+      width: 100%;
     }
+
+    @media (max-width: 1024px) {
+      .teflo-customization {
+        padding: 0 calc(100vw * 25 / var(--base-width));
+      }
+      .v1-{{ section.id }}{
+      padding-top: {{ section.settings.padding_top_mb }}px;
+      padding-bottom: {{ section.settings.padding_bottom_mb }}px;
+    }
+      .teflo-customization-subtitle {
+        font-size: calc(100vw * 20 / var(--base-width));
+        line-height: calc(100vw * 26 / var(--base-width));
+        margin-bottom: calc(100vw * 30 / var(--base-width));
+      }
+      .teflo-customization-h2 {
+        font-size: calc(100vw * 70 / var(--base-width));
+        line-height: calc(100vw * 76 / var(--base-width));
+        letter-spacing: calc(100vw * -2.1 / var(--base-width));
+        margin-bottom: calc(100vw * 130 / var(--base-width));
+        max-width: 100%;
+      }
+      .teflo-customization-list {
+        display: block;
+      }
+      .teflo-customization-list-item {
+        position: static;
+        padding-top: 0;
+      }
+      .teflo-customization-list-item-h3 {
+        font-size: calc(100vw * 50 / var(--base-width));
+        line-height: calc(100vw * 44 / var(--base-width));
+        letter-spacing: calc(100vw * -1.5 / var(--base-width));
+        padding-bottom: calc(100vw * 30 / var(--base-width));
+      }
+      .teflo-customization-list-item-content {
+        display: block;
+        padding-top: 0;
+        padding-bottom: calc(100vw * 93 / var(--base-width));
+        border-bottom: 0;
+        height: auto;
+      }
+      .teflo-customization-list-item-content-time {
+        font-size: calc(100vw * 20 / var(--base-width));
+        line-height: calc(100vw * 26 / var(--base-width));
+        opacity: 0.4;
+        width: 100%;
+        margin-bottom: calc(100vw * 50 / var(--base-width));
+      }
+      .teflo-customization-list-item-content-rt {
+        display: block;
+      }
+      .teflo-customization-list-item-content-rt-item {
+        margin-bottom: calc(100vw * 10 / var(--base-width));
+
+      }
+      .teflo-customization-list-item-content-rt-item * {
+        color: #191919;
+      font-size: calc(100vw* 30 / var(--base-width));
+        line-height: calc(100vw* 36 / var(--base-width));
   }
+
+      .teflo-customization-list-item-content-rt-item-h3 {
+        font-size: calc(100vw * 30 / var(--base-width));
+        line-height: calc(100vw * 36 / var(--base-width));
+      }
+      .teflo-customization-list-item-content-rt-img {
+        margin-top: calc(100vw * 30 / var(--base-width));
+      }
+      .teflo-customization-list-item-content-rt-img img {
+      }
+    }
 </style>
 
 <div class="teflo-customization v1-{{ section.id }}">

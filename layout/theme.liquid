@@ -119,7 +119,7 @@
 	<div id="wrapper">
 		{%- sections 'header-group' -%}
 		{%- sections 'overlay-group' -%}
-		<div role="main" id="main-content">
+		<div role="main" id="main-content" {% unless template.name contains 'index' %}class="no-in-index"{% endunless %}>
 			{{ content_for_layout }}
 		</div>
 		{% sections 'footer-group' %}

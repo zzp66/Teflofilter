@@ -25,7 +25,7 @@
 
 .product-v1 .product-gallery-container .product-image-container .product-images {
     margin: 0;
-    max-width: calc(100vw * 600 / var(--base-width));
+    max-width: 100%;
 }
 
 .product-v1 .product-gallery-container {
@@ -121,6 +121,10 @@
     font-family: Matter;
     font-style: normal;
     font-weight: 400;
+}
+.product-v1.thb-product-detail .product-short-description{
+    font-size: calc(100vw * 16 / var(--base-width));
+    line-height: calc(100vw * 22 / var(--base-width));
 }
 
 .product-v1 .max-height--toggle {
